@@ -30,10 +30,9 @@ requirements:
     - cuml={{ minor_version }}.*
     - cuspatial={{ minor_version }}.*
     - dask-cuda={{ minor_version }}.*
-    - dask-xgboost={{ minor_version }}.*
     - nvstrings={{ minor_version }}.*
+    - rapids-xgboost={{ minor_version }}.*
     - rmm={{ minor_version }}.*
-    - xgboost={{ minor_version }}.*
 
 test:
   imports:
