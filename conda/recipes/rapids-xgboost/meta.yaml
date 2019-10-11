@@ -30,8 +30,6 @@ requirements:
     - nccl=2.4.*
     - python x.x
     - dask-xgboost={{ dxgb_version }}.*
-    - libxgboost={{ xgb_version }}.*
-    - py-xgboost={{ xgb_version }}.*
     - xgboost={{ xgb_version }}.*
 
 about:
