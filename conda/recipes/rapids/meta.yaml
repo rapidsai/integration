@@ -30,10 +30,10 @@ requirements:
     - cuml={{ minor_version }}.*
     - cuspatial={{ minor_version }}.*
     - dask-cuda={{ minor_version }}.*
-    - dask-xgboost={{ minor_version }}.* # TODO-make this actually work
+    - dask-xgboost={{ minor_version }}.*
     - nvstrings={{ minor_version }}.*
     - rmm={{ minor_version }}.*
-    - xgboost={{ minor_version }}.* # TODO-make this actually work
+    - xgboost={{ minor_version }}.*
 
 test:
   imports:
@@ -55,7 +55,7 @@ about:
   license_file: LICENSE
   summary: 'RAPIDS Suite - Open GPU Data Science'
   description: |
-    Meta package for the RAPIDS suite of software libraries gives you the freedom to execute end-to-end data science 
+    Meta-package for the RAPIDS suite of software libraries gives you the freedom to execute end-to-end data science 
     and analytics pipelines entirely on GPUs. It relies on NVIDIA® CUDA® primitives for low-level compute optimization, 
     but exposes that GPU parallelism and high-bandwidth memory speed through user-friendly Python interfaces.
   doc_url: https://docs.rapids.ai/
