@@ -1,0 +1,62 @@
+# Copyright (c) 2019, NVIDIA CORPORATION.
+
+{% set version = environ.get('GIT_DESCRIBE_TAG', '0.0.0.dev').lstrip('v') + environ.get('VERSION_SUFFIX', '') %}
+{% set minor_version =  version.split('.')[0] + '.' + version.split('.')[1] %}
+{% set git_revision_count=environ.get('GIT_DESCRIBE_NUMBER', 0) %}
+{% set py_version=environ.get('CONDA_PY', 36) %}
+
+package:
+  name: rapids
+  version: {{ version }}
+
+source:
+  path: ../../..
+
+build:
+  number: {{ git_revision_count }}
+  string: py{{ py_version }}_{{ git_revision_count }}
+  script_env:
+    - VERSION_SUFFIX
+
+requirements:
+  run:
+    - {{ pin_compatible('cudatoolkit', max_pin='x.x') }}
+    - nccl=2.4.*
+    - numba=0.45.1
+    - numpy=1.16.4 #TODO-verfiy this version
+    - python x.x
+    - cudf={{ minor_version }}.*
+    - cugraph={{ minor_version }}.*
+    - cuml={{ minor_version }}.*
+    - cuspatial={{ minor_version }}.*
+    - dask-cuda={{ minor_version }}.*
+    - dask-xgboost={{ minor_version }}.* # TODO-make this actually work
+    - nvstrings={{ minor_version }}.*
+    - rmm={{ minor_version }}.*
+    - xgboost={{ minor_version }}.* # TODO-make this actually work
+
+test:
+  imports:
+    - rmm
+    - nvstrings
+    - nvtext
+    - nvcategory
+    - cudf
+    - dask_cudf
+    - streamz
+    - cuml
+    - cugraph
+    - cuspatial
+
+about:
+  home: http://rapids.ai/
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: 'RAPIDS Suite - Open GPU Data Science'
+  description: |
+    Meta package for the RAPIDS suite of software libraries gives you the freedom to execute end-to-end data science 
+    and analytics pipelines entirely on GPUs. It relies on NVIDIA® CUDA® primitives for low-level compute optimization, 
+    but exposes that GPU parallelism and high-bandwidth memory speed through user-friendly Python interfaces.
+  doc_url: https://docs.rapids.ai/
+  dev_url: https://github.com/rapidsai/
