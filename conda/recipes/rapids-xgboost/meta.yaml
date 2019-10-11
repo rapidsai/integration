@@ -34,8 +34,7 @@ requirements:
 
 about:
   home: http://rapids.ai/
-  license: Apache-2.0
-  license_family: Apache
+  license: Custom
   license_file: LICENSE
   summary: 'RAPIDS + DMLC XGBoost & Dask Integration'
   description: |
