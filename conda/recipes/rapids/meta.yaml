@@ -50,8 +50,7 @@ test:
 
 about:
   home: http://rapids.ai/
-  license: Apache-2.0
-  license_family: Apache
+  license: Custom
   license_file: LICENSE
   summary: 'RAPIDS Suite - Open GPU Data Science'
   description: |
