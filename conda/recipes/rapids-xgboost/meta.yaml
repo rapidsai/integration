@@ -29,11 +29,11 @@ requirements:
   host:
     - python x.x
   run:
-    - cudatoolkit={{ cuda_version }}.*
-    - nccl=2.4.*
+    - cudatoolkit ={{ cuda_version }}.*
+    - nccl =2.4.*
     - python x.x
-    - dask-xgboost={{ dxgb_version }}.*
-    - xgboost={{ xgb_version }}.*
+    - dask-xgboost ={{ dxgb_version }}
+    - xgboost ={{ xgb_version }}
 
 about:
   home: http://rapids.ai/
