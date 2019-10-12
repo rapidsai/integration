@@ -26,10 +26,12 @@ build:
     - DASK_XGBOOST_VERSION
 
 requirements:
+  host:
+    - python x.x
   run:
     - cudatoolkit={{ cuda_version }}.*
     - nccl=2.4.*
-    - python
+    - python x.x
     - dask-xgboost={{ dxgb_version }}.*
     - xgboost={{ xgb_version }}.*
 
