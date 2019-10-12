@@ -22,20 +22,22 @@ build:
     - CUDA_VERSION
 
 requirements:
-  run:
-    - {{ pin_compatible('cudatoolkit', max_pin='x.x') }}
-    - nccl=2.4.*
-    - numba=0.45.1
-    - numpy=1.16.4 #TODO-verfiy this version
+  host:
     - python x.x
-    - cudf={{ minor_version }}.*
-    - cugraph={{ minor_version }}.*
-    - cuml={{ minor_version }}.*
-    - cuspatial={{ minor_version }}.*
-    - dask-cuda={{ minor_version }}.*
-    - nvstrings={{ minor_version }}.*
-    - rapids-xgboost={{ minor_version }}.*
-    - rmm={{ minor_version }}.*
+  run:
+    - cudatoolkit ={{ cuda_version }}.*
+    - nccl =2.4.*
+    - numba =0.45.1
+    - numpy =1.16.4
+    - python x.x
+    - cudf ={{ minor_version }}.*
+    - cugraph ={{ minor_version }}.*
+    - cuml ={{ minor_version }}.*
+    - cuspatial ={{ minor_version }}.*
+    - dask-cuda ={{ minor_version }}.*
+    - nvstrings ={{ minor_version }}.*
+    - rapids-xgboost ={{ minor_version }}.*
+    - rmm ={{ minor_version }}.*
 
 test:
   imports:
