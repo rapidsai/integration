@@ -5,6 +5,8 @@
 {% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '9.2').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
+{% set xgb_version = environ.get('XGBOOST_VERSION', '1.0.0.SNAPSHOT') %}
+{% set dxgb_version = environ.get('DASK_XGBOOST_VERSION', '0.2.0.dev28') %}
 
 package:
   name: rapids
@@ -20,6 +22,8 @@ build:
     - RAPIDS_VERSION
     - RAPIDS_OFFSET
     - CUDA_VERSION
+    - XGBOOST_VERSION
+    - DASK_XGBOOST_VERSION
 
 requirements:
   host:
@@ -35,16 +39,14 @@ requirements:
     - cuml ={{ minor_version }}.*
     - cuspatial ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
+    - dask-xgboost ={{ dxgb_version }}
     - nvstrings ={{ minor_version }}.*
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
+    - xgboost ={{ xgb_version }}
 
 test:
   imports:
-    - rmm
-    - nvstrings
-    - nvtext
-    - nvcategory
     - cudf
     - dask_cudf
     - streamz
