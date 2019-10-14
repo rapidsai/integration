@@ -41,7 +41,6 @@ requirements:
     - dask-cuda ={{ minor_version }}.*
     - dask-xgboost ={{ dxgb_version }}
     - nvstrings ={{ minor_version }}.*
-    - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
     - xgboost ={{ xgb_version }}
 
