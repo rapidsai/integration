@@ -48,7 +48,6 @@ test:
   imports:
     - cudf
     - dask_cudf
-    - streamz
     - cuml
     - cugraph
     - cuspatial
