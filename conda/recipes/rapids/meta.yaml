@@ -56,7 +56,7 @@ about:
   license_file: LICENSE
   summary: 'RAPIDS Suite - Open GPU Data Science'
   description: |
-    Meta-package for the RAPIDS suite of software libraries gives you the freedom to execute end-to-end data science 
+    Meta-package for the RAPIDS suite of software libraries. RAPIDS gives you the freedom to execute end-to-end data science 
     and analytics pipelines entirely on GPUs. It relies on NVIDIA® CUDA® primitives for low-level compute optimization, 
     but exposes that GPU parallelism and high-bandwidth memory speed through user-friendly Python interfaces.
   doc_url: https://docs.rapids.ai/
