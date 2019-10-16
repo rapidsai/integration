@@ -25,11 +25,11 @@ build:
 
 requirements:
   host:
-    - python x.x
+    - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
     - nccl =2.4.*
-    - python x.x
+    - python
     - xgboost ={{ xgb_version }}
 
 about:
