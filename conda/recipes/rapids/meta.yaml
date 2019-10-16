@@ -25,13 +25,13 @@ build:
 
 requirements:
   host:
-    - python x.x
+    - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
     - nccl =2.4.*
     - numba =0.45.1
     - numpy =1.16.4
-    - python x.x
+    - python
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*
