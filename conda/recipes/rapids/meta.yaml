@@ -5,7 +5,10 @@
 {% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '9.2').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
+
 {% set dxgb_version = environ.get('DASK_XGBOOST_VERSION', '0.2.0.dev28') %}
+{% set numba_version = environ.get('NUMBA_VERSION', '0.45.1') %}
+{% set numpy_version = environ.get('NUMPY_VERSION', '1.16.4') %}
 
 package:
   name: rapids
@@ -29,8 +32,8 @@ requirements:
   run:
     - cudatoolkit ={{ cuda_version }}.*
     - nccl =2.4.*
-    - numba =0.45.1
-    - numpy =1.16.4
+    - numba ={{ numba_version }}.*
+    - numpy ={{ numpy_version }}.*
     - python
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
