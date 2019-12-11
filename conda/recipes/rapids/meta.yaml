@@ -7,8 +7,8 @@
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
 {% set dxgb_version = environ.get('DASK_XGBOOST_VERSION', '0.2.0.dev28') %}
-{% set numba_version = environ.get('NUMBA_VERSION', '0.45.1') %}
-{% set numpy_version = environ.get('NUMPY_VERSION', '1.16.4') %}
+{% set numba_version = environ.get('NUMBA_VERSION', '0.46.0') %}
+{% set numpy_version = environ.get('NUMPY_VERSION', '1.17.3') %}
 
 package:
   name: rapids
