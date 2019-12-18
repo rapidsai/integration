@@ -5,5 +5,5 @@ The conda recipe in the `conda` folder provides the RAPIDS meta-package, which
 when installed will provide the latest RAPIDS libraries for the given version.
 
 Test scripts in the `test` folder verify proper interaction across multiple
-RAPIDS APIs.  Tests are spearated into individual subfolders based on the usage
+RAPIDS APIs.  Tests are separated into individual subfolders based on the usage
 of a specific RAPIDS library with the other RAPIDS libs.
