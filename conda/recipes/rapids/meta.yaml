@@ -37,7 +37,7 @@ requirements:
     - python
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
-    - cuml ={{ minor_version }}.*
+    - cuml >={{ minor_version }}.0a200107
     - cuspatial ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
     - dask-xgboost ={{ dxgb_version }}
