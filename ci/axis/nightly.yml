@@ -5,7 +5,7 @@ CONDA_USERNAME:
 CONDA_XGBOOST_RECIPE:
   - conda/recipe/rapids-xgboost
 
-CONDA_RAPIDS_RECIPE
+CONDA_RAPIDS_RECIPE:
   - conda/recipe/rapids
 
 RAPIDS_VERSION:
