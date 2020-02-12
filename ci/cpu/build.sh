@@ -11,8 +11,8 @@ set -ex
 export PATH=/opt/conda/bin:$PATH
 export HOME=$WORKSPACE
 
-# Activate base conda env
-source activate base
+# Activate conda env
+source activate gdf
 
 # Print current env vars
 env
@@ -21,11 +21,6 @@ env
 curl -s https://raw.githubusercontent.com/rapidsai/gpuci-tools/master/install.sh | bash
 source ~/.bashrc
 cd ~
-
-# Fetch pkgs for upload
-gpuci_logger "Install anaconda-client..."
-conda install -y anaconda-client
-
 
 # Print diagnostic information
 gpuci_logger "Print conda info..."
