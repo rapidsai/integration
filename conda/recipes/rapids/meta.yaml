@@ -31,7 +31,7 @@ requirements:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - nccl =2.4.*
+    - nccl =2.5.*
     - numba ={{ numba_version }}.*
     - numpy>={{ numpy_version }}.*
     - python
