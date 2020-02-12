@@ -31,11 +31,11 @@ conda list --show-channel-urls
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '$CONDA_RECIPE'..."
-  conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} ${1)
+  conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} ${1}
 
   # Get output location
   gpuci_logger "Get conda build output..."
-  export UPLOADFILE=`conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} ${1) --output`
+  export UPLOADFILE=`conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} ${1} --output`
   test -e ${UPLOADFILE}
 
   # Check for upload key
