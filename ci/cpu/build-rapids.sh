@@ -32,11 +32,11 @@ conda list --show-channel-urls
 
 # Build pkg
 gpuci_logger "Start conda build..."
-conda build -c rapidsai-nightly -c nvidia -c conda-forge --python=${PYTHON_VERSION} conda/recipes/rapids
+conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} conda/recipes/rapids
 
 # Get output location
 gpuci_logger "Get conda build output..."
-export UPLOADFILE=`conda build -c rapidsai-nightly -c nvidia -c conda-forge --python=${PYTHON_VERSION} conda/recipes/rapids --output`
+export UPLOADFILE=`conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} conda/recipes/rapids --output`
 test -e ${UPLOADFILE}
 
 gpuci_logger "Setting conda label.."
