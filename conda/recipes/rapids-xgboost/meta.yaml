@@ -28,7 +28,7 @@ requirements:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - nccl =2.4.*
+    - nccl =2.5.*
     - python
     - xgboost ={{ xgb_version }}
 
