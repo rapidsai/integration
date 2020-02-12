@@ -8,7 +8,7 @@
 set -ex
 
 # Set paths
-export PATH=/opt/conda/bin:$PATH
+export PATH=/conda/bin:$PATH
 export HOME=$WORKSPACE
 
 # Activate conda env
