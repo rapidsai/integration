@@ -11,6 +11,9 @@ set -ex
 export PATH=/conda/bin:$PATH
 export HOME=$WORKSPACE
 
+# Save original build offset
+export ORIG_OFFSET=$RAPIDS_OFFSET
+
 # Activate conda env
 source activate gdf
 
@@ -62,6 +65,9 @@ function build_default_pkg {
     export RAPIDS_OFFSET=$((RAPIDS_OFFSET+1))
     gpuci_logger "New build number '$RAPIDS_OFFSET'"
     build_pkg $1
+    # Reset offset
+    export RAPIDS_OFFSET=$ORIG_OFFSET
+    gpuci_logger "Reset build number after default build '$RAPIDS_OFFSET'"
   else
     gpuci_logger "Current CUDA_VERSION '$CUDA_VERSION' is not DEFAULT_CUDA_VERSION, skipping default build..."
   fi
