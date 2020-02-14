@@ -56,7 +56,7 @@ function build_pkg {
 
 function build_default_pkg {
   # Build default version if current version matches DEFAULT_CUDA_VERSION
-  if [ "$CUDA_VESION" == "$DEFAULT_CUDA_VERSION" ] ; then
+  if [ "$CUDA_VERSION" == "$DEFAULT_CUDA_VERSION" ] ; then
     gpuci_logger "Current CUDA_VERSION '$CUDA_VERSION' is the DEFAULT_CUDA_VERSION, building package again with incremented build number..."
     gpuci_logger "Previous build number '$RAPIDS_OFFSET'"
     export RAPIDS_OFFSET=$((RAPIDS_OFFSET+1))
