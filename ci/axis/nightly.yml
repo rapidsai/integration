@@ -8,6 +8,9 @@ CONDA_XGBOOST_RECIPE:
 CONDA_RAPIDS_RECIPE:
   - conda/recipes/rapids
 
+CONDA_RAPIDS_BUILD_RECIPE:
+  - conda/recipes/rapids-build-env
+
 RAPIDS_VERSION:
   - 0.13.0
 
