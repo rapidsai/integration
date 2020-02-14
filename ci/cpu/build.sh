@@ -5,7 +5,7 @@
 #                                                             #
 # config set in `ci/axis/*.yml`                               #
 ###############################################################
-set -ex
+set -e
 
 # Set paths
 export PATH=/conda/bin:$PATH
