@@ -55,9 +55,6 @@ function build_pkg {
   # Remove build
   gpuci_logger "Clean up build cache..."
   conda build purge
-  
-  # Call default build
-  build_default_pkg ${1}
 }
 
 function build_default_pkg {
@@ -76,8 +73,15 @@ function build_default_pkg {
   fi
 }
 
+function run_builds {
+  # Kick off main pkg b
+  build_pkg $1
+  # Check and build default pkgs
+  build_default_pkg $1
+}
+
 # Run builds
-build_pkg $CONDA_XGBOOST_RECIPE
-build_pkg $CONDA_RAPIDS_RECIPE
-build_pkg $CONDA_RAPIDS_BUILD_RECIPE
-build_pkg $CONDA_RAPIDS_NOTEBOOK_RECIPE
+run_builds $CONDA_XGBOOST_RECIPE
+run_builds $CONDA_RAPIDS_RECIPE
+run_builds $CONDA_RAPIDS_BUILD_RECIPE
+run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
