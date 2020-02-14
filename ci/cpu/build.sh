@@ -78,3 +78,5 @@ build_pkg $CONDA_XGBOOST_RECIPE
 build_default_pkg $CONDA_XGBOOST_RECIPE
 build_pkg $CONDA_RAPIDS_RECIPE
 build_default_pkg $CONDA_RAPIDS_RECIPE
+build_pkg $CONDA_RAPIDS_BUILD_RECIPE
+build_default_pkg $CONDA_RAPIDS_BUILD_RECIPE
