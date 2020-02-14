@@ -45,7 +45,7 @@ requirements:
 about:
   home: http://rapids.ai/
   license: Apache-2.0
-  license_file: LICENSE
+  license_file: ../../../LICENSE
   summary: 'RAPIDS Notebook Dependencies and Tool Environment Installer'
   description: |
     Meta-package for installing notebook dependencies and tools needed to run RAPIDS notebooks.
