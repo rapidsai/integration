@@ -14,6 +14,9 @@ CONDA_RAPIDS_BUILD_RECIPE:
 CONDA_RAPIDS_NOTEBOOK_RECIPE:
   - conda/recipes/rapids-notebook-env
 
+CONDA_RAPIDS_DOC_RECIPE:
+  - conda/recipes/rapids-doc-env
+
 RAPIDS_VERSION:
   - 0.13.0
 
