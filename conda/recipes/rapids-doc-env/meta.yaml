@@ -1,0 +1,47 @@
+# Copyright (c) 2020, NVIDIA CORPORATION.
+
+{% set version = environ.get('RAPIDS_VERSION', '0.0.0.dev') %}
+{% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
+{% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '9.2').split('.')[:2]) %}
+{% set py_version = environ.get('CONDA_PY', 36) %}
+
+package:
+  name: rapids-doc-env
+  version: {{ version }}
+
+source:
+  path: .
+
+build:
+  number: {{ build_offset }}
+  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ build_offset }}
+  script_env:
+    - RAPIDS_VERSION
+    - RAPIDS_OFFSET
+    - CUDA_VERSION
+  script: python -m pip install sphinx-markdown-tables
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - doxygen
+    - nbsphinx
+    - numpydoc
+    - pandoc <=2.0.0
+    - recommonmark
+    - sphinx
+    - sphinx_rtd_theme
+    - sphinxcontrib-websupport
+
+about:
+  home: http://rapids.ai/
+  license: Apache-2.0
+  license_file: ../../../LICENSE
+  summary: 'RAPIDS Documentation Dependencies and Tool Environment Installer'
+  description: |
+    Meta-package for installing documentation build dependencies and tools needed to build RAPIDS docs.
+  doc_url: https://docs.rapids.ai/
+  dev_url: https://github.com/rapidsai/
