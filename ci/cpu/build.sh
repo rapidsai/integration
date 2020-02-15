@@ -80,6 +80,7 @@ run_builds $CONDA_XGBOOST_RECIPE
 run_builds $CONDA_RAPIDS_RECIPE
 run_builds $CONDA_RAPIDS_BUILD_RECIPE
 run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
+run_builds $CONDA_RAPIDS_DOC_RECIPE
 
 # Upload builds
 upload_builds
