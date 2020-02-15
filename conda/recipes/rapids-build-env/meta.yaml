@@ -54,6 +54,7 @@ requirements:
     - isort
     - lapack
     - rapidsai::libclang =8.0.0
+    - libcumlprims ={{ minor_version }}.*
     - libcypher-parser
     - libgcc-ng =7.3.0
     - libgfortran-ng =7.3.0
@@ -79,6 +80,7 @@ requirements:
     - scipy =1.3.0
     - streamz
     - twine
+    - ucx-py ={{ minor_version }}.*
 
 about:
   home: http://rapids.ai/
