@@ -35,26 +35,6 @@ function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
   conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} ${1}
-
-  # Get output location
-  gpuci_logger "Get conda build output..."
-  export UPLOADFILE=`conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} ${1} --output`
-  test -e ${UPLOADFILE}
-
-  # Check for upload key
-  if [ -z "$MY_UPLOAD_KEY" ]; then
-    gpuci_logger "No upload key found, env var MY_UPLOAD_KEY not set, skipping upload..."
-    return 0
-  fi
-
-  # Upload
-  gpuci_logger "Upload starting..."
-  echo ${UPLOADFILE}
-  anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --force ${UPLOADFILE}
-  
-  # Remove build
-  gpuci_logger "Clean up build cache..."
-  conda build purge
 }
 
 function build_default_pkg {
@@ -80,8 +60,26 @@ function run_builds {
   build_default_pkg $1
 }
 
+function upload_builds {
+  # Check for upload key
+  if [ -z "$MY_UPLOAD_KEY" ]; then
+    gpuci_logger "No upload key found, env var MY_UPLOAD_KEY not set, skipping upload..."
+  else
+    gpuci_logger "Upload key found, starting upload..."
+    gpuci_logger "Files to upload..."
+    ls /conda/conda-bld/linux-64/rapids*.tar.bz2
+
+    gpuci_logger "Starting upload..."
+    ls /conda/conda-bld/linux-64/rapids*.tar.bz2 | xargs gpuci_retry \
+      anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label test --force
+  fi
+}
+
 # Run builds
 run_builds $CONDA_XGBOOST_RECIPE
 run_builds $CONDA_RAPIDS_RECIPE
 run_builds $CONDA_RAPIDS_BUILD_RECIPE
 run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
+
+# Upload builds
+upload_builds
