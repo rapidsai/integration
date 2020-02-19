@@ -71,7 +71,7 @@ function upload_builds {
 
     gpuci_logger "Starting upload..."
     ls /conda/conda-bld/linux-64/rapids*.tar.bz2 | xargs gpuci_retry \
-      anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label test --force
+      anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --force
   fi
 }
 
