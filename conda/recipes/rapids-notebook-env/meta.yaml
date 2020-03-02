@@ -32,7 +32,7 @@ requirements:
     - dask-labextension
     - dask-ml
     - ipython =7.3.*
-    - jupyterlab
+    - jupyterlab =1.2.0
     - matplotlib
     - networkx
     - nodejs
