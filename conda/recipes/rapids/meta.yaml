@@ -40,6 +40,7 @@ requirements:
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*
     - cuspatial ={{ minor_version }}.*
+    - cuxfilter ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
     - dask-xgboost ={{ dxgb_version }}
     - nvstrings ={{ minor_version }}.*
