@@ -15,7 +15,7 @@ DASK_XGBOOST_VERSION:
   - 0.2.0.dev28
 
 XGBOOST_VERSION:
-  - 1.0.0dev.rapidsai0.13
+  - 1.0.2dev.rapidsai0.13
 
 NUMBA_VERSION:
   - 0.46.0
