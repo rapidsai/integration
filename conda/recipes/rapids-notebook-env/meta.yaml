@@ -25,6 +25,7 @@ requirements:
   host:
     - python
   run:
+    - bokeh =1.*
     - conda-forge::blas=2.14=openblas
     - cudatoolkit ={{ cuda_version }}.*
     - cupy >=6.6.0,<8.0.0a0,!=7.1.0
