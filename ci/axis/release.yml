@@ -1,12 +1,6 @@
 CONDA_USERNAME:
   - rapidsai
 
-# Note that gpuCI builds `rapids-xgboost first as it is needed by `rapids`
-CONDA_XGBOOST_RECIPE:
-  - conda/recipes/rapids-xgboost
-
-CONDA_RAPIDS_RECIPE:
-  - conda/recipes/rapids
 
 RAPIDS_VERSION:
   - 0.13.0
