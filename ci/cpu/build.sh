@@ -45,9 +45,9 @@ function build_pkg {
 }
 
 function build_default_pkg {
-  # Build default version if current version matches DEFAULT_CUDA_VERSION
-  if [ "$CUDA_VERSION" == "$DEFAULT_CUDA_VERSION" ] ; then
-    gpuci_logger "Current CUDA_VERSION '$CUDA_VERSION' is the DEFAULT_CUDA_VERSION, building package again with incremented build number..."
+  # Build default version if current version matches DEFAULT_CUDA_VER
+  if [ "$CUDA_VER" == "$DEFAULT_CUDA_VER" ] ; then
+    gpuci_logger "Current CUDA_VER '$CUDA_VER' is the DEFAULT_CUDA_VER, building package again with incremented build number..."
     gpuci_logger "Previous build number '$RAPIDS_OFFSET'"
     export RAPIDS_OFFSET=$((RAPIDS_OFFSET+1))
     gpuci_logger "New build number '$RAPIDS_OFFSET'"
@@ -56,7 +56,7 @@ function build_default_pkg {
     export RAPIDS_OFFSET=$ORIG_OFFSET
     gpuci_logger "Reset build number after default build '$RAPIDS_OFFSET'"
   else
-    gpuci_logger "Current CUDA_VERSION '$CUDA_VERSION' is not DEFAULT_CUDA_VERSION, skipping default build..."
+    gpuci_logger "Current CUDA_VER '$CUDA_VER' is not DEFAULT_CUDA_VER, skipping default build..."
   fi
 }
 

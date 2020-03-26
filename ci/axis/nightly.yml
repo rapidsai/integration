@@ -2,7 +2,7 @@ CONDA_USERNAME:
   - rapidsai-nightly
 
 
-RAPIDS_VERSION:
+RAPIDS_VER:
   - 0.13.0
 
 DASK_XGBOOST_VERSION:
@@ -17,14 +17,15 @@ NUMBA_VERSION:
 NUMPY_VERSION:
   - 1.17.3
 
-CUDA_VERSION:
+# Use CUDA_VER to not clobber `CUDA_VERSION` in the container
+CUDA_VER:
   - 10.2
   - 10.1
   - 10.0
 
-DEFAULT_CUDA_VERSION:
+DEFAULT_CUDA_VER:
   - 10.0
 
-PYTHON_VERSION:
+PYTHON_VER:
   - 3.6
   - 3.7
