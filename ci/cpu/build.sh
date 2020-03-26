@@ -41,7 +41,8 @@ conda list --show-channel-urls
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
-  conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge --python=${PYTHON_VERSION} ${1}
+  conda build -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge \
+              --python=${PYTHON_VER} --append-file ${CONDA_CONFIG_FILE} ${1}
 }
 
 function build_default_pkg {
