@@ -1,14 +1,21 @@
 # Copyright (c) 2019, NVIDIA CORPORATION.
 
-{% set version = environ.get('RAPIDS_VERSION', '0.0.0.dev') %}
+{% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
 {% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
 {% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '9.2').split('.')[:2]) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
-{% set dxgb_version = environ.get('DASK_XGBOOST_VERSION', '0.2.0.dev28') %}
-{% set numba_version = environ.get('NUMBA_VERSION', '0.46.0') %}
-{% set numpy_version = environ.get('NUMPY_VERSION', '1.17.3') %}
+### 
+# Versions referenced below are set in `conda/recipe/*versions.yaml` except for
+#   those set above (e.g. `cuda_version`)
+#
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
+#   `ci/cpu/build.sh` and `ci/axis/*.yaml`
+#
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
+#   to set these versions
+###
 
 package:
   name: rapids
@@ -21,27 +28,26 @@ build:
   number: {{ build_offset }}
   string: cuda{{ cuda_version }}_py{{ py_version }}_{{ build_offset }}
   script_env:
-    - RAPIDS_VERSION
+    - RAPIDS_VER
     - RAPIDS_OFFSET
     - CUDA_VERSION
-    - DASK_XGBOOST_VERSION
 
 requirements:
   host:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - cupy>=7,<8.0.0a0    
-    - nccl =2.5.*
-    - numba ={{ numba_version }}.*
-    - numpy>={{ numpy_version }}.*
+    - cupy {{ cupy_version }}
+    - nccl {{ nccl_version }}
+    - numba {{ numba_version }}
+    - numpy {{ numpy_version }}
     - python
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*
     - cuspatial ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
-    - dask-xgboost ={{ dxgb_version }}
+    - dask-xgboost ={{ dask_xgboost_version }}
     - nvstrings ={{ minor_version }}.*
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*

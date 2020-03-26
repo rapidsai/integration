@@ -1,0 +1,21 @@
+CONDA_USERNAME:
+  - rapidsai
+
+CONDA_CONFIG_FILE:
+  - conda/recipes/release-versions.yaml
+
+RAPIDS_VER:
+  - 0.13.0
+
+# Use CUDA_VER to not clobber `CUDA_VERSION` in the container
+CUDA_VER:
+  - 10.2
+  - 10.1
+  - 10.0
+
+DEFAULT_CUDA_VER:
+  - 10.0
+
+PYTHON_VER:
+  - 3.6
+  - 3.7

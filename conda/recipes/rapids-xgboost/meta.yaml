@@ -1,11 +1,21 @@
 # Copyright (c) 2019, NVIDIA CORPORATION.
 
-{% set version = environ.get('RAPIDS_VERSION', '0.0.0.dev') %}
+{% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
 {% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
 {% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '9.2').split('.')[:2]) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
-{% set xgb_version = environ.get('XGBOOST_VERSION', '1.0.0.SNAPSHOT') %}
+
+### 
+# Versions referenced below are set in `conda/recipe/*versions.yaml` except for
+#   those set above (e.g. `cuda_version`)
+#
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
+#   `ci/cpu/build.sh` and `ci/axis/*.yaml`
+#
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
+#   to set these versions
+###
 
 package:
   name: rapids-xgboost
@@ -18,19 +28,18 @@ build:
   number: {{ build_offset }}
   string: cuda{{ cuda_version }}_py{{ py_version }}_{{ build_offset }}
   script_env:
-    - RAPIDS_VERSION
+    - RAPIDS_VER
     - RAPIDS_OFFSET
     - CUDA_VERSION
-    - XGBOOST_VERSION
 
 requirements:
   host:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - nccl =2.5.*
+    - nccl {{ nccl_version }}
     - python
-    - xgboost ={{ xgb_version }}
+    - xgboost {{ xgboost_version }}
 
 about:
   home: http://rapids.ai/
