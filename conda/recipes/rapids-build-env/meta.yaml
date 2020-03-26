@@ -3,7 +3,7 @@
 {% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
 {% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
 {% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '9.2').split('.')[:2]) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
 ### 
