@@ -47,7 +47,7 @@ requirements:
     - cuml ={{ minor_version }}.*
     - cuspatial ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
-    - dask-xgboost ={{ dask_xgboost_version }}
+    - dask-xgboost {{ dask_xgboost_version }}
     - nvstrings ={{ minor_version }}.*
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
