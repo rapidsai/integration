@@ -52,7 +52,7 @@ fastavro_version:
 flatbuffers_version:
   - '=1.10.0'
 fsspec_version:
-  - '>=0.3.3'
+  - '>=0.3.3,<0.7.0a0'
 gdal_version:
   - '=2.4.*'
 ipython_version:
