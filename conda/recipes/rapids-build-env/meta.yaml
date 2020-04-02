@@ -86,6 +86,7 @@ requirements:
     - pyarrow {{ arrow_version }}
     - pytest
     - pytest-cov
+    - pytorch
     - python
     - rapidjson {{ rapidjson_version }}
     - ripgrep
@@ -96,6 +97,7 @@ requirements:
     - statsmodels
     - streamz
     - twine
+    - torchvision
     - ucx-py ={{ minor_version }}.*
     - umap-learn
 
