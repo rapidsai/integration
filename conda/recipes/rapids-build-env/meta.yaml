@@ -41,6 +41,8 @@ requirements:
     - conda-forge::blas{{ blas_version }}
     - boost-cpp {{ boost_cpp_version }}
     - boto3
+    - conda-forge::clang {{ clang_version }}
+    - conda-forge::clang-tools {{ clang_version }}
     - cmake {{ cmake_version }}
     - cmake_setuptools {{ cmake_setuptools_version }}
     - conda {{ conda_version }}
@@ -66,7 +68,6 @@ requirements:
     - hypothesis
     - isort
     - lapack
-    - rapidsai::libclang {{ libclang_rapidsai_version }}
     - libcumlprims ={{ minor_version }}.*
     - libcypher-parser
     - libgcc-ng {{ build_stack_version }}
