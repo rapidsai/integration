@@ -31,6 +31,8 @@ bokeh_version:
   - '=1.*'
 boost_cpp_version:
   - '=1.70.0'
+clang_version:
+  - '=8.*'
 cmake_version:
   - '=3.14.5'
 cmake_setuptools_version:
@@ -59,8 +61,6 @@ ipython_version:
   - '=7.3.*'
 jupyterlab_version:
   - '=1.2.*'
-clang_rapidsai_version:
-  - '=8'
 librdkafka_version:
   - '=1.2.2'
 nccl_version:
