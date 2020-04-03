@@ -59,8 +59,8 @@ ipython_version:
   - '=7.3.*'
 jupyterlab_version:
   - '=1.2.*'
-libclang_rapidsai_version:
-  - '=8.0.0'
+clang_rapidsai_version:
+  - '=8'
 librdkafka_version:
   - '=1.2.2'
 nccl_version:
