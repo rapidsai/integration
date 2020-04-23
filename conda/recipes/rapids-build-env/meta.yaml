@@ -87,6 +87,7 @@ requirements:
     - pyarrow {{ arrow_version }}
     - pytest
     - pytest-cov
+    - pytest-timeout
     - python
     - rapidjson {{ rapidjson_version }}
     - ripgrep
