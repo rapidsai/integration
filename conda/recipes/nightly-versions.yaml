@@ -42,9 +42,9 @@ cupy_version:
 cython_version:
   - '>=0.29,<0.30'
 dask_version:
-  - '>=2.12.0'
+  - '>=2.15.0'
 distributed_version:
-  - '>=2.12.0'
+  - '>=2.15.0'
 dlpack_version:
   - '=0.2'
 double_conversion_version:
