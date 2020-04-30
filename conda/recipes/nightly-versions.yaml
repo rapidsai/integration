@@ -68,7 +68,7 @@ nccl_version:
 networkx_version:
   - '>=2.3'
 numba_version:
-  - '>=0.48,<0.49'
+  - '>=0.49'
 numpy_version:
   - '>=1.17.3'
 pandas_version:
