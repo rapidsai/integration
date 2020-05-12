@@ -41,7 +41,7 @@ conda list --show-channel-urls
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
-  conda build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c numba -c defaults \
+  conda build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c defaults \
               --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
 }
 
