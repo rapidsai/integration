@@ -84,6 +84,7 @@ requirements:
     - numpy {{ numpy_version }}
     - pandas {{ pandas_version }}
     - protobuf {{ protobuf_version }}
+    - psutil
     - pyarrow {{ arrow_version }}
     - pytest
     - pytest-cov
