@@ -6,14 +6,14 @@
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
-### 
+###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
 #   those set above (e.g. `cuda_version`)
 #
-# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in
 #   `ci/cpu/build.sh` and `ci/axis/*.yaml`
 #
-# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml`
 #   to set these versions
 ###
 
@@ -39,8 +39,10 @@ requirements:
     - python
     - pip
   run:
+    - beautifulsoup4
     - doxygen
     - markdown
+    - jq
     - nbsphinx
     - numpydoc
     - pandoc {{ pandoc_version }}
