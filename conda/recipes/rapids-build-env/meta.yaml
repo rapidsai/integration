@@ -1,0 +1,114 @@
+# Copyright (c) 2020, NVIDIA CORPORATION.
+
+{% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
+{% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
+{% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
+{% set py_version = environ.get('CONDA_PY', 36) %}
+
+### 
+# Versions referenced below are set in `conda/recipe/*versions.yaml` except for
+#   those set above (e.g. `cuda_version`)
+#
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
+#   `ci/cpu/build.sh` and `ci/axis/*.yaml`
+#
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
+#   to set these versions
+###
+
+package:
+  name: rapids-build-env
+  version: {{ version }}
+
+source:
+  path: .
+
+build:
+  number: {{ build_offset }}
+  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ build_offset }}
+  script_env:
+    - RAPIDS_VER
+    - RAPIDS_OFFSET
+    - CUDA_VERSION
+
+requirements:
+  host:
+    - python
+  run:
+    - arrow-cpp {{ arrow_version }}
+    - black
+    - conda-forge::blas{{ blas_version }}
+    - boost-cpp {{ boost_cpp_version }}
+    - boto3
+    - conda-forge::clang {{ clang_version }}
+    - conda-forge::clang-tools {{ clang_version }}
+    - cmake {{ cmake_version }}
+    - cmake_setuptools {{ cmake_setuptools_version }}
+    - conda {{ conda_version }}
+    - conda-build {{ conda_build_version }}
+    - conda-verify {{ conda_verify_version }}
+    - cudatoolkit ={{ cuda_version }}.*
+    - cupy {{ cupy_version }}
+    - cython {{ cython_version }}
+    - dask {{ dask_version }}
+    - distributed {{ distributed_version }}
+    - dlpack {{ dlpack_version }}
+    - double-conversion {{ double_conversion_version }}
+    - fastavro {{ fastavro_version }}
+    - feather-format
+    - flake8
+    - flatbuffers {{ flatbuffers_version }}
+    - fsspec {{ fsspec_version }}
+    - gcsfs
+    - gdal {{ gdal_version }}
+    - git
+    - graphviz
+    - httpretty
+    - hypothesis
+    - isort
+    - lapack
+    - libcumlprims ={{ minor_version }}.*
+    - libcypher-parser
+    - libgcc-ng {{ build_stack_version }}
+    - libgfortran-ng {{ build_stack_version }}
+    - liblapack
+    - librdkafka {{ librdkafka_version }}
+    - libstdcxx-ng {{ build_stack_version }}
+    - lightgbm
+    - make
+    - moto
+    - nccl {{ nccl_version }}
+    - networkx {{ networkx_version }}
+    - numba {{ numba_version }}
+    - numpy {{ numpy_version }}
+    - pandas {{ pandas_version }}
+    - protobuf {{ protobuf_version }}
+    - psutil
+    - pyarrow {{ arrow_version }}
+    - pytest
+    - pytest-cov
+    - pytest-timeout
+    - python
+    - rapidjson {{ rapidjson_version }}
+    - ripgrep
+    - s3fs
+    - setuptools
+    - scikit-learn {{ scikit_learn_version }}
+    - scipy {{ scipy_version }}
+    - shellcheck
+    - statsmodels
+    - streamz
+    - twine
+    - ucx-py ={{ minor_version }}.*
+    - umap-learn
+
+about:
+  home: http://rapids.ai/
+  license: Apache-2.0
+  license_file: ../../../LICENSE
+  summary: 'RAPIDS Build Dependencies and Tool Environment Installer'
+  description: |
+    Meta-package for installing build dependencies and tools needed to build all RAPIDS libraries.
+  doc_url: https://docs.rapids.ai/
+  dev_url: https://github.com/rapidsai/

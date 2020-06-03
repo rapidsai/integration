@@ -1,0 +1,85 @@
+###
+# This file is used by `/ci/cpu/build.sh` for NIGHTLY builds
+###
+
+# Versions for `rapids` meta-pkg
+dask_xgboost_version:
+  - '=0.2.0.dev28'
+
+# Versions for `rapids-xgboost` meta-pkg
+xgboost_version:
+  - '=1.1.0dev.rapidsai0.14'
+
+# Versions for conda
+conda_version:
+  - '=4.7.12'
+conda_build_version:
+  - '=3.18.11'
+conda_verify_version:
+  - '=3.1.1'
+
+# Versions for `libgcc-ng`, `libgfortran-ng`, `libstdcxx-ng` stack
+build_stack_version:
+  - '=7.3.0'
+
+# Shared versions across meta-pkgs
+arrow_version:
+  - '=0.15.0'
+blas_version:
+  - '=2.14=openblas'
+bokeh_version:
+  - '=1.*'
+boost_cpp_version:
+  - '=1.70.0'
+clang_version:
+  - '=8.0.1'
+cmake_version:
+  - '=3.14.5'
+cmake_setuptools_version:
+  - '>=0.1.3'
+cupy_version:
+  - '>=7,<8.0.0a0,!=7.1.0'
+cython_version:
+  - '>=0.29,<0.30'
+dask_version:
+  - '>=2.15.0'
+distributed_version:
+  - '>=2.15.0'
+dlpack_version:
+  - '=0.2'
+double_conversion_version:
+  - '=3.1.5'
+fastavro_version:
+  - '>=0.22.0'
+flatbuffers_version:
+  - '=1.10.0'
+fsspec_version:
+  - '>=0.6.0'
+gdal_version:
+  - '>=3.0.2'
+ipython_version:
+  - '=7.3.*'
+jupyterlab_version:
+  - '=1.2.*'
+librdkafka_version:
+  - '=1.2.2'
+nccl_version:
+  - '=2.5.*'
+networkx_version:
+  - '>=2.3'
+numba_version:
+  - '>=0.49'
+numpy_version:
+  - '>=1.17.3'
+pandas_version:
+  - '>=0.25,<0.26'
+pandoc_version:
+  - '<=2.0.0'
+protobuf_version:
+  - '>=3.4.1,<4.0.0'
+rapidjson_version:
+  - '=1.1.0'
+scikit_learn_version:
+  - '=0.23.0'
+scipy_version:
+  - '=1.3.0'

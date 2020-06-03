@@ -1,0 +1,63 @@
+# Copyright (c) 2020, NVIDIA CORPORATION.
+
+{% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
+{% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
+{% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
+{% set py_version = environ.get('CONDA_PY', 36) %}
+
+###
+# Versions referenced below are set in `conda/recipe/*versions.yaml` except for
+#   those set above (e.g. `cuda_version`)
+#
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in
+#   `ci/cpu/build.sh` and `ci/axis/*.yaml`
+#
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml`
+#   to set these versions
+###
+
+package:
+  name: rapids-doc-env
+  version: {{ version }}
+
+source:
+  path: .
+  url: https://files.pythonhosted.org/packages/d2/44/543c3d96bac02ff4a9245ac624d175a50e91aebc7324a4bf4a2ec3b96da7/sphinx-markdown-tables-0.0.12.tar.gz
+  sha256: 08779e77832b6562b6b86e4270ae50b0b10010fdd35cf9aadcb5b8246571b933
+
+build:
+  number: {{ build_offset }}
+  string: py{{ py_version }}_{{ build_offset }}
+  script_env:
+    - RAPIDS_VER
+    - RAPIDS_OFFSET
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - beautifulsoup4
+    - doxygen
+    - markdown
+    - jq
+    - nbsphinx
+    - numpydoc
+    - pandoc {{ pandoc_version }}
+    - recommonmark
+    - sphinx
+    - sphinx_rtd_theme
+    - sphinxcontrib-websupport
+    - sphinx-copybutton
+
+about:
+  home: http://rapids.ai/
+  license: Apache-2.0
+  license_file: ../../../LICENSE
+  summary: 'RAPIDS Documentation Dependencies and Tool Environment Installer'
+  description: |
+    Meta-package for installing documentation build dependencies and tools needed to build RAPIDS docs.
+  doc_url: https://docs.rapids.ai/
+  dev_url: https://github.com/rapidsai/

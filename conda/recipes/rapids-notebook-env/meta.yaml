@@ -1,4 +1,4 @@
-# Copyright (c) 2019, NVIDIA CORPORATION.
+# Copyright (c) 2020, NVIDIA CORPORATION.
 
 {% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
 {% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
@@ -18,7 +18,7 @@
 ###
 
 package:
-  name: rapids
+  name: rapids-notebook-env
   version: {{ version }}
 
 source:
@@ -36,40 +36,30 @@ requirements:
   host:
     - python
   run:
+    - bokeh {{ bokeh_version }}
+    - conda-forge::blas{{ blas_version }}
     - cudatoolkit ={{ cuda_version }}.*
     - cupy {{ cupy_version }}
-    - nccl {{ nccl_version }}
-    - numba {{ numba_version }}
-    - numpy {{ numpy_version }}
-    - python
-    - cudf ={{ minor_version }}.*
-    - cugraph ={{ minor_version }}.*
-    - cuml ={{ minor_version }}.*
-    - cusignal ={{ minor_version }}.*
-    - cuspatial ={{ minor_version }}.*
-    - cuxfilter ={{ minor_version }}.*
-    - dask-cuda ={{ minor_version }}.*
-    - dask-xgboost {{ dask_xgboost_version }}
-    - nvstrings ={{ minor_version }}.*
-    - rapids-xgboost ={{ minor_version }}.*
-    - rmm ={{ minor_version }}.*
-
-test:
-  imports:
-    - cudf
-    - dask_cudf
-    - cuml
-    - cugraph
-    - cuspatial
+    - cython {{ cython_version }}
+    - dask-labextension
+    - dask-ml
+    - ipython {{ ipython_version }}
+    - jupyterlab {{ jupyterlab_version }}
+    - matplotlib
+    - networkx
+    - nodejs
+    - pytest
+    - scikit-learn {{ scikit_learn_version }}
+    - scipy {{ scipy_version }}
+    - seaborn
+    - umap-learn
 
 about:
   home: http://rapids.ai/
-  license: Custom
-  license_file: LICENSE
-  summary: 'RAPIDS Suite - Open GPU Data Science'
+  license: Apache-2.0
+  license_file: ../../../LICENSE
+  summary: 'RAPIDS Notebook Dependencies and Tool Environment Installer'
   description: |
-    Meta-package for the RAPIDS suite of software libraries. RAPIDS gives you the freedom to execute end-to-end data science 
-    and analytics pipelines entirely on GPUs. It relies on NVIDIA® CUDA® primitives for low-level compute optimization, 
-    but exposes that GPU parallelism and high-bandwidth memory speed through user-friendly Python interfaces.
+    Meta-package for installing notebook dependencies and tools needed to run RAPIDS notebooks.
   doc_url: https://docs.rapids.ai/
   dev_url: https://github.com/rapidsai/
