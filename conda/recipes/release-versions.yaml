@@ -24,7 +24,7 @@ build_stack_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=0.15.0'
+  - '=0.17.1'
 blas_version:
   - '=2.14=openblas'
 bokeh_version:
