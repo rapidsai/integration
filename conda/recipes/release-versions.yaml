@@ -30,7 +30,7 @@ blas_version:
 bokeh_version:
   - '=1.*'
 boost_cpp_version:
-  - '=1.70.0'
+  - '=1.72.0'
 clang_version:
   - '=8.0.1'
 cmake_version:
