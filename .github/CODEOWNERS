@@ -1,0 +1,5 @@
+#build/ops code owners
+.github/           @rapidsai/ops-codeowners 
+ci/                @rapidsai/ops-codeowners
+conda/             @rapidsai/ops-codeowners
+test/              @rapidsai/ops-codeowners
