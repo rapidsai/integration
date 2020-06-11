@@ -37,6 +37,7 @@ requirements:
     - python
   run:
     - arrow-cpp {{ arrow_version }}
+    - arrow-cpp-proc * cuda
     - black
     - conda-forge::blas{{ blas_version }}
     - boost-cpp {{ boost_cpp_version }}
