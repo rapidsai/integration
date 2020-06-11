@@ -37,6 +37,7 @@ requirements:
     - python
   run:
     - arrow-cpp {{ arrow_version }}
+    - arrow-cpp-proc * cuda
     - black
     - conda-forge::blas{{ blas_version }}
     - boost-cpp {{ boost_cpp_version }}
@@ -102,8 +103,6 @@ requirements:
     - twine
     - ucx-py ={{ minor_version }}.*
     - umap-learn
-  run_constrained:
-    - arrow-cpp-proc * cuda
 
 about:
   home: http://rapids.ai/
