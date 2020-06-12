@@ -91,6 +91,7 @@ requirements:
     - pytest-cov
     - pytest-timeout
     - python
+    - python-louvain
     - rapidjson {{ rapidjson_version }}
     - ripgrep
     - s3fs
