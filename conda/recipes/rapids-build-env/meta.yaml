@@ -38,6 +38,9 @@ requirements:
   run:
     - arrow-cpp {{ arrow_version }}
     - arrow-cpp-proc * cuda
+    - async_generator
+    - autoconf
+    - automake
     - black
     - conda-forge::blas{{ blas_version }}
     - boost-cpp {{ boost_cpp_version }}
@@ -73,9 +76,11 @@ requirements:
     - libcypher-parser
     - libgcc-ng {{ build_stack_version }}
     - libgfortran-ng {{ build_stack_version }}
+    - libhwloc
     - liblapack
     - librdkafka {{ librdkafka_version }}
     - libstdcxx-ng {{ build_stack_version }}
+    - libtool
     - lightgbm
     - make
     - moto
@@ -84,9 +89,11 @@ requirements:
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - pandas {{ pandas_version }}
+    - pkg-config
     - protobuf {{ protobuf_version }}
     - psutil
     - pyarrow {{ arrow_version }}
+    - pynvml
     - pytest
     - pytest-asyncio
     - pytest-benchmark
