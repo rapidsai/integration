@@ -47,7 +47,7 @@ requirements:
     - jupyterlab {{ jupyterlab_version }}
     - matplotlib
     - networkx
-    - nodejs
+    - nodejs {{ nodejs_version }}
     - pytest
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
