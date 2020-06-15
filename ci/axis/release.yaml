@@ -14,7 +14,7 @@ CUDA_VER:
   - 10.0
 
 DEFAULT_CUDA_VER:
-  - 10.0
+  - 10.1
 
 PYTHON_VER:
   - 3.6
