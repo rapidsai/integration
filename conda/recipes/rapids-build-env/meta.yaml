@@ -43,6 +43,7 @@ requirements:
     - automake
     - black
     - conda-forge::blas{{ blas_version }}
+    - boost
     - boost-cpp {{ boost_cpp_version }}
     - boto3
     - conda-forge::clang {{ clang_version }}
