@@ -44,6 +44,7 @@ requirements:
     - dask-labextension
     - dask-ml
     - ipython {{ ipython_version }}
+    - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
     - matplotlib
     - networkx
