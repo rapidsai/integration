@@ -11,7 +11,7 @@
 #   those set above (e.g. `cuda_version`)
 #
 # gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
-#   `ci/cpu/build.sh` and `ci/axis/*.yaml`
+#   `ci/cpu/build-meta.sh` and `ci/axis/*.yaml`
 #
 # Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
 #   to set these versions
