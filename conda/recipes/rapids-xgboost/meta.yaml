@@ -1,6 +1,6 @@
 # Copyright (c) 2019, NVIDIA CORPORATION.
 
-{% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
+{% set version = environ.get('GIT_DESCRIBE_TAG', '0.0.0.dev').lstrip('v') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
 {% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
@@ -31,6 +31,7 @@ build:
     - RAPIDS_VER
     - RAPIDS_OFFSET
     - CUDA_VERSION
+    - VERSION_SUFFIX
 
 requirements:
   host:
