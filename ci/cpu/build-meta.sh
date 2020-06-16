@@ -18,6 +18,9 @@ export ORIG_OFFSET=$RAPIDS_OFFSET
 CONDA_XGBOOST_RECIPE="conda/recipes/rapids-xgboost"
 CONDA_RAPIDS_RECIPE="conda/recipes/rapids"
 
+# Allow insecure connections for conda-mirror
+echo "ssl_verify: False" >> /conda/.condarc
+
 # Activate conda env
 source activate base
 
