@@ -21,15 +21,12 @@ package:
 
 source:
   git_url: ../../..
-  url: https://files.pythonhosted.org/packages/d2/44/543c3d96bac02ff4a9245ac624d175a50e91aebc7324a4bf4a2ec3b96da7/sphinx-markdown-tables-0.0.12.tar.gz
-  sha256: 08779e77832b6562b6b86e4270ae50b0b10010fdd35cf9aadcb5b8246571b933
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
   string: py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
     - VERSION_SUFFIX
-  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   host:
@@ -48,6 +45,7 @@ requirements:
     - sphinx_rtd_theme
     - sphinxcontrib-websupport
     - sphinx-copybutton
+    - sphinx-markdown-tables
 
 about:
   home: http://rapids.ai/
