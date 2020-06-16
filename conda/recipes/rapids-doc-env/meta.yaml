@@ -2,8 +2,6 @@
 
 {% set version = environ.get('GIT_DESCRIBE_TAG', '0.0.0.dev').lstrip('v') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
-{% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
 ###
@@ -22,16 +20,14 @@ package:
   version: {{ version }}
 
 source:
-  path: .
+  git_url: .
   url: https://files.pythonhosted.org/packages/d2/44/543c3d96bac02ff4a9245ac624d175a50e91aebc7324a4bf4a2ec3b96da7/sphinx-markdown-tables-0.0.12.tar.gz
   sha256: 08779e77832b6562b6b86e4270ae50b0b10010fdd35cf9aadcb5b8246571b933
 
 build:
-  number: {{ build_offset }}
-  string: py{{ py_version }}_{{ build_offset }}
+  number: {{ GIT_DESCRIBE_NUMBER }}
+  string: py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
-    - RAPIDS_VER
-    - RAPIDS_OFFSET
     - VERSION_SUFFIX
   script: python -m pip install --no-deps --ignore-installed .
 
