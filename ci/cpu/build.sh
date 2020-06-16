@@ -1,9 +1,14 @@
 #!/bin/bash
 # Copyright (c) 2020, NVIDIA CORPORATION.
 ###############################################################
-# rapids/rapids-xgboost meta pkg conda build script for gpuCI #
+# rapids meta/env pkg conda build script for gpuCI            #
 #                                                             #
 # config set in `ci/axis/*.yml`                               #
+#                                                             #
+# specifiy build type with env var `BUILD_OPT`                #
+#    - 'meta' - triggers meta-pkg builds                      #
+#    - 'env' - triggers env-pkg builds                        #
+#    - '' or undefined - trigers both                         #
 ###############################################################
 set -e
 
@@ -17,6 +22,9 @@ export ORIG_OFFSET=$RAPIDS_OFFSET
 # Set recipe paths
 CONDA_XGBOOST_RECIPE="conda/recipes/rapids-xgboost"
 CONDA_RAPIDS_RECIPE="conda/recipes/rapids"
+CONDA_RAPIDS_BUILD_RECIPE="conda/recipes/rapids-build-env"
+CONDA_RAPIDS_NOTEBOOK_RECIPE="conda/recipes/rapids-notebook-env"
+CONDA_RAPIDS_DOC_RECIPE="conda/recipes/rapids-doc-env"
 
 # Allow insecure connections for conda-mirror
 echo "ssl_verify: False" >> /conda/.condarc
@@ -93,9 +101,18 @@ function upload_builds {
   fi
 }
 
-# Run builds
-run_builds $CONDA_XGBOOST_RECIPE
-run_builds $CONDA_RAPIDS_RECIPE
+if [ "$BUILD_OPT" == "meta" || -z "$BUILD_OPT" ] ; then
+  # Run builds for meta-pkgs
+  run_builds $CONDA_XGBOOST_RECIPE
+  run_builds $CONDA_RAPIDS_RECIPE
+fi
+
+if [ "$BUILD_OPT" == "env" || -z "$BUILD_OPT" ] ; then
+  # Run builds for env-pkgs
+  run_builds $CONDA_RAPIDS_BUILD_RECIPE
+  run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
+  run_builds $CONDA_RAPIDS_DOC_RECIPE
+fi
 
 # Upload builds
 upload_builds
