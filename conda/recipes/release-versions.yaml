@@ -1,5 +1,5 @@
 ###
-# This file is used by `/ci/cpu/build.sh` for RELEASE builds
+# This file is used by `/ci/cpu/build*.sh` for RELEASE builds
 ###
 
 # Versions for `rapids` meta-pkg
