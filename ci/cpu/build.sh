@@ -101,13 +101,13 @@ function upload_builds {
   fi
 }
 
-if [ "$BUILD_TYPE" == "meta" || -z "$BUILD_TYPE" ] ; then
+if [[ "$BUILD_TYPE" == "meta" || -z "$BUILD_TYPE" ]] ; then
   # Run builds for meta-pkgs
   run_builds $CONDA_XGBOOST_RECIPE
   run_builds $CONDA_RAPIDS_RECIPE
 fi
 
-if [ "$BUILD_TYPE" == "env" || -z "$BUILD_TYPE" ] ; then
+if [[ "$BUILD_TYPE" == "env" || -z "$BUILD_TYPE" ]] ; then
   # Run builds for env-pkgs
   run_builds $CONDA_RAPIDS_BUILD_RECIPE
   run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
