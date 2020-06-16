@@ -17,12 +17,9 @@ export ORIG_OFFSET=$RAPIDS_OFFSET
 # Set recipe paths
 CONDA_XGBOOST_RECIPE="conda/recipes/rapids-xgboost"
 CONDA_RAPIDS_RECIPE="conda/recipes/rapids"
-CONDA_RAPIDS_BUILD_RECIPE="conda/recipes/rapids-build-env"
-CONDA_RAPIDS_NOTEBOOK_RECIPE="conda/recipes/rapids-notebook-env"
-CONDA_RAPIDS_DOC_RECIPE="conda/recipes/rapids-doc-env"
 
 # Activate conda env
-source activate gdf
+source activate base
 
 # Print current env vars
 env
@@ -37,6 +34,11 @@ gpuci_logger "Print conda info..."
 conda info
 conda config --show-sources
 conda list --show-channel-urls
+
+# Setup build env
+gpuci_logger "Install tools for build..."
+gpuci_retry conda install -y -c conda-forge conda-build conda-verify ripgrep anaconda-client
+conda list
 
 function build_pkg {
   # Build pkg
@@ -84,8 +86,6 @@ function upload_builds {
 }
 
 # Run builds
-run_builds $CONDA_XGBOOST_RECIPE
-run_builds $CONDA_RAPIDS_RECIPE
 run_builds $CONDA_RAPIDS_BUILD_RECIPE
 run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
 run_builds $CONDA_RAPIDS_DOC_RECIPE
