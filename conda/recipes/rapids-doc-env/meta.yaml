@@ -20,7 +20,7 @@ package:
   version: {{ version }}
 
 source:
-  git_url: .
+  git_url: ../../..
   url: https://files.pythonhosted.org/packages/d2/44/543c3d96bac02ff4a9245ac624d175a50e91aebc7324a4bf4a2ec3b96da7/sphinx-markdown-tables-0.0.12.tar.gz
   sha256: 08779e77832b6562b6b86e4270ae50b0b10010fdd35cf9aadcb5b8246571b933
 
