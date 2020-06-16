@@ -42,7 +42,7 @@ requirements:
 about:
   home: http://rapids.ai/
   license: Custom
-  license_file: LICENSE
+  license_file: conda/recipes/rapids-xgboost/LICENSE
   summary: 'RAPIDS + DMLC XGBoost Integration'
   description: |
     Meta-package for RAPIDS + DMLC XGBoost integration; version matched for RAPIDS releases.

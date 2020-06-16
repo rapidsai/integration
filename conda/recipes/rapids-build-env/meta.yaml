@@ -123,7 +123,7 @@ requirements:
 about:
   home: http://rapids.ai/
   license: Apache-2.0
-  license_file: ../../../LICENSE
+  license_file: LICENSE
   summary: 'RAPIDS Build Dependencies and Tool Environment Installer'
   description: |
     Meta-package for installing build dependencies and tools needed to build all RAPIDS libraries.

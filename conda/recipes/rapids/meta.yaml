@@ -63,7 +63,7 @@ test:
 about:
   home: http://rapids.ai/
   license: Custom
-  license_file: LICENSE
+  license_file: conda/recipes/rapids/LICENSE
   summary: 'RAPIDS Suite - Open GPU Data Science'
   description: |
     Meta-package for the RAPIDS suite of software libraries. RAPIDS gives you the freedom to execute end-to-end data science 
