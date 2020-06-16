@@ -40,13 +40,13 @@ conda list --show-channel-urls
 
 # Setup build env
 gpuci_logger "Install tools for build..."
-gpuci_retry conda install -k -y -c conda-forge conda-build conda-verify ripgrep anaconda-client
+gpuci_retry conda install -y -c conda-forge conda-build conda-verify ripgrep anaconda-client
 conda list
 
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
-  conda build -k --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c defaults \
+  conda build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c defaults \
               --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
 }
 
