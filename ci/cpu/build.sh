@@ -46,11 +46,6 @@ conda info
 conda config --show-sources
 conda list --show-channel-urls
 
-# Setup build env
-gpuci_logger "Install tools for build..."
-gpuci_retry conda install -y -c conda-forge conda-build conda-verify ripgrep anaconda-client
-conda list
-
 # If nightly build, append current YYMMDD to version
 if [[ "$BUILD_MODE" = "branch" && "$SOURCE_BRANCH" = branch-* ]] ; then
   export VERSION_SUFFIX=`date +%y%m%d`
