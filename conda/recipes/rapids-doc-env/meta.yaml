@@ -1,7 +1,7 @@
 # Copyright (c) 2020, NVIDIA CORPORATION.
 
 {% set version = environ.get('GIT_DESCRIBE_TAG', '0.0.0.dev').lstrip('v') + environ.get('VERSION_SUFFIX', '') %}
-{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') }
+{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
