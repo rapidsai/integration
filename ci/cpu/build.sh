@@ -5,7 +5,7 @@
 #                                                             #
 # config set in `ci/axis/*.yml`                               #
 #                                                             #
-# specifiy build type with env var `BUILD_TYPE`               #
+# specifiy build type with env var `BUILD_PKGS`               #
 #    - 'meta' - triggers meta-pkg builds                      #
 #    - 'env' - triggers env-pkg builds                        #
 #    - '' or undefined - trigers both                         #
@@ -96,13 +96,13 @@ function upload_builds {
   fi
 }
 
-if [[ "$BUILD_TYPE" == "meta" || -z "$BUILD_TYPE" ]] ; then
+if [[ "$BUILD_PKGS" == "meta" || -z "$BUILD_PKGS" ]] ; then
   # Run builds for meta-pkgs
   run_builds $CONDA_XGBOOST_RECIPE
   run_builds $CONDA_RAPIDS_RECIPE
 fi
 
-if [[ "$BUILD_TYPE" == "env" || -z "$BUILD_TYPE" ]] ; then
+if [[ "$BUILD_PKGS" == "env" || -z "$BUILD_PKGS" ]] ; then
   # Run builds for env-pkgs
   run_builds $CONDA_RAPIDS_BUILD_RECIPE
   run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
