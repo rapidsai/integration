@@ -24,13 +24,13 @@ build_stack_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=0.15.0'
+  - '=0.17.1'
 blas_version:
   - '=2.14=openblas'
 bokeh_version:
   - '=1.*'
 boost_cpp_version:
-  - '=1.70.0'
+  - '=1.72.0'
 clang_version:
   - '=8.0.1'
 cmake_version:
@@ -62,11 +62,13 @@ ipython_version:
 jupyterlab_version:
   - '=1.2.*'
 librdkafka_version:
-  - '=1.2.2'
+  - '=1.4.2'
 nccl_version:
   - '=2.5.*'
 networkx_version:
   - '>=2.3'
+nodejs_version:
+  - '>=12'
 numba_version:
   - '>=0.49,<0.50a'
 numpy_version:
