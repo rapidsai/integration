@@ -1,8 +1,8 @@
 # Copyright (c) 2019, NVIDIA CORPORATION.
 
-{% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
-{% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
-{% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
+{% set version = environ.get('GIT_DESCRIBE_TAG', '0.0.0.dev').lstrip('v') + environ.get('VERSION_SUFFIX', '') %}
+{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') %}
+{% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
@@ -11,7 +11,7 @@
 #   those set above (e.g. `cuda_version`)
 #
 # gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
-#   `ci/cpu/build.sh` and `ci/axis/*.yaml`
+#   `ci/cpu/build-meta.sh` and `ci/axis/*.yaml`
 #
 # Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
 #   to set these versions
@@ -22,15 +22,15 @@ package:
   version: {{ version }}
 
 source:
-  path: .
+  git_url: ../../..
 
 build:
-  number: {{ build_offset }}
-  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ build_offset }}
+  number: {{ GIT_DESCRIBE_NUMBER }}
+  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
-    - RAPIDS_VER
-    - RAPIDS_OFFSET
     - CUDA_VERSION
+    - RAPIDS_VER
+    - VERSION_SUFFIX
 
 requirements:
   host:
@@ -64,7 +64,7 @@ test:
 about:
   home: http://rapids.ai/
   license: Custom
-  license_file: LICENSE
+  license_file: conda/recipes/rapids/LICENSE
   summary: 'RAPIDS Suite - Open GPU Data Science'
   description: |
     Meta-package for the RAPIDS suite of software libraries. RAPIDS gives you the freedom to execute end-to-end data science 
