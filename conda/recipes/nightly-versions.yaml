@@ -64,7 +64,7 @@ geopandas_version:
 ipython_version:
   - '=7.3.*'
 jupyterlab_version:
-  - '=1.2.*'
+  - '=2.1.*'
 librdkafka_version:
   - '=1.4.2'
 nccl_version:
