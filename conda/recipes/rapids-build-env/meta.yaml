@@ -118,6 +118,7 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
+    - treelite {{ treelite_version }}
     - twine
     - ucx-py ={{ minor_version }}.*
     - umap-learn
