@@ -78,7 +78,7 @@ numba_version:
 numpy_version:
   - '>=1.17.3'
 pandas_version:
-  - '>=0.25,<0.26'
+  - '>=1.0,<1.1.0a0'
 pandoc_version:
   - '<=2.0.0'
 panel_version:
