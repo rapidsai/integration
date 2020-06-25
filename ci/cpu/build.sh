@@ -36,9 +36,7 @@ source activate base
 env
 
 # Install gpuCI tools
-curl -s https://raw.githubusercontent.com/rapidsai/gpuci-tools/master/install.sh | bash
-source ~/.bashrc
-cd ~
+conda install -y -c gpuci gpuci-tools
 
 # Print diagnostic information
 gpuci_logger "Print conda info..."
