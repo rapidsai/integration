@@ -78,9 +78,9 @@ numba_version:
 numpy_version:
   - '>=1.17.3'
 pandas_version:
-  - '>=1.0'
+  - '>=1.0,<1.1.0a0'
 pandoc_version:
-  - '>=2.0.0'
+  - '<=2.0.0'
 panel_version:
   - '=0.6.*'
 protobuf_version:
