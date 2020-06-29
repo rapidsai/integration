@@ -76,6 +76,7 @@ requirements:
     - hypothesis
     - isort
     - lapack
+    - libcumlprims ={{ minor_version }}.*
     - libcypher-parser
     - libgcc-ng {{ build_stack_version }}
     - libgfortran-ng {{ build_stack_version }}
