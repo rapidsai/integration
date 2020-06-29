@@ -28,7 +28,7 @@ arrow_version:
 blas_version:
   - '=2.14=openblas'
 bokeh_version:
-  - '=2.11'
+  - '=2.1.1'
 boost_cpp_version:
   - '=1.72.0'
 clang_version:
