@@ -41,9 +41,9 @@ requirements:
     - jq
     - nbsphinx
     - numpydoc
-    - pandoc {{ pandoc_version }}
     - recommonmark
     - sphinx
+    - sphinxcontrib-websupport
     - sphinx_rtd_theme
     - sphinx-copybutton
     - sphinx-markdown-tables
