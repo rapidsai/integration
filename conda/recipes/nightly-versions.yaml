@@ -80,7 +80,7 @@ numpy_version:
 pandas_version:
   - '>=1.0,<1.1.0a0'
 pandoc_version:
-  - '=2.9.*'
+  - '=2.9.2'
 panel_version:
   - '=0.6.*'
 protobuf_version:
