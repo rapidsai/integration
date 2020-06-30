@@ -95,7 +95,7 @@ scipy_version:
   - '=1.4.1'
 spdlog_version:
   - '=1.6.0'
-sphinx-markdown-tables:
+sphinx_markdown_tables:
   - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
   - '=0.92'
