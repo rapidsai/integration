@@ -47,7 +47,7 @@ requirements:
     - sphinxcontrib-websupport
     - sphinx_rtd_theme
     - sphinx-copybutton
-    - sphinx-markdown-tables
+    - sphinx-markdown-tables=0.0.14=pyh9f0ad1d_1
 
 about:
   home: http://rapids.ai/
