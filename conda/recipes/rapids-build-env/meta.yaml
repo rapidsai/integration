@@ -99,6 +99,7 @@ requirements:
     - protobuf {{ protobuf_version }}
     - psutil
     - pyarrow {{ arrow_version }}
+    - pydeck {{ pydeck_version }}
     - pynvml
     - pyppeteer
     - pyproj {{ pyproj_version }}
