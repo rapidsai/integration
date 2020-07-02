@@ -28,7 +28,7 @@ arrow_version:
 blas_version:
   - '=2.14=openblas'
 bokeh_version:
-  - '=1.*'
+  - '>=2.1.1'
 boost_cpp_version:
   - '=1.72.0'
 clang_version:
@@ -82,7 +82,9 @@ pandas_version:
 pandoc_version:
   - '<=2.0.0'
 panel_version:
-  - '=0.6.*'
+  - '>=0.9.*'
+pydeck_version:
+  - '>=0.3'
 protobuf_version:
   - '>=3.4.1,<4.0.0'
 pyproj_version:
