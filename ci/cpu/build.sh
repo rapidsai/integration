@@ -22,7 +22,7 @@ CONDA_RAPIDS_NOTEBOOK_RECIPE="conda/recipes/rapids-notebook-env"
 CONDA_RAPIDS_DOC_RECIPE="conda/recipes/rapids-doc-env"
 
 # Activate conda env
-source activate gdf
+source activate base
 
 # Print current env vars
 env
