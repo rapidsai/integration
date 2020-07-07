@@ -1,9 +1,14 @@
 #!/bin/bash
 # Copyright (c) 2020, NVIDIA CORPORATION.
 ###############################################################
-# rapids/rapids-xgboost meta pkg conda build script for gpuCI #
+# rapids meta/env pkg conda build script for gpuCI            #
 #                                                             #
 # config set in `ci/axis/*.yml`                               #
+#                                                             #
+# specifiy build type with env var `BUILD_PKGS`               #
+#    - 'meta' - triggers meta-pkg builds                      #
+#    - 'env' - triggers env-pkg builds                        #
+#    - '' or undefined - trigers both                         #
 ###############################################################
 set -e
 
@@ -21,6 +26,9 @@ CONDA_RAPIDS_RECIPE="conda/recipes/rapids"
 # Allow insecure connections for conda-mirror
 echo "ssl_verify: False" >> /conda/.condarc
 
+# Allow insecure connections for conda-mirror
+echo "ssl_verify: False" >> /conda/.condarc
+
 # Activate conda env
 source activate base
 
@@ -28,9 +36,7 @@ source activate base
 env
 
 # Install gpuCI tools
-curl -s https://raw.githubusercontent.com/rapidsai/gpuci-tools/master/install.sh | bash
-source ~/.bashrc
-cd ~
+conda install -y -c gpuci gpuci-tools
 
 # Print diagnostic information
 gpuci_logger "Print conda info..."
@@ -38,10 +44,10 @@ conda info
 conda config --show-sources
 conda list --show-channel-urls
 
-# Setup build env
-gpuci_logger "Install tools for build..."
-gpuci_retry conda install -y -c conda-forge conda-build conda-verify ripgrep anaconda-client
-conda list
+# If nightly build, append current YYMMDD to version
+if [[ "$BUILD_MODE" = "branch" && "$SOURCE_BRANCH" = branch-* ]] ; then
+  export VERSION_SUFFIX=`date +%y%m%d`
+fi
 
 function build_pkg {
   # Build pkg
@@ -88,10 +94,18 @@ function upload_builds {
   fi
 }
 
-# Run builds
-run_builds $CONDA_RAPIDS_BUILD_RECIPE
-run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
-run_builds $CONDA_RAPIDS_DOC_RECIPE
+if [[ "$BUILD_PKGS" == "meta" || -z "$BUILD_PKGS" ]] ; then
+  # Run builds for meta-pkgs
+  run_builds $CONDA_XGBOOST_RECIPE
+  run_builds $CONDA_RAPIDS_RECIPE
+fi
+
+if [[ "$BUILD_PKGS" == "env" || -z "$BUILD_PKGS" ]] ; then
+  # Run builds for env-pkgs
+  run_builds $CONDA_RAPIDS_BUILD_RECIPE
+  run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
+  run_builds $CONDA_RAPIDS_DOC_RECIPE
+fi
 
 # Upload builds
 upload_builds

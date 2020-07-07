@@ -1,5 +1,5 @@
 ###
-# This file is used by `/ci/cpu/build.sh` for RELEASE builds
+# This file is used by `/ci/cpu/build*.sh` for RELEASE builds
 ###
 
 # Versions for `rapids` meta-pkg
@@ -42,9 +42,11 @@ cupy_version:
 cython_version:
   - '>=0.29,<0.30'
 dask_version:
-  - '>=2.15.0'
+  - '>=2.18.0'
+datashader_version:
+  - '>=0.10.*'
 distributed_version:
-  - '>=2.15.0'
+  - '>=2.18.0'
 dlpack_version:
   - '=0.2'
 double_conversion_version:
@@ -56,11 +58,13 @@ flatbuffers_version:
 fsspec_version:
   - '>=0.6.0'
 gdal_version:
-  - '>=3.0.2'
+  - '>=3.0.2,<3.1.0a0'
+geopandas_version:
+  - '>=0.6.*'
 ipython_version:
   - '=7.3.*'
 jupyterlab_version:
-  - '=1.2.*'
+  - '=2.1.*'
 librdkafka_version:
   - '=1.4.2'
 nccl_version:
@@ -70,15 +74,21 @@ networkx_version:
 nodejs_version:
   - '>=12'
 numba_version:
-  - '>=0.49,<0.50a'
+  - '>=0.49'
 numpy_version:
   - '>=1.17.3'
 pandas_version:
   - '>=0.25,<0.26'
 pandoc_version:
   - '<=2.0.0'
+panel_version:
+  - '=0.6.*'
 protobuf_version:
   - '>=3.4.1,<4.0.0'
+pydeck_version:
+  - '>=0.3'
+pyproj_version:
+  - '>=2.4.*'
 rapidjson_version:
   - '=1.1.0'
 scikit_learn_version:
@@ -87,3 +97,5 @@ scipy_version:
   - '=1.3.0'
 spdlog_version:
   - '=1.6.0'
+treelite_version:
+  - '=0.92'
