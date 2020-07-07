@@ -21,14 +21,17 @@ CONDA_RAPIDS_BUILD_RECIPE="conda/recipes/rapids-build-env"
 CONDA_RAPIDS_NOTEBOOK_RECIPE="conda/recipes/rapids-notebook-env"
 CONDA_RAPIDS_DOC_RECIPE="conda/recipes/rapids-doc-env"
 
+# Allow insecure connections for conda-mirror
+echo "ssl_verify: False" >> /conda/.condarc
+
 # Activate conda env
-source activate gdf
+source activate base
 
 # Print current env vars
 env
 
 # Install gpuCI tools
-curl -s https://raw.githubusercontent.com/rapidsai/gpuci-tools/master/install.sh | bash
+curl -s https://raw.githubusercontent.com/rapidsai/gpuci-tools/main/install.sh | bash
 source ~/.bashrc
 cd ~
 
