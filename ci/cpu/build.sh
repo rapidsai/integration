@@ -28,7 +28,7 @@ source activate base
 env
 
 # Install gpuCI tools
-curl -s https://raw.githubusercontent.com/rapidsai/gpuci-tools/master/install.sh | bash
+curl -s https://raw.githubusercontent.com/rapidsai/gpuci-tools/main/install.sh | bash
 source ~/.bashrc
 cd ~
 
