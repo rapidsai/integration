@@ -30,3 +30,5 @@ if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
    gpuci_logger "FAILED: 1 or more tests in /rapids/integration/test"
 fi
+
+exit ${SUITEERROR}
