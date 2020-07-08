@@ -2,7 +2,7 @@ CONDA_USERNAME:
   - rapidsai-nightly
 
 CONDA_CONFIG_FILE:
-  - conda/recipes/nightly-versions.yaml
+  - conda/recipes/versions.yaml
 
 RAPIDS_VER:
   - 0.15
