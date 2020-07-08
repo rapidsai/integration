@@ -1,4 +1,4 @@
-DOKCER_REPO:
+DOCKER_REPO:
   - rapidsai/rapidsai-nightly
 
 RAPIDS_VER:
