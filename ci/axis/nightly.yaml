@@ -11,11 +11,9 @@ RAPIDS_VER:
 CUDA_VER:
   - 10.2
   - 10.1
-  - 10.0
 
 DEFAULT_CUDA_VER:
   - 10.1
 
 PYTHON_VER:
-  - 3.6
   - 3.7
