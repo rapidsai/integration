@@ -41,7 +41,7 @@ requirements:
     - async_generator
     - autoconf
     - automake
-    - black
+    - black ={{ black_version }}
     - conda-forge::blas{{ blas_version }}
     - boost
     - boost-cpp {{ boost_cpp_version }}
@@ -64,7 +64,7 @@ requirements:
     - double-conversion {{ double_conversion_version }}
     - fastavro {{ fastavro_version }}
     - feather-format
-    - flake8
+    - flake8 ={{ flake8_version }}
     - flatbuffers {{ flatbuffers_version }}
     - fsspec {{ fsspec_version }}
     - gcsfs
@@ -74,7 +74,7 @@ requirements:
     - graphviz
     - httpretty
     - hypothesis
-    - isort
+    - isort ={{ isort_version }}
     - lapack
     - libcumlprims ={{ minor_version }}.*
     - libcypher-parser

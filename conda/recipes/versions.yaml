@@ -25,6 +25,8 @@ build_stack_version:
 # Shared versions across meta-pkgs
 arrow_version:
   - '=0.17.1'
+black_version:
+  - '=19.10b0'
 blas_version:
   - '=2.14=openblas'
 bokeh_version:
@@ -53,6 +55,8 @@ double_conversion_version:
   - '=3.1.5'
 fastavro_version:
   - '>=0.22.0'
+flake8_version:
+  - '=3.8.3'
 flatbuffers_version:
   - '=1.10.0'
 fsspec_version:
@@ -63,6 +67,8 @@ geopandas_version:
   - '>=0.6.*'
 ipython_version:
   - '=7.3.*'
+isort_version:
+  - '=5.0.7'
 jupyterlab_version:
   - '=2.1.*'
 librdkafka_version:
