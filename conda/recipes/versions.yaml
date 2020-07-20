@@ -94,7 +94,7 @@ rapidjson_version:
 scikit_learn_version:
   - '=0.23.1'
 scipy_version:
-  - '=1.4.1'
+  - '=1.5.1'
 spdlog_version:
   - '=1.6.0'
 sphinx_markdown_tables_version:
