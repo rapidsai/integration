@@ -68,7 +68,7 @@ jupyterlab_version:
 librdkafka_version:
   - '=1.4.2'
 nccl_version:
-  - '=2.5.*'
+  - '>=2.5'
 networkx_version:
   - '>=2.3'
 nodejs_version:
