@@ -76,7 +76,7 @@ requirements:
     - hypothesis
     - isort
     - lapack
-    - libcumlprims ={{ minor_version }}.*
+    #- libcumlprims ={{ minor_version }}.*
     - libcypher-parser
     - libgcc-ng {{ build_stack_version }}
     - libgfortran-ng {{ build_stack_version }}
@@ -123,7 +123,7 @@ requirements:
     - streamz
     - treelite {{ treelite_version }}
     - twine
-    - ucx-py ={{ minor_version }}.*
+    #- ucx-py ={{ minor_version }}.*
     - umap-learn
 
 about:
