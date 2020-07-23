@@ -62,7 +62,7 @@ gdal_version:
 geopandas_version:
   - '>=0.6'
 ipython_version:
-  - '=7.3'
+  - '=7.15'
 jupyterlab_version:
   - '=2.1'
 librdkafka_version:
@@ -92,10 +92,12 @@ pyproj_version:
 rapidjson_version:
   - '=1.1.0'
 scikit_learn_version:
-  - '=0.23.0'
+  - '=0.23.1'
 scipy_version:
-  - '=1.3.0'
+  - '=1.5.1'
 spdlog_version:
   - '=1.6.0'
+sphinx_markdown_tables_version:
+  - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
   - '=0.92'

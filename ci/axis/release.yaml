@@ -19,4 +19,3 @@ DEFAULT_CUDA_VER:
 PYTHON_VER:
   - 3.7
   - 3.8
-  
