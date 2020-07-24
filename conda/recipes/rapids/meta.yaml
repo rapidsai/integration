@@ -41,6 +41,7 @@ requirements:
     - nccl {{ nccl_version }}
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
+    - pickle5  # [py<38]
     - python
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
@@ -50,7 +51,6 @@ requirements:
     - cuxfilter ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
     - dask-xgboost {{ dask_xgboost_version }}
-    - nvstrings ={{ minor_version }}.*
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
 

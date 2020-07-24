@@ -57,6 +57,7 @@ requirements:
     - cupy {{ cupy_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
+    - dask-ml
     - datashader {{ datashader_version }}
     - distributed {{ distributed_version }}
     - dlpack {{ dlpack_version }}
@@ -94,10 +95,12 @@ requirements:
     - numpy {{ numpy_version }}
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
+    - pickle5  # [py<38]
     - pkg-config
     - protobuf {{ protobuf_version }}
     - psutil
     - pyarrow {{ arrow_version }}
+    - pydeck {{ pydeck_version }}
     - pynvml
     - pyppeteer
     - pyproj {{ pyproj_version }}
@@ -118,6 +121,7 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
+    - treelite {{ treelite_version }}
     - twine
     - ucx-py ={{ minor_version }}.*
     - umap-learn

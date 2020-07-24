@@ -1,0 +1,20 @@
+RUNTIME_DOCKER_REPO:
+  - rapidsai/rapidsai-nightly
+
+DOCKER_REPO:
+  - rapidsai/rapidsai-dev-nightly
+
+RAPIDS_VER:
+  - 0.15
+
+CUDA_VER:
+  - 10.2
+  - 10.1
+
+LINUX_VER:
+  - ubuntu16.04
+  - ubuntu18.04
+  - centos7
+
+PYTHON_VER:
+  - 3.7
