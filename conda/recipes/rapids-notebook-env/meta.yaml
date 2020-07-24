@@ -50,7 +50,6 @@ requirements:
     - networkx
     - nodejs {{ nodejs_version }}
     - pytest
-    - pytorch {{ pytorch_version }}
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
     - seaborn
