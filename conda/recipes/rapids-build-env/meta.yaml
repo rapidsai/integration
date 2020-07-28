@@ -62,6 +62,8 @@ requirements:
     - distributed {{ distributed_version }}
     - dlpack {{ dlpack_version }}
     - double-conversion {{ double_conversion_version }}
+    - faiss-proc=*=cuda {{ faiss_version }}
+    - libfaiss {{ faiss_version }}
     - fastavro {{ fastavro_version }}
     - feather-format
     - flake8 {{ flake8_version }}

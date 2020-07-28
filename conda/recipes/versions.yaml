@@ -55,6 +55,8 @@ double_conversion_version:
   - '=3.1.5'
 fastavro_version:
   - '>=0.22.0'
+faiss_version:
+  - '>=1.6.3'
 flake8_version:
   - '=3.8.*'
 flatbuffers_version:
