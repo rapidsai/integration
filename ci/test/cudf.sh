@@ -2,13 +2,11 @@
 set +e
 set -x
 
-# mwendt: missing critical redirect
 export HOME=$WORKSPACE
 export LIBCUDF_KERNEL_CACHE_PATH=$WORKSPACE/.cache/rapids/cudf
 
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
-# mwendt: add cupy install to match gpuci scripts
 conda install -y -q -c conda-forge fastavro "rapidsai::cupy>=6.6.0,<8.0.0a0,!=7.1.0"
 pip install "git+https://github.com/dask/distributed.git" --upgrade --no-deps
 pip install "git+https://github.com/dask/dask.git" --upgrade --no-deps
@@ -43,14 +41,23 @@ export PYTHONPATH=\
 /rapids/cudf/python/custreamz:\
 /rapids/cudf/python/nvstrings:\
 ${PYTHONPATH}
-py.test --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v /rapids/cudf/python/cudf/cudf/tests /rapids/cudf/python/dask_cudf/dask_cudf/tests
+
+cd /rapids/cudf/python/cudf
+py.test --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
    echo "FAILED: 1 or more python tests"
 fi
 
-# mwendt: adding custreamz tests
+cd /rapids/cudf/python/dask_cudf
+py.test --junitxml=${TESTRESULTS_DIR}/pytest-dask-cudf.xml -v
+exitcode=$?
+if (( ${exitcode} != 0 )); then
+   SUITEERROR=${exitcode}
+   echo "FAILED: 1 or more python tests"
+fi
+
 cd /rapids/cudf/python/custreamz
 py.test --junitxml=${TESTRESULTS_DIR}/pytest-custreamz.xml -v
 exitcode=$?
