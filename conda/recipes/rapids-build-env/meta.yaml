@@ -123,6 +123,7 @@ requirements:
     - streamz
     - treelite {{ treelite_version }}
     - twine
+    - ucx-proc=*=gpu
     - ucx-py ={{ minor_version }}.*
     - umap-learn
 
