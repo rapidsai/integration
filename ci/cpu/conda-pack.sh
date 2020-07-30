@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONDA_ENV_NAME="rapids_cuda${CUDA_VER}_py${PYTHON_VER}"
+CONDA_ENV_NAME="rapids${RAPIDS_VER}_cuda${CUDA_VER}_py${PYTHON_VER}"
 
 echo "Creating CONDA environment $CONDA_ENV_NAME"
 conda create -y --name=$CONDA_ENV_NAME python=$PYTHON_VER
