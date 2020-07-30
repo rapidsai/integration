@@ -53,6 +53,8 @@ dlpack_version:
   - '=0.2'
 double_conversion_version:
   - '=3.1.5'
+faiss_version:
+  - '>=1.6.3'
 fastavro_version:
   - '>=0.22.0'
 flake8_version:
