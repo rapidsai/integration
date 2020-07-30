@@ -41,6 +41,7 @@ requirements:
     - async_generator
     - autoconf
     - automake
+    - benchmark {{ benchmark_version }}
     - black {{ black_version }}
     - conda-forge::blas{{ blas_version }}
     - boost
@@ -71,7 +72,9 @@ requirements:
     - gdal {{ gdal_version }}
     - geopandas {{ geopandas_version }}
     - git
+    - gmock {{ gmock_version }}
     - graphviz
+    - gtest {{ gtest_version }}
     - httpretty
     - hypothesis
     - isort {{ isort_version }}
