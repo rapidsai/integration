@@ -25,6 +25,8 @@ build_stack_version:
 # Shared versions across meta-pkgs
 arrow_version:
   - '=0.17.1'
+benchmark_version:
+  - '=1.5.1'
 black_version:
   - '=19.10'
 blas_version:
@@ -67,6 +69,10 @@ gdal_version:
   - '>=3.0.2,<3.1.0a0'
 geopandas_version:
   - '>=0.6.*'
+gmock_version:
+  - '=1.10.0'
+gtest_version:
+  - '=1.10.0'
 ipython_version:
   - '=7.15.*'
 isort_version:
