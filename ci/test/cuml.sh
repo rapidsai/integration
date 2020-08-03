@@ -6,8 +6,6 @@ export LIBCUDF_KERNEL_CACHE_PATH=${WORKSPACE}/.jitcache
 
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
-#conda env update --quiet --name=rapids --file=/rapids/cuml/conda/environments/cuml_dev_cuda${CUDA_VERSION}.yml
-conda install -y -c conda-forge scikit-learn>=0.21 umap-learn>=0.3.9 lightgbm
 # FIXME: Install the master version of dask, distributed, and streamz
 pip install "git+https://github.com/dask/distributed.git" --upgrade --no-deps
 pip install "git+https://github.com/dask/dask.git" --upgrade --no-deps
