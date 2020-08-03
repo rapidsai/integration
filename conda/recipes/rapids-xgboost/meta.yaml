@@ -37,11 +37,11 @@ requirements:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - nccl {{ nccl_version }} # [cuda_version != "11.0"]
-    - nccl {{ cuda11_nccl_version }} # [cuda_version == "11.0"]
+    - nccl {{ nccl_version }} # [cuda_compiler_version != "11.0"]
+    - nccl {{ cuda11_nccl_version }} # [cuda_compiler_version == "11.0"]
     - python
-    - xgboost {{ xgboost_version }} # [cuda_version != "11.0"]
-    - xgboost {{ cuda11_xgboost_version }} # [cuda_version == "11.0"]
+    - xgboost {{ xgboost_version }} # [cuda_compiler_version != "11.0"]
+    - xgboost {{ cuda11_xgboost_version }} # [cuda_compiler_version == "11.0"]
 
 about:
   home: http://rapids.ai/
