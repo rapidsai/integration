@@ -54,7 +54,8 @@ requirements:
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
     - cudatoolkit ={{ cuda_version }}.*
-    - cupy {{ cupy_version }}
+    - cupy {{ cupy_version }} # [cuda_version<11.0]
+    - cupy {{ cuda11_cupy_version }} # [cuda_version=11.0]
     - cython {{ cython_version }}
     - dask {{ dask_version }}
     - dask-ml
@@ -89,7 +90,8 @@ requirements:
     - lightgbm
     - make
     - moto
-    - nccl {{ nccl_version }}
+    - nccl {{ nccl_version }} # [cuda_version<11.0]
+    - nccl {{ cuda11_nccl_version }} # [cuda_version=11.0]
     - networkx {{ networkx_version }}
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
