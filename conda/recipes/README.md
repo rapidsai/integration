@@ -99,8 +99,12 @@ standard `conda` version specifiers:
 >=1.8.0
 >=0.48,<0.49
 >=7.0,<8.0.0a0
-=2.5.*
+=2.5
 ```
+
+**NOTE:** `=2.5.*` is not a valid version spec. Please use `=2.5` instead
+which will be interperted as `=2.5.*`. Otherwise `conda build` throws a
+warning message with the definition of `.*`.
 
 Combined together each of the versions files would add the following for each
 `VERSIONING_NAME`:
@@ -114,7 +118,7 @@ the `meta.yaml`:
 
 ```
 cupy_version:
-  - '>=7,<8.0.0a0,!=7.1.0'
+  - '>=7.0,<8.0.0a0'
 ```
 ```
 scikit_learn_version:

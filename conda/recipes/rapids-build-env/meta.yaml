@@ -41,7 +41,8 @@ requirements:
     - async_generator
     - autoconf
     - automake
-    - black
+    - benchmark {{ benchmark_version }}
+    - black {{ black_version }}
     - conda-forge::blas{{ blas_version }}
     - boost
     - boost-cpp {{ boost_cpp_version }}
@@ -63,19 +64,23 @@ requirements:
     - distributed {{ distributed_version }}
     - dlpack {{ dlpack_version }}
     - double-conversion {{ double_conversion_version }}
+    - faiss-proc=*=cuda
+    - libfaiss {{ faiss_version }}
     - fastavro {{ fastavro_version }}
     - feather-format
-    - flake8
+    - flake8 {{ flake8_version }}
     - flatbuffers {{ flatbuffers_version }}
     - fsspec {{ fsspec_version }}
     - gcsfs
     - gdal {{ gdal_version }}
     - geopandas {{ geopandas_version }}
     - git
+    - gmock {{ gmock_version }}
     - graphviz
+    - gtest {{ gtest_version }}
     - httpretty
     - hypothesis
-    - isort
+    - isort {{ isort_version }}
     - lapack
     - libcumlprims ={{ minor_version }}.*
     - libcypher-parser
@@ -112,6 +117,7 @@ requirements:
     - pytest-cov
     - pytest-timeout
     - python
+    - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
     - rapidjson {{ rapidjson_version }}
     - ripgrep
@@ -125,6 +131,7 @@ requirements:
     - streamz
     - treelite {{ treelite_version }}
     - twine
+    - ucx-proc=*=gpu
     - ucx-py ={{ minor_version }}.*
     - umap-learn
 
