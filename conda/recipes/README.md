@@ -102,9 +102,17 @@ standard `conda` version specifiers:
 =2.5
 ```
 
+##### TIP - Correct version specs
+
 **NOTE:** `=2.5.*` is not a valid version spec. Please use `=2.5` instead
 which will be interperted as `=2.5.*`. Otherwise `conda build` throws a
-warning message with the definition of `.*`.
+warning message with the definition of `.*`. For example:
+
+```
+WARNING conda.models.version:get_matcher(531): Using .* with relational operator
+is superfluous and deprecated and will be removed in a future version of conda.
+Your spec was 0.23.*, but conda is ignoring the .* and treating it as 0.23
+```
 
 Combined together each of the versions files would add the following for each
 `VERSIONING_NAME`:
