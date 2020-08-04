@@ -51,7 +51,7 @@ fi
 
 function build_pkg {
   # Create 'conda_build_config.yaml' with CUDA version
-  gpuci_logger "Creating ''..."
+  gpuci_logger "Creating 'conda_build_config.yaml' with CUDA_VER='$CUDA_VER' to select correct pkgs..."
   cat > ${1}/conda_build_config.yaml <<EOF
 cuda_compiler_version:
 - '$CUDA_VER'
