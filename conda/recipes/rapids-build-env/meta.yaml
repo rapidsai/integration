@@ -38,7 +38,6 @@ requirements:
   run:
     - arrow-cpp {{ arrow_version }}
     - arrow-cpp-proc * cuda
-    - async_generator
     - autoconf
     - automake
     - benchmark {{ benchmark_version }}
