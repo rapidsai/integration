@@ -47,6 +47,7 @@ requirements:
     - sphinxcontrib-websupport
     - sphinx-copybutton
     - sphinx-markdown-tables
+    - sphinxemoji
 
 about:
   home: http://rapids.ai/
