@@ -132,7 +132,6 @@ requirements:
     - twine
     - ucx-proc=*=gpu
     - ucx
-    - ucx-py ={{ minor_version }}.*
     - umap-learn
 
 about:
