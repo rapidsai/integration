@@ -131,7 +131,7 @@ requirements:
     - treelite {{ treelite_version }}
     - twine
     - ucx-proc=*=gpu
-    - ucx-py ={{ minor_version }}.*
+    - ucx
     - umap-learn
 
 about:
