@@ -37,7 +37,7 @@ requirements:
     - python
   run:
     - bokeh {{ bokeh_version }}
-    - conda-forge::blas{{ blas_version }}
+    - conda-forge::blas
     - cudatoolkit ={{ cuda_version }}.*
     - cupy {{ cupy_version }} # [cuda_compiler_version != "11.0"]
     - cupy {{ cuda11_cupy_version }} # [cuda_compiler_version == "11.0"]
