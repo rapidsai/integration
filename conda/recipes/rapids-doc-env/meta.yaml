@@ -18,7 +18,7 @@
 
 package:
   name: rapids-doc-env
-  version: {{ version }}
+  version: {{ rapids_version }}
 
 source:
   git_url: ../../..
