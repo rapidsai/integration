@@ -19,7 +19,7 @@
 
 package:
   name: rapids-build-env
-  version: {{ version }}
+  version: {{ rapids_version }}
 
 source:
   git_url: ../../..
