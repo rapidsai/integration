@@ -1,12 +1,12 @@
 #!/bin/bash
 set +e
 set -x
+
+export PATH="/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
-# FIXME: should this be in the container?
-# mwendt: this needs to be installed from `rapidsai` to keep the correct NCCL version already in the container
-#         cupy right now is only needed for testing so that is why cudf/daskcuda install it separately in their ci/gpu/build.sh
-conda install -y rapidsai::cupy
+
 env
 conda list
 
