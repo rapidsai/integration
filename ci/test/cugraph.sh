@@ -3,6 +3,7 @@ set +e
 set -x
 export HOME=$WORKSPACE
 export LIBCUDF_KERNEL_CACHE_PATH=${WORKSPACE}/.jitcache
+export PATH="/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
@@ -12,9 +13,7 @@ cd /rapids/cugraph/datasets
 bash ./get_test_data.sh
 export RAPIDS_DATASET_ROOT_DIR=/rapids/cugraph/datasets
 
-# Install test deps
-pip install "git+https://github.com/dask/distributed.git" --upgrade --no-deps
-pip install "git+https://github.com/dask/dask.git" --upgrade --no-deps
+# Show environment
 env
 conda list
 
