@@ -15,10 +15,6 @@ TESTRESULTS_DIR=${WORKSPACE}/testresults
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
 
-# Install distributed@master (temporarily required due to issues with 2.3.2)
-pip install git+https://github.com/dask/distributed.git@master
-pip install pytest-asyncio fsspec
-
 # Python tests
 cd /rapids/dask-cuda/dask_cuda
 py.test --junitxml=${TESTRESULTS_DIR}/pytest.xml -v 
