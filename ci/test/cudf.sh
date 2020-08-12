@@ -4,6 +4,7 @@ set -x
 
 export HOME=$WORKSPACE
 export LIBCUDF_KERNEL_CACHE_PATH=$WORKSPACE/.cache/rapids/cudf
+export PATH="/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
