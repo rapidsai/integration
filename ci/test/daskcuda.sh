@@ -2,6 +2,7 @@
 set +e
 set -x
 
+export HOME=$WORKSPACE 
 export PATH="/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # FIXME: "source activate" line should not be needed
@@ -9,9 +10,6 @@ source /opt/conda/bin/activate rapids
 
 env
 conda list
-
-# mwendt: crucial redirect missing https://github.com/rapidsai/dask-cuda/blob/39eac0235a84dfd36ac0170e60a4cb3fdde17f47/ci/gpu/build.sh#L21
-export HOME=$WORKSPACE 
 
 TESTRESULTS_DIR=${WORKSPACE}/testresults
 mkdir -p ${TESTRESULTS_DIR}
