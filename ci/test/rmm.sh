@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 export HOME=$WORKSPACE
+export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
 env

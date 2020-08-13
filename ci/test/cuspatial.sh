@@ -3,7 +3,7 @@ set -ex
 
 export CUSPATIAL_HOME=/rapids/cuspatial
 export HOME=$WORKSPACE
-export PATH="/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
