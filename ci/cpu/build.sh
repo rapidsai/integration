@@ -59,7 +59,7 @@ EOF
   cat ${1}/conda_build_config.yaml
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
-  conda build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c defaults \
+  gpuci_conda_retry build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c defaults \
               --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
 }
 
