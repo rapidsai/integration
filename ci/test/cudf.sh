@@ -4,13 +4,10 @@ set -x
 
 export HOME=$WORKSPACE
 export LIBCUDF_KERNEL_CACHE_PATH=$WORKSPACE/.cache/rapids/cudf
+export PATH="/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
-conda install -y -q -c conda-forge fastavro "rapidsai::cupy>=6.6.0,<8.0.0a0,!=7.1.0"
-pip install "git+https://github.com/dask/distributed.git" --upgrade --no-deps
-pip install "git+https://github.com/dask/dask.git" --upgrade --no-deps
-pip install "git+https://github.com/python-streamz/streamz.git" --upgrade --no-deps
 env
 conda list
 

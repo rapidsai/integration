@@ -1,11 +1,11 @@
 #!/bin/bash
 set -ex
-. /opt/conda/etc/profile.d/conda.sh
-conda activate rapids
-
 export HOME=${WORKSPACE}
 export LIBCUDF_KERNEL_CACHE_PATH=${WORKSPACE}/.jitcache
-export PATH="$PATH:/opt/conda/bin"
+export PATH="/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+. /opt/conda/etc/profile.d/conda.sh
+conda activate rapids
 
 gpuci_logger "Show env and current conda list"
 env
