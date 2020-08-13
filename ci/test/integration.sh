@@ -18,17 +18,12 @@ SUITEERROR=0
 gpuci_logger "Install conda packages needed by tests in rapids environment"
 gpuci_conda_retry --condaretry_max_retries=10 install -y --freeze-installed requests
 
-gpuci_logger "Install integration tests"
-ls -la /
-cd /rapids
-git clone https://github.com/rapidsai/integration
-
 gpuci_logger "Run Python tests"
-py.test --junitxml=${TESTRESULTS_DIR}/pytest.xml -v /rapids/integration/test
+py.test --junitxml=${TESTRESULTS_DIR}/pytest.xml -v $WORKSPACE/test
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
-   gpuci_logger "FAILED: 1 or more tests in /rapids/integration/test"
+   gpuci_logger "FAILED: 1 or more tests in $WORKSPACE/test"
 fi
 
 exit ${SUITEERROR}
