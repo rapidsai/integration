@@ -36,8 +36,7 @@ requirements:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - nccl {{ nccl_version }} # [cuda_compiler_version != "11.0"]
-    - nccl {{ cuda11_nccl_version }} # [cuda_compiler_version == "11.0"]
+    - nccl {{ nccl_version }}
     - python
     - xgboost {{ xgboost_version }}
 
