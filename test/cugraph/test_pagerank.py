@@ -98,5 +98,5 @@ def test_pagerank() :
     gdf_page = cugraph.pagerank(G)
 
     assert len(expectedPageRanks) == len(gdf_page["pagerank"])
-    for (actual, expected) in zip(gdf_page["pagerank"], expectedPageRanks):
+    for (actual, expected) in zip(gdf_page["pagerank"].to_pandas(), expectedPageRanks):
         assert actual == pytest.approx(expected)

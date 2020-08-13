@@ -2,7 +2,7 @@
 set -ex
 export HOME=${WORKSPACE}
 export LIBCUDF_KERNEL_CACHE_PATH=${WORKSPACE}/.jitcache
-export PATH="/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 . /opt/conda/etc/profile.d/conda.sh
 conda activate rapids
