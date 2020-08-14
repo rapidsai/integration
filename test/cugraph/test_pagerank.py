@@ -95,8 +95,11 @@ def test_pagerank() :
     G.add_edge_list(sources, destinations, None)
 
     # Call cugraph.pagerank to get the pagerank scores
+    # Sort values since renumbering may have changed expected order
     gdf_page = cugraph.pagerank(G)
+    gdf_page = gdf_page.sort_values('vertex').reset_index(drop=True)
 
     assert len(expectedPageRanks) == len(gdf_page["pagerank"])
-    for (actual, expected) in zip(gdf_page["pagerank"].to_pandas(), expectedPageRanks):
+    for (actual, expected) in zip(gdf_page["pagerank"].to_pandas(),
+                                  expectedPageRanks):
         assert actual == pytest.approx(expected)
