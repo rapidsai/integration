@@ -38,8 +38,7 @@ requirements:
     - cudatoolkit ={{ cuda_version }}.*
     - cupy {{ cupy_version }} # [cuda_compiler_version != "11.0"]
     - cupy {{ cuda11_cupy_version }} # [cuda_compiler_version == "11.0"]
-    - nccl {{ nccl_version }} # [cuda_compiler_version != "11.0"]
-    - nccl {{ cuda11_nccl_version }} # [cuda_compiler_version == "11.0"]
+    - nccl {{ nccl_version }}
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - pickle5  # [py<38]
