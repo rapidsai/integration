@@ -15,6 +15,11 @@ TESTRESULTS_DIR=${WORKSPACE}/testresults
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
 
+echo "HERE I AM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+which gcc
+which g++
+ccache -s
+
 # build gtests
 pushd /rapids/cudf/cpp/build
 make build_tests_cudf
