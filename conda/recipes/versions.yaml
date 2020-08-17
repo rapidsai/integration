@@ -90,7 +90,7 @@ networkx_version:
 nodejs_version:
   - '>=12'
 numba_version:
-  - '>=0.49,<0.51'
+  - '>=0.49'
 numpy_version:
   - '>=1.17.3'
 pandas_version:
