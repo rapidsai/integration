@@ -19,6 +19,8 @@ echo "HERE I AM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 which gcc
 which g++
 ccache -s
+export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/local/gcc7/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+echo PATH
 
 # build gtests
 pushd /rapids/cudf/cpp/build
