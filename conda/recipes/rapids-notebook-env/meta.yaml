@@ -38,8 +38,7 @@ requirements:
     - bokeh {{ bokeh_version }}
     - conda-forge::blas
     - cudatoolkit ={{ cuda_version }}.*
-    - cupy {{ cupy_version }} # [cuda_compiler_version != "11.0"]
-    - cupy {{ cuda11_cupy_version }} # [cuda_compiler_version == "11.0"]
+    - cupy {{ cupy_version }}
     - cython {{ cython_version }}
     - dask-labextension
     - dask-ml
