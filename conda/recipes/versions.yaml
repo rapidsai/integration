@@ -22,10 +22,6 @@ conda_verify_version:
 build_stack_version:
   - '=7.5.0'
 
-# Overrides for CUDA 11 specific versions
-cuda11_cupy_version:
-  - '=8.0.0dev.rapidsai0.15'
-
 # Shared versions across meta-pkgs
 arrow_version:
   - '=0.17.1'
