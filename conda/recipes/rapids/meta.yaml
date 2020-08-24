@@ -48,7 +48,6 @@ requirements:
     - cusignal ={{ minor_version }}.*
     - cuspatial ={{ minor_version }}.*
     - custreamz ={{ minor_version }}.*
-    - cuxfilter ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
     - dask-xgboost {{ dask_xgboost_version }}
     - rapids-xgboost ={{ minor_version }}.*
