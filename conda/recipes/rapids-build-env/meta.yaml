@@ -1,8 +1,7 @@
 # Copyright (c) 2020, NVIDIA CORPORATION.
 
-{% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
-{% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
-{% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
+{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
+{% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
@@ -11,7 +10,7 @@
 #   those set above (e.g. `cuda_version`)
 #
 # gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
-#   `ci/cpu/build.sh` and `ci/axis/*.yaml`
+#   `ci/cpu/build-env.sh` and `ci/axis/*.yaml`
 #
 # Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
 #   to set these versions
@@ -19,26 +18,31 @@
 
 package:
   name: rapids-build-env
-  version: {{ version }}
+  version: {{ rapids_version }}
 
 source:
-  path: .
+  git_url: ../../..
 
 build:
-  number: {{ build_offset }}
-  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ build_offset }}
+  number: {{ GIT_DESCRIBE_NUMBER }}
+  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
-    - RAPIDS_VER
-    - RAPIDS_OFFSET
     - CUDA_VERSION
+    - RAPIDS_VER
+    - VERSION_SUFFIX
 
 requirements:
   host:
     - python
   run:
     - arrow-cpp {{ arrow_version }}
-    - black
-    - conda-forge::blas{{ blas_version }}
+    - arrow-cpp-proc * cuda
+    - autoconf
+    - automake
+    - benchmark {{ benchmark_version }}
+    - black {{ black_version }}
+    - conda-forge::blas
+    - boost
     - boost-cpp {{ boost_cpp_version }}
     - boto3
     - conda-forge::clang {{ clang_version }}
@@ -52,44 +56,65 @@ requirements:
     - cupy {{ cupy_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
+    - dask-ml
+    - datashader {{ datashader_version }}
     - distributed {{ distributed_version }}
     - dlpack {{ dlpack_version }}
     - double-conversion {{ double_conversion_version }}
+    - faiss-proc=*=cuda
+    - libfaiss {{ faiss_version }}
     - fastavro {{ fastavro_version }}
     - feather-format
-    - flake8
+    - flake8 {{ flake8_version }}
     - flatbuffers {{ flatbuffers_version }}
     - fsspec {{ fsspec_version }}
     - gcsfs
     - gdal {{ gdal_version }}
+    - geopandas {{ geopandas_version }}
     - git
+    - gmock {{ gmock_version }}
     - graphviz
+    - gtest {{ gtest_version }}
     - httpretty
     - hypothesis
-    - isort
+    - isort {{ isort_version }}
     - lapack
-    - libcumlprims ={{ minor_version }}.*
     - libcypher-parser
     - libgcc-ng {{ build_stack_version }}
     - libgfortran-ng {{ build_stack_version }}
+    - libhwloc
     - liblapack
     - librdkafka {{ librdkafka_version }}
     - libstdcxx-ng {{ build_stack_version }}
+    - libtool
+    - libwebp
     - lightgbm
     - make
+    - mimesis
     - moto
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - pandas {{ pandas_version }}
+    - panel {{ panel_version }}
+    - pickle5  # [py<38]
+    - pkg-config
     - protobuf {{ protobuf_version }}
     - psutil
     - pyarrow {{ arrow_version }}
+    - pydeck {{ pydeck_version }}
+    - pynvml
+    - pyppeteer
+    - pyproj {{ pyproj_version }}
     - pytest
+    - pytest-asyncio
+    - pytest-benchmark
     - pytest-cov
     - pytest-timeout
     - python
+    - python-confluent-kafka {{ python_confluent_kafka_version }}
+    - python-louvain
     - rapidjson {{ rapidjson_version }}
     - ripgrep
     - s3fs
@@ -97,16 +122,19 @@ requirements:
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
     - shellcheck
+    - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
+    - treelite {{ treelite_version }}
     - twine
-    - ucx-py ={{ minor_version }}.*
+    - ucx-proc=*=gpu
+    - ucx
     - umap-learn
 
 about:
   home: http://rapids.ai/
   license: Apache-2.0
-  license_file: ../../../LICENSE
+  license_file: LICENSE
   summary: 'RAPIDS Build Dependencies and Tool Environment Installer'
   description: |
     Meta-package for installing build dependencies and tools needed to build all RAPIDS libraries.

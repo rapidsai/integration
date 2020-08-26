@@ -2,20 +2,21 @@ CONDA_USERNAME:
   - rapidsai-nightly
 
 CONDA_CONFIG_FILE:
-  - conda/recipes/nightly-versions.yaml
+  - conda/recipes/versions.yaml
 
 RAPIDS_VER:
-  - 0.15.0
+  - 0.15.0a
+  - 0.16.0a
 
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:
+  - 11.0
   - 10.2
   - 10.1
-  - 10.0
 
 DEFAULT_CUDA_VER:
-  - 10.0
+  - 10.1
 
 PYTHON_VER:
-  - 3.6
   - 3.7
+  - 3.8

@@ -87,22 +87,31 @@ cupy {{ cupy_version }}
 scikit-learn {{ scikit_learn_version }}
 ```
 
-#### Modifying Versions Files
+#### Modifying Versions File
 
-There are two versions files that are in `conda/recipes`:
- - `release-versions.yaml` - These are versions used by the `ci/axis/release.yaml` for RELEASE builds
- - `nightly-versions.yaml` - These are versions used by the `ci/axis/nightly.yaml` for NIGHTLY builds
+In `conda/recipes` is `versions.yaml` - These are versions used by the `ci/axis/build.yaml` for testing in PRs and conda builds.
 
-Both of these files will need a config added to specify the version for the
-newly created `VERSIONING_NAME`.
+In this file we specify the version for the newly created `VERSIONING_NAME`.
 
 For each `VERSIONING_NAME` we need a `VERSION_SPEC`. This can be any of the
 standard `conda` version specifiers:
 ```
 >=1.8.0
 >=0.48,<0.49
->=7.0,<8.0.0a0,!=7.1.0
-=2.5.*
+>=7.0,<8.0.0a0
+=2.5
+```
+
+##### TIP - Correct version specs
+
+**NOTE:** `=2.5.*` is not a valid version spec. Please use `=2.5` instead
+which will be interperted as `=2.5.*`. Otherwise `conda build` throws a
+warning message with the definition of `.*`. For example:
+
+```
+WARNING conda.models.version:get_matcher(531): Using .* with relational operator
+is superfluous and deprecated and will be removed in a future version of conda.
+Your spec was 0.23.*, but conda is ignoring the .* and treating it as 0.23
 ```
 
 Combined together each of the versions files would add the following for each
@@ -117,7 +126,7 @@ the `meta.yaml`:
 
 ```
 cupy_version:
-  - '>=7,<8.0.0a0,!=7.1.0'
+  - '>=7.0,<8.0.0a0'
 ```
 ```
 scikit_learn_version:
@@ -126,10 +135,6 @@ scikit_learn_version:
 
 ### Updating Versions
 
-There are two versions files that are in `conda/recipes`:
- - `release-versions.yaml` - These are versions used by the `ci/axis/release.yaml` for RELEASE builds
- - `nightly-versions.yaml` - These are versions used by the `ci/axis/nightly.yaml` for NIGHTLY builds
-
- Edit the files above and update the `VERSION_SPEC` as desired.
- 
- For more information see the [Modifying Versions Files](#modifying-versions-files)
+Edit the `versions.yaml` file in `conda/recipes` and update the `VERSION_SPEC`
+as desired. If there is no defined version spec, see [Modifying Versions Files](#modifying-versions-files)
+for information on how to add one.

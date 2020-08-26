@@ -1,9 +1,7 @@
 # Copyright (c) 2020, NVIDIA CORPORATION.
 
-{% set version = environ.get('RAPIDS_VER', '0.0.0.dev') %}
-{% set minor_version = version.split('.')[0] + '.' + version.split('.')[1] %}
-{% set build_offset = environ.get('RAPIDS_OFFSET', 0) %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
+{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
+{% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
 ###
@@ -11,7 +9,7 @@
 #   those set above (e.g. `cuda_version`)
 #
 # gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in
-#   `ci/cpu/build.sh` and `ci/axis/*.yaml`
+#   `ci/cpu/build-env.sh` and `ci/axis/*.yaml`
 #
 # Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml`
 #   to set these versions
@@ -19,20 +17,17 @@
 
 package:
   name: rapids-doc-env
-  version: {{ version }}
+  version: {{ rapids_version }}
 
 source:
-  path: .
-  url: https://files.pythonhosted.org/packages/d2/44/543c3d96bac02ff4a9245ac624d175a50e91aebc7324a4bf4a2ec3b96da7/sphinx-markdown-tables-0.0.12.tar.gz
-  sha256: 08779e77832b6562b6b86e4270ae50b0b10010fdd35cf9aadcb5b8246571b933
+  git_url: ../../..
 
 build:
-  number: {{ build_offset }}
-  string: py{{ py_version }}_{{ build_offset }}
+  number: {{ GIT_DESCRIBE_NUMBER }}
+  string: py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
     - RAPIDS_VER
-    - RAPIDS_OFFSET
-  script: python -m pip install --no-deps --ignore-installed .
+    - VERSION_SUFFIX
 
 requirements:
   host:
@@ -42,7 +37,6 @@ requirements:
     - beautifulsoup4
     - doxygen
     - markdown
-    - jq
     - nbsphinx
     - numpydoc
     - pandoc {{ pandoc_version }}
@@ -51,11 +45,12 @@ requirements:
     - sphinx_rtd_theme
     - sphinxcontrib-websupport
     - sphinx-copybutton
+    - sphinx-markdown-tables
 
 about:
   home: http://rapids.ai/
   license: Apache-2.0
-  license_file: ../../../LICENSE
+  license_file: LICENSE
   summary: 'RAPIDS Documentation Dependencies and Tool Environment Installer'
   description: |
     Meta-package for installing documentation build dependencies and tools needed to build RAPIDS docs.
