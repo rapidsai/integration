@@ -80,6 +80,7 @@ requirements:
     - isort {{ isort_version }}
     - lapack
     - libcypher-parser
+    - libcumlprims {{ libcumlprims_version }}
     - libgcc-ng {{ build_stack_version }}
     - libgfortran-ng {{ build_stack_version }}
     - libhwloc
