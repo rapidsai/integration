@@ -98,6 +98,7 @@ requirements:
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - pandas {{ pandas_version }}
+    - pandavro
     - panel {{ panel_version }}
     - pickle5  # [py<38]
     - pkg-config
