@@ -130,6 +130,7 @@ requirements:
     - ucx-proc=*=gpu
     - ucx
     - umap-learn
+    - nltk
 
 about:
   home: http://rapids.ai/
