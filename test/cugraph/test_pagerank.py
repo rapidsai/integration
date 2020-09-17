@@ -86,13 +86,11 @@ def test_pagerank() :
     import cugraph
 
     gdf = read_csv_file(csvFile)
-    sources = gdf['0']
-    destinations = gdf['1']
 
     # Assuming that data has been loaded into a cuDF (using read_csv) Dataframe
     # create a Graph using the source and destination vertex pairs
     G = cugraph.Graph()
-    G.add_edge_list(sources, destinations, None)
+    G.from_cudf_edgelist(gdf, "0", "1")
 
     # Call cugraph.pagerank to get the pagerank scores
     # Sort values since renumbering may have changed expected order
