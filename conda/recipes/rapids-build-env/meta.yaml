@@ -92,6 +92,7 @@ requirements:
     - make
     - mimesis
     - moto
+    - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
     - nltk
