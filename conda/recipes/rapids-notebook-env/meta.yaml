@@ -42,6 +42,7 @@ requirements:
     - cython {{ cython_version }}
     - dask-labextension
     - dask-ml
+    - holoviews
     - ipython {{ ipython_version }}
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
@@ -49,6 +50,7 @@ requirements:
     - networkx {{ networkx_version }}
     - nodejs {{ nodejs_version }}
     - pytest
+    - s3fs
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
     - seaborn
