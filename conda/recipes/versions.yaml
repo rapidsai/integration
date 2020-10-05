@@ -93,6 +93,8 @@ numba_version:
   - '>=0.51.2'
 numpy_version:
   - '>=1.17.3'
+nvtx_version:
+  - '>=0.2.1,<0.3'
 pandas_version:
   - '>=1.0,<1.2.0dev0'
 pandoc_version:
