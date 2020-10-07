@@ -38,7 +38,7 @@ requirements:
     - cudatoolkit ={{ cuda_version }}.*
     - nccl {{ nccl_version }}
     - python
-    - xgboost {{ xgboost_version }}{{ minor_version }}
+    - xgboost {{ xgboost_version }}
 
 about:
   home: http://rapids.ai/
