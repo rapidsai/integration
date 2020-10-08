@@ -56,7 +56,7 @@ double_conversion_version:
 doxygen_version:
   - '>=1.8.12,<=1.8.20'
 faiss_version:
-  - '>=1.6.3'
+  - '=1.6.3'
 fastavro_version:
   - '>=0.22.0'
 flake8_version:
