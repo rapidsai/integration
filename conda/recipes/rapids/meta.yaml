@@ -52,7 +52,6 @@ requirements:
     - custreamz ={{ minor_version }}.*
     - cuxfilter ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
-    - dask-xgboost {{ dask_xgboost_version }}
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
 
