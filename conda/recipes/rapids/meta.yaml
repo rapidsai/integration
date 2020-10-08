@@ -44,6 +44,7 @@ requirements:
     - nvtx {{ nvtx_version }}
     - pickle5  # [py<38]
     - python
+    - setuptools {{ setuptools_version }}
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*
