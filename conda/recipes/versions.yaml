@@ -115,6 +115,8 @@ scikit_learn_version:
   - '=0.23.1'
 scipy_version:
   - '=1.5.1'
+setuptools_version:
+  - '>=49,<50'
 spdlog_version:
   - '=1.7.0'
 sphinx_markdown_tables_version:
