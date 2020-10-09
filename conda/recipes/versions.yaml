@@ -50,7 +50,7 @@ datashader_version:
 distributed_version:
   - '>=2.23.0'
 dlpack_version:
-  - '=0.2'
+  - '>=0.3,<0.4.0a0'
 double_conversion_version:
   - '=3.1.5'
 doxygen_version:
