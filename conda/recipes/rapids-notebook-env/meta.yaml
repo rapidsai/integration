@@ -46,7 +46,7 @@ requirements:
     - ipython {{ ipython_version }}
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
-    - matplotlib
+    - matplotlib-base
     - networkx {{ networkx_version }}
     - nodejs {{ nodejs_version }}
     - pytest
