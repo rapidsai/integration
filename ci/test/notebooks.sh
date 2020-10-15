@@ -9,7 +9,16 @@ source /opt/conda/bin/activate rapids
 
 # PyTorch is intentionally excluded from our Docker images due
 # to its size, but some notebooks still depend on it.
-conda install -y -c pytorch pytorch
+case "${CUDA_VER}" in
+"10.1" | "10.2")
+    conda install -y -c pytorch pytorch
+    ;;
+*)
+    echo "Unsupported CUDA version for pytorch."
+    echo "Not installing pytorch."
+    ;;
+esac
+
 
 env
 /test.sh 2>&1 | tee nbtest.log
