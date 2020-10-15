@@ -42,6 +42,7 @@ requirements:
     - cython {{ cython_version }}
     - dask-labextension
     - dask-ml
+    - filterpy
     - holoviews
     - ipython {{ ipython_version }}
     - jupyter-server-proxy
