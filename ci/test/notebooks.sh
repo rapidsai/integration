@@ -11,7 +11,7 @@ source /opt/conda/bin/activate rapids
 # to its size, but some notebooks still depend on it.
 case "${CUDA_VER}" in
 "10.1" | "10.2")
-    conda install -y -c pytorch pytorch
+    conda install -y -c pytorch "pytorch>=1.4"
     ;;
 *)
     echo "Unsupported CUDA version for pytorch."
