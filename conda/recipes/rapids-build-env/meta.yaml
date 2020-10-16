@@ -49,6 +49,7 @@ requirements:
     - conda-forge::clang-tools {{ clang_version }}
     - cmake {{ cmake_version }}
     - cmake_setuptools {{ cmake_setuptools_version }}
+    - conda {{ conda_version }}
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
     - cudatoolkit ={{ cuda_version }}.*
