@@ -5,14 +5,14 @@
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
-### 
+###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
 #   those set above (e.g. `cuda_version`)
 #
-# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in
 #   `ci/cpu/build-meta.sh` and `ci/axis/*.yaml`
 #
-# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml`
 #   to set these versions
 ###
 
@@ -38,10 +38,13 @@ requirements:
     - cudatoolkit ={{ cuda_version }}.*
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
+    - networkx {{ networkx_version }}
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
+    - nvtx {{ nvtx_version }}
     - pickle5  # [py<38]
     - python
+    - setuptools {{ setuptools_version }}
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*
@@ -50,7 +53,6 @@ requirements:
     - custreamz ={{ minor_version }}.*
     - cuxfilter ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
-    - dask-xgboost {{ dask_xgboost_version }}
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
 
@@ -68,8 +70,8 @@ about:
   license_file: conda/recipes/rapids/LICENSE
   summary: 'RAPIDS Suite - Open GPU Data Science'
   description: |
-    Meta-package for the RAPIDS suite of software libraries. RAPIDS gives you the freedom to execute end-to-end data science 
-    and analytics pipelines entirely on GPUs. It relies on NVIDIA® CUDA® primitives for low-level compute optimization, 
+    Meta-package for the RAPIDS suite of software libraries. RAPIDS gives you the freedom to execute end-to-end data science
+    and analytics pipelines entirely on GPUs. It relies on NVIDIA® CUDA® primitives for low-level compute optimization,
     but exposes that GPU parallelism and high-bandwidth memory speed through user-friendly Python interfaces.
   doc_url: https://docs.rapids.ai/
   dev_url: https://github.com/rapidsai/

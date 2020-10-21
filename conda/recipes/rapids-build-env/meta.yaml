@@ -92,10 +92,13 @@ requirements:
     - make
     - mimesis
     - moto
+    - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
+    - nltk
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
+    - nvtx {{ nvtx_version }}
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
     - pickle5  # [py<38]

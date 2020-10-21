@@ -5,7 +5,7 @@ DOCKER_REPO:
   - rapidsai/rapidsai-dev-nightly
 
 RAPIDS_VER:
-  - 0.15
+  - 0.16
 
 CUDA_VER:
   - 11.0

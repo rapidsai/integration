@@ -35,7 +35,8 @@ requirements:
     - pip
   run:
     - beautifulsoup4
-    - doxygen
+    - doxygen {{ doxygen_version }}
+    - jupyter_sphinx
     - markdown
     - nbsphinx
     - numpydoc
