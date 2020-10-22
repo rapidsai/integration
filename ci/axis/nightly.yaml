@@ -5,7 +5,6 @@ CONDA_CONFIG_FILE:
   - conda/recipes/versions.yaml
 
 RAPIDS_VER:
-  - 0.16.0a
   - 0.17.0a
 
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
