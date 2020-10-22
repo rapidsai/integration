@@ -88,7 +88,7 @@ nccl_version:
 networkx_version:
   - '>=2.3'
 nodejs_version:
-  - '>=12'
+  - '>=14.9.0'
 numba_version:
   - '>=0.51.2'
 numpy_version:
