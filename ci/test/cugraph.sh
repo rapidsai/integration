@@ -21,19 +21,16 @@ TESTRESULTS_DIR=${WORKSPACE}/testresults
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
 
-# FIXME: temporarily disabling all C++ tests for 0.16 due to intermittent
-# failures from what appears to be an issue with Thrust (which does not appear
-# to affect the Python API or notebooks). Re-enable once this issue is resolved
-# in 0.17.
 # gtests
-# for gt in /rapids/cugraph/cpp/build/gtests/*_TEST; do
-#    ${gt} --gtest_output=xml:${TESTRESULTS_DIR}/
-#    exitcode=$?
-#    if (( ${exitcode} != 0 )); then
-#       SUITEERROR=${exitcode}
-#       echo "FAILED: ${gt}"
-#    fi
-# done
+for gt in /rapids/cugraph/cpp/build/gtests/*_TEST; do
+   # FIXME: remove this ASAP
+   ${gt} --gtest_output=xml:${TESTRESULTS_DIR}/
+   exitcode=$?
+   if (( ${exitcode} != 0 )); then
+      SUITEERROR=${exitcode}
+      echo "FAILED: ${gt}"
+   fi
+done
 
 # Python tests
 py.test --junitxml=${TESTRESULTS_DIR}/pytest.xml -v /rapids/cugraph/python
