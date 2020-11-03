@@ -111,7 +111,7 @@ requirements:
     - pyppeteer
     - pyproj {{ pyproj_version }}
     - pytest
-    - pytest-asyncio
+    - pytest-asyncio {{ pytest_asyncio_version }}
     - pytest-benchmark
     - pytest-cov
     - pytest-timeout
