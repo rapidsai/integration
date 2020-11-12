@@ -42,11 +42,13 @@ requirements:
     - cython {{ cython_version }}
     - dask-labextension
     - dask-ml
+    - fa2
+    - filterpy
     - holoviews
     - ipython {{ ipython_version }}
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
-    - matplotlib
+    - matplotlib-base
     - networkx {{ networkx_version }}
     - nodejs {{ nodejs_version }}
     - pytest

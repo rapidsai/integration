@@ -8,13 +8,13 @@ dask_xgboost_version:
 
 # Versions for `rapids-xgboost` meta-pkg
 xgboost_version:
-  - '=1.2.0dev.rapidsai'
+  - '=1.2.0dev.rapidsai0.17'
 
 # Versions for conda
 conda_version:
-  - '=4.7.12'
+  - '=4.8.3'
 conda_build_version:
-  - '=3.18.11'
+  - '=3.20.3'
 conda_verify_version:
   - '=3.1.1'
 
@@ -37,10 +37,12 @@ clang_version:
   - '=8.0.1'
 cmake_version:
   - '=3.18'
+cmake_format_version:
+  - '=0.6.11'
 cmake_setuptools_version:
   - '>=0.1.3'
 cupy_version:
-  - '>=7.1.0,<8.0.0a0'
+  - '>7.1.0,<9.0.0a0'
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
@@ -50,13 +52,13 @@ datashader_version:
 distributed_version:
   - '>=2.23.0'
 dlpack_version:
-  - '=0.2'
+  - '>=0.3,<0.4.0a0'
 double_conversion_version:
   - '=3.1.5'
 doxygen_version:
   - '>=1.8.12,<=1.8.20'
 faiss_version:
-  - '>=1.6.3'
+  - '=1.6.3'
 fastavro_version:
   - '>=0.22.0'
 flake8_version:
@@ -84,7 +86,7 @@ librdkafka_version:
 mypy_version:
   - '0.782'
 nccl_version:
-  - '>=2.7.6.1,<2.8'
+  - '>=2.7.8.1,<3.0a0'
 networkx_version:
   - '>=2.3'
 nodejs_version:
@@ -93,6 +95,8 @@ numba_version:
   - '>=0.51.2'
 numpy_version:
   - '>=1.17.3'
+nvtx_version:
+  - '>=0.2.1,<0.3'
 pandas_version:
   - '>=1.0,<1.2.0dev0'
 pandoc_version:
@@ -107,15 +111,19 @@ protobuf_version:
   - '>=3.4.1,<4.0.0'
 pyproj_version:
   - '>=2.4'
+pytest_asyncio_version:
+  - '<0.14.0'
 rapidjson_version:
   - '=1.1.0'
 scikit_learn_version:
   - '=0.23.1'
 scipy_version:
   - '=1.5.1'
+setuptools_version:
+  - '>=49,<50'
 spdlog_version:
   - '=1.7.0'
 sphinx_markdown_tables_version:
   - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
-  - '=0.92'
+  - '=0.93'

@@ -41,8 +41,10 @@ requirements:
     - networkx {{ networkx_version }}
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
+    - nvtx {{ nvtx_version }}
     - pickle5  # [py<38]
     - python
+    - setuptools {{ setuptools_version }}
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*
@@ -51,7 +53,6 @@ requirements:
     - custreamz ={{ minor_version }}.*
     - cuxfilter ={{ minor_version }}.*
     - dask-cuda ={{ minor_version }}.*
-    - dask-xgboost {{ dask_xgboost_version }}
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
 

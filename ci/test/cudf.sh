@@ -15,12 +15,6 @@ TESTRESULTS_DIR=${WORKSPACE}/testresults
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
 
-# build gtests
-pushd /rapids/cudf/cpp/build
-make build_tests_cudf
-SUITEERROR=$((SUITEERROR | $?))
-popd
-
 # run gtests
 for gt in /rapids/cudf/cpp/build/gtests/*; do
    ${gt} --gtest_output=xml:${TESTRESULTS_DIR}/
