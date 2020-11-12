@@ -36,7 +36,7 @@ boost_cpp_version:
 clang_version:
   - '=8.0.1'
 cmake_version:
-  - '=3.17'
+  - '=3.18'
 cmake_format_version:
   - '=0.6.11'
 cmake_setuptools_version:
