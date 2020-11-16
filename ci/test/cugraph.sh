@@ -33,7 +33,6 @@ for gt in /rapids/cugraph/cpp/build/gtests/*_TEST; do
 done
 
 # Python tests
-cd /rapids/cugraph/python
 py.test --junitxml=${TESTRESULTS_DIR}/pytest.xml -v /rapids/cugraph/python
 exitcode=$?
 if (( ${exitcode} != 0 )); then
