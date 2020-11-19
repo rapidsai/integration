@@ -36,12 +36,14 @@ requirements:
     - python
   run:
     - bokeh {{ bokeh_version }}
+    - colorcet
     - conda-forge::blas
     - cudatoolkit ={{ cuda_version }}.*
     - cupy {{ cupy_version }}
     - cython {{ cython_version }}
     - dask-labextension
     - dask-ml
+    - datashader {{ datashader_version }}
     - fa2
     - filterpy
     - holoviews
