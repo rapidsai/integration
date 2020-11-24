@@ -26,8 +26,8 @@ CONDA_RAPIDS_BLAZING_RECIPE="conda/recipes/rapids-blazing"
 CONDA_RAPIDS_BUILD_RECIPE="conda/recipes/rapids-build-env"
 CONDA_RAPIDS_NOTEBOOK_RECIPE="conda/recipes/rapids-notebook-env"
 CONDA_RAPIDS_DOC_RECIPE="conda/recipes/rapids-doc-env"
-CONDA_BLAZING_BUILD_RECIPE="conda/recipes/blazingdb-build-env"
-CONDA_BLAZING_NOTEBOOK_RECIPE="conda/recipes/blazingdb-notebook-env"
+CONDA_BLAZING_BUILD_RECIPE="conda/recipes/blazingsql-build-env"
+CONDA_BLAZING_NOTEBOOK_RECIPE="conda/recipes/blazingsql-notebook-env"
 
 # Allow insecure connections for conda-mirror
 echo "ssl_verify: False" >> /conda/.condarc
