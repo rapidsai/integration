@@ -34,7 +34,7 @@ requirements:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - rapids-core ={{ minor_version }}.*
+    - rapids ={{ minor_version }}.*
     - blazingsql ={{ minor_version }}.*
 
 test:

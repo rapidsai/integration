@@ -32,31 +32,35 @@ channels:
   - pytorch
   - plotly
 
-dependencies:
-  - colorcet
-  - cudatoolkit ={{ cuda_version }}
-  - dash
-  - dask
-  - dask-ml
-  - datashader
-  - fbprophet
-  - geoviews
-  - holoviews
-  - ipywidgets
-  - jupyter-dash
-  - matplotlib
-  - networkx
-  - panel ={{ panel_version }} #0.9.7
-  - plotly
-  - python-graphviz
-  - pytorch ={{ pytorch_version }} #1.6
-  - s3fs ={{ s3fs_version } #0.5.1
-  - scikit-learn
-  - scipy
-  - seaborn
-  - spacy
-  - statsmodels
-  - xgboost
+
+requirements:
+  build:
+    - python
+  run:
+    - colorcet
+    - cudatoolkit ={{ cuda_version }}
+    - dash
+    - dask
+    - dask-ml
+    - datashader
+    - fbprophet
+    - geoviews
+    - holoviews
+    - ipywidgets
+    - jupyter-dash
+    - matplotlib
+    - networkx
+    - panel ={{ panel_version }} #0.9.7
+    - plotly
+    - python-graphviz
+    - pytorch ={{ pytorch_version }} #1.6
+    - s3fs ={{ s3fs_version }} #0.5.1
+    - scikit-learn
+    - scipy
+    - seaborn
+    - spacy
+    - statsmodels
+    - xgboost
 
 about:
     home: http://www.blazingsql.com/
