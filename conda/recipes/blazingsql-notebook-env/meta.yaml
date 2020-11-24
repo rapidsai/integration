@@ -28,11 +28,6 @@ build:
     - RAPIDS_VER
     - VERSION_SUFFIX
 
-channels:
-  - pytorch
-  - plotly
-
-
 requirements:
   build:
     - python
