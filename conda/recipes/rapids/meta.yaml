@@ -1,3 +1,5 @@
+# Copyright (c) 2019, NVIDIA CORPORATION.
+
 {% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
@@ -19,7 +21,7 @@ package:
   version: {{ rapids_version }}
 
 source:
-  path: ../../..
+  git_url: ../../..
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
@@ -34,14 +36,28 @@ requirements:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - rapids-core ={{ minor_version }}.*
-    - blazingsql ={{ minor_version }}.*
+    - cupy {{ cupy_version }}
+    - nccl {{ nccl_version }}
+    - networkx {{ networkx_version }}
+    - numba {{ numba_version }}
+    - numpy {{ numpy_version }}
+    - nvtx {{ nvtx_version }}
+    - pickle5  # [py<38]
+    - python
+    - setuptools {{ setuptools_version }}
+    - cudf ={{ minor_version }}.*
+    - cugraph ={{ minor_version }}.*
+    - cuml ={{ minor_version }}.*
+    - cusignal ={{ minor_version }}.*
+    - cuspatial ={{ minor_version }}.*
+    - custreamz ={{ minor_version }}.*
+    - cuxfilter ={{ minor_version }}.*
+    - dask-cuda ={{ minor_version }}.*
+    - rapids-xgboost ={{ minor_version }}.*
+    - rmm ={{ minor_version }}.*
 
 test:
-  requires:
-    - cudatoolkit {{ cuda_version }}.*
   imports:
-    - cio
     - cudf
     - dask_cudf
     - cuml
