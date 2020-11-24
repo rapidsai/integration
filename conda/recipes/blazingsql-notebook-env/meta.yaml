@@ -38,7 +38,7 @@ requirements:
     - python
   run:
     - colorcet
-    - cudatoolkit ={{ cuda_version }}
+    - cudatoolkit {{ cuda_version }}
     - dash
     - dask
     - dask-ml
@@ -50,11 +50,11 @@ requirements:
     - jupyter-dash
     - matplotlib
     - networkx
-    - panel ={{ panel_version }} #0.9.7
+    - panel {{ panel_version }}
     - plotly
     - python-graphviz
-    - pytorch ={{ pytorch_version }} #1.6
-    - s3fs ={{ s3fs_version }} #0.5.1
+    - pytorch {{ pytorch_version }}
+    - s3fs {{ s3fs_version }}
     - scikit-learn
     - scipy
     - seaborn
