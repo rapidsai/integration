@@ -110,7 +110,7 @@ if [[ "$BUILD_PKGS" == "env" || -z "$BUILD_PKGS" ]] ; then
   run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
   run_builds $CONDA_RAPIDS_DOC_RECIPE
   run_builds $CONDA_BLAZING_BUILD_RECIPE
-  run builds $CONDA_BLAZING_NOTEBOOK_RECIPE
+  run_builds $CONDA_BLAZING_NOTEBOOK_RECIPE
 fi
 
 # Upload builds
