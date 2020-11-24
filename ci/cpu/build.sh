@@ -22,10 +22,12 @@ export ORIG_OFFSET=$RAPIDS_OFFSET
 # Set recipe paths
 CONDA_XGBOOST_RECIPE="conda/recipes/rapids-xgboost"
 CONDA_RAPIDS_RECIPE="conda/recipes/rapids"
+CONDA_RAPIDS_BLAZING_RECIPE="conda/recipes/rapids-blazing"
 CONDA_RAPIDS_BUILD_RECIPE="conda/recipes/rapids-build-env"
 CONDA_RAPIDS_NOTEBOOK_RECIPE="conda/recipes/rapids-notebook-env"
 CONDA_RAPIDS_DOC_RECIPE="conda/recipes/rapids-doc-env"
 CONDA_BLAZING_BUILD_RECIPE="conda/recipes/blazingdb-build-env"
+CONDA_BLAZING_NOTEBOOK_RECIPE="conda/recipes/blazingdb-notebook-env"
 
 # Allow insecure connections for conda-mirror
 echo "ssl_verify: False" >> /conda/.condarc
@@ -99,6 +101,7 @@ if [[ "$BUILD_PKGS" == "meta" || -z "$BUILD_PKGS" ]] ; then
   # Run builds for meta-pkgs
   run_builds $CONDA_XGBOOST_RECIPE
   run_builds $CONDA_RAPIDS_RECIPE
+  run_builds $CONDA_RAPIDS_BLAZING_RECIPE
 fi
 
 if [[ "$BUILD_PKGS" == "env" || -z "$BUILD_PKGS" ]] ; then
@@ -107,6 +110,7 @@ if [[ "$BUILD_PKGS" == "env" || -z "$BUILD_PKGS" ]] ; then
   run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
   run_builds $CONDA_RAPIDS_DOC_RECIPE
   run_builds $CONDA_BLAZING_BUILD_RECIPE
+  run builds $CONDA_BLAZING_NOTEBOOK_RECIPE
 fi
 
 # Upload builds
