@@ -58,7 +58,7 @@ function build_pkg {
   if [[ ${1} == ${CONDA_BLAZING_NOTEBOOK_RECIPE} ]]; then
     gpuci_conda_retry build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c pytorch -c conda-forge -c defaults \
                 --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
-  elif
+  else
     gpuci_conda_retry build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c defaults \
                 --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
   fi
