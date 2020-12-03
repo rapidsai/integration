@@ -4,7 +4,7 @@ RUNTIME_DOCKER_REPO:
 DOCKER_REPO:
   - rapidsai/rapidsai-dev-nightly
 
-# Should be M.X (major.minor) for RAPIDS_VER
+# Use M.X (major.minor) version
 RAPIDS_VER:
   - 0.17
   - 0.18
