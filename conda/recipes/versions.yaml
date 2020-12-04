@@ -117,6 +117,8 @@ protobuf_version:
   - '>=3.4.1,<4.0.0'
 pyproj_version:
   - '>=2.4,<=2.6.1.post1'
+pyppeteer_version:
+  - '<=0.2.2'
 pytest_asyncio_version:
   - '<0.14.0'
 rapidjson_version:
