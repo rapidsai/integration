@@ -8,7 +8,8 @@ dask_xgboost_version:
 
 # Versions for `rapids-xgboost` meta-pkg
 xgboost_version:
-  - '=1.3.0dev.rapidsai0.17'
+  # Minor version is appended in meta.yaml
+  - '=1.3.0dev.rapidsai'
 
 # Versions for conda
 conda_version:
