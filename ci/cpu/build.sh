@@ -101,10 +101,14 @@ function upload_builds {
     ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2
 
     gpuci_logger "Starting upload..."
-    ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2 | xargs gpuci_retry \
-      anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing
-    ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2 | xargs gpuci_retry \
-      anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing
+    if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2) ]]; then
+      ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2 | xargs gpuci_retry \
+        anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing
+    fi
+    if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2) ]]; then
+      ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2 | xargs gpuci_retry \
+        anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing
+    fi
   fi
 }
 
