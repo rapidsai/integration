@@ -97,8 +97,12 @@ function upload_builds {
   else
     gpuci_logger "Upload key found, starting upload..."
     gpuci_logger "Files to upload..."
-    ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2
-    ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2
+    if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2) ]]; then
+      ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2
+    fi
+    if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2) ]]; then
+      ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2
+    fi
 
     gpuci_logger "Starting upload..."
     if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2) ]]; then
