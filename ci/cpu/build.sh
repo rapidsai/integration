@@ -65,7 +65,7 @@ function build_pkg {
 }
 
 function run_builds {
-  # Kick off main pkg b
+  # Kick off main pkg build
   build_pkg $1
 }
 
