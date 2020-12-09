@@ -120,6 +120,7 @@ requirements:
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
     - rapidjson {{ rapidjson_version }}
+    - rapids-pytest-benchmark
     - ripgrep
     - s3fs
     - setuptools
