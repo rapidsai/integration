@@ -4,8 +4,10 @@ CONDA_USERNAME:
 CONDA_CONFIG_FILE:
   - conda/recipes/versions.yaml
 
+# Use M.X.Y (major.minor.patch) version to match tag
 RAPIDS_VER:
   - 0.17.0
+  - 0.18.0
 
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:

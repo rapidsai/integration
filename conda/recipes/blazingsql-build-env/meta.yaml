@@ -1,0 +1,57 @@
+{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
+{% set py_version = environ.get('CONDA_PY', 36) %}
+
+### 
+# Versions referenced below are set in `conda/recipe/*versions.yaml` except for
+#   those set above (e.g. `cuda_version`)
+#
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
+#   `ci/cpu/build-env.sh` and `ci/axis/*.yaml`
+#
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
+#   to set these versions
+###
+
+package:
+    name: blazingsql-build-env
+    version: {{ rapids_version }}
+
+source:
+    path: ../../..
+
+build:
+  number: {{ GIT_DESCRIBE_NUMBER }}
+  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
+  script_env:
+    - CUDA_VERSION
+    - RAPIDS_VER
+    - VERSION_SUFFIX
+
+requirements:
+    build:
+        - python
+    run:
+        - aws-sdk-cpp
+        - cmake {{ cmake_version }}
+        - cppzmq
+        - cudatoolkit {{ cuda_version }}.*
+        - cython {{ cython_version }}
+        - dlpack {{ dlpack_version }}
+        - google-cloud-cpp {{ google_cloud_cpp_version }}
+        - gtest {{ gtest_version }}
+        - jpype1
+        - maven
+        - netifaces
+        - ninja
+        - openjdk {{ openjdk_version }}
+        - pyhive
+        - python
+        - setuptools
+        - spdlog {{ spdlog_version }}
+        - zeromq
+
+about:
+    home: http://www.blazingsql.com/
+    license: Apache-2.0
+    license_family: Apache
