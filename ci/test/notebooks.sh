@@ -21,6 +21,9 @@ esac
 
 
 env
+nvidia-smi
+conda list
+
 /test.sh 2>&1 | tee nbtest.log
 EXITCODE=$?
 python /rapids/utils/nbtestlog2junitxml.py nbtest.log
