@@ -116,6 +116,7 @@ requirements:
     - pytest-benchmark
     - pytest-cov
     - pytest-timeout
+    - pytest-xdist
     - python
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
