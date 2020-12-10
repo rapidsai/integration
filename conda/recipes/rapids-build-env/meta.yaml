@@ -37,6 +37,7 @@ requirements:
   run:
     - arrow-cpp {{ arrow_version }}
     - arrow-cpp-proc * cuda
+    - asvdb
     - autoconf
     - automake
     - benchmark {{ benchmark_version }}
@@ -120,6 +121,7 @@ requirements:
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
     - rapidjson {{ rapidjson_version }}
+    - rapids-pytest-benchmark
     - ripgrep
     - s3fs
     - setuptools
