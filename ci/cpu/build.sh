@@ -16,9 +16,6 @@ set -e
 export PATH=/conda/bin:$PATH
 export HOME=$WORKSPACE
 
-# Save original build offset
-export ORIG_OFFSET=$RAPIDS_OFFSET
-
 # Set recipe paths
 CONDA_XGBOOST_RECIPE="conda/recipes/rapids-xgboost"
 CONDA_RAPIDS_RECIPE="conda/recipes/rapids"
@@ -67,27 +64,9 @@ function build_pkg {
   fi
 }
 
-function build_default_pkg {
-  # Build default version if current version matches DEFAULT_CUDA_VER
-  if [ "$CUDA_VER" == "$DEFAULT_CUDA_VER" ] ; then
-    gpuci_logger "Current CUDA_VER '$CUDA_VER' is the DEFAULT_CUDA_VER, building package again with incremented build number..."
-    gpuci_logger "Previous build number '$RAPIDS_OFFSET'"
-    export RAPIDS_OFFSET=$((RAPIDS_OFFSET+1))
-    gpuci_logger "New build number '$RAPIDS_OFFSET'"
-    build_pkg $1
-    # Reset offset
-    export RAPIDS_OFFSET=$ORIG_OFFSET
-    gpuci_logger "Reset build number after default build '$RAPIDS_OFFSET'"
-  else
-    gpuci_logger "Current CUDA_VER '$CUDA_VER' is not DEFAULT_CUDA_VER, skipping default build..."
-  fi
-}
-
 function run_builds {
-  # Kick off main pkg b
+  # Kick off main pkg build
   build_pkg $1
-  # Check and build default pkgs
-  build_default_pkg $1
 }
 
 function upload_builds {

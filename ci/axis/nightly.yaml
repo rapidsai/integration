@@ -14,6 +14,7 @@ CUDA_VER:
   - 10.2
   - 10.1
 
+# TODO: DEPRECATED - No longer used and needs to be removed & gpuCI jobs updated
 DEFAULT_CUDA_VER:
   - 10.1
 
