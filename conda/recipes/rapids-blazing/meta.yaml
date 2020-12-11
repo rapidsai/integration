@@ -1,5 +1,3 @@
-# Copyright (c) 2020, NVIDIA CORPORATION.
-
 {% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
@@ -10,18 +8,18 @@
 #   those set above (e.g. `cuda_version`)
 #
 # gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in
-#   `ci/cpu/build-env.sh` and `ci/axis/*.yaml`
+#   `ci/cpu/build-meta.sh` and `ci/axis/*.yaml`
 #
 # Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml`
 #   to set these versions
 ###
 
 package:
-  name: rapids-notebook-env
+  name: rapids-blazing
   version: {{ rapids_version }}
 
 source:
-  git_url: ../../..
+  path: ../../..
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
@@ -35,37 +33,29 @@ requirements:
   host:
     - python
   run:
-    - bokeh {{ bokeh_version }}
-    - colorcet
-    - conda-forge::blas
     - cudatoolkit ={{ cuda_version }}.*
-    - cupy {{ cupy_version }}
-    - cython {{ cython_version }}
-    - dask-labextension
-    - dask-ml
-    - datashader {{ datashader_version }}
-    - fa2
-    - filterpy
-    - holoviews
-    - ipython {{ ipython_version }}
-    - jupyter-server-proxy
-    - jupyterlab {{ jupyterlab_version }}
-    - matplotlib-base
-    - networkx {{ networkx_version }}
-    - nodejs {{ nodejs_version }}
-    - pytest
-    - s3fs
-    - scikit-learn {{ scikit_learn_version }}
-    - scipy {{ scipy_version }}
-    - seaborn
-    - umap-learn
+    - rapids ={{ minor_version }}.*
+    - blazingsql ={{ minor_version }}.*
+
+test:
+  requires:
+    - cudatoolkit {{ cuda_version }}.*
+  imports:
+    - cio
+    - cudf
+    - dask_cudf
+    - cuml
+    - cugraph
+    - cuspatial
 
 about:
   home: http://rapids.ai/
-  license: Apache-2.0
-  license_file: LICENSE
-  summary: 'RAPIDS Notebook Dependencies and Tool Environment Installer'
+  license: Custom
+  license_file: conda/recipes/rapids/LICENSE
+  summary: 'RAPIDS Suite - Open GPU Data Science'
   description: |
-    Meta-package for installing notebook dependencies and tools needed to run RAPIDS notebooks.
+    Meta-package for the RAPIDS suite of software libraries. RAPIDS gives you the freedom to execute end-to-end data science
+    and analytics pipelines entirely on GPUs. It relies on NVIDIA® CUDA® primitives for low-level compute optimization,
+    but exposes that GPU parallelism and high-bandwidth memory speed through user-friendly Python interfaces.
   doc_url: https://docs.rapids.ai/
   dev_url: https://github.com/rapidsai/

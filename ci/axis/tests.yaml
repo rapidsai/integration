@@ -4,8 +4,9 @@ RUNTIME_DOCKER_REPO:
 DOCKER_REPO:
   - rapidsai/rapidsai-dev-nightly
 
+# Use M.X (major.minor) version
 RAPIDS_VER:
-  - 0.16
+  - 0.17
 
 CUDA_VER:
   - 11.0

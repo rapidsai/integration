@@ -37,6 +37,7 @@ requirements:
   run:
     - arrow-cpp {{ arrow_version }}
     - arrow-cpp-proc * cuda
+    - asvdb
     - autoconf
     - automake
     - benchmark {{ benchmark_version }}
@@ -48,6 +49,7 @@ requirements:
     - conda-forge::clang {{ clang_version }}
     - conda-forge::clang-tools {{ clang_version }}
     - cmake {{ cmake_version }}
+    - cmake-format {{ cmake_format_version }}
     - cmake_setuptools {{ cmake_setuptools_version }}
     - conda {{ conda_version }}
     - conda-build {{ conda_build_version }}
@@ -108,10 +110,10 @@ requirements:
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
     - pynvml
-    - pyppeteer
+    - pyppeteer {{ pyppeteer_version }}
     - pyproj {{ pyproj_version }}
     - pytest
-    - pytest-asyncio
+    - pytest-asyncio {{ pytest_asyncio_version }}
     - pytest-benchmark
     - pytest-cov
     - pytest-timeout
@@ -119,6 +121,7 @@ requirements:
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
     - rapidjson {{ rapidjson_version }}
+    - rapids-pytest-benchmark
     - ripgrep
     - s3fs
     - setuptools
