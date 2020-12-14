@@ -35,7 +35,7 @@ export PYTHONPATH=\
 ${PYTHONPATH}
 
 cd /rapids/cudf/python/cudf
-py.test --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v
+py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
@@ -43,7 +43,7 @@ if (( ${exitcode} != 0 )); then
 fi
 
 cd /rapids/cudf/python/dask_cudf
-py.test --junitxml=${TESTRESULTS_DIR}/pytest-dask-cudf.xml -v
+py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-dask-cudf.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
@@ -51,7 +51,7 @@ if (( ${exitcode} != 0 )); then
 fi
 
 cd /rapids/cudf/python/custreamz
-py.test --junitxml=${TESTRESULTS_DIR}/pytest-custreamz.xml -v
+py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-custreamz.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
