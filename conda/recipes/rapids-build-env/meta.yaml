@@ -133,6 +133,7 @@ requirements:
     - streamz
     - treelite {{ treelite_version }}
     - twine
+    - typing_extensions
     - ucx-proc=*=gpu
     - ucx
     - umap-learn
