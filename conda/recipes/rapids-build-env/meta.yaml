@@ -117,6 +117,7 @@ requirements:
     - pytest-benchmark
     - pytest-cov
     - pytest-timeout
+    - pytest-xdist
     - python
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
@@ -133,6 +134,7 @@ requirements:
     - streamz
     - treelite {{ treelite_version }}
     - twine
+    - typing_extensions
     - ucx-proc=*=gpu
     - ucx
     - umap-learn
