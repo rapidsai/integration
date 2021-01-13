@@ -129,7 +129,7 @@ s3fs_version:
 scikit_learn_version:
   - '=0.23.1'
 scipy_version:
-  - '=1.5.1'
+  - '=1.5.3'
 setuptools_version:
   - '>=49,<50'
 spdlog_version:
