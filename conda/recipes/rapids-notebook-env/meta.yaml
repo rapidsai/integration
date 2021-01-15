@@ -55,6 +55,7 @@ requirements:
     - nodejs {{ nodejs_version }}
     - pytest
     - s3fs
+    - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
     - seaborn
