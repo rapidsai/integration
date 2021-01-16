@@ -93,7 +93,7 @@ requirements:
     - lightgbm
     - make
     - mimesis
-    - moto
+    - moto {{ moto_version }}
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
@@ -124,7 +124,7 @@ requirements:
     - rapidjson {{ rapidjson_version }}
     - rapids-pytest-benchmark
     - ripgrep
-    - s3fs
+    - s3fs {{ s3fs_version }}
     - setuptools
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
