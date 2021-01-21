@@ -106,7 +106,7 @@ pandas_version:
 pandoc_version:
   - '<=2.0.0'
 panel_version:
-  - '>=0.9.1, <=0.9.7'
+  - '>=0.10.3'
 pydeck_version:
   - '>=0.3, <=0.5.0'
 python_confluent_kafka_version:
