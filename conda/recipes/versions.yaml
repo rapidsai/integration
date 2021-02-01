@@ -21,7 +21,7 @@ conda_verify_version:
 
 # Versions for `libgcc-ng`, `libgfortran-ng`, `libstdcxx-ng` stack
 build_stack_version:
-  - '=7.5.0'
+  - '=9.3.0'
 
 # Shared versions across meta-pkgs
 arrow_version:
@@ -131,7 +131,7 @@ s3fs_version:
 scikit_learn_version:
   - '=0.23.1'
 scipy_version:
-  - '=1.5.1'
+  - '=1.5.3'
 setuptools_version:
   - '>=49,<50'
 spdlog_version:
