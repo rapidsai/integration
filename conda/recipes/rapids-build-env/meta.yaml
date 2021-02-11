@@ -110,6 +110,7 @@ requirements:
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
     - pynvml
+    - pyorc
     - pyppeteer {{ pyppeteer_version }}
     - pyproj {{ pyproj_version }}
     - pytest
