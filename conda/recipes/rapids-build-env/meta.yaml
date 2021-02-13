@@ -97,6 +97,7 @@ requirements:
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
+    - ninja
     - nltk
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
