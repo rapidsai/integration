@@ -12,7 +12,7 @@ def test_diningparty() :
     tips_df['tip_percentage'] = tips_df['tip']/tips_df['total_bill']*100
 
     # compute the average tip by dining party size
-    cudfSeries = tips_df.groupby('size').tip_percentage.mean()
+    cudfSeries = tips_df.groupby('size', sort=True).tip_percentage.mean()
 
     # the expected average tip percentage for parties sized 1, 2, 3,
     # etc. for the data set.

@@ -6,7 +6,8 @@ DOCKER_REPO:
 
 # Use M.X (major.minor) version
 RAPIDS_VER:
-  - 0.17
+  - 0.18
+  - 0.19
 
 CUDA_VER:
   - 11.0

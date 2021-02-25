@@ -93,10 +93,11 @@ requirements:
     - lightgbm
     - make
     - mimesis
-    - moto
+    - moto {{ moto_version }}
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
+    - ninja
     - nltk
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
@@ -110,6 +111,7 @@ requirements:
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
     - pynvml
+    - pyorc
     - pyppeteer {{ pyppeteer_version }}
     - pyproj {{ pyproj_version }}
     - pytest
@@ -117,13 +119,14 @@ requirements:
     - pytest-benchmark
     - pytest-cov
     - pytest-timeout
+    - pytest-xdist
     - python
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
     - rapidjson {{ rapidjson_version }}
     - rapids-pytest-benchmark
     - ripgrep
-    - s3fs
+    - s3fs {{ s3fs_version }}
     - setuptools
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
@@ -133,6 +136,7 @@ requirements:
     - streamz
     - treelite {{ treelite_version }}
     - twine
+    - typing_extensions
     - ucx-proc=*=gpu
     - ucx
     - umap-learn
