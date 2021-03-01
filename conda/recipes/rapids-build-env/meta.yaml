@@ -103,6 +103,7 @@ requirements:
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
+    - packaging
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
     - pickle5  # [py<38]
