@@ -5,14 +5,14 @@
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
-### 
+###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
 #   those set above (e.g. `cuda_version`)
 #
-# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in
 #   `ci/cpu/build-env.sh` and `ci/axis/*.yaml`
 #
-# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml`
 #   to set these versions
 ###
 
@@ -46,6 +46,7 @@ requirements:
     - boost
     - boost-cpp {{ boost_cpp_version }}
     - boto3
+    - cachetools
     - conda-forge::clang {{ clang_version }}
     - conda-forge::clang-tools {{ clang_version }}
     - cmake {{ cmake_version }}
@@ -93,14 +94,16 @@ requirements:
     - lightgbm
     - make
     - mimesis
-    - moto
+    - moto {{ moto_version }}
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
+    - ninja
     - nltk
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
+    - packaging
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
     - pickle5  # [py<38]
@@ -110,6 +113,7 @@ requirements:
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
     - pynvml
+    - pyorc
     - pyppeteer {{ pyppeteer_version }}
     - pyproj {{ pyproj_version }}
     - pytest
@@ -124,7 +128,7 @@ requirements:
     - rapidjson {{ rapidjson_version }}
     - rapids-pytest-benchmark
     - ripgrep
-    - s3fs
+    - s3fs {{ s3fs_version }}
     - setuptools
     - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
