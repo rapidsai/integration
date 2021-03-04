@@ -128,6 +128,8 @@ rapidjson_version:
   - '=1.1.0'
 s3fs_version:
   - '>=0.5.2'
+scikit_image_version:
+  - '>=0.18.0,<0.19.0'
 scikit_learn_version:
   - '=0.23.1'
 scipy_version:
