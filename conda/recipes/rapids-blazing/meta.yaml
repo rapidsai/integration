@@ -1,5 +1,3 @@
-# Copyright (c) 2019, NVIDIA CORPORATION.
-
 {% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
@@ -17,11 +15,11 @@
 ###
 
 package:
-  name: rapids-xgboost
+  name: rapids-blazing
   version: {{ rapids_version }}
 
 source:
-  git_url: ../../..
+  path: ../../..
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
@@ -36,16 +34,28 @@ requirements:
     - python
   run:
     - cudatoolkit ={{ cuda_version }}.*
-    - nccl {{ nccl_version }}
-    - python
-    - xgboost {{ xgboost_version }}{{ minor_version }}
+    - rapids ={{ minor_version }}.*
+    - blazingsql ={{ minor_version }}.*
+
+test:
+  requires:
+    - cudatoolkit {{ cuda_version }}.*
+  imports:
+    - cio
+    - cudf
+    - dask_cudf
+    - cuml
+    - cugraph
+    - cuspatial
 
 about:
   home: http://rapids.ai/
   license: Custom
-  license_file: conda/recipes/rapids-xgboost/LICENSE
-  summary: 'RAPIDS + DMLC XGBoost Integration'
+  license_file: conda/recipes/rapids/LICENSE
+  summary: 'RAPIDS Suite - Open GPU Data Science'
   description: |
-    Meta-package for RAPIDS + DMLC XGBoost integration; version matched for RAPIDS releases.
+    Meta-package for the RAPIDS suite of software libraries. RAPIDS gives you the freedom to execute end-to-end data science
+    and analytics pipelines entirely on GPUs. It relies on NVIDIA® CUDA® primitives for low-level compute optimization,
+    but exposes that GPU parallelism and high-bandwidth memory speed through user-friendly Python interfaces.
   doc_url: https://docs.rapids.ai/
-  dev_url: https://github.com/rapidsai/xgboost
+  dev_url: https://github.com/rapidsai/

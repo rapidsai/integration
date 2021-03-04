@@ -9,6 +9,7 @@ conda activate rapids
 
 gpuci_logger "Show env and current conda list"
 env
+nvidia-smi
 conda list
 
 export TESTRESULTS_DIR=${WORKSPACE}/testresults

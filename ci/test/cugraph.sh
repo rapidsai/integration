@@ -15,6 +15,7 @@ export RAPIDS_DATASET_ROOT_DIR=/rapids/cugraph/datasets
 
 # Show environment
 env
+nvidia-smi
 conda list
 
 TESTRESULTS_DIR=${WORKSPACE}/testresults

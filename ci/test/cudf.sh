@@ -9,6 +9,7 @@ export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
 env
+nvidia-smi
 conda list
 
 TESTRESULTS_DIR=${WORKSPACE}/testresults
@@ -34,7 +35,7 @@ export PYTHONPATH=\
 ${PYTHONPATH}
 
 cd /rapids/cudf/python/cudf
-py.test --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v
+py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
@@ -42,7 +43,7 @@ if (( ${exitcode} != 0 )); then
 fi
 
 cd /rapids/cudf/python/dask_cudf
-py.test --junitxml=${TESTRESULTS_DIR}/pytest-dask-cudf.xml -v
+py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-dask-cudf.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
@@ -50,7 +51,7 @@ if (( ${exitcode} != 0 )); then
 fi
 
 cd /rapids/cudf/python/custreamz
-py.test --junitxml=${TESTRESULTS_DIR}/pytest-custreamz.xml -v
+py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-custreamz.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}

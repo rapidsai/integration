@@ -8,6 +8,7 @@ export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local
 # FIXME: "source activate" line should not be needed
 source /opt/conda/bin/activate rapids
 env
+nvidia-smi
 conda list
 
 TESTRESULTS_DIR=${WORKSPACE}/testresults

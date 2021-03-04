@@ -100,4 +100,4 @@ def test_pagerank() :
     assert len(expectedPageRanks) == len(gdf_page["pagerank"])
     for (actual, expected) in zip(gdf_page["pagerank"].to_pandas(),
                                   expectedPageRanks):
-        assert actual == pytest.approx(expected)
+        assert actual == pytest.approx(expected, rel=1e-3)
