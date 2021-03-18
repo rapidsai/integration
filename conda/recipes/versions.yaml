@@ -133,7 +133,7 @@ scikit_image_version:
 scikit_learn_version:
   - '=0.23.1'
 scipy_version:
-  - '=1.5.3'
+  - '=1.6.0'
 setuptools_version:
   - '>=49,<50'
 spdlog_version:
