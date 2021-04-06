@@ -51,7 +51,7 @@ dask_version:
 datashader_version:
   - '>=0.11.1,<0.12'
 distributed_version:
-  - '>=2.23.0'
+  - '>=2.23.0,<=2021.4.0'
 dlpack_version:
   - '>=0.3,<0.4.0a0'
 double_conversion_version:
