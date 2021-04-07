@@ -71,7 +71,7 @@ requirements:
     - flake8 {{ flake8_version }}
     - flatbuffers {{ flatbuffers_version }}
     - fsspec {{ fsspec_version }}
-    - gcsfs
+    - gcsfs {{ gcsfs_version }}
     - gdal {{ gdal_version }}
     - geopandas {{ geopandas_version }}
     - git

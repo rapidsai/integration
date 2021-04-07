@@ -67,11 +67,13 @@ flake8_version:
 flatbuffers_version:
   - '=1.10.0'
 fsspec_version:
-  - '>=0.6.0'
+  - '>=0.9.0'
 gdal_version:
   - '>=3.2.0,<3.3.0a0'
 geopandas_version:
   - '>=0.6, <=0.8.1'
+gcsfs_version:
+  - '>=0.8.0'
 google_cloud_cpp_version:
   - '=1.16.0'
 gmock_version:
