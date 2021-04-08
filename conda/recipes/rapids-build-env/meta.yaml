@@ -47,6 +47,7 @@ requirements:
     - boost-cpp {{ boost_cpp_version }}
     - boto3
     - cachetools
+    - ccache {{ ccache_version }}
     - conda-forge::clang {{ clang_version }}
     - conda-forge::clang-tools {{ clang_version }}
     - cmake {{ cmake_version }}
