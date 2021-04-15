@@ -2,8 +2,8 @@
 set +e
 set -x
 
-export HOME=$WORKSPACE
-export LIBCUDF_KERNEL_CACHE_PATH=$WORKSPACE/.cache/rapids/cudf
+export HOME="$WORKSPACE"
+export LIBCUDF_KERNEL_CACHE_PATH="$WORKSPACE/.cache/rapids/cudf"
 export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/local/gcc7/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # FIXME: "source activate" line should not be needed
@@ -12,7 +12,7 @@ env
 nvidia-smi
 conda list
 
-TESTRESULTS_DIR=${WORKSPACE}/testresults
+TESTRESULTS_DIR="$WORKSPACE/testresults"
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
 
