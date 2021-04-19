@@ -96,6 +96,8 @@ nccl_version:
   - '>=2.8.4.1,<3.0a0'
 networkx_version:
   - '>=2.5.1'
+nlohmann_json_version:
+  - '3.9.1'
 nodejs_version:
   - '>=12,<15'
 numba_version:
