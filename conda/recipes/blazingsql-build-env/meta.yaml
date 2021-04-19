@@ -43,6 +43,7 @@ requirements:
         - jpype1
         - maven
         - netifaces
+        - nlohmann_json
         - ninja
         - openjdk {{ openjdk_version }}
         - pyhive
