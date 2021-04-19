@@ -42,6 +42,7 @@ requirements:
         - gtest {{ gtest_version }}
         - jpype1
         - maven
+        - mysql-connector-cpp {{ mysql_connector_cpp_version }}
         - netifaces
         - nlohmann_json {{ nlohmann_json_version }}
         - ninja
