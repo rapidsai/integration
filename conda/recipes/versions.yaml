@@ -108,6 +108,8 @@ numpy_version:
   - '>=1.17.3'
 nvtx_version:
   - '>=0.2.1,<0.3'
+libpq_version:
+  - '13'
 openjdk_version:
   - '>=8.0'
 pandas_version:

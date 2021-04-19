@@ -46,6 +46,7 @@ requirements:
         - netifaces
         - nlohmann_json {{ nlohmann_json_version }}
         - ninja
+        - libpq
         - openjdk {{ openjdk_version }}
         - pyhive
         - python
