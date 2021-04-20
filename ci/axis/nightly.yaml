@@ -23,9 +23,3 @@ DEFAULT_CUDA_VER:
 PYTHON_VER:
   - 3.7
   - 3.8
-
-exclude:
-  - RAPIDS_VER: 0.20.0a
-    CUDA_VER: 10.1
-  - RAPIDS_VER: 0.20.0a
-    CUDA_VER: 10.2
