@@ -5,14 +5,14 @@
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
-### 
+###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
 #   those set above (e.g. `cuda_version`)
 #
-# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in 
+# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in
 #   `ci/cpu/build-env.sh` and `ci/axis/*.yaml`
 #
-# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml` 
+# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml`
 #   to set these versions
 ###
 
@@ -46,6 +46,7 @@ requirements:
     - boost
     - boost-cpp {{ boost_cpp_version }}
     - boto3
+    - cachetools
     - conda-forge::clang {{ clang_version }}
     - conda-forge::clang-tools {{ clang_version }}
     - cmake {{ cmake_version }}
@@ -70,7 +71,7 @@ requirements:
     - flake8 {{ flake8_version }}
     - flatbuffers {{ flatbuffers_version }}
     - fsspec {{ fsspec_version }}
-    - gcsfs
+    - gcsfs {{ gcsfs_version }}
     - gdal {{ gdal_version }}
     - geopandas {{ geopandas_version }}
     - git
@@ -102,6 +103,7 @@ requirements:
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
+    - packaging
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
     - pickle5  # [py<38]
@@ -124,16 +126,17 @@ requirements:
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
     - rapidjson {{ rapidjson_version }}
-    - rapids-pytest-benchmark
     - ripgrep
     - s3fs {{ s3fs_version }}
     - setuptools
+    - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
     - shellcheck
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
+    - transformers
     - treelite {{ treelite_version }}
     - twine
     - typing_extensions
