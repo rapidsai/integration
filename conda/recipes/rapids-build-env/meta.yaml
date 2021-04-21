@@ -136,6 +136,7 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
+    - transformers
     - treelite {{ treelite_version }}
     - twine
     - typing_extensions
