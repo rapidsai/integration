@@ -125,7 +125,7 @@ pytorch_version:
 protobuf_version:
   - '>=3.4.1,<4.0.0'
 pyproj_version:
-  - '>=2.4,<=2.6.1.post1'
+  - '>=2.4,<=3.0.1'
 pyppeteer_version:
   - '<=0.2.2'
 pytest_asyncio_version:
