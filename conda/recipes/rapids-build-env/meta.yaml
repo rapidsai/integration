@@ -71,7 +71,7 @@ requirements:
     - flake8 {{ flake8_version }}
     - flatbuffers {{ flatbuffers_version }}
     - fsspec {{ fsspec_version }}
-    - gcsfs
+    - gcsfs {{ gcsfs_version }}
     - gdal {{ gdal_version }}
     - geopandas {{ geopandas_version }}
     - git
@@ -126,7 +126,6 @@ requirements:
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
     - rapidjson {{ rapidjson_version }}
-    - rapids-pytest-benchmark
     - ripgrep
     - s3fs {{ s3fs_version }}
     - setuptools
@@ -137,6 +136,7 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
+    - transformers
     - treelite {{ treelite_version }}
     - twine
     - typing_extensions

@@ -2,21 +2,22 @@ RUNTIME_DOCKER_REPO:
   - rapidsai/rapidsai-nightly
 
 DOCKER_REPO:
-  - rapidsai/rapidsai-dev-nightly
+  - rapidsai/rapidsai-core-dev-nightly
 
 # Use M.X (major.minor) version
 RAPIDS_VER:
-  - 0.19
+  - '0.20'
 
 CUDA_VER:
+  - 11.2
   - 11.0
-  - 10.2
-  - 10.1
 
 LINUX_VER:
   - ubuntu16.04
   - ubuntu18.04
+  - ubuntu20.04
   - centos7
+  - centos8
 
 PYTHON_VER:
   - 3.7
