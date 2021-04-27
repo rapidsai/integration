@@ -112,6 +112,7 @@ requirements:
     - psutil
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
+    - pydocstyle {{ pydocstyle_version }}
     - pynvml
     - pyorc
     - pyppeteer {{ pyppeteer_version }}
