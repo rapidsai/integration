@@ -7,7 +7,7 @@ conda create -y --name=$CONDA_ENV_NAME python=$PYTHON_VER
 source activate $CONDA_ENV_NAME
 
 echo "Installing conda packages"
-conda install -y -c $CONDA_USERNAME -c nvidia -c conda-forge -c defaults \
+conda install -y -c $CONDA_USERNAME -c nvidia -c conda-forge \
     rapids=$RAPIDS_VER \
     cudatoolkit=$CUDA_VER \
     conda-pack \
