@@ -53,13 +53,13 @@ function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
   if [[ "${1}" == "${CONDA_BLAZING_NOTEBOOK_RECIPE}" ]]; then
-    gpuci_conda_retry build --override-channels -c blazingsql-nightly -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c pytorch -c conda-forge -c defaults \
+    gpuci_conda_retry build --override-channels -c blazingsql-nightly -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c pytorch -c conda-forge \
                 --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
   elif [[ "${1}" == *"BLAZING"* ]]; then
-    gpuci_conda_retry build --override-channels -c blazingsql-nightly -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c defaults \
+    gpuci_conda_retry build --override-channels -c blazingsql-nightly -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge \
                 --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
   else
-    gpuci_conda_retry build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge -c defaults \
+    gpuci_conda_retry build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge \
                 --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
   fi
 }
