@@ -53,6 +53,7 @@ requirements:
     - matplotlib-base
     - networkx {{ networkx_version }}
     - nodejs {{ nodejs_version }}
+    - openslide
     - pytest
     - s3fs {{ s3fs_version }}
     - scikit-image {{ scikit_image_version }}
