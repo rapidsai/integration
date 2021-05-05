@@ -50,6 +50,8 @@ requirements:
     - ipython {{ ipython_version }}
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
+    - jupyterlab-nvdashboard
+    - jupyterlab_widgets
     - matplotlib-base
     - networkx {{ networkx_version }}
     - nodejs {{ nodejs_version }}
