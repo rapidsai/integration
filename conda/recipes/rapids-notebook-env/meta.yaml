@@ -48,13 +48,17 @@ requirements:
     - filterpy
     - holoviews
     - ipython {{ ipython_version }}
+    - ipywidgets
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
+    - jupyterlab-nvdashboard
+    - jupyterlab_widgets
     - matplotlib-base
     - networkx {{ networkx_version }}
     - nodejs {{ nodejs_version }}
     - openslide
     - pytest
+    - python-build
     - s3fs {{ s3fs_version }}
     - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
