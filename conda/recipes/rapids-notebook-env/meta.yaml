@@ -57,6 +57,7 @@ requirements:
     - nodejs {{ nodejs_version }}
     - openslide
     - pytest
+    - python-build
     - s3fs {{ s3fs_version }}
     - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
