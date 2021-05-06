@@ -48,6 +48,7 @@ requirements:
     - filterpy
     - holoviews
     - ipython {{ ipython_version }}
+    - ipywidgets
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
     - jupyterlab-nvdashboard
