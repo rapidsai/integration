@@ -1,5 +1,6 @@
 {% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
+{% set blazing_version = environ.get('BLAZING_VER', '0.0.0') %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
@@ -27,6 +28,7 @@ build:
   script_env:
     - CUDA_VERSION
     - RAPIDS_VER
+    - BLAZING_VER
     - VERSION_SUFFIX
 
 requirements:
@@ -35,7 +37,7 @@ requirements:
   run:
     - cudatoolkit ={{ cuda_version }}.*
     - rapids ={{ minor_version }}.*
-    - blazingsql ={{ minor_version }}.*
+    - blazingsql ={{ blazing_version }}.*
 
 test:
   requires:
