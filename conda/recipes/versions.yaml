@@ -86,6 +86,8 @@ isort_version:
   - '=5.0'
 jupyterlab_version:
   - '>=3.0.0,<4.0a0'
+jupyter_packaging_version:
+  - '>=0.7.0,<0.8'
 librdkafka_version:
   - '=1.5.*'
 moto_version:
