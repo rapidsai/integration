@@ -99,7 +99,9 @@ if [[ "$BUILD_PKGS" == "meta" || -z "$BUILD_PKGS" ]] ; then
   # Run builds for meta-pkgs
   run_builds $CONDA_XGBOOST_RECIPE
   run_builds $CONDA_RAPIDS_RECIPE
+  set +e
   run_builds $CONDA_RAPIDS_BLAZING_RECIPE
+  set -e
 fi
 
 if [[ "$BUILD_PKGS" == "env" || -z "$BUILD_PKGS" ]] ; then
