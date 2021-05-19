@@ -8,10 +8,6 @@ CONDA_CONFIG_FILE:
 RAPIDS_VER:
   - 21.06.00a
 
-# Use M.X (major.minor)
-BLAZING_VER:
-  - '0.20'
-
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:
   - 11.2
