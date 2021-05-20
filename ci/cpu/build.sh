@@ -86,11 +86,11 @@ function upload_builds {
     gpuci_logger "Starting upload..."
     if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2) ]]; then
       ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2 | xargs gpuci_retry \
-        anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing
+        anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing --no-progress
     fi
     if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2) ]]; then
       ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2 | xargs gpuci_retry \
-        anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing
+        anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing --no-progress
     fi
   fi
 }
