@@ -21,3 +21,5 @@ LINUX_VER:
 
 PYTHON_VER:
   - 3.7
+
+exclude:
