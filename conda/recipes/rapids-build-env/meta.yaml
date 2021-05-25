@@ -103,6 +103,7 @@ requirements:
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
+    - openslide
     - packaging
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
@@ -112,6 +113,7 @@ requirements:
     - psutil
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
+    - pydocstyle {{ pydocstyle_version }}
     - pynvml
     - pyorc
     - pyppeteer {{ pyppeteer_version }}
@@ -136,6 +138,7 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
+    - transformers
     - treelite {{ treelite_version }}
     - twine
     - typing_extensions

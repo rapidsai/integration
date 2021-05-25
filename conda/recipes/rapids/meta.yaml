@@ -48,6 +48,7 @@ requirements:
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*
+    # - cucim ={{ minor_version }}.*
     - cusignal ={{ minor_version }}.*
     - cuspatial ={{ minor_version }}.*
     - custreamz ={{ minor_version }}.*
