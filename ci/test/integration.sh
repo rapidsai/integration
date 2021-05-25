@@ -24,7 +24,7 @@ py.test --junitxml=${TESTRESULTS_DIR}/pytest.xml -v "$WORKSPACE/test"
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
-   gpuci_logger "FAILED: 1 or more tests in "$WORKSPACE/test"
+   gpuci_logger "FAILED: 1 or more tests in $WORKSPACE/test"
 fi
 
 exit ${SUITEERROR}
