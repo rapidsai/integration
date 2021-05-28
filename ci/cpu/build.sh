@@ -14,7 +14,7 @@ set -e
 
 # Set paths
 export PATH=/conda/bin:$PATH
-export HOME=$WORKSPACE
+export HOME="$WORKSPACE"
 
 # Set recipe paths
 CONDA_XGBOOST_RECIPE="conda/recipes/rapids-xgboost"
