@@ -3,7 +3,7 @@ set +e
 set -x
 set -o pipefail
 
-export LIBCUDF_KERNEL_CACHE_PATH=${WORKSPACE}/.jitcache
+export LIBCUDF_KERNEL_CACHE_PATH="$WORKSPACE/.jitcache"
 
 source /opt/conda/bin/activate rapids
 

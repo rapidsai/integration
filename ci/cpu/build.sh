@@ -14,7 +14,7 @@ set -e
 
 # Set paths
 export PATH=/conda/bin:$PATH
-export HOME=$WORKSPACE
+export HOME="$WORKSPACE"
 
 # Set recipe paths
 CONDA_XGBOOST_RECIPE="conda/recipes/rapids-xgboost"
@@ -70,26 +70,38 @@ function run_builds {
 }
 
 function upload_builds {
+
+  # Check arch
+  ARCH=$(uname -m)
+  if [ "${ARCH}" = "x86_64" ]; then
+    ARCH_DIR="linux-64"
+  elif [ "${ARCH}" = "aarch64" ]; then
+    ARCH_DIR="linux-aarch64"
+  else
+    echo "ERROR: Unsupported arch: ${ARCH}"
+    exit 1
+  fi
+
   # Check for upload key
   if [ -z "$MY_UPLOAD_KEY" ]; then
     gpuci_logger "No upload key found, env var MY_UPLOAD_KEY not set, skipping upload..."
   else
     gpuci_logger "Upload key found, starting upload..."
     gpuci_logger "Files to upload..."
-    if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2) ]]; then
-      ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2
+    if [[ -n $(ls /conda/conda-bld/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2) ]]; then
+      ls /conda/conda-bld/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2
     fi
-    if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2) ]]; then
-      ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2
+    if [[ -n $(ls /conda/conda-bld/${ARCH_DIR}/* | grep -i blazingsql.*.tar.bz2) ]]; then
+      ls /conda/conda-bld/${ARCH_DIR}/* | grep -i blazingsql.*.tar.bz2
     fi
 
     gpuci_logger "Starting upload..."
-    if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2) ]]; then
-      ls /conda/conda-bld/linux-64/* | grep -i rapids.*.tar.bz2 | xargs gpuci_retry \
+    if [[ -n $(ls /conda/conda-bld/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2) ]]; then
+      ls /conda/conda-bld/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2 | xargs gpuci_retry \
         anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing --no-progress
     fi
-    if [[ -n $(ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2) ]]; then
-      ls /conda/conda-bld/linux-64/* | grep -i blazingsql.*.tar.bz2 | xargs gpuci_retry \
+    if [[ -n $(ls /conda/conda-bld/${ARCH_DIR}/* | grep -i blazingsql.*.tar.bz2) ]]; then
+      ls /conda/conda-bld/${ARCH_DIR}/* | grep -i blazingsql.*.tar.bz2 | xargs gpuci_retry \
         anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing --no-progress
     fi
   fi
