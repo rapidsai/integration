@@ -78,6 +78,7 @@ requirements:
     - gmock {{ gmock_version }}
     - graphviz
     - gtest {{ gtest_version }}
+    - hdbscan
     - httpretty
     - hypothesis
     - isort {{ isort_version }}
