@@ -38,7 +38,7 @@ requirements:
     - doxygen {{ doxygen_version }}
     - jupyter_sphinx
     - markdown
-    - nbsphinx
+    - nbsphinx {{ nbsphinx_version }}
     - numpydoc
     - pandoc {{ pandoc_version }}
     - recommonmark

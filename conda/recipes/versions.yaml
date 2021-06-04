@@ -96,6 +96,8 @@ mypy_version:
   - '0.782'
 mysql_connector_cpp_version:
   - '8.0.23'
+nbsphinx_version:
+  - '>=0.8.6'
 nccl_version:
   - '>=2.9.9,<3.0a0'
 networkx_version:
