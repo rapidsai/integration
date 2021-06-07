@@ -34,7 +34,7 @@ for gt in /rapids/cugraph/cpp/build/tests/*_TEST; do
 done
 
 # Python tests
-py.test --junitxml=${TESTRESULTS_DIR}/pytest.xml -v /rapids/cugraph/python
+pytest --ignore=cugraph/raft --junitxml=${TESTRESULTS_DIR}/pytest.xml -v /rapids/cugraph/python
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
