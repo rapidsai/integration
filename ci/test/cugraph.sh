@@ -18,6 +18,9 @@ env
 nvidia-smi
 conda list
 
+# Install pytest plugin for cugraph
+conda install rapids-pytest-benchmark
+
 TESTRESULTS_DIR="${WORKSPACE}/testresults"
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
