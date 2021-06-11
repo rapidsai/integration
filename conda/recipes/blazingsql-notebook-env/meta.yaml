@@ -1,5 +1,5 @@
 {% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VER', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
 ### 

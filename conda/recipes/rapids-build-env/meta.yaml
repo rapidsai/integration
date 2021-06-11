@@ -2,7 +2,7 @@
 
 {% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VER', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
 
 ###
@@ -78,6 +78,7 @@ requirements:
     - gmock {{ gmock_version }}
     - graphviz
     - gtest {{ gtest_version }}
+    - hdbscan
     - httpretty
     - hypothesis
     - isort {{ isort_version }}
@@ -103,6 +104,7 @@ requirements:
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
+    - openslide
     - packaging
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
@@ -112,6 +114,7 @@ requirements:
     - psutil
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
+    - pydocstyle {{ pydocstyle_version }}
     - pynvml
     - pyorc
     - pyppeteer {{ pyppeteer_version }}

@@ -1,8 +1,8 @@
 #!/bin/bash
 set +e
 
-export HOME=$WORKSPACE
-export LIBCUDF_KERNEL_CACHE_PATH=${WORKSPACE}/.jitcache
+export HOME="$WORKSPACE"
+export LIBCUDF_KERNEL_CACHE_PATH="$WORKSPACE/.jitcache"
 export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/local/gcc7/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # FIXME: "source activate" line should not be needed
@@ -11,11 +11,11 @@ env
 nvidia-smi
 conda list
 
-TESTRESULTS_DIR=${WORKSPACE}/testresults
+TESTRESULTS_DIR="$WORKSPACE/testresults"
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
 
-export CUPY_CACHE_DIR=${WORKSPACE}/tmp
+export CUPY_CACHE_DIR="$WORKSPACE/tmp"
 mkdir -p ${CUPY_CACHE_DIR}
 
 # gtests
