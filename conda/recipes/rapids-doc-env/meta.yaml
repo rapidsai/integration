@@ -36,6 +36,7 @@ requirements:
   run:
     - beautifulsoup4
     - doxygen {{ doxygen_version }}
+    - html5lib
     - jupyter_sphinx
     - markdown
     - nbsphinx {{ nbsphinx_version }}
