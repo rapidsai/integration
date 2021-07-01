@@ -31,7 +31,7 @@ benchmark_version:
 black_version:
   - '=19.10'
 bokeh_version:
-  - '>=2.1.1,<=2.2.3'
+  - '>=2.3.2,<2.4'
 boost_cpp_version:
   - '=1.72.0'
 clang_version:
