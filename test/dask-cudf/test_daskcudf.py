@@ -1,7 +1,7 @@
 import pytest
 import subprocess
 
-from cudf.tests.utils import assert_eq
+from cudf.testing._utils import assert_eq
 
 __numGPUSkipReason = ""
 
