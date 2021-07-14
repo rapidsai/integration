@@ -93,7 +93,7 @@ requirements:
     - libwebp
     - lightgbm
     - make
-    - mimesis
+    - mimesis {{ mimesis_version }}
     - moto {{ moto_version }}
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
