@@ -149,7 +149,7 @@ scipy_version:
 setuptools_version:
   - '>=49,<50'
 spdlog_version:
-  - '>=1.8.5,<2.0.0a0'
+  - '=1.8.5'
 sphinx_markdown_tables_version:
   - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
