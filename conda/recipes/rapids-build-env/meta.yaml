@@ -116,7 +116,7 @@ requirements:
     - pydocstyle {{ pydocstyle_version }}
     - pynvml
     - pyorc
-    - pyppeteer {{ pyppeteer_version }}
+    # - pyppeteer {{ pyppeteer_version }}
     - pyproj {{ pyproj_version }}
     - pytest
     - pytest-asyncio {{ pytest_asyncio_version }}
