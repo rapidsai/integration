@@ -10,6 +10,7 @@ RAPIDS_VER:
 
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:
+  - 11.4
   - 11.2
   - 11.0
 
