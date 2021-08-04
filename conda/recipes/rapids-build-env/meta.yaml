@@ -47,8 +47,8 @@ requirements:
     - boost-cpp {{ boost_cpp_version }}
     - boto3
     - cachetools
-    - conda-forge::clang {{ clang_version }}
-    - conda-forge::clang-tools {{ clang_version }}
+    - conda-forge::clang {{ clang_version }} # [x86_64]
+    - conda-forge::clang-tools {{ clang_version }} # [x86_64]
     - cmake {{ cmake_version }}
     - cmake-format {{ cmake_format_version }}
     - cmake_setuptools {{ cmake_setuptools_version }}
@@ -69,7 +69,6 @@ requirements:
     - fastavro {{ fastavro_version }}
     - feather-format
     - flake8 {{ flake8_version }}
-    - flatbuffers {{ flatbuffers_version }}
     - fsspec {{ fsspec_version }}
     - gcsfs {{ gcsfs_version }}
     - gdal {{ gdal_version }}
@@ -94,7 +93,7 @@ requirements:
     - libwebp
     - lightgbm
     - make
-    - mimesis
+    - mimesis {{ mimesis_version }}
     - moto {{ moto_version }}
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
