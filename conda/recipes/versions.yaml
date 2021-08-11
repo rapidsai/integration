@@ -130,6 +130,8 @@ pytorch_version:
   - '>=1.6'
 protobuf_version:
   - '>=3.4.1,<4.0.0'
+pydata_sphinx_theme_version:
+  - '>=0.6.3'
 pyproj_version:
   - '>=2.4,<=3.1'
 pyppeteer_version:
