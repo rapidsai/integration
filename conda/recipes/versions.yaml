@@ -13,7 +13,7 @@ xgboost_version:
 
 # Versions for conda
 conda_version:
-  - '=4.8.3'
+  - '=4.10.3'
 conda_build_version:
   - '=3.20.3'
 conda_verify_version:
@@ -21,21 +21,21 @@ conda_verify_version:
 
 # Versions for `libgcc-ng`, `libgfortran-ng`, `libstdcxx-ng` stack
 build_stack_version:
-  - '=9.3.0'
+  - '=9.4.0'
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=4.0.1'
+  - '=5.0.0'
 benchmark_version:
   - '=1.5.1'
 black_version:
   - '=19.10'
 bokeh_version:
-  - '>=2.1.1,<=2.2.3'
+  - '>=2.3.2,<2.4'
 boost_cpp_version:
   - '=1.72.0'
 clang_version:
-  - '=8.0.1'
+  - '=11.0.0'
 cmake_version:
   - '>=3.20.1,<3.21'
 cmake_format_version:
@@ -47,11 +47,11 @@ cupy_version:
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
-  - '>=2021.6.0'
+  - '>=2021.6.0,<=2021.07.1'
 datashader_version:
   - '>=0.11.1,<0.12'
 distributed_version:
-  - '>=2021.6.0'
+  - '>=2021.6.0,<=2021.07.1'
 dlpack_version:
   - '>=0.5,<0.6.0a0'
 double_conversion_version:
@@ -64,8 +64,6 @@ fastavro_version:
   - '>=0.22.0'
 flake8_version:
   - '=3.8'
-flatbuffers_version:
-  - '=1.10.0'
 fsspec_version:
   - '>=0.9.0'
 gdal_version:
@@ -75,7 +73,7 @@ geopandas_version:
 gcsfs_version:
   - '>=0.8.0'
 google_cloud_cpp_version:
-  - '=1.25.0'
+  - '>=1.25.0'
 gmock_version:
   - '=1.10.0'
 gtest_version:
@@ -83,13 +81,15 @@ gtest_version:
 ipython_version:
   - '=7.15'
 isort_version:
-  - '=5.0'
+  - '=5.6.4'
 jupyterlab_version:
   - '>=3.0.0,<4.0a0'
 jupyter_packaging_version:
   - '>=0.7.0,<0.8'
 librdkafka_version:
   - '=1.6.*'
+mimesis_version:
+  - '<4.1'
 moto_version:
   - '>=1.3.14'
 mypy_version:
@@ -130,6 +130,8 @@ pytorch_version:
   - '>=1.6'
 protobuf_version:
   - '>=3.4.1,<4.0.0'
+pydata_sphinx_theme_version:
+  - '>=0.6.3'
 pyproj_version:
   - '>=2.4,<=3.1'
 pyppeteer_version:
@@ -149,8 +151,8 @@ scipy_version:
 setuptools_version:
   - '>=49,<50'
 spdlog_version:
-  - '>=1.8.5,<2.0.0a0'
+  - '>=1.8.5,<1.9'
 sphinx_markdown_tables_version:
   - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
-  - '=1.3.0'
+  - '=2.0.0'
