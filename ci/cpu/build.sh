@@ -49,6 +49,9 @@ if [[ "$BUILD_MODE" = "branch" && "$SOURCE_BRANCH" = branch-* ]] ; then
   export VERSION_SUFFIX=`date +%y%m%d`
 fi
 
+# Get arch
+ARCH=$(uname -m)
+
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
@@ -72,7 +75,6 @@ function run_builds {
 function upload_builds {
 
   # Check arch
-  ARCH=$(uname -m)
   if [ "${ARCH}" = "x86_64" ]; then
     ARCH_DIR="linux-64"
   elif [ "${ARCH}" = "aarch64" ]; then
@@ -118,9 +120,12 @@ if [[ "$BUILD_PKGS" == "env" || -z "$BUILD_PKGS" ]] ; then
   # Run builds for env-pkgs
   run_builds $CONDA_RAPIDS_BUILD_RECIPE
   run_builds $CONDA_RAPIDS_NOTEBOOK_RECIPE
-  run_builds $CONDA_RAPIDS_DOC_RECIPE
-  run_builds $CONDA_BLAZING_BUILD_RECIPE
-  run_builds $CONDA_BLAZING_NOTEBOOK_RECIPE
+  # Bypass not supported packages for arm64
+  if [ "${ARCH}" != "aarch64" ]; then
+    run_builds $CONDA_RAPIDS_DOC_RECIPE
+    run_builds $CONDA_BLAZING_BUILD_RECIPE
+    run_builds $CONDA_BLAZING_NOTEBOOK_RECIPE
+  fi
 fi
 
 # Upload builds
