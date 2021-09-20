@@ -127,6 +127,7 @@ requirements:
     - python
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
+    - python-snappy
     - rapidjson {{ rapidjson_version }}
     - ripgrep
     - s3fs {{ s3fs_version }}
