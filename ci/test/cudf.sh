@@ -26,14 +26,6 @@ for gt in /rapids/cudf/cpp/build/gtests/*; do
    fi
 done
 
-# Python tests
-export PYTHONPATH=\
-/rapids/cudf/python/cudf:\
-/rapids/cudf/python/dask_cudf:\
-/rapids/cudf/python/custreamz:\
-/rapids/cudf/python/nvstrings:\
-${PYTHONPATH}
-
 cd /rapids/cudf/python/cudf
 py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v
 exitcode=$?
