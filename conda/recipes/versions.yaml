@@ -73,7 +73,7 @@ geopandas_version:
 gcsfs_version:
   - '>=0.8.0'
 google_cloud_cpp_version:
-  - '>=1.25.0'
+  - '>=1.25.0,<1.30'
 gmock_version:
   - '=1.10.0'
 gtest_version:
