@@ -42,6 +42,7 @@ requirements:
     - nbsphinx {{ nbsphinx_version }}
     - numpydoc
     - pandoc {{ pandoc_version }}
+    - pydata-sphinx-theme {{ pydata_sphinx_theme_version }}
     - recommonmark
     - sphinx
     - sphinx_rtd_theme

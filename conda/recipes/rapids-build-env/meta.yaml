@@ -116,7 +116,7 @@ requirements:
     - pydocstyle {{ pydocstyle_version }}
     - pynvml
     - pyorc
-    # - pyppeteer {{ pyppeteer_version }}
+    - pyppeteer {{ pyppeteer_version }}
     - pyproj {{ pyproj_version }}
     - pytest
     - pytest-asyncio {{ pytest_asyncio_version }}
@@ -127,6 +127,7 @@ requirements:
     - python
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
+    - python-snappy
     - rapidjson {{ rapidjson_version }}
     - ripgrep
     - s3fs {{ s3fs_version }}
@@ -138,7 +139,7 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
-    - transformers
+    - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}
     - twine
     - typing_extensions
