@@ -109,7 +109,7 @@ requirements:
     - panel {{ panel_version }}
     - pickle5  # [py<38]
     - pkg-config
-    - pre_commit
+    - pre-commit
     - protobuf {{ protobuf_version }}
     - psutil
     - pyarrow {{ arrow_version }}
