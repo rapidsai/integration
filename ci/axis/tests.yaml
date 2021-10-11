@@ -1,5 +1,5 @@
 RUNTIME_DOCKER_REPO:
-  - rapidsai/rapidsai-nightly
+  - rapidsai/rapidsai-core-nightly
 
 DOCKER_REPO:
   - rapidsai/rapidsai-core-dev-nightly
