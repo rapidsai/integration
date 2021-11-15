@@ -56,6 +56,7 @@ requirements:
     - dask-cuda ={{ minor_version }}.*
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
+    - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
 
 test:            # [linux64]
   imports:       # [linux64]
