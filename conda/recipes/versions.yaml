@@ -2,6 +2,8 @@
 # This file is used by `/ci/cpu/build*.sh` for NIGHTLY builds
 ###
 
+# Test
+
 # Versions for `rapids` meta-pkg
 dask_xgboost_version:
   - '=0.2.0.dev28'
