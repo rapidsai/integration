@@ -94,6 +94,7 @@ requirements:
     - lightgbm
     - make
     - mimesis {{ mimesis_version }}
+    - mock
     - moto {{ moto_version }}
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
