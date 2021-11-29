@@ -93,7 +93,7 @@ requirements:
     - libwebp
     - lightgbm
     - make
-    - mimesis
+    - mimesis {{ mimesis_version }}
     - moto {{ moto_version }}
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
@@ -109,6 +109,7 @@ requirements:
     - panel {{ panel_version }}
     - pickle5  # [py<38]
     - pkg-config
+    - pre-commit
     - protobuf {{ protobuf_version }}
     - psutil
     - pyarrow {{ arrow_version }}
@@ -127,6 +128,7 @@ requirements:
     - python
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
+    - python-snappy
     - rapidjson {{ rapidjson_version }}
     - ripgrep
     - s3fs {{ s3fs_version }}
@@ -138,7 +140,7 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
-    - transformers
+    - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}
     - twine
     - typing_extensions
