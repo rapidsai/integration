@@ -21,6 +21,6 @@ LINUX_VER:
   - centos8
 
 PYTHON_VER:
-  - 3.9
+  - 3.8
 
 exclude:
