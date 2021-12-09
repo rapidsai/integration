@@ -30,6 +30,8 @@ function sed_runner() {
 }
 
 # Axis file update
-sed_runner "/RAPIDS_VER/a \ \ \- ${NEXT_FULL_TAG}a" ci/axis/nightly.yaml
-sed_runner "/RAPIDS_VER/a \ \ \- \"${NEXT_FULL_TAG}\"" ci/axis/release.yaml
-sed_runner "/RAPIDS_VER/a \ \ \- \"${NEXT_SHORT_TAG}\"" ci/axis/tests.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-arm64.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- \"${NEXT_FULL_TAG}\"/}" ci/axis/release.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- \"${NEXT_FULL_TAG}\"/}" ci/axis/release-arm64.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- \"${NEXT_SHORT_TAG}\"/}" ci/axis/tests.yaml
