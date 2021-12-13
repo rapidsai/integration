@@ -89,7 +89,7 @@ jupyterlab_version:
 jupyter_packaging_version:
   - '>=0.7.0,<0.8'
 librdkafka_version:
-  - '=1.6.*'
+  - '=1.7.*'
 mimesis_version:
   - '<4.1'
 moto_version:
