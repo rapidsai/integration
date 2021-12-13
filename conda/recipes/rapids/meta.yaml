@@ -35,6 +35,7 @@ requirements:
   host:
     - python
   run:
+    - cuda-python {{ cuda_python_version }}.*
     - cudatoolkit ={{ cuda_version }}.*
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
@@ -56,6 +57,7 @@ requirements:
     - dask-cuda ={{ minor_version }}.*
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
+    - ptxcompiler  # [linux64]  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
 
 test:            # [linux64]
   imports:       # [linux64]
