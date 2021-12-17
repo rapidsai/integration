@@ -114,6 +114,7 @@ requirements:
     - pre-commit
     - protobuf {{ protobuf_version }}
     - psutil
+    - ptxcompiler  # [linux64]  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
     - pydocstyle {{ pydocstyle_version }}
