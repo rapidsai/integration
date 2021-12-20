@@ -55,7 +55,7 @@ requirements:
     - conda {{ conda_version }}
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
-    - cuda-python {{ cuda_python_version }}.*
+    - cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_version }}.*
     - cupy {{ cupy_version }}
     - cython {{ cython_version }}
