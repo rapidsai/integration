@@ -35,7 +35,7 @@ requirements:
   host:
     - python
   run:
-    - cuda-python {{ cuda_python_version }}.*
+    - cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_version }}.*
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
@@ -57,15 +57,25 @@ requirements:
     - dask-cuda ={{ minor_version }}.*
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
+    - pylibcugraph ={{ minor_version }}.*
+    - libcugraph_etl ={{ minor_version }}.*
     - ptxcompiler  # [linux64]  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
 
-test:            # [linux64]
-  imports:       # [linux64]
-    - cudf       # [linux64]
-    - dask_cudf  # [linux64]
-    - cuml       # [lunux64]
-    - cugraph    # [linux64]
-    - cuspatial  # [linux64]
+test:              # [linux64]
+  imports:         # [linux64]
+    - cucim        # [linux64]
+    - cudf         # [linux64]
+    - cudf_kafka   # [linux64]
+    - cugraph      # [linux64]
+    - cuml         # [lunux64]
+    - cusignal     # [linux64]
+    - cuspatial    # [linux64]
+    - custreamz    # [linux64]
+    - cuxfilter    # [linux64]
+    - dask_cuda    # [linux64]
+    - dask_cudf    # [linux64]
+    - pylibcugraph # [linux64]
+    - rmm          # [linux64]
 
 about:
   home: http://rapids.ai/
