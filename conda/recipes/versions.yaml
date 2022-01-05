@@ -15,7 +15,7 @@ xgboost_version:
 conda_version:
   - '=4.10.3'
 conda_build_version:
-  - '=3.20.3'
+  - '=3.21.7'
 conda_verify_version:
   - '=3.1.1'
 
