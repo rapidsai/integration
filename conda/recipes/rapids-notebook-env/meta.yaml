@@ -52,7 +52,6 @@ requirements:
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
     - jupyterlab-favorites
-    - jupyterlab-nvdashboard
     - jupyter-packaging {{ jupyter_packaging_version }}
     - jupyterlab_widgets
     - matplotlib-base
