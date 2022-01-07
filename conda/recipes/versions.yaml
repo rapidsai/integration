@@ -42,6 +42,8 @@ cmake_format_version:
   - '=0.6.11'
 cmake_setuptools_version:
   - '>=0.1.3'
+cuda_python_version:
+  - '>=11.5,<12'
 cupy_version:
   - '>=9.5.0,<10.0.0a0'
 cython_version:
@@ -87,7 +89,7 @@ jupyterlab_version:
 jupyter_packaging_version:
   - '>=0.7.0,<0.8'
 librdkafka_version:
-  - '=1.6.*'
+  - '=1.7.*'
 mimesis_version:
   - '<4.1'
 moto_version:
