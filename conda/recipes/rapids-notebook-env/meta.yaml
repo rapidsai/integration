@@ -44,7 +44,6 @@ requirements:
     - dask-labextension
     - dask-ml
     - datashader {{ datashader_version }}
-    - fa2
     - filterpy
     - holoviews
     - ipython {{ ipython_version }}
