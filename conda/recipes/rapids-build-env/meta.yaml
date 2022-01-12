@@ -79,6 +79,7 @@ requirements:
     - graphviz
     - gtest {{ gtest_version }}
     - hdbscan
+    - holoviews {{ holoviews_version }}
     - httpretty
     - hypothesis
     - isort {{ isort_version }}
