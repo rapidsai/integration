@@ -21,11 +21,11 @@ conda_verify_version:
 
 # Versions for `libgcc-ng`, `libgfortran-ng`, `libstdcxx-ng` stack
 build_stack_version:
-  - '=9.4.0'
+  - '>=9.4.0'
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=6.0.0'
+  - '=6.0.1'
 benchmark_version:
   - '=1.5.1'
 black_version:
