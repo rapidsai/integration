@@ -4,6 +4,7 @@
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VER', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
+{% set cuda_major=cuda_version.split('.')[0] %}
 
 ###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
@@ -25,7 +26,7 @@ source:
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
-  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
+  string: cuda{{ cuda_major }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
     - CUDA_VERSION
     - RAPIDS_VER
@@ -56,7 +57,7 @@ requirements:
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
     - cuda-python {{ cuda_python_version }}
-    - cudatoolkit ={{ cuda_version }}.*
+    - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
