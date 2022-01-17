@@ -45,15 +45,15 @@ cmake_setuptools_version:
 cuda_python_version:
   - '>=11.5,<12'
 cupy_version:
-  - '>=9.5.0,<10.0.0a0'
+  - '>=9.5.0,<11.0.0a0'
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
-  - '>=2021.11.1,<=2021.11.2'
+  - '>=2021.11.1'
 datashader_version:
-  - '>=0.11.1,<0.12'
+  - '>0.12,<=0.13'
 distributed_version:
-  - '>=2021.11.1,<=2021.11.2'
+  - '>=2021.11.1'
 dlpack_version:
   - '>=0.5,<0.6.0a0'
 double_conversion_version:
@@ -80,6 +80,8 @@ gmock_version:
   - '=1.10.0'
 gtest_version:
   - '=1.10.0'
+holoviews_version:
+  - '>1.14.1,<=1.14.6'
 ipython_version:
   - '=7.31.0'
 isort_version:
@@ -109,7 +111,7 @@ nlohmann_json_version:
 nodejs_version:
   - '>=12,<15'
 numba_version:
-  - '>=0.53.1'
+  - '>=0.54'
 numpy_version:
   - '>=1.17.3'
 nvtx_version:
