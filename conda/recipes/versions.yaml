@@ -15,7 +15,7 @@ xgboost_version:
 conda_version:
   - '=4.10.3'
 conda_build_version:
-  - '=3.20.3'
+  - '=3.21.7'
 conda_verify_version:
   - '=3.1.1'
 
@@ -45,7 +45,7 @@ cmake_setuptools_version:
 cuda_python_version:
   - '>=11.5,<12'
 cupy_version:
-  - '>=9.5.0,<10.0.0a0'
+  - '>=9.5.0,<11.0.0a0'
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
@@ -83,7 +83,7 @@ gtest_version:
 holoviews_version:
   - '>1.14.1,<=1.14.6'
 ipython_version:
-  - '=7.15'
+  - '=7.31.0'
 isort_version:
   - '=5.6.4'
 jupyterlab_version:
