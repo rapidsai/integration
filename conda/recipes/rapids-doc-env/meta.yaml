@@ -35,6 +35,7 @@ requirements:
     - pip
   run:
     - beautifulsoup4
+    - breathe
     - doxygen {{ doxygen_version }}
     - html5lib
     - jupyter_sphinx

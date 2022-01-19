@@ -11,8 +11,6 @@ RAPIDS_VER:
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:
   - 11.5
-  - 11.4
-  - 11.2
 
 PYTHON_VER:
   - 3.7
