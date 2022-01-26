@@ -113,7 +113,7 @@ nodejs_version:
 numba_version:
   - '>=0.54'
 numpy_version:
-  - '>=1.17.3'
+  - '>=1.19'
 nvtx_version:
   - '>=0.2.1,<0.3'
 openjdk_version:
