@@ -6,17 +6,14 @@ CONDA_CONFIG_FILE:
 
 # Use M.X.Ya (major.minor.patch) with 'a' version to match nightly tag
 RAPIDS_VER:
-  - 21.12.00a
+  - 22.02.00a
 
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:
   - 11.5
-  - 11.4
-  - 11.2
-  - 11.0
 
 PYTHON_VER:
-  - 3.7
   - 3.8
+  - 3.9
 
 exclude:
