@@ -112,6 +112,7 @@ requirements:
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
     - pickle5  # [py<38]
+    - pillow {{ pillow_version }}
     - pkg-config
     - pre-commit
     - protobuf {{ protobuf_version }}

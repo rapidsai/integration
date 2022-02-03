@@ -83,7 +83,7 @@ gtest_version:
 holoviews_version:
   - '>1.14.1,<=1.14.6'
 ipython_version:
-  - '=7.31.0'
+  - '=7.31.1'
 isort_version:
   - '=5.6.4'
 jupyterlab_version:
@@ -124,6 +124,8 @@ pandoc_version:
   - '<=2.0.0'
 panel_version:
   - '>=0.10.3'
+pillow_version:
+  - '>=9.0.0'
 pydeck_version:
   - '>=0.3, <=0.5.0'
 pydocstyle_version:
