@@ -33,9 +33,9 @@ source activate base
 env
 
 # Install gpuCI tools
-conda install -y -c gpuci gpuci-tools
-#conda create -n tmp -c gpuci -c conda-forge gpuci-tools boa
-#conda activate tmp
+#conda install -y -c gpuci gpuci-tools
+conda create -n tmp -c gpuci -c conda-forge gpuci-tools boa
+conda activate tmp
 
 # Print diagnostic information
 gpuci_logger "Print conda info..."
