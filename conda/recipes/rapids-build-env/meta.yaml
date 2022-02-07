@@ -122,7 +122,7 @@ requirements:
     - pydeck {{ pydeck_version }}
     - pydocstyle {{ pydocstyle_version }}
     - pynvml
-    - pyorc
+    - pyorc {{ pyorc_version }}
     - pyppeteer {{ pyppeteer_version }}
     - pyproj {{ pyproj_version }}
     - pytest
