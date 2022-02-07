@@ -34,7 +34,7 @@ env
 
 # Install gpuCI tools
 #conda install -y -c gpuci gpuci-tools
-conda create -n tmp -c gpuci -c conda-forge gpuci-tools boa
+conda create -n tmp -c gpuci -c conda-forge gpuci-tools boa --python=${PYTHON_VER}
 conda activate tmp
 
 # Print diagnostic information
