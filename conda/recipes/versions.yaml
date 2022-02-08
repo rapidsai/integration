@@ -126,8 +126,6 @@ panel_version:
   - '>=0.10.3'
 pillow_version:
   - '>=9.0.0'
-pyorc_version:
-  - '>=0.5'
 pydeck_version:
   - '>=0.3, <=0.5.0'
 pydocstyle_version:
