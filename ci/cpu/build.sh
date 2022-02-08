@@ -35,10 +35,6 @@ env
 # Install gpuCI tools
 conda install -y -c gpuci gpuci-tools
 
-# MAMBA: To use mamba build uncomment next two line and comment previous line
-#conda create -n tmp -c gpuci -c conda-forge gpuci-tools boa python=${PYTHON_VER}
-#conda activate tmp
-
 # Print diagnostic information
 gpuci_logger "Print conda info..."
 conda info
@@ -56,7 +52,6 @@ ARCH=$(uname -m)
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
-  # MAMBA: To use mamba build change `build` to `mambabuild`
   gpuci_conda_retry build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge \
     --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
 }
