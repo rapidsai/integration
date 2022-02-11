@@ -139,6 +139,7 @@ requirements:
     - ripgrep
     - s3fs {{ s3fs_version }}
     - setuptools
+    - scikit-build {{ scikit_build_version }}
     - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
