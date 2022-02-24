@@ -88,7 +88,6 @@ requirements:
     - libcypher-parser
     - libgcc-ng {{ build_stack_version }}
     - libgfortran-ng {{ build_stack_version }}
-    - libhwloc
     - liblapack
     - librdkafka {{ librdkafka_version }}
     - libstdcxx-ng {{ build_stack_version }}
