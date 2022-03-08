@@ -105,7 +105,7 @@ nbsphinx_version:
 nccl_version:
   - '>=2.9.9,<3.0a0'
 networkx_version:
-  - '>=2.5.1'
+  - '>=2.5.1,<=2.6.3'
 nlohmann_json_version:
   - '3.9.1'
 nodejs_version:
@@ -154,6 +154,7 @@ scikit_image_version:
   - '>=0.18.0,<0.20.0'
 scikit_learn_version:
   - '=0.24'
+# when scipy is updated, remove upper bound on networkx ver.
 scipy_version:
   - '=1.6.0'
 setuptools_version:
