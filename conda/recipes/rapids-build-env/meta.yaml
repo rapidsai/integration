@@ -79,6 +79,7 @@ requirements:
     - gmock {{ gmock_version }}
     - graphviz
     - gtest {{ gtest_version }}
+    - h5py
     - hdbscan
     - holoviews {{ holoviews_version }}
     - httpretty
