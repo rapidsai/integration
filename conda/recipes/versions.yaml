@@ -26,6 +26,7 @@ build_stack_version:
 # Shared versions across meta-pkgs
 arrow_version:
   - '=7.0.0'
+  
 benchmark_version:
   - '=1.5.1'
 black_version:
