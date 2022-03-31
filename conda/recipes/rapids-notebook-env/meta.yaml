@@ -42,9 +42,11 @@ requirements:
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
     - cython {{ cython_version }}
+    - dask {{ dask_version }}
     - dask-labextension
     - dask-ml
     - datashader {{ datashader_version }}
+    - distributed {{ distributed_version }}
     - filterpy
     - holoviews
     - ipython {{ ipython_version }}
