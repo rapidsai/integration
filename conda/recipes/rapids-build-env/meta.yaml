@@ -43,6 +43,7 @@ requirements:
     - automake
     - benchmark {{ benchmark_version }}
     - black {{ black_version }}
+    - click =8.0.4  # Required for black < 22.3.0, see https://github.com/psf/black/issues/2964
     - conda-forge::blas
     - boost
     - boost-cpp {{ boost_cpp_version }}
@@ -79,6 +80,7 @@ requirements:
     - gmock {{ gmock_version }}
     - graphviz
     - gtest {{ gtest_version }}
+    - h5py
     - hdbscan
     - holoviews {{ holoviews_version }}
     - httpretty
@@ -88,7 +90,6 @@ requirements:
     - libcypher-parser
     - libgcc-ng {{ build_stack_version }}
     - libgfortran-ng {{ build_stack_version }}
-    - libhwloc
     - liblapack
     - librdkafka {{ librdkafka_version }}
     - libstdcxx-ng {{ build_stack_version }}
@@ -111,7 +112,6 @@ requirements:
     - packaging
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
-    - pickle5  # [py<38]
     - pillow {{ pillow_version }}
     - pkg-config
     - pre-commit
@@ -139,6 +139,7 @@ requirements:
     - ripgrep
     - s3fs {{ s3fs_version }}
     - setuptools
+    - scikit-build {{ scikit_build_version }}
     - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
