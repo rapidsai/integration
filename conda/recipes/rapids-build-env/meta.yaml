@@ -51,7 +51,7 @@ requirements:
     - conda-forge::clang {{ clang_version }} # [x86_64]
     - conda-forge::clang-tools {{ clang_version }} # [x86_64]
     - cmake {{ cmake_version }}
-    - cmakelang {{ cmake_format_version }}
+    - cmakelang {{ cmakelang_version }}
     - cmake_setuptools {{ cmake_setuptools_version }}
     - conda {{ conda_version }}
     - conda-build {{ conda_build_version }}
