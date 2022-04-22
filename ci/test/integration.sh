@@ -16,9 +16,6 @@ export TESTRESULTS_DIR="$WORKSPACE/testresults"
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
 
-gpuci_logger "Install conda packages needed by tests in rapids environment"
-gpuci_conda_retry --condaretry_max_retries=10 install -y --freeze-installed requests
-
 gpuci_logger "Run Python tests"
 py.test --junitxml=${TESTRESULTS_DIR}/pytest.xml -v "$WORKSPACE/test"
 exitcode=$?
