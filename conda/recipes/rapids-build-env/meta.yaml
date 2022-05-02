@@ -150,8 +150,8 @@ requirements:
     - treelite {{ treelite_version }}
     - twine
     - typing_extensions
-    - ucx-proc=*=gpu
-    - ucx {{ ucx_version }}
+    - conda-forge::ucx-proc=*=gpu
+    - conda-forge::ucx {{ ucx_version }}
     - umap-learn
 
 about:
