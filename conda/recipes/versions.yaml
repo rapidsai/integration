@@ -167,3 +167,5 @@ treelite_version:
   - '=2.3.0'
 transformers_version:
   - '<=4.10.3'
+ucx_version:
+  - '>=1.12.1'

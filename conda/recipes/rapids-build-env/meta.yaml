@@ -151,7 +151,7 @@ requirements:
     - twine
     - typing_extensions
     - ucx-proc=*=gpu
-    - ucx
+    - ucx {{ ucx_version }}
     - umap-learn
 
 about:
