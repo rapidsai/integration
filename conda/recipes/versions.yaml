@@ -95,7 +95,7 @@ librdkafka_version:
 mimesis_version:
   - '<4.1'
 moto_version:
-  - '>=1.3.14'
+  - '>=3.1.6'
 mypy_version:
   - '0.782'
 mysql_connector_cpp_version:
@@ -147,7 +147,7 @@ pytest_asyncio_version:
 rapidjson_version:
   - '=1.1.0'
 s3fs_version:
-  - '>=2021.08.0'
+  - '>=2022.3.0'
 scikit_build_version:
   - '=0.13.1'
 scikit_image_version:
