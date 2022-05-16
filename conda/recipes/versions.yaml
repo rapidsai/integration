@@ -13,7 +13,7 @@ xgboost_version:
 
 # Versions for conda
 conda_version:
-  - '=4.10.3'
+  - '=4.12.0'
 conda_build_version:
   - '=3.21.7'
 conda_verify_version:
