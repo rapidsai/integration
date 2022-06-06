@@ -61,7 +61,9 @@ requirements:
     - cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
-    - cxx-compiler {{ cxx_compiler_version }}
+    - c-compiler
+    - cxx-compiler
+    - gcc_impl_{{ target_platform }}  {{ gcc_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
     - dask-ml
