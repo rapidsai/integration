@@ -20,7 +20,7 @@ conda_verify_version:
   - '=3.1.1'
 
 # conda compilers
-cxx_compiler_version:
+gcc_version:
   - 9
 sysroot_version:
   - "2.17"
