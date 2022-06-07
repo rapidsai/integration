@@ -60,6 +60,8 @@ requirements:
     - pylibcugraph ={{ minor_version }}.*
     - libcugraph_etl ={{ minor_version }}.*
     - ptxcompiler  # [linux64]  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
+    - conda-forge::ucx-proc=*=gpu
+    - conda-forge::ucx {{ ucx_version }}
 
 test:              # [linux64]
   imports:         # [linux64]

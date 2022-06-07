@@ -51,6 +51,8 @@ requirements:
     - sphinx-click
     - sphinx-copybutton
     - sphinx-markdown-tables
+    - sphinx-autobuild
+    - myst-nb
 
 about:
   home: http://rapids.ai/
