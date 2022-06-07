@@ -31,6 +31,8 @@ build:
     - CUDA_VERSION
     - RAPIDS_VER
     - VERSION_SUFFIX
+  ignore_run_exports_from:
+    - nvcc_{{ target_platform }}
 
 requirements:
   host:
@@ -59,6 +61,9 @@ requirements:
     - cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
+    - c-compiler
+    - cxx-compiler
+    - gcc_impl_{{ target_platform }}  {{ gcc_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
     - dask-ml
@@ -87,11 +92,8 @@ requirements:
     - isort {{ isort_version }}
     - lapack
     - libcypher-parser
-    - libgcc-ng {{ build_stack_version }}
-    - libgfortran-ng {{ build_stack_version }}
     - liblapack
     - librdkafka {{ librdkafka_version }}
-    - libstdcxx-ng {{ build_stack_version }}
     - libtool
     - libwebp
     - lightgbm
@@ -106,6 +108,7 @@ requirements:
     - nltk
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
+    - nvcc_{{ target_platform }} ={{ cuda_major }}.*
     - nvtx {{ nvtx_version }}
     - openslide
     - packaging
@@ -146,6 +149,7 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
+    - sysroot_{{ target_platform }} {{ sysroot_version }}
     - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}
     - twine
