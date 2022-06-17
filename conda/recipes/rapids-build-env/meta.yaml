@@ -127,6 +127,7 @@ requirements:
     - pytest
     - pytest-asyncio {{ pytest_asyncio_version }}
     - pytest-benchmark
+    - pytest-cases
     - pytest-cov
     - pytest-timeout
     - pytest-xdist
