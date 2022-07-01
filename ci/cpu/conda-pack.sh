@@ -11,7 +11,8 @@ conda install -y -c $CONDA_USERNAME -c nvidia -c conda-forge \
     rapids=$RAPIDS_VER \
     cudatoolkit=$CUDA_VER \
     conda-pack \
-    ipykernel
+    ipykernel \
+    cuda-python=11.7.0
 
 echo "Packing conda environment"
 conda-pack --quiet --ignore-missing-files -n $CONDA_ENV_NAME -o ${CONDA_ENV_NAME}.tar.gz
