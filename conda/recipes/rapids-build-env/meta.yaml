@@ -56,7 +56,7 @@ requirements:
     - conda {{ conda_version }}
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
-    - cuda-python {{ cuda_python_version }}
+    - conda-forge::cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
     - c-compiler
