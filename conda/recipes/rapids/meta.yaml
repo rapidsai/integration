@@ -36,7 +36,7 @@ requirements:
   host:
     - python
   run:
-    - cuda-python {{ cuda_python_version }}
+    - conda-forge::cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
