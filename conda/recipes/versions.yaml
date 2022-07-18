@@ -135,7 +135,7 @@ pydocstyle_version:
 python_confluent_kafka_version:
   - '>=1.3.0'
 pytorch_version:
-  - '>=1.6'
+  - '>=1.6,<1.12.0'
 protobuf_version:
   - '>=3.20.1,<3.21.0a0'
 pydata_sphinx_theme_version:
