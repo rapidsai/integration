@@ -8,10 +8,13 @@ source activate $CONDA_ENV_NAME
 
 echo "Installing conda packages"
 conda install -y -c $CONDA_USERNAME -c nvidia -c conda-forge \
-    rapids=$RAPIDS_VER \
-    cudatoolkit=$CUDA_VER \
-    conda-pack \
-    ipykernel
+    "rapids=$RAPIDS_VER" \
+    "cudatoolkit=$CUDA_VER" \
+    "gcc_linux-64==9.*" \
+    "sysroot_linux-64==2.17" \
+    "conda-pack" \
+    "ipykernel" \
+    "cuda-python=11.7.0"
 
 echo "Packing conda environment"
 conda-pack --quiet --ignore-missing-files -n $CONDA_ENV_NAME -o ${CONDA_ENV_NAME}.tar.gz

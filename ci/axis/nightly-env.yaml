@@ -1,12 +1,12 @@
 CONDA_USERNAME:
-  - rapidsai
+  - rapidsai-nightly
 
 CONDA_CONFIG_FILE:
   - conda/recipes/versions.yaml
 
-# Use M.X.Y (major.minor.patch) version to match tag
+# Use M.X.Ya (major.minor.patch) with 'a' version to match nightly tag
 RAPIDS_VER:
-  - "22.08.00"
+  - 22.08.00a
 
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:

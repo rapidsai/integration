@@ -2,8 +2,8 @@
 set +e
 set -x
 
-export HOME=$WORKSPACE
-export LIBCUDF_KERNEL_CACHE_PATH=$WORKSPACE/.cache/rapids/cudf
+export HOME="$WORKSPACE"
+export LIBCUDF_KERNEL_CACHE_PATH="$WORKSPACE/.cache/rapids/cudf"
 export PATH="/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/local/gcc7/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # FIXME: "source activate" line should not be needed
@@ -12,7 +12,7 @@ env
 nvidia-smi
 conda list
 
-TESTRESULTS_DIR=${WORKSPACE}/testresults
+TESTRESULTS_DIR="$WORKSPACE/testresults"
 mkdir -p ${TESTRESULTS_DIR}
 SUITEERROR=0
 
@@ -26,16 +26,8 @@ for gt in /rapids/cudf/cpp/build/gtests/*; do
    fi
 done
 
-# Python tests
-export PYTHONPATH=\
-/rapids/cudf/python/cudf:\
-/rapids/cudf/python/dask_cudf:\
-/rapids/cudf/python/custreamz:\
-/rapids/cudf/python/nvstrings:\
-${PYTHONPATH}
-
-cd /rapids/cudf/python/cudf
-py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v
+cd /rapids/cudf/python/cudf/cudf/tests
+pytest -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-cudf.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
@@ -43,7 +35,7 @@ if (( ${exitcode} != 0 )); then
 fi
 
 cd /rapids/cudf/python/dask_cudf
-py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-dask-cudf.xml -v
+pytest -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-dask-cudf.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}
@@ -51,7 +43,7 @@ if (( ${exitcode} != 0 )); then
 fi
 
 cd /rapids/cudf/python/custreamz
-py.test -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-custreamz.xml -v
+pytest -n 6 --junitxml=${TESTRESULTS_DIR}/pytest-custreamz.xml -v
 exitcode=$?
 if (( ${exitcode} != 0 )); then
    SUITEERROR=${exitcode}

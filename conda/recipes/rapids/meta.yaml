@@ -2,8 +2,9 @@
 
 {% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VER', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
+{% set cuda_major=cuda_version.split('.')[0] %}
 
 ###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
@@ -25,7 +26,7 @@ source:
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
-  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
+  string: cuda{{ cuda_major }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
     - CUDA_VERSION
     - RAPIDS_VER
@@ -35,20 +36,20 @@ requirements:
   host:
     - python
   run:
-    - cudatoolkit ={{ cuda_version }}.*
+    - cuda-python {{ cuda_python_version }}
+    - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
-    - pickle5  # [py<38]
     - python
     - setuptools {{ setuptools_version }}
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*
-    # - cucim ={{ minor_version }}.*
+    - cucim ={{ minor_version }}.*
     - cusignal ={{ minor_version }}.*
     - cuspatial ={{ minor_version }}.*
     - custreamz ={{ minor_version }}.*
@@ -56,14 +57,27 @@ requirements:
     - dask-cuda ={{ minor_version }}.*
     - rapids-xgboost ={{ minor_version }}.*
     - rmm ={{ minor_version }}.*
+    - pylibcugraph ={{ minor_version }}.*
+    - libcugraph_etl ={{ minor_version }}.*
+    - ptxcompiler  # [linux64]  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
+    - conda-forge::ucx-proc=*=gpu
+    - conda-forge::ucx {{ ucx_version }}
 
-test:
-  imports:
-    - cudf
-    - dask_cudf
-    - cuml
-    - cugraph
-    - cuspatial
+test:              # [linux64]
+  imports:         # [linux64]
+    - cucim        # [linux64]
+    - cudf         # [linux64]
+    - cudf_kafka   # [linux64]
+    - cugraph      # [linux64]
+    - cuml         # [lunux64]
+    - cusignal     # [linux64]
+    - cuspatial    # [linux64]
+    - custreamz    # [linux64]
+    - cuxfilter    # [linux64]
+    - dask_cuda    # [linux64]
+    - dask_cudf    # [linux64]
+    - pylibcugraph # [linux64]
+    - rmm          # [linux64]
 
 about:
   home: http://rapids.ai/

@@ -2,8 +2,9 @@
 
 {% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VERSION', '10.0').split('.')[:2]) %}
+{% set cuda_version = '.'.join(environ.get('CUDA_VER', '10.0').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
+{% set cuda_major=cuda_version.split('.')[0] %}
 
 ###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
@@ -25,7 +26,7 @@ source:
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
-  string: cuda{{ cuda_version }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
+  string: cuda{{ cuda_major }}_py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
     - CUDA_VERSION
     - RAPIDS_VER
@@ -36,7 +37,6 @@ requirements:
     - python
   run:
     - arrow-cpp {{ arrow_version }}
-    - arrow-cpp-proc * cuda
     - asvdb
     - autoconf
     - automake
@@ -47,16 +47,20 @@ requirements:
     - boost-cpp {{ boost_cpp_version }}
     - boto3
     - cachetools
-    - conda-forge::clang {{ clang_version }}
-    - conda-forge::clang-tools {{ clang_version }}
+    - conda-forge::clang {{ clang_version }} # [x86_64]
+    - conda-forge::clang-tools {{ clang_version }} # [x86_64]
     - cmake {{ cmake_version }}
-    - cmake-format {{ cmake_format_version }}
+    - cmakelang {{ cmakelang_version }}
     - cmake_setuptools {{ cmake_setuptools_version }}
     - conda {{ conda_version }}
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
-    - cudatoolkit ={{ cuda_version }}.*
+    - cuda-python {{ cuda_python_version }}
+    - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
+    - c-compiler
+    - cxx-compiler
+    - gcc_impl_{{ target_platform }}  {{ gcc_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
     - dask-ml
@@ -69,7 +73,6 @@ requirements:
     - fastavro {{ fastavro_version }}
     - feather-format
     - flake8 {{ flake8_version }}
-    - flatbuffers {{ flatbuffers_version }}
     - fsspec {{ fsspec_version }}
     - gcsfs {{ gcsfs_version }}
     - gdal {{ gdal_version }}
@@ -78,22 +81,22 @@ requirements:
     - gmock {{ gmock_version }}
     - graphviz
     - gtest {{ gtest_version }}
+    - h5py
+    - hdbscan
+    - holoviews {{ holoviews_version }}
     - httpretty
     - hypothesis
     - isort {{ isort_version }}
     - lapack
     - libcypher-parser
-    - libgcc-ng {{ build_stack_version }}
-    - libgfortran-ng {{ build_stack_version }}
-    - libhwloc
     - liblapack
     - librdkafka {{ librdkafka_version }}
-    - libstdcxx-ng {{ build_stack_version }}
     - libtool
     - libwebp
     - lightgbm
     - make
-    - mimesis
+    - mimesis {{ mimesis_version }}
+    - mock
     - moto {{ moto_version }}
     - mypy {{ mypy_version }}
     - nccl {{ nccl_version }}
@@ -107,10 +110,12 @@ requirements:
     - packaging
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
-    - pickle5  # [py<38]
+    - pillow {{ pillow_version }}
     - pkg-config
+    - pre-commit
     - protobuf {{ protobuf_version }}
     - psutil
+    - ptxcompiler  # [linux64]  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
     - pydocstyle {{ pydocstyle_version }}
@@ -121,16 +126,19 @@ requirements:
     - pytest
     - pytest-asyncio {{ pytest_asyncio_version }}
     - pytest-benchmark
+    - pytest-cases
     - pytest-cov
     - pytest-timeout
     - pytest-xdist
     - python
     - python-confluent-kafka {{ python_confluent_kafka_version }}
     - python-louvain
+    - python-snappy
     - rapidjson {{ rapidjson_version }}
     - ripgrep
     - s3fs {{ s3fs_version }}
     - setuptools
+    - scikit-build {{ scikit_build_version }}
     - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
     - scipy {{ scipy_version }}
@@ -138,12 +146,13 @@ requirements:
     - spdlog {{ spdlog_version }}
     - statsmodels
     - streamz
-    - transformers
+    - sysroot_{{ target_platform }} {{ sysroot_version }}
+    - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}
     - twine
     - typing_extensions
-    - ucx-proc=*=gpu
-    - ucx
+    - conda-forge::ucx-proc=*=gpu
+    - conda-forge::ucx {{ ucx_version }}
     - umap-learn
 
 about:
