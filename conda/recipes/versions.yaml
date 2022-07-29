@@ -113,7 +113,7 @@ networkx_version:
 nlohmann_json_version:
   - '3.9.1'
 nodejs_version:
-  - '>=12,<15'
+  - '>=14'
 numba_version:
   - '>=0.54'
 numpy_version:
