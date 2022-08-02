@@ -73,7 +73,7 @@ fsspec_version:
 gdal_version:
   - '>=3.3.0,<3.4.0a0'
 geopandas_version:
-  - '>=0.9.0,<0.10.0a0'
+  - '>=0.11.0'
 gcsfs_version:
   - '>=0.8.0'
 google_cloud_cpp_version:
