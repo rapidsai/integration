@@ -27,7 +27,7 @@ sysroot_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=8.0.0'
+  - '=8'
 benchmark_version:
   - '=1.5.1'
 black_version:
@@ -47,15 +47,15 @@ cmake_setuptools_version:
 cuda_python_version:
   - '>=11.5,<11.7.1'
 cupy_version:
-  - '>=9.5.0,<11.0.0a0'
+  - '>=9.5.0,<12.0.0a0'
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
-  - '>=2022.05.2'
+  - '==2022.7.1'
 datashader_version:
   - '>0.13,<0.14'
 distributed_version:
-  - '>=2022.05.2'
+  - '==2022.7.1'
 dlpack_version:
   - '>=0.5,<0.6.0a0'
 double_conversion_version:
@@ -113,7 +113,7 @@ networkx_version:
 nlohmann_json_version:
   - '3.9.1'
 nodejs_version:
-  - '>=12,<15'
+  - '>=14'
 numba_version:
   - '>=0.54'
 numpy_version:
@@ -173,3 +173,5 @@ transformers_version:
   - '<=4.10.3'
 ucx_version:
   - '>=1.12.1'
+werkzeug_version:
+  - '<2.2.0'
