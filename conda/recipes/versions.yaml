@@ -47,7 +47,7 @@ cmake_setuptools_version:
 cuda_python_version:
   - '>=11.5,<11.7.1'
 cupy_version:
-  - '>=9.5.0,<12.0.0a0'
+  - '>=9.5.0,<11.0.0a0'
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
