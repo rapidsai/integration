@@ -35,7 +35,7 @@ black_version:
 bokeh_version:
   - '>=2.4.2,<=2.5'
 boost_cpp_version:
-  - '=1.72.0'
+  - '=1.74.0'
 clang_version:
   - '=11.1.0'
 cmake_version:
