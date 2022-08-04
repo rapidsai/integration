@@ -33,7 +33,7 @@ source activate base
 env
 
 # Install gpuCI tools
-conda install -y -c gpuci gpuci-tools
+conda install -y --channel gpuci gpuci-tools boa
 
 # Print diagnostic information
 gpuci_logger "Print conda info..."
@@ -52,8 +52,14 @@ ARCH=$(uname -m)
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
-  gpuci_conda_retry build --override-channels -c ${CONDA_USERNAME:-rapidsai-nightly} -c nvidia -c conda-forge \
-    --python=${PYTHON_VER} -m ${CONDA_CONFIG_FILE} ${1}
+  gpuci_conda_retry mambabuild \
+    --override-channels \
+    --channel ${CONDA_USERNAME:-rapidsai-nightly} \
+    --channel nvidia \
+    --channel conda-forge \
+    --python=${PYTHON_VER} \
+    --variant-config-files ${CONDA_CONFIG_FILE} \
+    ${1}
 }
 
 function run_builds {

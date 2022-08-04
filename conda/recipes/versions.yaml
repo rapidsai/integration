@@ -35,7 +35,7 @@ black_version:
 bokeh_version:
   - '>=2.4.2,<=2.5'
 boost_cpp_version:
-  - '=1.72.0'
+  - '=1.74.0'
 clang_version:
   - '=11.1.0'
 cmake_version:
@@ -71,7 +71,7 @@ flake8_version:
 fsspec_version:
   - '>=0.9.0'
 gdal_version:
-  - '>=3.3.0,<3.4.0a0'
+  - '>=3.4.3,<3.4.4a0'
 geopandas_version:
   - '>=0.11.0'
 gcsfs_version:
@@ -143,7 +143,7 @@ protobuf_version:
 pydata_sphinx_theme_version:
   - '>=0.6.3'
 pyproj_version:
-  - '>=2.4,<=3.1'
+  - '>=2.4,<=3.4'
 pyppeteer_version:
   - '>=0.2.6'
 pytest_asyncio_version:
