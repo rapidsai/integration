@@ -27,7 +27,7 @@ sysroot_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=8'
+  - '=9'
 benchmark_version:
   - '=1.5.1'
 black_version:
