@@ -37,7 +37,6 @@ requirements:
     - python
   run:
     - arrow-cpp {{ arrow_version }}
-    - arrow-cpp-proc * cuda
     - asvdb
     - autoconf
     - automake
@@ -127,6 +126,7 @@ requirements:
     - pytest
     - pytest-asyncio {{ pytest_asyncio_version }}
     - pytest-benchmark
+    - pytest-cases
     - pytest-cov
     - pytest-timeout
     - pytest-xdist
@@ -154,6 +154,7 @@ requirements:
     - conda-forge::ucx-proc=*=gpu
     - conda-forge::ucx {{ ucx_version }}
     - umap-learn
+    - werkzeug {{ werkzeug_version }} # Temporary transient dependency pinning to avoid URL-LIB3 + moto timeouts
 
 about:
   home: http://rapids.ai/

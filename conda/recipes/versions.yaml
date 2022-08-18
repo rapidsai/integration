@@ -27,7 +27,7 @@ sysroot_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=7.0.0'
+  - '=8'
 benchmark_version:
   - '=1.5.1'
 black_version:
@@ -35,7 +35,7 @@ black_version:
 bokeh_version:
   - '>=2.4.2,<=2.5'
 boost_cpp_version:
-  - '=1.72.0'
+  - '=1.74.0'
 clang_version:
   - '=11.1.0'
 cmake_version:
@@ -45,17 +45,17 @@ cmakelang_version:
 cmake_setuptools_version:
   - '>=0.1.3'
 cuda_python_version:
-  - '>=11.5,<12'
+  - '>=11.5,<11.7.1'
 cupy_version:
   - '>=9.5.0,<11.0.0a0'
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
-  - '=2022.05.2'
+  - '==2022.7.1'
 datashader_version:
   - '>0.13,<0.14'
 distributed_version:
-  - '=2022.05.2'
+  - '==2022.7.1'
 dlpack_version:
   - '>=0.5,<0.6.0a0'
 double_conversion_version:
@@ -71,9 +71,9 @@ flake8_version:
 fsspec_version:
   - '>=0.9.0'
 gdal_version:
-  - '>=3.3.0,<3.4.0a0'
+  - '>=3.4.3,<3.4.4a0'
 geopandas_version:
-  - '>=0.9.0,<0.10.0a0'
+  - '>=0.11.0'
 gcsfs_version:
   - '>=0.8.0'
 google_cloud_cpp_version:
@@ -87,13 +87,15 @@ holoviews_version:
 ipython_version:
   - '=7.31.1'
 isort_version:
-  - '=5.6.4'
+  - '=5.10.1'
 jupyterlab_version:
   - '>=3.1.4,<4.0a0'
 jupyter_packaging_version:
   - '>=0.7.0,<0.8'
 librdkafka_version:
   - '=1.7.*'
+markdown_version:
+  - '>=3.4.1'
 mimesis_version:
   - '<4.1'
 moto_version:
@@ -111,7 +113,7 @@ networkx_version:
 nlohmann_json_version:
   - '3.9.1'
 nodejs_version:
-  - '>=12,<15'
+  - '>=14'
 numba_version:
   - '>=0.54'
 numpy_version:
@@ -135,13 +137,13 @@ pydocstyle_version:
 python_confluent_kafka_version:
   - '>=1.3.0'
 pytorch_version:
-  - '>=1.6'
+  - '>=1.6,<1.12.0'
 protobuf_version:
   - '>=3.20.1,<3.21.0a0'
 pydata_sphinx_theme_version:
   - '>=0.6.3'
 pyproj_version:
-  - '>=2.4,<=3.1'
+  - '>=2.4,<=3.4'
 pyppeteer_version:
   - '>=0.2.6'
 pytest_asyncio_version:
@@ -153,7 +155,7 @@ s3fs_version:
 scikit_build_version:
   - '=0.13.1'
 scikit_image_version:
-  - '>=0.18.0,<0.20.0'
+  - '>=0.19.0,<0.20.0'
 scikit_learn_version:
   - '=0.24'
 # when scipy is updated, remove upper bound on networkx ver.
@@ -171,3 +173,5 @@ transformers_version:
   - '<=4.10.3'
 ucx_version:
   - '>=1.12.1'
+werkzeug_version:
+  - '<2.2.0'
