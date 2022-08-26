@@ -27,7 +27,7 @@ sysroot_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=8'
+  - '=9'
 benchmark_version:
   - '=1.5.1'
 black_version:
@@ -51,11 +51,11 @@ cupy_version:
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
-  - '==2022.7.1'
+  - '>=2022.7.1'
 datashader_version:
   - '>0.13,<0.14'
 distributed_version:
-  - '==2022.7.1'
+  - '>=2022.7.1'
 dlpack_version:
   - '>=0.5,<0.6.0a0'
 double_conversion_version:
