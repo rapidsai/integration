@@ -16,15 +16,15 @@ set -e
 export PATH=/conda/bin:$PATH
 export HOME="$WORKSPACE"
 
+# fixes https://github.com/mamba-org/mamba/issues/488
+rm -f /opt/conda/pkgs/cache/*.json
+
 # Set recipe paths
 CONDA_XGBOOST_RECIPE="conda/recipes/rapids-xgboost"
 CONDA_RAPIDS_RECIPE="conda/recipes/rapids"
 CONDA_RAPIDS_BUILD_RECIPE="conda/recipes/rapids-build-env"
 CONDA_RAPIDS_NOTEBOOK_RECIPE="conda/recipes/rapids-notebook-env"
 CONDA_RAPIDS_DOC_RECIPE="conda/recipes/rapids-doc-env"
-
-# Allow insecure connections for conda-mirror
-echo "ssl_verify: False" >> /conda/.condarc
 
 # Activate conda env
 source activate base
