@@ -101,7 +101,7 @@ mimesis_version:
 moto_version:
   - '>=3.1.6'
 mypy_version:
-  - '0.782'
+  - '0.971'
 mysql_connector_cpp_version:
   - '8.0.23'
 nbsphinx_version:
