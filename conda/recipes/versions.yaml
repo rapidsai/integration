@@ -9,7 +9,7 @@ dask_xgboost_version:
 # Versions for `rapids-xgboost` meta-pkg
 xgboost_version:
   # Minor version is appended in meta.yaml
-  - '=1.6.0dev.rapidsai'
+  - '=1.6.2dev.rapidsai'
 
 # Versions for conda
 conda_version:
@@ -27,7 +27,7 @@ sysroot_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=8'
+  - '=9'
 benchmark_version:
   - '=1.5.1'
 black_version:
@@ -35,7 +35,7 @@ black_version:
 bokeh_version:
   - '>=2.4.2,<=2.5'
 boost_cpp_version:
-  - '=1.72.0'
+  - '=1.74.0'
 clang_version:
   - '=11.1.0'
 cmake_version:
@@ -51,11 +51,11 @@ cupy_version:
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
-  - '==2022.7.1'
+  - '>=2022.7.1'
 datashader_version:
   - '>0.13,<0.14'
 distributed_version:
-  - '==2022.7.1'
+  - '>=2022.7.1'
 dlpack_version:
   - '>=0.5,<0.6.0a0'
 double_conversion_version:
@@ -95,13 +95,13 @@ jupyter_packaging_version:
 librdkafka_version:
   - '=1.7.*'
 markdown_version:
-  - '<3.4.0'
+  - '>=3.4.1'
 mimesis_version:
   - '<4.1'
 moto_version:
   - '>=3.1.6'
 mypy_version:
-  - '0.782'
+  - '0.971'
 mysql_connector_cpp_version:
   - '8.0.23'
 nbsphinx_version:
@@ -143,7 +143,7 @@ protobuf_version:
 pydata_sphinx_theme_version:
   - '>=0.6.3'
 pyproj_version:
-  - '>=2.4,<=3.1'
+  - '>=2.4,<=3.4'
 pyppeteer_version:
   - '>=0.2.6'
 pytest_asyncio_version:
@@ -155,7 +155,7 @@ s3fs_version:
 scikit_build_version:
   - '=0.13.1'
 scikit_image_version:
-  - '>=0.18.0,<0.20.0'
+  - '>=0.19.0,<0.20.0'
 scikit_learn_version:
   - '=0.24'
 # when scipy is updated, remove upper bound on networkx ver.
@@ -168,7 +168,7 @@ spdlog_version:
 sphinx_markdown_tables_version:
   - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
-  - '=2.4.0'
+  - '=3.0.0'
 transformers_version:
   - '<=4.10.3'
 ucx_version:
