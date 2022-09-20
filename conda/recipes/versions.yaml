@@ -123,7 +123,7 @@ nvtx_version:
 openjdk_version:
   - '>=8.0'
 pandas_version:
-  - '>=1.0,<1.5.0dev0'
+  - '>=1.0,<1.6.0dev0'
 pandoc_version:
   - '<=2.0.0'
 panel_version:
