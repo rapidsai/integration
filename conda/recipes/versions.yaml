@@ -115,7 +115,7 @@ nlohmann_json_version:
 nodejs_version:
   - '>=14'
 numba_version:
-  - '>=0.54'
+  - '>=0.56.2'
 numpy_version:
   - '>=1.19'
 nvtx_version:
