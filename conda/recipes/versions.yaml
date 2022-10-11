@@ -97,7 +97,7 @@ librdkafka_version:
 markdown_version:
   - '>=3.4.1'
 mimesis_version:
-  - '<4.1'
+  - '>=4.1'
 moto_version:
   - '>=3.1.6'
 mypy_version:
