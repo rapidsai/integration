@@ -150,6 +150,7 @@ requirements:
     - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}
     - twine
+    - types-cachetools
     - typing_extensions
     - conda-forge::ucx-proc=*=gpu
     - conda-forge::ucx {{ ucx_version }}

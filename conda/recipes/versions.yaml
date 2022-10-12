@@ -9,7 +9,7 @@ dask_xgboost_version:
 # Versions for `rapids-xgboost` meta-pkg
 xgboost_version:
   # Minor version is appended in meta.yaml
-  - '=1.6.0dev.rapidsai'
+  - '=1.6.2dev.rapidsai'
 
 # Versions for conda
 conda_version:
@@ -27,7 +27,7 @@ sysroot_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=8'
+  - '=9'
 benchmark_version:
   - '=1.5.1'
 black_version:
@@ -47,15 +47,15 @@ cmake_setuptools_version:
 cuda_python_version:
   - '>=11.5,<11.7.1'
 cupy_version:
-  - '>=9.5.0,<11.0.0a0'
+  - '>=9.5.0,<12.0.0a0'
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
-  - '==2022.7.1'
+  - '==2022.9.2'
 datashader_version:
   - '>0.13,<0.14'
 distributed_version:
-  - '==2022.7.1'
+  - '==2022.9.2'
 dlpack_version:
   - '>=0.5,<0.6.0a0'
 double_conversion_version:
@@ -71,7 +71,7 @@ flake8_version:
 fsspec_version:
   - '>=0.9.0'
 gdal_version:
-  - '>=3.4.3,<3.4.4a0'
+  - '>=3.5.0'
 geopandas_version:
   - '>=0.11.0'
 gcsfs_version:
@@ -101,7 +101,7 @@ mimesis_version:
 moto_version:
   - '>=3.1.6'
 mypy_version:
-  - '0.782'
+  - '0.971'
 mysql_connector_cpp_version:
   - '8.0.23'
 nbsphinx_version:
@@ -115,7 +115,7 @@ nlohmann_json_version:
 nodejs_version:
   - '>=14'
 numba_version:
-  - '>=0.54'
+  - '>=0.56.2'
 numpy_version:
   - '>=1.19'
 nvtx_version:
@@ -123,7 +123,7 @@ nvtx_version:
 openjdk_version:
   - '>=8.0'
 pandas_version:
-  - '>=1.0,<1.5.0dev0'
+  - '>=1.0,<1.6.0dev0'
 pandoc_version:
   - '<=2.0.0'
 panel_version:
@@ -168,7 +168,7 @@ spdlog_version:
 sphinx_markdown_tables_version:
   - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
-  - '=2.4.0'
+  - '=3.0.0'
 transformers_version:
   - '<=4.10.3'
 ucx_version:
