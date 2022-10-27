@@ -7,14 +7,14 @@ conda create -y --name=$CONDA_ENV_NAME python=$PYTHON_VER
 source activate $CONDA_ENV_NAME
 
 echo "Installing conda packages"
-conda install -y -c $CONDA_USERNAME -c nvidia -c conda-forge \
+conda install -y -c $CONDA_USERNAME -c conda-forge -c nvidia \
     "rapids=$RAPIDS_VER" \
     "cudatoolkit=$CUDA_VER" \
     "gcc_linux-64==9.*" \
     "sysroot_linux-64==2.17" \
     "conda-pack" \
     "ipykernel" \
-    "cuda-python=11.7.0"
+    "cuda-python=11.7.1"
 
 echo "Packing conda environment"
 conda-pack --quiet --ignore-missing-files -n $CONDA_ENV_NAME -o ${CONDA_ENV_NAME}.tar.gz
