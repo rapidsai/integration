@@ -111,6 +111,7 @@ requirements:
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
     - pillow {{ pillow_version }}
+    - pip
     - pkg-config
     - pre-commit
     - protobuf {{ protobuf_version }}
