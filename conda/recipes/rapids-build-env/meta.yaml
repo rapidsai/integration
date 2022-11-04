@@ -111,6 +111,7 @@ requirements:
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
     - pillow {{ pillow_version }}
+    - pip
     - pkg-config
     - pre-commit
     - protobuf {{ protobuf_version }}
@@ -147,6 +148,7 @@ requirements:
     - statsmodels
     - streamz
     - sysroot_{{ target_platform }} {{ sysroot_version }}
+    - tomli  # [py<311]
     - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}
     - twine
