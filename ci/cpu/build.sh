@@ -52,15 +52,27 @@ ARCH=$(uname -m)
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
-  gpuci_conda_retry mambabuild \
-    --override-channels \
-    --channel conda-forge \
-    --channel rapidsai \
-    --channel rapidsai-nightly \
-    --channel nvidia \
-    --python=${PYTHON_VER} \
-    --variant-config-files ${CONDA_CONFIG_FILE} \
-    ${1}
+  # Only include rapidsai-nightly for nightly builds
+  if [[ "$BUILD_MODE" = "branch" && "$SOURCE_BRANCH" = "main" ]] ; then
+    gpuci_conda_retry mambabuild \
+      --override-channels \
+      --channel conda-forge \
+      --channel rapidsai \
+      --channel nvidia \
+      --python=${PYTHON_VER} \
+      --variant-config-files ${CONDA_CONFIG_FILE} \
+      ${1}
+    else
+      gpuci_conda_retry mambabuild \
+      --override-channels \
+      --channel conda-forge \
+      --channel rapidsai \
+      --channel rapidsai-nightly \
+      --channel nvidia \
+      --python=${PYTHON_VER} \
+      --variant-config-files ${CONDA_CONFIG_FILE} \
+      ${1}
+    fi
 }
 
 function run_builds {
