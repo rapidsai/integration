@@ -54,9 +54,10 @@ function build_pkg {
   gpuci_logger "Start conda build for '${1}'..."
   gpuci_conda_retry mambabuild \
     --override-channels \
-    --channel ${CONDA_USERNAME:-rapidsai-nightly} \
-    --channel nvidia \
     --channel conda-forge \
+    --channel rapidsai \
+    --channel rapidsai-nightly \
+    --channel nvidia \
     --python=${PYTHON_VER} \
     --variant-config-files ${CONDA_CONFIG_FILE} \
     ${1}
