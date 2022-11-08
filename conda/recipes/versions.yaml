@@ -173,5 +173,7 @@ transformers_version:
   - '<=4.10.3'
 ucx_version:
   - '>=1.12.1'
+versioneer_version:
+  - '>=0.24'
 werkzeug_version:
   - '<2.2.0'
