@@ -157,6 +157,7 @@ requirements:
     - conda-forge::ucx-proc=*=gpu
     - conda-forge::ucx {{ ucx_version }}
     - umap-learn
+    - versioneer {{ versioneer_version }}
     - werkzeug {{ werkzeug_version }} # Temporary transient dependency pinning to avoid URL-LIB3 + moto timeouts
 
 about:
