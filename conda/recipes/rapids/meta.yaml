@@ -36,6 +36,7 @@ requirements:
   host:
     - python
   run:
+    - gdal {{ gdal_version }}
     - cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
