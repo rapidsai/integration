@@ -138,7 +138,7 @@ requirements:
     - rapidjson {{ rapidjson_version }}
     - ripgrep
     - s3fs {{ s3fs_version }}
-    - setuptools
+    - setuptools {{ setuptools_version }}
     - scikit-build {{ scikit_build_version }}
     - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
