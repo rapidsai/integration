@@ -45,7 +45,6 @@ requirements:
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
     - python
-    - setuptools {{ setuptools_version }}
     - cudf ={{ minor_version }}.*
     - cugraph ={{ minor_version }}.*
     - cuml ={{ minor_version }}.*

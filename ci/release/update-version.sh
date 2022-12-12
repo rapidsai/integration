@@ -6,6 +6,15 @@
 ## Usage
 # bash update-version.sh <new_version>
 
+# Workaround for MacOS where BSD sed doesn't support the flags
+# Install MacOS gsed with `brew install gnu-sed`
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     sedCmd=sed;;
+    Darwin*)    sedCmd=gsed;;
+    *)          echo "Unknown OS"; exit 1;;
+esac
+
 
 # Format is YY.MM.PP - no leading 'v' or trailing 'a'
 NEXT_FULL_TAG=$1
@@ -26,12 +35,14 @@ echo "Preparing release $CURRENT_TAG => $NEXT_FULL_TAG"
 
 # Inplace sed replace; workaround for Linux and Mac
 function sed_runner() {
-    sed -i.bak ''"$1"'' $2 && rm -f ${2}.bak
+    $sedCmd -i.bak ''"$1"'' $2 && rm -f ${2}.bak
 }
 
 # Axis file update
-sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-arm64.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- \"${NEXT_FULL_TAG}\"/}" ci/axis/release.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- \"${NEXT_FULL_TAG}\"/}" ci/axis/release-arm64.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-env-arm64.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-env.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-meta-arm64.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-meta.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}/}" ci/axis/release-arm64.yaml
+sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}/}" ci/axis/release.yaml
 sed_runner "/RAPIDS_VER/{n; s/- .*/- \"${NEXT_SHORT_TAG}\"/}" ci/axis/tests.yaml

@@ -111,6 +111,7 @@ requirements:
     - pandas {{ pandas_version }}
     - panel {{ panel_version }}
     - pillow {{ pillow_version }}
+    - pip
     - pkg-config
     - pre-commit
     - protobuf {{ protobuf_version }}
@@ -137,7 +138,7 @@ requirements:
     - rapidjson {{ rapidjson_version }}
     - ripgrep
     - s3fs {{ s3fs_version }}
-    - setuptools
+    - setuptools {{ setuptools_version }}
     - scikit-build {{ scikit_build_version }}
     - scikit-image {{ scikit_image_version }}
     - scikit-learn {{ scikit_learn_version }}
@@ -147,6 +148,7 @@ requirements:
     - statsmodels
     - streamz
     - sysroot_{{ target_platform }} {{ sysroot_version }}
+    - tomli  # [py<311]
     - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}
     - twine
@@ -155,6 +157,7 @@ requirements:
     - conda-forge::ucx-proc=*=gpu
     - conda-forge::ucx {{ ucx_version }}
     - umap-learn
+    - versioneer {{ versioneer_version }}
     - werkzeug {{ werkzeug_version }} # Temporary transient dependency pinning to avoid URL-LIB3 + moto timeouts
 
 about:
