@@ -36,7 +36,6 @@ requirements:
   host:
     - python
   run:
-    - arrow-cpp {{ arrow_version }}
     - asvdb
     - autoconf
     - automake
@@ -88,6 +87,7 @@ requirements:
     - hypothesis
     - isort {{ isort_version }}
     - lapack
+    - libarrow {{ arrow_version }}
     - libcypher-parser
     - liblapack
     - librdkafka {{ librdkafka_version }}
