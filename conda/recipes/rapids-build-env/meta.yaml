@@ -148,6 +148,7 @@ requirements:
     - statsmodels
     - streamz
     - sysroot_{{ target_platform }} {{ sysroot_version }}
+    - thriftpy2
     - tomli  # [py<311]
     - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}
