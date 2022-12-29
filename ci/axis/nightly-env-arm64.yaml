@@ -14,6 +14,6 @@ CUDA_VER:
 
 PYTHON_VER:
   - 3.8
-  - 3.9
+  - '3.10'
 
 exclude:
