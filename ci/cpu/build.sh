@@ -52,7 +52,10 @@ ARCH=$(uname -m)
 function build_pkg {
   # Build pkg
   gpuci_logger "Start conda build for '${1}'..."
+  # TODO: Remove `--no-test` flag once importing on a CPU
+  # node works correctly
   gpuci_conda_retry mambabuild \
+    --no-test \
     --override-channels \
     --channel ${CONDA_USERNAME:-rapidsai-nightly} \
     --channel conda-forge \
