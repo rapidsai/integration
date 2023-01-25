@@ -13,7 +13,7 @@
 set -e
 
 # Set paths
-export PATH=/opt/conda/bin:$PATH
+export PATH="/opt/conda/bin:$PATH"
 export HOME="$WORKSPACE"
 
 # fixes https://github.com/mamba-org/mamba/issues/488
