@@ -88,13 +88,13 @@ function upload_builds {
   else
     gpuci_logger "Upload key found, starting upload..."
     gpuci_logger "Files to upload..."
-    if [[ -n $(ls /conda/conda-bld/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2) ]]; then
-      ls /conda/conda-bld/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2
+    if [[ -n $(ls /tmp/conda-bld-output/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2) ]]; then
+      ls /tmp/conda-bld-output/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2
     fi
 
     gpuci_logger "Starting upload..."
-    if [[ -n $(ls /conda/conda-bld/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2) ]]; then
-      ls /conda/conda-bld/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2 | xargs gpuci_retry \
+    if [[ -n $(ls /tmp/conda-bld-output/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2) ]]; then
+      ls /tmp/conda-bld-output/${ARCH_DIR}/* | grep -i rapids.*.tar.bz2 | xargs gpuci_retry \
         anaconda -t ${MY_UPLOAD_KEY} upload -u ${CONDA_USERNAME:-rapidsai-nightly} --label main --skip-existing --no-progress
     fi
   fi
