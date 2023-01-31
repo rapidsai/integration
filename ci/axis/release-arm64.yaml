@@ -10,10 +10,11 @@ RAPIDS_VER:
 
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:
-  - 11.5.1
+  - 11.8.0
 
 PYTHON_VER:
   - 3.8
   - 3.9
+  - '3.10'
 
 exclude:
