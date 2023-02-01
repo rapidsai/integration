@@ -54,6 +54,7 @@ requirements:
     - conda {{ conda_version }}
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
+    - cubinlinker  # CUDA enhanced compat.
     - cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
@@ -116,7 +117,7 @@ requirements:
     - pre-commit
     - protobuf {{ protobuf_version }}
     - psutil
-    - ptxcompiler  # [linux64]  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
+    - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
     - pydocstyle {{ pydocstyle_version }}
