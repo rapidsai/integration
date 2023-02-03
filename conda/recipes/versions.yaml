@@ -86,8 +86,14 @@ holoviews_version:
   - '>=1.14.8,<=1.15.3'
 ipython_version:
   - '=7.31.1'
+# TODO Update ipykernel_version once https://github.com/jupyter-server/jupyter_server/issues/1198 is resolved
+ipykernel_version:
+  - '=6.20.2'
 isort_version:
   - '=5.12.0'
+# TODO Update jupyter_core_version once https://github.com/jupyter-server/jupyter_server/issues/1198 is resolved
+jupyter_core_version:
+  - '=5.1.5'
 jupyterlab_version:
   - '>=3.1.4,<4.0a0'
 jupyter_packaging_version:
