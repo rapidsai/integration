@@ -41,7 +41,7 @@ conda info
 conda config --show-sources
 conda list --show-channel-urls
 
-export RAPIDS_DATE_STRING=$(git show --no-patch --date=format:'%y%m%d' --format='%cd')
+export RAPIDS_DATE_STRING=$(date +%y%m%d)
 
 # Get arch
 ARCH=$(uname -m)
