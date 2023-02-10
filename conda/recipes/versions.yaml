@@ -27,7 +27,7 @@ sysroot_version:
 
 # Shared versions across meta-pkgs
 arrow_version:
-  - '=9'
+  - '=10'
 benchmark_version:
   - '=1.5.1'
 black_version:
@@ -51,11 +51,11 @@ cupy_version:
 cython_version:
   - '>=0.29.17,<0.30'
 dask_version:
-  - '==2022.11.1'
+  - '==2023.1.1'
 datashader_version:
   - '>0.13,<0.14'
 distributed_version:
-  - '==2022.11.1'
+  - '==2023.1.1'
 dlpack_version:
   - '>=0.5,<0.6.0a0'
 double_conversion_version:
@@ -63,7 +63,7 @@ double_conversion_version:
 doxygen_version:
   - '>=1.8.12,<=1.8.20'
 faiss_version:
-  - '=1.7.0'
+  - '=1.7.2'
 fastavro_version:
   - '>=0.22.0'
 flake8_version:
@@ -83,11 +83,17 @@ gmock_version:
 gtest_version:
   - '=1.10.0'
 holoviews_version:
-  - '>1.14.1,<=1.14.6'
+  - '>=1.14.8,<=1.15.3'
 ipython_version:
   - '=7.31.1'
+# TODO Update ipykernel_version once https://github.com/jupyter-server/jupyter_server/issues/1198 is resolved
+ipykernel_version:
+  - '=6.20.2'
 isort_version:
-  - '=5.10.1'
+  - '=5.12.0'
+# TODO Update jupyter_core_version once https://github.com/jupyter-server/jupyter_server/issues/1198 is resolved
+jupyter_core_version:
+  - '=5.1.5'
 jupyterlab_version:
   - '>=3.1.4,<4.0a0'
 jupyter_packaging_version:
@@ -109,7 +115,7 @@ nbsphinx_version:
 nccl_version:
   - '>=2.9.9,<3.0a0'
 networkx_version:
-  - '>=2.5.1,<=2.6.3'
+  - '>=2.5.1'
 nlohmann_json_version:
   - '3.9.1'
 nodejs_version:
@@ -127,7 +133,7 @@ pandas_version:
 pandoc_version:
   - '<=2.0.0'
 panel_version:
-  - '>=0.14.0,<0.15'
+  - '>=0.14.0,<=0.14.1'
 pillow_version:
   - '>=9.0.0'
 pydeck_version:
@@ -139,7 +145,7 @@ python_confluent_kafka_version:
 pytorch_version:
   - '>=1.6,<1.12.0'
 protobuf_version:
-  - '>=3.20.1,<3.21.0a0'
+  - '=4.21'
 pydata_sphinx_theme_version:
   - '>=0.6.3'
 pyproj_version:
@@ -147,7 +153,7 @@ pyproj_version:
 pyppeteer_version:
   - '>=0.2.6'
 pytest_asyncio_version:
-  - '<0.14.0'
+  - '=0.20.*'
 rapidjson_version:
   - '=1.1.0'
 s3fs_version:
@@ -157,10 +163,10 @@ scikit_build_version:
 scikit_image_version:
   - '>=0.19.0,<0.20.0'
 scikit_learn_version:
-  - '=0.24'
+  - '=1.2'
 # when scipy is updated, remove upper bound on networkx ver.
 scipy_version:
-  - '=1.6.0'
+  - '>=1.6.0'
 setuptools_version:
   - '>65'
 spdlog_version:
@@ -168,7 +174,7 @@ spdlog_version:
 sphinx_markdown_tables_version:
   - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
-  - '=3.0.1'
+  - '=3.1.0'
 transformers_version:
   - '<=4.10.3'
 ucx_version:

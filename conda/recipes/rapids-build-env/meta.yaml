@@ -36,7 +36,6 @@ requirements:
   host:
     - python
   run:
-    - arrow-cpp {{ arrow_version }}
     - asvdb
     - autoconf
     - automake
@@ -55,6 +54,7 @@ requirements:
     - conda {{ conda_version }}
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
+    - cubinlinker  # CUDA enhanced compat.
     - cuda-python {{ cuda_python_version }}
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
@@ -63,6 +63,7 @@ requirements:
     - gcc_impl_{{ target_platform }}  {{ gcc_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
+    - dask-core {{ dask_version }}
     - dask-ml
     - datashader {{ datashader_version }}
     - distributed {{ distributed_version }}
@@ -88,6 +89,7 @@ requirements:
     - hypothesis
     - isort {{ isort_version }}
     - lapack
+    - libarrow {{ arrow_version }}
     - libcypher-parser
     - liblapack
     - librdkafka {{ librdkafka_version }}
@@ -116,7 +118,7 @@ requirements:
     - pre-commit
     - protobuf {{ protobuf_version }}
     - psutil
-    - ptxcompiler  # [linux64]  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
+    - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     - pyarrow {{ arrow_version }}
     - pydeck {{ pydeck_version }}
     - pydocstyle {{ pydocstyle_version }}
@@ -148,6 +150,7 @@ requirements:
     - statsmodels
     - streamz
     - sysroot_{{ target_platform }} {{ sysroot_version }}
+    - thriftpy2
     - tomli  # [py<311]
     - transformers {{ transformers_version }}
     - treelite {{ treelite_version }}

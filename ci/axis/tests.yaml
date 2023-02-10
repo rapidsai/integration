@@ -6,18 +6,15 @@ DOCKER_REPO:
 
 # Use M.X (major.minor) version
 RAPIDS_VER:
-  - "22.12"
+  - "23.02"
 
 CUDA_VER:
-  - 11.5
+  - 11.8
 
 LINUX_VER:
-  - ubuntu18.04
-  - ubuntu20.04
-  - centos7
-  - centos8
+  - ubuntu22.04
 
 PYTHON_VER:
-  - 3.8
+  - "3.10"
 
 exclude:

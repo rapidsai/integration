@@ -43,6 +43,7 @@ requirements:
     - cupy {{ cupy_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
+    - dask-core {{ dask_version }}
     - dask-labextension
     - dask-ml
     - datashader {{ datashader_version }}
@@ -50,9 +51,11 @@ requirements:
     - filterpy
     - holoviews
     - ipython {{ ipython_version }}
+    - ipykernel {{ ipykernel_version }}
     - ipywidgets
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
+    - jupyter_core {{ jupyter_core_version }}
     - jupyterlab-favorites
     - jupyter-packaging {{ jupyter_packaging_version }}
     - jupyterlab_widgets
