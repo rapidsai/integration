@@ -64,6 +64,7 @@ requirements:
     - gcc_impl_{{ target_platform }}  {{ gcc_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
+    - dask-core {{ dask_version }}
     - dask-ml
     - datashader {{ datashader_version }}
     - distributed {{ distributed_version }}
