@@ -56,7 +56,6 @@ requirements:
     - ipywidgets
     - jupyter-server-proxy
     - jupyterlab {{ jupyterlab_version }}
-    - jupyter_core {{ jupyter_core_version }}
     - jupyterlab-favorites
     - jupyter-packaging {{ jupyter_packaging_version }}
     - jupyterlab_widgets
