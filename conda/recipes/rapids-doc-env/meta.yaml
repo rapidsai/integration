@@ -43,7 +43,7 @@ requirements:
     - markdown {{ markdown_version }}
     - nbsphinx {{ nbsphinx_version }}
     - numpydoc
-    - pandoc {{ pandoc_version }}
+    - pandoc
     - pydata-sphinx-theme {{ pydata_sphinx_theme_version }}
     - recommonmark
     - sphinx
