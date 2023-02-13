@@ -99,7 +99,7 @@ jupyterlab_version:
 jupyter_packaging_version:
   - '>=0.7.0,<0.8'
 librdkafka_version:
-  - '=1.7.*'
+  - '>=1.9.0,<1.10.0a0"
 markdown_version:
   - '>=3.4.1'
 mimesis_version:
@@ -139,7 +139,7 @@ pydeck_version:
 pydocstyle_version:
   - '>=6.0.0, <=7.0.0'
 python_confluent_kafka_version:
-  - '>=1.3.0'
+  - '>=1.9.0,<1.10.0a0'
 pytorch_version:
   - '>=1.6,<1.12.0'
 protobuf_version:
