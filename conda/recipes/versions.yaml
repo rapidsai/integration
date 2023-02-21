@@ -68,6 +68,8 @@ fastavro_version:
   - '>=0.22.0'
 flake8_version:
   - '=3.8'
+fmt_version:
+  - '>=9.1.0,<10'
 fsspec_version:
   - '>=0.9.0'
 gdal_version:
@@ -166,7 +168,7 @@ scipy_version:
 setuptools_version:
   - '>65'
 spdlog_version:
-  - '>=1.8.5,<1.9'
+  - '>=1.11.0,<1.12'
 sphinx_markdown_tables_version:
   - '=0.0.14=pyh9f0ad1d_1'
 treelite_version:
