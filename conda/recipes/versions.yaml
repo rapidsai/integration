@@ -68,6 +68,8 @@ fastavro_version:
   - '>=0.22.0'
 flake8_version:
   - '=3.8'
+fmt_version:
+  - '>=9.1.0,<10'
 fsspec_version:
   - '>=0.9.0'
 gdal_version:
