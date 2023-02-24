@@ -53,7 +53,7 @@ cython_version:
 dask_version:
   - '>=2023.1.1'
 datashader_version:
-  - '>0.13,<0.14'
+  - '>=0.14,<=0.14.4'
 distributed_version:
   - '>=2023.1.1'
 dlpack_version:
