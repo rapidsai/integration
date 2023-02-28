@@ -143,7 +143,7 @@ python_confluent_kafka_version:
 pytorch_version:
   - '>=1.6,<1.12.0'
 protobuf_version:
-  - '=4.21'
+  - '>=4.21.6,<4.22'
 pydata_sphinx_theme_version:
   - '>=0.6.3'
 pyproj_version:
