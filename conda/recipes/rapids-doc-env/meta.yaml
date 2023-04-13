@@ -1,8 +1,9 @@
-# Copyright (c) 2020, NVIDIA CORPORATION.
+# Copyright (c) 2020-2023, NVIDIA CORPORATION.
 
-{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') + environ.get('VERSION_SUFFIX', '') %}
+{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') %}
 {% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
 {% set py_version = environ.get('CONDA_PY', 36) %}
+{% set date_string = environ['RAPIDS_DATE_STRING'] %}
 
 ###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
@@ -24,7 +25,7 @@ source:
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
-  string: py{{ py_version }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
+  string: py{{ py_version }}_{{ date_string }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
   script_env:
     - RAPIDS_VER
     - VERSION_SUFFIX
@@ -42,7 +43,7 @@ requirements:
     - markdown {{ markdown_version }}
     - nbsphinx {{ nbsphinx_version }}
     - numpydoc
-    - pandoc {{ pandoc_version }}
+    - pandoc
     - pydata-sphinx-theme {{ pydata_sphinx_theme_version }}
     - recommonmark
     - sphinx
