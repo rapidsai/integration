@@ -6,7 +6,7 @@ CONDA_CONFIG_FILE:
 
 # Use M.X.Y (major.minor.patch) version to match tag
 RAPIDS_VER:
-  - 23.04.00
+  - 23.04.01
 
 # Use CUDA_VER to not clobber `CUDA_VERSION` in the container
 CUDA_VER:
