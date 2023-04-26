@@ -72,8 +72,6 @@ fmt_version:
   - '>=9.1.0,<10'
 fsspec_version:
   - '>=0.9.0'
-gdal_version:
-  - '>=3.5.0'
 geopandas_version:
   - '>=0.11.0'
 gcsfs_version:
