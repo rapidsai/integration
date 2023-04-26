@@ -1,4 +1,4 @@
-# <div align="left"><img src="https://rapids.ai/assets/images/RAPIDS-logo-white.svg" width="90px"/>&nbsp; Integration
+# <div align="left"><img src="https://rapids.ai/assets/images/rapids_logo.png" width="90px"/>&nbsp; Integration
 
 RAPIDS - combined conda package &amp; integration tests for all of RAPIDS libraries
 
