@@ -78,7 +78,6 @@ requirements:
     - fmt {{ fmt_version }}
     - fsspec {{ fsspec_version }}
     - gcsfs {{ gcsfs_version }}
-    - gdal {{ gdal_version }}
     - geopandas {{ geopandas_version }}
     - git
     - gmock {{ gmock_version }}
