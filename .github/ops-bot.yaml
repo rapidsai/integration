@@ -2,3 +2,5 @@
 # - https://github.com/rapidsai/ops-bot
 
 copy_prs: true
+auto_merger: true
+branch_checker: true
