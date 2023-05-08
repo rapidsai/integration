@@ -10,9 +10,3 @@ setup `build`, `doc`, or `notebook` environments for RAPIDS.
 
 See the [README](conda/recipes/README.md) for more information about the
 meta-packages and how to update versions.
-
-## RAPIDS Integration Tests
-
-Test scripts in the `test` folder verify proper interaction across multiple
-RAPIDS APIs.  Tests are separated into individual subfolders based on the usage
-of a specific RAPIDS library with the other RAPIDS libs.
