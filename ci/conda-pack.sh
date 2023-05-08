@@ -1,15 +1,15 @@
 #!/bin/bash
 set -e
 
-RAPIDS_VER="23.06a"
+RAPIDS_VER="23.06"
+VERSION_DESCRIPTOR="a"
 CONDA_USERNAME="rapidsai-nightly"
 
 if [ "$GITHUB_REF_TYPE" = "tag" ]; then
-    RAPIDS_VER="23.06"
+    VERSION_DESCRIPTOR=""
     CONDA_USERNAME="rapidsai"
 fi
-
-CONDA_ENV_NAME="rapids${RAPIDS_VER}_cuda${RAPIDS_CUDA_VERSION}_py${RAPIDS_PY_VERSION}"
+CONDA_ENV_NAME="rapids${RAPIDS_VER}${VERSION_DESCRIPTOR}_cuda${RAPIDS_CUDA_VERSION}_py${RAPIDS_PY_VERSION}"
 
 echo "Install conda-pack"
 rapids-mamba-retry install -n base -c conda-forge "conda-pack"
