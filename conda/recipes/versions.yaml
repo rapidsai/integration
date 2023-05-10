@@ -79,9 +79,9 @@ gcsfs_version:
 google_cloud_cpp_version:
   - '>=1.25.0,<1.30'
 gmock_version:
-  - '=1.10.0'
+  - '>=1.13.0'
 gtest_version:
-  - '=1.10.0'
+  - '>=1.13.0'
 holoviews_version:
   - '>=1.14.8,<=1.15.3'
 ipython_version:
