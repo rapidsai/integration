@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-RAPIDS_VER="23.06"
+RAPIDS_VER="23.08"
 VERSION_DESCRIPTOR="a"
 CONDA_USERNAME="rapidsai-nightly"
 
