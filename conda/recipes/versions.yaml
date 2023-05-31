@@ -155,7 +155,7 @@ s3fs_version:
 scikit_build_version:
   - '=0.13.1'
 scikit_image_version:
-  - '>=0.19.0,<0.21.0'
+  - '>=0.19.0,<1.0a0'
 scikit_learn_version:
   - '=1.2'
 # when scipy is updated, remove upper bound on networkx ver.
