@@ -38,11 +38,8 @@ function sed_runner() {
     $sedCmd -i.bak ''"$1"'' $2 && rm -f ${2}.bak
 }
 
-# Axis file update
-sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-env-arm64.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-env.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-meta-arm64.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}a/}" ci/axis/nightly-meta.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}/}" ci/axis/release-arm64.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- ${NEXT_FULL_TAG}/}" ci/axis/release.yaml
-sed_runner "/RAPIDS_VER/{n; s/- .*/- \"${NEXT_SHORT_TAG}\"/}" ci/axis/tests.yaml
+sed_runner "/RAPIDS_VER=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/conda-pack.sh
+
+for FILE in .github/workflows/*.yaml; do
+  sed_runner "/shared-action-workflows/ s/@.*/@branch-${NEXT_SHORT_TAG}/g" "${FILE}"
+done

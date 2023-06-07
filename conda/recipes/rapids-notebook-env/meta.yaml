@@ -1,21 +1,14 @@
 # Copyright (c) 2020-2023, NVIDIA CORPORATION.
 
-{% set rapids_version = environ.get('RAPIDS_VER', '0.0.0') %}
-{% set minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
-{% set cuda_version = '.'.join(environ.get('CUDA_VER', '10.0').split('.')[:2]) %}
-{% set py_version = environ.get('CONDA_PY', 36) %}
-{% set cuda_major=cuda_version.split('.')[0] %}
+{% set rapids_version = environ.get('GIT_DESCRIBE_TAG', '0.0.0.dev').lstrip('v') %}
+{% set cuda_version = '.'.join(environ['RAPIDS_CUDA_VERSION'].split('.')[:2]) %}
+{% set cuda_major = cuda_version.split('.')[0] %}
+{% set py_version = environ['CONDA_PY'] %}
 {% set date_string = environ['RAPIDS_DATE_STRING'] %}
 
 ###
 # Versions referenced below are set in `conda/recipe/*versions.yaml` except for
 #   those set above (e.g. `cuda_version`)
-#
-# gpuCI loads the correct file based on the build type (NIGHTLY or RELEASE) in
-#   `ci/cpu/build-env.sh` and `ci/axis/*.yaml`
-#
-# Manual builds need to use the `conda build` flag of `-m <path-to-file>.yaml`
-#   to set these versions
 ###
 
 package:
@@ -28,10 +21,6 @@ source:
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
   string: cuda{{ cuda_major }}_py{{ py_version }}_{{ date_string }}_{{ GIT_DESCRIBE_HASH }}_{{ GIT_DESCRIBE_NUMBER }}
-  script_env:
-    - CUDA_VERSION
-    - RAPIDS_VER
-    - VERSION_SUFFIX
 
 requirements:
   host:
