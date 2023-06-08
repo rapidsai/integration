@@ -52,6 +52,7 @@ requirements:
     - networkx {{ networkx_version }}
     - nodejs {{ nodejs_version }}
     - openslide
+    - osmnx
     - pytest
     - pillow {{ pillow_version }}
     - s3fs {{ s3fs_version }}
