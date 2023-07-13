@@ -44,8 +44,10 @@ cmakelang_version:
   - '=0.6.13'
 cmake_setuptools_version:
   - '>=0.1.3'
-cuda_python_version:
-  - '>=11.7.1,<12.0'
+cuda11_cuda_python_version:
+  - '>=11.7.1,<12.0a'
+cuda12_cuda_python_version:
+  - '>=12.0.0,<13.0a'
 cupy_version:
   - '>=12.0.0'
 cython_version:

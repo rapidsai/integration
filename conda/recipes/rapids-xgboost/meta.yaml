@@ -26,8 +26,12 @@ build:
 requirements:
   host:
     - python
+    - cuda-version ={{ cuda_version }}
   run:
-    - cudatoolkit ={{ cuda_major }}.*
+    - {{ pin_compatible('cuda_version', max_pin='x', min_pin='x') }}
+    {% if cuda_major == "11" %}
+    - cudatoolkit
+    {% endif %}
     - nccl {{ nccl_version }}
     - python
     - xgboost {{ xgboost_version }}{{ major_minor_version }}
