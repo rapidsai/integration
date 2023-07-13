@@ -154,7 +154,7 @@ requirements:
     - werkzeug {{ werkzeug_version }} # Temporary transient dependency pinning to avoid URL-LIB3 + moto timeouts
 
 about:
-  home: http://rapids.ai/
+  home: https://rapids.ai/
   license: Apache-2.0
   license_file: LICENSE
   summary: 'RAPIDS Build Dependencies and Tool Environment Installer'

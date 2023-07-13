@@ -46,7 +46,7 @@ requirements:
     - myst-nb
 
 about:
-  home: http://rapids.ai/
+  home: https://rapids.ai/
   license: Apache-2.0
   license_file: LICENSE
   summary: 'RAPIDS Documentation Dependencies and Tool Environment Installer'

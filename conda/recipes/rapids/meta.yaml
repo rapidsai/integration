@@ -80,7 +80,7 @@ test:              # [linux64]
     - rmm          # [linux64]
 
 about:
-  home: http://rapids.ai/
+  home: https://rapids.ai/
   license: Custom
   license_file: conda/recipes/rapids/LICENSE
   summary: 'RAPIDS Suite - Open GPU Data Science'

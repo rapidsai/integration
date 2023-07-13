@@ -37,7 +37,7 @@ requirements:
     - xgboost {{ xgboost_version }}{{ major_minor_version }}
 
 about:
-  home: http://rapids.ai/
+  home: https://rapids.ai/
   license: Custom
   license_file: conda/recipes/rapids-xgboost/LICENSE
   summary: 'RAPIDS + DMLC XGBoost Integration'
