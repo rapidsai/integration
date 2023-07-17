@@ -62,7 +62,7 @@ requirements:
     - umap-learn
 
 about:
-  home: http://rapids.ai/
+  home: https://rapids.ai/
   license: Apache-2.0
   license_file: LICENSE
   summary: 'RAPIDS Notebook Dependencies and Tool Environment Installer'

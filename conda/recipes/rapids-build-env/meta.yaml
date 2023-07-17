@@ -45,7 +45,7 @@ requirements:
     - conda-build {{ conda_build_version }}
     - conda-verify {{ conda_verify_version }}
     - cubinlinker  # CUDA enhanced compat.
-    - cuda-python {{ cuda_python_version }}
+    - cuda-python {{ cuda11_cuda_python_version }}
     - cudatoolkit ={{ cuda_major }}.*
     - cupy {{ cupy_version }}
     - c-compiler
@@ -154,7 +154,7 @@ requirements:
     - werkzeug {{ werkzeug_version }} # Temporary transient dependency pinning to avoid URL-LIB3 + moto timeouts
 
 about:
-  home: http://rapids.ai/
+  home: https://rapids.ai/
   license: Apache-2.0
   license_file: LICENSE
   summary: 'RAPIDS Build Dependencies and Tool Environment Installer'
