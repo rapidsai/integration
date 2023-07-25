@@ -25,6 +25,7 @@ build:
 requirements:
   host:
     - python
+    - cuda-version ={{ cuda_version }}
   run:
     - asvdb
     - autoconf
@@ -46,7 +47,10 @@ requirements:
     - conda-verify {{ conda_verify_version }}
     - cubinlinker  # CUDA enhanced compat.
     - cuda-python {{ cuda11_cuda_python_version }}
-    - cudatoolkit ={{ cuda_major }}.*
+    - {{ pin_compatible('cuda_version', max_pin='x', min_pin='x') }}
+    {% if cuda_major == "11" %}
+    - cudatoolkit
+    {% endif %}
     - cupy {{ cupy_version }}
     - c-compiler
     - cxx-compiler

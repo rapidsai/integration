@@ -25,11 +25,15 @@ build:
 requirements:
   host:
     - python
+    - cuda-version ={{ cuda_version }}
   run:
     - bokeh {{ bokeh_version }}
     - colorcet
     - conda-forge::blas
-    - cudatoolkit ={{ cuda_major }}.*
+    - {{ pin_compatible('cuda_version', max_pin='x', min_pin='x') }}
+    {% if cuda_major == "11" %}
+    - cudatoolkit
+    {% endif %}
     - cupy {{ cupy_version }}
     - cython {{ cython_version }}
     - dask {{ dask_version }}
