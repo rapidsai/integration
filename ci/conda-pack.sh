@@ -18,7 +18,7 @@ echo "Creating conda environment $CONDA_ENV_NAME"
 rapids-mamba-retry create -y -n $CONDA_ENV_NAME \
     -c $CONDA_USERNAME -c conda-forge -c nvidia \
     "rapids=$RAPIDS_VER" \
-    "cudatoolkit=$RAPIDS_CUDA_VERSION" \
+    "cuda-version=$RAPIDS_CUDA_VERSION" \
     "python=$RAPIDS_PY_VERSION"
 
 echo "Packing conda environment"
