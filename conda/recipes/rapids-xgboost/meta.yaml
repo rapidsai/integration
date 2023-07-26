@@ -34,7 +34,8 @@ requirements:
     {% endif %}
     - nccl {{ nccl_version }}
     - python
-    - xgboost {{ xgboost_version }}{{ major_minor_version }}
+    - xgboost {{ xgboost_version }}
+    - _py-xgboost-mutex=*=rapidsai*
 
 about:
   home: https://rapids.ai/
