@@ -62,6 +62,8 @@ requirements:
     - conda-forge::ucx {{ ucx_version }}
 
 test:
+  requires:
+    - cuda-version ={{ cuda_version }}
   imports:
     - cucim
     - cudf
