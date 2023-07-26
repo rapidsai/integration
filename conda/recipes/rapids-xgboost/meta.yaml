@@ -28,7 +28,7 @@ requirements:
     - python
     - cuda-version ={{ cuda_version }}
   run:
-    - {{ pin_compatible('cuda_version', max_pin='x', min_pin='x') }}
+    - {{ pin_compatible('cuda-version', max_pin='x', min_pin='x') }}
     {% if cuda_major == "11" %}
     - cudatoolkit
     {% endif %}
