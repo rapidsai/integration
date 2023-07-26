@@ -36,6 +36,10 @@ requirements:
     - python
     - xgboost {{ xgboost_version }} rapidsai_cuda*
 
+test:
+  requires:
+    - cuda-version ={{ cuda_version }}
+
 about:
   home: https://rapids.ai/
   license: Custom
