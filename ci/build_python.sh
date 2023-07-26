@@ -23,28 +23,4 @@ rapids-mamba-retry mambabuild \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids
 
-rapids-logger "Build rapids-build-env"
-
-rapids-mamba-retry mambabuild \
-  --no-test \
-  --variant-config-files "${CONDA_CONFIG_FILE}" \
-  conda/recipes/rapids-build-env
-
-rapids-logger "Build rapids-notebook-env"
-
-rapids-mamba-retry mambabuild \
-  --no-test \
-  --variant-config-files "${CONDA_CONFIG_FILE}" \
-  conda/recipes/rapids-notebook-env
-
-if [ "$(uname -m)" != "aarch64" ]; then
-
-  rapids-logger "Build rapids-doc-env"
-
-  rapids-mamba-retry mambabuild \
-    --no-test \
-    --variant-config-files "${CONDA_CONFIG_FILE}" \
-    conda/recipes/rapids-doc-env
-fi
-
 rapids-upload-conda-to-s3 python

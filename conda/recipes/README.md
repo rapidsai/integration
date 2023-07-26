@@ -26,17 +26,6 @@ Package Name | Purpose
 `rapids` | Provide a one package install for all RAPIDS libraries, version matched to a RAPIDS release
 `rapids-xgboost` | Defines the version of `xgboost` used for a RAPIDS release
 
-### Environment Packages
-
-The environment meta-packages are used for setting up `build`, `doc`, and
-`notebook` environments for users and in our RAPIDS [containers](https://github.com/rapidsai/build).
-
-Package Name | Purpose
---- | ---
-`rapids-build-env` | Installs all `conda` build dependencies to build & test RAPIDS libraries from source
-`rapids-doc-env` | Installs all tools needed to build RAPIDS documentation
-`rapids-notebook-env` | Installs a Jupyter Notebook server and other dependencies to run RAPIDS example notebooks; used in the `runtime` [stable](https://hub.docker.com/r/rapidsai/rapidsai/tags?page=1&name=runtime) and [nightly](https://hub.docker.com/r/rapidsai/rapidsai-nightly/tags?page=1&name=runtime) RAPIDS containers.
-
 ## Managing Versions
 
 Packages without version restrictions do not need to use the following process
@@ -64,7 +53,7 @@ the `VERSIONING_NAME` added to the file.
 
 - `PACKAGE_NAME` - is the conda package name
 - `VERSIONING_NAME` - is the conda package name with `-` replaced with `_` and a suffix of `_version` added
-  - For example 
+  - For example
     - `cupy` would become `cupy_version`
     - `scikit-learn` would become `scikit_learn_version`
 
@@ -89,7 +78,7 @@ scikit-learn {{ scikit_learn_version }}
 
 #### Modifying Versions File
 
-In `conda/recipes` is `versions.yaml` - These are versions used by the `ci/axis/build.yaml` for testing in PRs and conda builds.
+In `conda/recipes` is `versions.yaml` - These are versions used by CI for testing in PRs and conda builds.
 
 In this file we specify the version for the newly created `VERSIONING_NAME`.
 
@@ -105,7 +94,7 @@ standard `conda` version specifiers:
 ##### TIP - Correct version specs
 
 **NOTE:** `=2.5.*` is not a valid version spec. Please use `=2.5` instead
-which will be interperted as `=2.5.*`. Otherwise `conda build` throws a
+which will be interpreted as `=2.5.*`. Otherwise `conda build` throws a
 warning message with the definition of `.*`. For example:
 
 ```
