@@ -13,15 +13,14 @@ rapids-print-env
 rapids-logger "Build rapids-xgboost"
 
 rapids-mamba-retry mambabuild \
+  --use-local \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids-xgboost
 
 rapids-logger "Build rapids"
 
-# TODO: --no-test is enabled because this depends on rapids-xgboost from the
-# above recipe. These should be built as a single recipe to avoid that problem.
 rapids-mamba-retry mambabuild \
-  --no-test \
+  --use-local \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids
 
