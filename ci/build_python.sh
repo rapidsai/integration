@@ -12,14 +12,12 @@ rapids-print-env
 rapids-logger "Build rapids-xgboost"
 
 rapids-mamba-retry mambabuild \
-  --no-test \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids-xgboost
 
 rapids-logger "Build rapids"
 
 rapids-mamba-retry mambabuild \
-  --no-test \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids
 
