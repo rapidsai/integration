@@ -17,7 +17,10 @@ rapids-mamba-retry mambabuild \
 
 rapids-logger "Build rapids"
 
+# TODO: --no-test is enabled because this depends on rapids-xgboost from the
+# above recipe. These should be built as a single recipe to avoid that problem.
 rapids-mamba-retry mambabuild \
+  --no-test \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids
 
