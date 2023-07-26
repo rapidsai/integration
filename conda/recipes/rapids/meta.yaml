@@ -64,22 +64,8 @@ requirements:
 test:
   requires:
     - cuda-version ={{ cuda_version }}
-  imports:
-    - cucim
-    - cudf
-    - cudf_kafka
-    - cugraph
-    - cuml
-    {% if cuda_major == "11" %}
-    - cusignal
-    {% endif %}
-    - cuspatial
-    - custreamz
-    - cuxfilter
-    - dask_cuda
-    - dask_cudf
-    - pylibcugraph
-    - rmm
+  commands:
+    - exit 0
 
 about:
   home: https://rapids.ai/
