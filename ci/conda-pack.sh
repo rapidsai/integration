@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (c) 2023, NVIDIA CORPORATION.
+
 set -e
 
 RAPIDS_VER="23.08"

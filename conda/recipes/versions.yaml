@@ -1,3 +1,5 @@
+# Copyright (c) 2021-2023, NVIDIA CORPORATION.
+
 # Versions for `rapids-xgboost` meta-pkg
 xgboost_version:
   # Minor version is appended in meta.yaml
