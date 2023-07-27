@@ -45,20 +45,12 @@ requirements:
     - cudf ={{ major_minor_version }}.*
     - cugraph ={{ major_minor_version }}.*
     - cuml ={{ major_minor_version }}.*
-    {% if cuda_major == "11" %}
-    # Temporarily disabled on CUDA 12 until
-    # https://github.com/rapidsai/cucim/issues/513 is complete
     - cucim ={{ major_minor_version }}.*
-    {% endif %}
     - cuspatial ={{ major_minor_version }}.*
     - custreamz ={{ major_minor_version }}.*
     - cuxfilter ={{ major_minor_version }}.*
     - dask-cuda ={{ major_minor_version }}.*
-    {% if cuda_major == "11" %}
-    # Temporarily disabled on CUDA 12 until
-    # https://github.com/rapidsai/xgboost-feedstock/issues/4 is complete
     - rapids-xgboost ={{ major_minor_version }}.*
-    {% endif %}
     - rmm ={{ major_minor_version }}.*
     - pylibcugraph ={{ major_minor_version }}.*
     - libcugraph_etl ={{ major_minor_version }}.*
@@ -69,23 +61,11 @@ requirements:
     - conda-forge::ucx-proc=*=gpu
     - conda-forge::ucx {{ ucx_version }}
 
-test:              # [linux64]
-  imports:         # [linux64]
-    - cucim        # [linux64]
-    - cudf         # [linux64]
-    - cudf_kafka   # [linux64]
-    - cugraph      # [linux64]
-    - cuml         # [linux64]
-    {% if cuda_major == "11" %}
-    - cusignal     # [linux64]
-    {% endif %}
-    - cuspatial    # [linux64]
-    - custreamz    # [linux64]
-    - cuxfilter    # [linux64]
-    - dask_cuda    # [linux64]
-    - dask_cudf    # [linux64]
-    - pylibcugraph # [linux64]
-    - rmm          # [linux64]
+test:
+  requires:
+    - cuda-version ={{ cuda_version }}
+  commands:
+    - exit 0
 
 about:
   home: https://rapids.ai/
