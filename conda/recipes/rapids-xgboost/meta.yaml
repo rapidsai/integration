@@ -34,7 +34,7 @@ requirements:
     {% endif %}
     - nccl {{ nccl_version }}
     - python
-    - xgboost {{ xgboost_version }} rapidsai_cuda*
+    - xgboost {{ xgboost_version }} rapidsai_py*
 
 test:
   requires:
