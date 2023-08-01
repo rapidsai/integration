@@ -6,7 +6,6 @@ set -euo pipefail
 source rapids-env-update
 
 CONDA_CONFIG_FILE="conda/recipes/versions.yaml"
-export CONDA_OVERRIDE_CUDA="${RAPIDS_CUDA_VERSION}"
 
 rapids-print-env
 
