@@ -1,0 +1,29 @@
+# Copyright (c) 2023, NVIDIA CORPORATION.
+
+package:
+- name: rapids_dask_dependency
+  version: 23.10.00.0
+
+build:
+  number: 0
+  noarch: generic
+
+requirements:
+  run:
+    - dask >=2023.7.1
+    - dask-core >=2023.7.1
+    - distributed >=2023.7.1
+
+about:
+  home: https://rapids.ai/
+  license: Custom
+  license_file: conda/recipes/rapids_dask_dependency/LICENSE
+  summary: Standardized dask dependency pinnings across RAPIDS
+  description: |
+    This metapackage encodes the standard Dask version pinning used for a
+    particular release of RAPIDS. The metapackage adds an extra release segment
+    to the RAPIDS CalVer to allow pinnings in this metapackage to be updated
+    for a given release and automatically propagate to its dependents. 
+  doc_url: https://docs.rapids.ai/
+  dev_url: https://github.com/rapidsai/
+

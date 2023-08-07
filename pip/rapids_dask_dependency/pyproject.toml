@@ -1,0 +1,10 @@
+# Copyright (c) 2023, NVIDIA CORPORATION.
+
+[project]
+name = "rapids_dask_dependency"
+version = "23.10.00.0"
+description = "Dask and distributed version pinning for RAPIDS"
+dependencies = [
+    "dask @ git+https://github.com/dask/dask.git@main",
+    "distributed @ git+https://github.com/dask/distributed.git@main",
+]
