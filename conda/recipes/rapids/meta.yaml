@@ -26,9 +26,15 @@ build:
 requirements:
   host:
     - python
+    - cuda-version ={{ cuda_version }}
   run:
-    - cuda-python {{ cuda_python_version }}
-    - cudatoolkit ={{ cuda_major }}.*
+    - {{ pin_compatible('cuda-version', max_pin='x', min_pin='x') }}
+    {% if cuda_major == "11" %}
+    - cuda-python {{ cuda11_cuda_python_version }}
+    - cudatoolkit
+    {% else %}
+    - cuda-python {{ cuda12_cuda_python_version }}
+    {% endif %}
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}
@@ -40,8 +46,8 @@ requirements:
     - cugraph ={{ major_minor_version }}.*
     - cuml ={{ major_minor_version }}.*
     - cucim ={{ major_minor_version }}.*
-    - cusignal ={{ major_minor_version }}.*
     - cuspatial ={{ major_minor_version }}.*
+    - cuproj ={{ major_minor_version }}.*
     - custreamz ={{ major_minor_version }}.*
     - cuxfilter ={{ major_minor_version }}.*
     - dask-cuda ={{ major_minor_version }}.*
@@ -49,28 +55,21 @@ requirements:
     - rmm ={{ major_minor_version }}.*
     - pylibcugraph ={{ major_minor_version }}.*
     - libcugraph_etl ={{ major_minor_version }}.*
+    {% if cuda_major == "11" %}
+    - cusignal ={{ major_minor_version }}.*
     - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
+    {% endif %}
     - conda-forge::ucx-proc=*=gpu
     - conda-forge::ucx {{ ucx_version }}
 
-test:              # [linux64]
-  imports:         # [linux64]
-    - cucim        # [linux64]
-    - cudf         # [linux64]
-    - cudf_kafka   # [linux64]
-    - cugraph      # [linux64]
-    - cuml         # [lunux64]
-    - cusignal     # [linux64]
-    - cuspatial    # [linux64]
-    - custreamz    # [linux64]
-    - cuxfilter    # [linux64]
-    - dask_cuda    # [linux64]
-    - dask_cudf    # [linux64]
-    - pylibcugraph # [linux64]
-    - rmm          # [linux64]
+test:
+  requires:
+    - cuda-version ={{ cuda_version }}
+  commands:
+    - exit 0
 
 about:
-  home: http://rapids.ai/
+  home: https://rapids.ai/
   license: Custom
   license_file: conda/recipes/rapids/LICENSE
   summary: 'RAPIDS Suite - Open GPU Data Science'

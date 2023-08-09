@@ -26,14 +26,25 @@ build:
 requirements:
   host:
     - python
+    - cuda-version ={{ cuda_version }}
   run:
-    - cudatoolkit ={{ cuda_major }}.*
+    - {{ pin_compatible('cuda-version', max_pin='x', min_pin='x') }}
+    {% if cuda_major == "11" %}
+    - cudatoolkit
+    {% endif %}
     - nccl {{ nccl_version }}
     - python
-    - xgboost {{ xgboost_version }}{{ major_minor_version }}
+    - libxgboost {{ xgboost_version }} rapidsai_h*
+    - xgboost {{ xgboost_version }} rapidsai_py*
+
+test:
+  requires:
+    - cuda-version ={{ cuda_version }}
+  commands:
+    - exit 0
 
 about:
-  home: http://rapids.ai/
+  home: https://rapids.ai/
   license: Custom
   license_file: conda/recipes/rapids-xgboost/LICENSE
   summary: 'RAPIDS + DMLC XGBoost Integration'

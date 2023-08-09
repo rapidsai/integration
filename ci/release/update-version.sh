@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (c) 2021-2023, NVIDIA CORPORATION.
+
 ###############################
 # Integration Version Updater #
 ###############################
