@@ -56,7 +56,6 @@ requirements:
     - pylibcugraph ={{ major_minor_version }}.*
     - libcugraph_etl ={{ major_minor_version }}.*
     {% if cuda_major == "11" %}
-    - cusignal ={{ major_minor_version }}.*
     - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     {% endif %}
     - conda-forge::ucx-proc=*=gpu
