@@ -41,6 +41,7 @@ function sed_runner() {
 }
 
 sed_runner "/RAPIDS_VER=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/conda-pack.sh
+sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/test_conda_nightly_env.sh
 
 for FILE in .github/workflows/*.yaml; do
   sed_runner "/shared-workflows/ s/@.*/@branch-${NEXT_SHORT_TAG}/g" "${FILE}"
