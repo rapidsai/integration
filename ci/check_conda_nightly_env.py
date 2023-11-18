@@ -13,9 +13,7 @@ def is_rapids_nightly_package(package_info):
 
 
 def get_package_date(package):
-    date_re = re.compile(r"(2\d{5})")
-
-    # 2\d{5} matches 6 digits starting with "2"
+    # Matches 6 digits starting with "2", which should be YYMMDD
     date_re = r"_(2\d{5})_"
 
     # Use regex to find the date string in the input
@@ -65,7 +63,8 @@ def check_env(json_path):
         for package in rapids_package_data
     }
 
-    old_threshold = datetime.now() - timedelta(days=OLD_PACKAGE_THRESHOLD_DAYS)
+    today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    old_threshold = today - timedelta(days=OLD_PACKAGE_THRESHOLD_DAYS)
     old_packages = {
         package: date
         for package, date in rapids_package_dates.items()
