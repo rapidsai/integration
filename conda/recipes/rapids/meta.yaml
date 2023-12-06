@@ -58,7 +58,6 @@ requirements:
     {% if cuda_major == "11" %}
     - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     {% endif %}
-    - conda-forge::ucx-proc=*=gpu
     - conda-forge::ucx {{ ucx_version }}
 
 test:
