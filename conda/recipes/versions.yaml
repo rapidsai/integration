@@ -2,7 +2,7 @@
 
 # Versions for `rapids-xgboost` meta-pkg
 xgboost_version:
-  - '=1.7.6'
+  - '=2.0.3'
 
 cuda11_cuda_python_version:
   - '>=11.7.1,<12.0a'
