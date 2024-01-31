@@ -29,6 +29,9 @@ requirements:
     - cuda-version ={{ cuda_version }}
   run:
     - {{ pin_compatible('cuda-version', max_pin='x', min_pin='x') }}
+    {% if cuda_major != "11" %}
+    - cuda-python {{ cuda12_cuda_python_version }}
+    {% endif %}
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
     - networkx {{ networkx_version }}

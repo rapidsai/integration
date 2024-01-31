@@ -4,6 +4,8 @@
 xgboost_version:
   - '=2.0.3'
 
+cuda12_cuda_python_version:
+  - '=12.0.*'
 cupy_version:
   - '>=12.0.0'
 nccl_version:
