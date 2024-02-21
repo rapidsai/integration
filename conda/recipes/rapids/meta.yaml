@@ -31,13 +31,13 @@ requirements:
     - {{ pin_compatible('cuda-version', max_pin='x', min_pin='x') }}
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
-    - networkx {{ networkx_version }}
     - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
     - python
     - cudf ={{ major_minor_version }}.*
     - cugraph ={{ major_minor_version }}.*
+    - nx-cugraph ={{ major_minor_version }}.*
     - cuml ={{ major_minor_version }}.*
     - cucim ={{ major_minor_version }}.*
     - cuspatial ={{ major_minor_version }}.*
