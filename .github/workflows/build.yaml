@@ -53,4 +53,4 @@ jobs:
       date: ${{ inputs.date }}
       sha: ${{ inputs.sha }}
       matrix_filter: map(select(.ARCH == "amd64"))
-      build_script: ci/conda-pack.sh
+      script: ci/conda-pack.sh
