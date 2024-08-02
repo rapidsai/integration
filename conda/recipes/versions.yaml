@@ -8,8 +8,8 @@ cupy_version:
   - '>=12.0.0'
 nccl_version:
   - '>=2.9.9,<3.0a0'
-numba_version:
-  - '>=0.57'
+numba_cuda_version:
+  - '>=0.0.13'
 numpy_version:
   - '>=1.23,<2.0a0'
 nvtx_version:
