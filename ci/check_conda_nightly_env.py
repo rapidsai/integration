@@ -8,6 +8,9 @@ from datetime import datetime, timedelta
 OLD_PACKAGE_THRESHOLD_DAYS = 3
 
 EXCLUDED_PACKAGES = {
+    # These packages are not built every night:
+    "rapids",
+    "rapids-xgboost",
     # These packages do not have date strings:
     "cubinlinker",
     "rapids-dask-dependency",
@@ -26,7 +29,7 @@ def is_rapids_nightly_package(package_info):
 
 
 def get_package_date(package):
-    if package in EXCLUDED_PACKAGES:
+    if package["name"] in EXCLUDED_PACKAGES:
         return None
 
     # Matches 6 digits starting with "2", which should be YYMMDD
