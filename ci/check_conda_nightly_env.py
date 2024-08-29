@@ -18,8 +18,6 @@ EXCLUDED_PACKAGES = {
     "libxgboost",
     "py-xgboost",
     "xgboost",
-    # TODO: Remove nx-cugraph after https://github.com/rapidsai/cugraph/pull/4639
-    "nx-cugraph",
     # TODO: Do we want ucx-proc on rapidsai or from conda-forge?
     "ucx-proc",
 }
