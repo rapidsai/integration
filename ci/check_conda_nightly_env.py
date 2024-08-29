@@ -97,9 +97,7 @@ def check_env(json_path):
     old_packages = {
         package: date
         for package, date in rapids_package_dates.items()
-        if package not in EXCLUDED_PACKAGES
-        and date is not None
-        and date < old_threshold
+        if date is not None and date < old_threshold
     }
     if old_packages:
         exit_code = 1
@@ -114,7 +112,9 @@ def check_env(json_path):
 
     # If there are undated packages, show an error
     undated_packages = {
-        package: date for package, date in rapids_package_dates.items() if date is None
+        package: date
+        for package, date in rapids_package_dates.items()
+        if package not in EXCLUDED_PACKAGES and date is None
     }
     if undated_packages:
         exit_code = 1
