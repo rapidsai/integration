@@ -24,6 +24,12 @@ EXCLUDED_PACKAGES = {
     "ucx-proc",
 }
 
+# ANSI color codes used to highlight lines
+FAIL = "\033[91m"
+WARNING = "\033[93m"
+OKGREEN = "\033[92m"
+ENDC = "\033[0m"
+
 
 def is_rapids_nightly_package(package_info):
     return package_info["channel"] == "rapidsai-nightly"
@@ -46,10 +52,9 @@ def get_package_date(package):
         return date_object
 
     print(
-        f"Date string not found for {package['name']} "
-        f"in the build string '{package['build_string']}'."
+        f"{WARNING}Date string not found for {package['name']} "
+        f"in the build string '{package['build_string']}'.{ENDC}"
     )
-    sys.exit(1)
 
 
 def check_env(json_path):
@@ -57,7 +62,11 @@ def check_env(json_path):
 
     Parses JSON output of `conda create` and check the dates on the RAPIDS
     packages to ensure nightlies are relatively new.
+
+    Returns an exit code value.
     """
+
+    exit_code = 0
 
     with open(json_path) as f:
         try:
@@ -65,13 +74,13 @@ def check_env(json_path):
         except ValueError as e:
             print("Error: JSON data file from conda failed to load:")
             print(e)
-            sys.exit(1)
+            return 1
 
     if "error" in json_data:
         print("Error: conda failed:")
         print()
         print(json_data["error"])
-        sys.exit(1)
+        return 1
 
     package_data = json_data["actions"]["LINK"]
 
@@ -79,10 +88,10 @@ def check_env(json_path):
 
     # Dictionary to store the packages and their dates
     rapids_package_dates = {
-        package["name"]: get_package_date(package)
-        for package in rapids_package_data
+        package["name"]: get_package_date(package) for package in rapids_package_data
     }
 
+    # If there are old packages, show an error
     today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     old_threshold = today - timedelta(days=OLD_PACKAGE_THRESHOLD_DAYS)
     old_packages = {
@@ -90,30 +99,45 @@ def check_env(json_path):
         for package, date in rapids_package_dates.items()
         if date is not None and date < old_threshold
     }
-
-    # If there are old packages, raise an error
     if old_packages:
+        exit_code = 1
         print()
         print(
-            "Error: The following nightly packages are more than "
-            f"{OLD_PACKAGE_THRESHOLD_DAYS} days old:"
+            f"{FAIL}Error: The following packages are more than "
+            f"{OLD_PACKAGE_THRESHOLD_DAYS} days old:{ENDC}"
         )
         for package, date in sorted(old_packages.items()):
             date_string = date.strftime("%Y-%m-%d")
-        sys.exit(1)
+            print(f"{FAIL} - {package}: {date_string}{ENDC}")
 
-    print(f"All packages are less than {OLD_PACKAGE_THRESHOLD_DAYS} days old:")
+    # If there are undated packages, show an error
+    undated_packages = {
+        package: date for package, date in rapids_package_dates.items() if date is None
+    }
+    if undated_packages:
+        exit_code = 1
+        print()
+        print(
+            f"{FAIL}Error: The following packages are missing dates in their build strings:{ENDC}"
+        )
+        for package, date in sorted(undated_packages.items()):
+            print(f"{FAIL} - {package}{ENDC}")
+
+    print()
+    print(
+        f"The following packages are less than {OLD_PACKAGE_THRESHOLD_DAYS} days old:"
+    )
     for package, date in sorted(rapids_package_dates.items()):
         date_string = date.strftime("%Y-%m-%d")
-        print(f" - {package}: {date_string}")
+        status = WARNING if date < today - timedelta(days=1) else OKGREEN
+        print(f"{status} - {package}: {date_string}{ENDC}")
+
+    return exit_code
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print(
-            "Provide only one argument, the filepath to a JSON output from "
-            "conda."
-        )
+        print("Provide only one argument, the filepath to a JSON output from " "conda.")
         sys.exit(1)
 
-    check_env(sys.argv[1])
+    sys.exit(check_env(sys.argv[1]))
