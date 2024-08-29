@@ -7,12 +7,28 @@ from datetime import datetime, timedelta
 
 OLD_PACKAGE_THRESHOLD_DAYS = 3
 
+EXCLUDED_PACKAGES = {
+    # These packages do not have date strings:
+    "cubinlinker",
+    "rapids-dask-dependency",
+    "libxgboost",
+    "py-xgboost",
+    "xgboost",
+    # TODO: Remove nx-cugraph after https://github.com/rapidsai/cugraph/pull/4639
+    "nx-cugraph",
+    # TODO: Do we want ucx-proc on rapidsai or from conda-forge?
+    "ucx-proc",
+}
+
 
 def is_rapids_nightly_package(package_info):
     return package_info["channel"] == "rapidsai-nightly"
 
 
 def get_package_date(package):
+    if package in EXCLUDED_PACKAGES:
+        return None
+
     # Matches 6 digits starting with "2", which should be YYMMDD
     date_re = r"_(2\d{5})_"
 
