@@ -108,7 +108,7 @@ def check_env(json_path):
         )
         for package, date in sorted(old_packages.items()):
             date_string = date.strftime("%Y-%m-%d")
-            print(f"{FAIL} - {package}: {date_string}{ENDC}")
+            print(f"{FAIL} - {(package + ':'):<24}\t{date_string}{ENDC}")
 
     # If there are undated packages, show an error
     undated_packages = {
@@ -134,7 +134,7 @@ def check_env(json_path):
             continue
         date_string = date.strftime("%Y-%m-%d")
         status = WARNING if date < today else OKGREEN
-        print(f"{status} - {package}: {date_string}{ENDC}")
+        print(f"{status} - {(package + ':'):<24}\t{date_string}{ENDC}")
 
     return exit_code
 
