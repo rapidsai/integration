@@ -16,11 +16,11 @@ jobs:
       - test-conda-nightly-env
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/pr-builder.yaml@branch-24.10
-# build:
-#   secrets: inherit
-#   uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-24.10
-#   with:
-#     build_type: pull-request
+  build:
+    secrets: inherit
+    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-24.10
+    with:
+      build_type: pull-request
   test-conda-nightly-env:
     secrets: inherit
     # We use a build workflow so that we get CPU jobs and high matrix coverage
