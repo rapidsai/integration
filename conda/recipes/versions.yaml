@@ -2,23 +2,17 @@
 
 # Versions for `rapids-xgboost` meta-pkg
 xgboost_version:
-  - '=1.7.6'
+  - '=2.1.1'
 
-cuda11_cuda_python_version:
-  - '>=11.7.1,<12.0a'
-cuda12_cuda_python_version:
-  - '>=12.0.0,<13.0a'
 cupy_version:
   - '>=12.0.0'
 nccl_version:
   - '>=2.9.9,<3.0a0'
-networkx_version:
-  - '>=2.5.1'
 numba_version:
   - '>=0.57'
 numpy_version:
-  - '>=1.21'
+  - '>=1.23,<2.0a0'
 nvtx_version:
   - '>=0.2.1,<0.3'
 ucx_version:
-  - '>=1.14.1'
+  - '>=1.15.0,<1.18.0'
