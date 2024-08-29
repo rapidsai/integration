@@ -130,6 +130,8 @@ def check_env(json_path):
         f"The following packages are less than {OLD_PACKAGE_THRESHOLD_DAYS} days old:"
     )
     for package, date in sorted(rapids_package_dates.items()):
+        if date is None:
+            continue
         date_string = date.strftime("%Y-%m-%d")
         status = WARNING if date < today else OKGREEN
         print(f"{status} - {package}: {date_string}{ENDC}")
