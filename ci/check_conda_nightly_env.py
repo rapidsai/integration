@@ -131,7 +131,7 @@ def check_env(json_path):
     )
     for package, date in sorted(rapids_package_dates.items()):
         date_string = date.strftime("%Y-%m-%d")
-        status = WARNING if date < today - timedelta(days=1) else OKGREEN
+        status = WARNING if date < today else OKGREEN
         print(f"{status} - {package}: {date_string}{ENDC}")
 
     return exit_code
