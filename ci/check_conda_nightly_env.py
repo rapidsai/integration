@@ -13,6 +13,7 @@ EXCLUDED_PACKAGES = {
     "rapids-xgboost",
     # These packages do not have date strings:
     "cubinlinker",
+    "pynvjitlink",
     "rapids-dask-dependency",
     "libxgboost",
     "py-xgboost",
@@ -48,7 +49,7 @@ def get_package_date(package):
         f"Date string not found for {package['name']} "
         f"in the build string '{package['build_string']}'."
     )
-    return None
+    sys.exit(1)
 
 
 def check_env(json_path):
@@ -102,7 +103,8 @@ def check_env(json_path):
             print(f" - {package}: {date_string}")
         sys.exit(1)
 
-    print(f"All packages are less than {OLD_PACKAGE_THRESHOLD_DAYS} days old.")
+    print(f"All packages are less than {OLD_PACKAGE_THRESHOLD_DAYS} days old:")
+    print(rapids_package_dates)
 
 
 if __name__ == "__main__":
