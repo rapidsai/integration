@@ -97,7 +97,9 @@ def check_env(json_path):
     old_packages = {
         package: date
         for package, date in rapids_package_dates.items()
-        if date is not None and date < old_threshold
+        if package not in EXCLUDED_PACKAGES
+        and date is not None
+        and date < old_threshold
     }
     if old_packages:
         exit_code = 1
