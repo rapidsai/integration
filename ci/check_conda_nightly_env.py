@@ -98,13 +98,14 @@ def check_env(json_path):
             "Error: The following nightly packages are more than "
             f"{OLD_PACKAGE_THRESHOLD_DAYS} days old:"
         )
-        for package, date in old_packages.items():
+        for package, date in sorted(old_packages.items()):
             date_string = date.strftime("%Y-%m-%d")
-            print(f" - {package}: {date_string}")
         sys.exit(1)
 
     print(f"All packages are less than {OLD_PACKAGE_THRESHOLD_DAYS} days old:")
-    print(rapids_package_dates)
+    for package, date in sorted(rapids_package_dates.items()):
+        date_string = date.strftime("%Y-%m-%d")
+        print(f" - {package}: {date_string}")
 
 
 if __name__ == "__main__":
