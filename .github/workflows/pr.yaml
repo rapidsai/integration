@@ -12,7 +12,7 @@ concurrency:
 jobs:
   pr-builder:
     needs:
-      #- build
+      - build
       - test-conda-nightly-env
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/pr-builder.yaml@branch-24.10
