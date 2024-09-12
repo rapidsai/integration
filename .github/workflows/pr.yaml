@@ -10,13 +10,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  pr-builder:
+    needs:
+      - build
+      - test-conda-nightly-env
+    secrets: inherit
+    uses: rapidsai/shared-workflows/.github/workflows/pr-builder.yaml@@python-3.12
   build:
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@python-3.12
     with:
       build_type: pull-request
-  pr-builder:
-    needs:
-      - build
+  test-conda-nightly-env:
     secrets: inherit
-    uses: rapidsai/shared-workflows/.github/workflows/pr-builder.yaml@python-3.12
+    # We use a build workflow so that we get CPU jobs and high matrix coverage
+    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@@python-3.12
+    with:
+      build_type: pull-request
+      script: "ci/test_conda_nightly_env.sh"
