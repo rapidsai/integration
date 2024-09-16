@@ -54,6 +54,12 @@ requirements:
     - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     {% endif %}
     - conda-forge::ucx {{ ucx_version }}
+    # TODO: remove pins on pyogrio and tiledb once cuspatial supports 'fmt>11' and 'spdlog>14'
+    # ref:
+    #   * https://github.com/rapidsai/build-planning/issues/56
+    #   * https://github.com/rapidsai/cuspatial/pull/1453#issuecomment-2335527542
+    - pyogrio <0.8
+    - tiledb <2.19
 
 test:
   requires:
