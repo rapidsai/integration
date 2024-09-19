@@ -35,32 +35,25 @@ requirements:
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
     - python
-    # TODO: remove all the floors on specific nightly versions once RAPIDS supports 'fmt>11' and 'spdlog>14'
-    - cudf ={{ major_minor_version }}.*,>=24.10.00a320
-    - cuvs ={{ major_minor_version }}.*,>=24.10.00a60
-    - cugraph ={{ major_minor_version }}.*,>=24.10.00a74
-    - nx-cugraph ={{ major_minor_version }}.*,>=24.10.00a74
-    - cuml ={{ major_minor_version }}.*,>=24.10.00a55
-    - cucim ={{ major_minor_version }}.*,>=24.10.00a17
-    - cuspatial ={{ major_minor_version }}.*,>=24.10.00a41
-    - cuproj ={{ major_minor_version }}.*,>=24.10.00a41
-    - custreamz ={{ major_minor_version }}.*,>=24.10.00a320
-    - cuxfilter ={{ major_minor_version }}.*,>=24.10.00a19
-    - dask-cuda ={{ major_minor_version }}.*,>=24.10.00a19
+    - cudf ={{ major_minor_version }}.*
+    - cuvs ={{ major_minor_version }}.*
+    - cugraph ={{ major_minor_version }}.*
+    - nx-cugraph ={{ major_minor_version }}.*
+    - cuml ={{ major_minor_version }}.*
+    - cucim ={{ major_minor_version }}.*
+    - cuspatial ={{ major_minor_version }}.*
+    - cuproj ={{ major_minor_version }}.*
+    - custreamz ={{ major_minor_version }}.*
+    - cuxfilter ={{ major_minor_version }}.*
+    - dask-cuda ={{ major_minor_version }}.*
     - rapids-xgboost ={{ major_minor_version }}.*
-    - rmm ={{ major_minor_version }}.*,>=24.10.00a38
-    - pylibcugraph ={{ major_minor_version }}.*,>=24.10.00a74
-    - libcugraph_etl ={{ major_minor_version }}.*,>=24.10.00a74
+    - rmm ={{ major_minor_version }}.*
+    - pylibcugraph ={{ major_minor_version }}.*
+    - libcugraph_etl ={{ major_minor_version }}.*
     {% if cuda_major == "11" %}
     - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     {% endif %}
     - conda-forge::ucx {{ ucx_version }}
-    # TODO: remove pins on pyogrio and tiledb once cuspatial supports 'fmt>11' and 'spdlog>14'
-    # ref:
-    #   * https://github.com/rapidsai/build-planning/issues/56
-    #   * https://github.com/rapidsai/cuspatial/pull/1453#issuecomment-2335527542
-    - pyogrio <0.8
-    - tiledb <2.19
 
 test:
   requires:

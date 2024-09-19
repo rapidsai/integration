@@ -11,6 +11,8 @@ source rapids-date-string
 
 CONDA_CONFIG_FILE="conda/recipes/versions.yaml"
 
+source ./ci/use_conda_packages_from_prs.sh
+
 rapids-print-env
 
 rapids-logger "Build rapids-xgboost"
