@@ -35,23 +35,19 @@ requirements:
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
     - python
-    # TODO: remove this floor on specific alpha version in 24.12
-    - cudf ={{ major_minor_version }}.*,>=24.10.00a345
+    - cudf ={{ major_minor_version }}.*
     - cuvs ={{ major_minor_version }}.*
     - cugraph ={{ major_minor_version }}.*
     - nx-cugraph ={{ major_minor_version }}.*
     - cuml ={{ major_minor_version }}.*
     - cucim ={{ major_minor_version }}.*
-    # TODO: remove this floor on specific alpha version in 24.12
-    - cuspatial ={{ major_minor_version }}.*,>=24.10.00a63
-    # TODO: remove this floor on specific alpha version in 24.12
-    - cuproj ={{ major_minor_version }}.*,>=24.10.00a63
+    - cuspatial ={{ major_minor_version }}.*
+    - cuproj ={{ major_minor_version }}.*
     - custreamz ={{ major_minor_version }}.*
     - cuxfilter ={{ major_minor_version }}.*
     - dask-cuda ={{ major_minor_version }}.*
     - rapids-xgboost ={{ major_minor_version }}.*
-    # TODO: remove this floor on specific alpha version in 24.12
-    - rmm ={{ major_minor_version }}.*,>=24.10.00a57
+    - rmm ={{ major_minor_version }}.*
     - pylibcugraph ={{ major_minor_version }}.*
     - libcugraph_etl ={{ major_minor_version }}.*
     {% if cuda_major == "11" %}
