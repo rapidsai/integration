@@ -14,8 +14,8 @@ RAFT_CHANNEL=$(rapids-get-pr-conda-artifact raft 2433 python)
 LIBCUSPATIAL_CHANNEL=$(rapids-get-pr-conda-artifact cuspatial 1441 cpp)
 CUSPATIAL_CHANNEL=$(rapids-get-pr-conda-artifact cuspatial 1441 python)
 
-LIBCUML_CHANNEL=$(rapids-get-pr-conda-artifact cuspatial 6071 cpp)
-CUML_CHANNEL=$(rapids-get-pr-conda-artifact cuspatial 6071 python)
+LIBCUML_CHANNEL=$(rapids-get-pr-conda-artifact cuml 6071 cpp)
+CUML_CHANNEL=$(rapids-get-pr-conda-artifact cuml 6071 python)
 
 # NOTE: cloning private repos with rapids-get-pr-conda-artifact doesn't work,
 #       so need to explicitly set the SHA to use
