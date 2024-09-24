@@ -37,19 +37,19 @@ requirements:
     - python
     - cudf ={{ major_minor_version }}.*
     - cuvs ={{ major_minor_version }}.*
-    - cugraph ={{ major_minor_version }}.*
-    - nx-cugraph ={{ major_minor_version }}.*
+    #- cugraph ={{ major_minor_version }}.*
+    #- nx-cugraph ={{ major_minor_version }}.*
     - cuml ={{ major_minor_version }}.*
     - cucim ={{ major_minor_version }}.*
     - cuspatial ={{ major_minor_version }}.*
     - cuproj ={{ major_minor_version }}.*
     - custreamz ={{ major_minor_version }}.*
-    - cuxfilter ={{ major_minor_version }}.*
+    #- cuxfilter ={{ major_minor_version }}.*
     - dask-cuda ={{ major_minor_version }}.*
     - rapids-xgboost ={{ major_minor_version }}.*
     - rmm ={{ major_minor_version }}.*
-    - pylibcugraph ={{ major_minor_version }}.*
-    - libcugraph_etl ={{ major_minor_version }}.*
+    #- pylibcugraph ={{ major_minor_version }}.*
+    #- libcugraph_etl ={{ major_minor_version }}.*
     {% if cuda_major == "11" %}
     - ptxcompiler  # CUDA enhanced compat. See https://github.com/rapidsai/ptxcompiler
     {% endif %}
