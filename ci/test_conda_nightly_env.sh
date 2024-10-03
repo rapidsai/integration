@@ -21,6 +21,7 @@ rapids-conda-retry \
     cuda-version=${CUDA_VERSION} \
     --dry-run \
     --json \
+    --quiet \
     | tee "${JSON_FILENAME}"
 
 rapids-logger "Parsing results from conda dry-run with rapids=${RAPIDS_VERSION}, python=${RAPIDS_PY_VERSION}, cuda-version=${CUDA_VERSION}"
