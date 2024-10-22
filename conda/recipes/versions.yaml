@@ -7,9 +7,9 @@ xgboost_version:
 cupy_version:
   - '>=12.0.0'
 nccl_version:
-  - '>=2.9.9,<3.0a0'
+  - '>=2.19,<3.0a0'
 numpy_version:
-  - '>=1.23,<2.0a0'
+  - '>=1.23,<3.0a0'
 nvtx_version:
   - '>=0.2.1,<0.3'
 ucx_version:
