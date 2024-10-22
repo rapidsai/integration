@@ -35,6 +35,7 @@ requirements:
     - nvtx {{ nvtx_version }}
     - python
     - cudf ={{ major_minor_version }}.*
+    - cudf-polars ={{ major_minor_version }}.*
     - cuvs ={{ major_minor_version }}.*
     - cugraph ={{ major_minor_version }}.*
     - nx-cugraph ={{ major_minor_version }}.*
