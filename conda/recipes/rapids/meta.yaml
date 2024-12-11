@@ -31,11 +31,11 @@ requirements:
     - {{ pin_compatible('cuda-version', max_pin='x', min_pin='x') }}
     - cupy {{ cupy_version }}
     - nccl {{ nccl_version }}
-    - numba {{ numba_version }}
     - numpy {{ numpy_version }}
     - nvtx {{ nvtx_version }}
     - python
     - cudf ={{ major_minor_version }}.*
+    - cudf-polars ={{ major_minor_version }}.*
     - cuvs ={{ major_minor_version }}.*
     - cugraph ={{ major_minor_version }}.*
     - nx-cugraph ={{ major_minor_version }}.*
