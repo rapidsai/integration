@@ -1,6 +1,6 @@
+# Copyright (c) 2024-2025, NVIDIA CORPORATION.
 import json
 import re
-import subprocess
 import sys
 from datetime import datetime, timedelta
 
@@ -137,7 +137,7 @@ def check_env(json_path):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Provide only one argument, the filepath to a JSON output from " "conda.")
+        print("Provide only one argument, the filepath to a JSON output from conda.")
         sys.exit(1)
 
     sys.exit(check_env(sys.argv[1]))
