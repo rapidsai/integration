@@ -18,8 +18,6 @@ EXCLUDED_PACKAGES = {
     "libxgboost",
     "py-xgboost",
     "xgboost",
-    # TODO: Do we want ucx-proc on rapidsai or from conda-forge?
-    "ucx-proc",
 }
 
 # ANSI color codes used to highlight lines
