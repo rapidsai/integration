@@ -16,12 +16,21 @@ jobs:
       - test-conda-nightly-env
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/pr-builder.yaml@branch-25.04
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: pre-commit/action@v3.0.1
   build:
+    needs: checks
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-25.04
     with:
       build_type: pull-request
   test-conda-nightly-env:
+    needs: checks
     secrets: inherit
     # We use a build workflow so that we get CPU jobs and high matrix coverage
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-25.04
