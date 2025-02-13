@@ -2,7 +2,7 @@
 
 # Versions for `rapids-xgboost` meta-pkg
 xgboost_version:
-  - '=2.1.2'
+  - '=2.1.4'
 
 cupy_version:
   - '>=12.0.0'
@@ -13,4 +13,4 @@ numpy_version:
 nvtx_version:
   - '>=0.2.1,<0.3'
 ucx_version:
-  - '>=1.15.0,<1.18.0'
+  - '>=1.15.0,<1.19.0'
