@@ -15,15 +15,13 @@ rapids-print-env
 
 rapids-logger "Build rapids-xgboost"
 
-rapids-conda-retry mambabuild \
-  --use-local \
+rapids-conda-retry build \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids-xgboost
 
 rapids-logger "Build rapids"
 
-rapids-conda-retry mambabuild \
-  --use-local \
+rapids-conda-retry build \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids
 
