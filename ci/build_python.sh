@@ -16,14 +16,12 @@ rapids-print-env
 rapids-logger "Build rapids-xgboost"
 
 rapids-conda-retry build \
-  --use-local \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids-xgboost
 
 rapids-logger "Build rapids"
 
 rapids-conda-retry build \
-  --use-local \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids
 
