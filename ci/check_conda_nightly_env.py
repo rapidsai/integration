@@ -15,6 +15,7 @@ EXCLUDED_PACKAGES = {
     "cubinlinker",
     "pynvjitlink",
     "rapids-dask-dependency",
+    "rapids-logger",  # Also not built every night
     "libxgboost",
     "py-xgboost",
     "xgboost",
