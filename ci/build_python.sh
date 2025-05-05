@@ -3,11 +3,11 @@
 
 set -euo pipefail
 
-rapids-configure-conda-channels
-
 source rapids-configure-sccache
 
 source rapids-date-string
+
+source rapids-rattler-channel-string
 
 CONDA_CONFIG_FILE="conda/recipes/versions.yaml"
 
@@ -15,14 +15,16 @@ rapids-print-env
 
 rapids-logger "Build rapids-xgboost"
 
-rapids-conda-retry build \
-  --variant-config-files "${CONDA_CONFIG_FILE}" \
-  conda/recipes/rapids-xgboost
+rattler-build build --recipe conda/recipes/rapids-xgboost \
+                    --variant-config "${CONDA_CONFIG_FILE}" \
+                    "${RATTLER_ARGS[@]}" \
+                    "${RATTLER_CHANNELS[@]}"
 
 rapids-logger "Build rapids"
 
-rapids-conda-retry build \
-  --variant-config-files "${CONDA_CONFIG_FILE}" \
-  conda/recipes/rapids
+rattler-build build --recipe conda/recipes/rapids \
+                    --variant-config "${CONDA_CONFIG_FILE}" \
+                    "${RATTLER_ARGS[@]}" \
+                    "${RATTLER_CHANNELS[@]}"
 
 rapids-upload-conda-to-s3 python
