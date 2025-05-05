@@ -1,0 +1,63 @@
+# Copyright (c) 2025, NVIDIA CORPORATION.
+schema_version: 1
+
+context:
+  version: ${{ env.get("GIT_DESCRIBE_TAG", default="0.0.0.dev") | replace("v", "")}}
+  minor_version: ${{ (version | split("."))[:2] | join(".") }}
+  cuda_version: ${{ (env.get("RAPIDS_CUDA_VERSION") | split("."))[:2] | join(".") }}
+  cuda_major: '${{ (env.get("RAPIDS_CUDA_VERSION") | split("."))[0] }}'
+  date_string: '${{ env.get("RAPIDS_DATE_STRING") }}'
+  py_version: ${{ env.get("RAPIDS_PY_VERSION") }}
+  py_buildstring: ${{ py_version | version_to_buildstring }}
+  head_rev: ${{ git.head_rev(".")[:8] }}
+  linux64: ${{ linux and x86_64 }}
+
+package:
+  name: rapids
+  version: ${{ version }}
+
+source:
+  path: ../../..
+
+build:
+  string: cuda${{ cuda_major }}_py${{ py_buildstring }}_${{ date_string }}_${{ head_rev }}
+
+requirements:
+  host:
+    - cuda-version =${{ cuda_version }}
+    - pip
+    - python =${{ py_version }}
+  run:
+    - ${{ pin_compatible("cuda-version", upper_bound="x", lower_bound="x") }}
+    - cupy ${{ cupy_version }}
+    - nccl ${{ nccl_version }}
+    - numpy ${{ numpy_version }}
+    - nvtx ${{ nvtx_version }}
+    - python
+    - cudf ${{ minor_version }}.*
+    - cudf-polars ${{ minor_version }}.*
+    - cuvs ${{ minor_version }}.*
+    - cugraph ${{ minor_version }}.*
+    - nx-cugraph ${{ minor_version }}.*
+    - cuml ${{ minor_version }}.*
+    - cucim ${{ minor_version }}.*
+    - cuspatial ${{ minor_version }}.*
+    - cuproj ${{ minor_version }}.*
+    - custreamz ${{ minor_version }}.*
+    - cuxfilter ${{ minor_version }}.*
+    - dask-cuda ${{ minor_version }}.*
+    - rapids-xgboost ${{ minor_version }}.*
+    - rmm ${{ minor_version }}.*
+    - pylibcugraph ${{ minor_version }}.*
+    - libcugraph_etl ${{ minor_version }}.*
+    - if: cuda_major == "11"
+      then: ptx-compiler
+    - conda-forge::ucx ${{ ucx_version }}
+  ignore_run_exports:
+    by_name:
+      - python_abi
+
+about:
+  homepage: https://rapids.ai
+  license: Apache-2.0
+  summary: RAPIDS Suite - Open GPU Data Science
