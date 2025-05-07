@@ -32,11 +32,10 @@ jobs:
   test-conda-nightly-env:
     needs: checks
     secrets: inherit
-    # TODO: We want to use a build workflow so that we get CPU jobs and high
-    # matrix coverage without having to hardcode the CUDA/Python matrix here
-    uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@branch-25.06
+    # We use a build workflow so that we get CPU jobs and high matrix coverage
+    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-25.06
     with:
       build_type: pull-request
-      run_script: "ci/test_conda_nightly_env.sh"
-      node_type: "cpu8"
-      container_image: "rapidsai/ci-conda:latest"
+      script: "ci/test_conda_nightly_env.sh"
+      # just using the workflow to get the matrix, this isn't actually building anything we want to upload
+      upload-artifacts: false
