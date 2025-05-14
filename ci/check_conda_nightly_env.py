@@ -117,7 +117,8 @@ def check_env(json_path):
         exit_code = 1
         print()
         print(
-            f"{FAIL}Error: The following packages are missing dates in their build strings:{ENDC}"
+            f"{FAIL}Error: The following packages are missing dates in their "
+            f"build strings:{ENDC}"
         )
         for package, date in sorted(undated_packages.items()):
             print(f"{FAIL} - {package}{ENDC}")
