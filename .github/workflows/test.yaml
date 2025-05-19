@@ -21,3 +21,5 @@ jobs:
     with:
       build_type: pull-request
       script: "ci/test_conda_nightly_env.sh"
+      # just using the workflow to get the matrix, this isn't actually building anything we want to upload
+      upload-artifacts: false
