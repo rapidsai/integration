@@ -37,7 +37,7 @@ def get_package_date(package):
         return None
 
     # Matches 6 digits starting with "2", which should be YYMMDD
-    date_re = r"_(2\d{5})_"
+    date_re = r"(?:^|_)(2\d{5})_"
 
     # Use regex to find the date string in the input
     match = re.search(date_re, package["build_string"])
@@ -117,7 +117,8 @@ def check_env(json_path):
         exit_code = 1
         print()
         print(
-            f"{FAIL}Error: The following packages are missing dates in their build strings:{ENDC}"
+            f"{FAIL}Error: The following packages are missing dates in their "
+            f"build strings:{ENDC}"
         )
         for package, date in sorted(undated_packages.items()):
             print(f"{FAIL} - {package}{ENDC}")
