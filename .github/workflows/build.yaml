@@ -54,3 +54,5 @@ jobs:
       sha: ${{ inputs.sha }}
       matrix_filter: map(select(.ARCH == "amd64"))
       script: ci/conda-pack.sh
+      # just using the workflow to get the matrix, this isn't actually building anything we want to upload
+      upload-artifacts: false
