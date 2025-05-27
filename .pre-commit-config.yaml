@@ -14,6 +14,11 @@ repos:
       - id: ruff
         args: ["--fix"]
       - id: ruff-format
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        args: ["--severity=warning"]
   - repo: https://github.com/rapidsai/pre-commit-hooks
     rev: v0.6.0
     hooks:
