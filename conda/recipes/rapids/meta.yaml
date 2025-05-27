@@ -1,4 +1,4 @@
-# Copyright (c) 2019-2023, NVIDIA CORPORATION.
+# Copyright (c) 2019-2025, NVIDIA CORPORATION.
 
 {% set rapids_version = environ.get('GIT_DESCRIBE_TAG', '0.0.0.dev').lstrip('v') %}
 {% set major_minor_version = rapids_version.split('.')[0] + '.' + rapids_version.split('.')[1] %}
@@ -41,8 +41,6 @@ requirements:
     - nx-cugraph ={{ major_minor_version }}.*
     - cuml ={{ major_minor_version }}.*
     - cucim ={{ major_minor_version }}.*
-    - cuspatial ={{ major_minor_version }}.*
-    - cuproj ={{ major_minor_version }}.*
     - custreamz ={{ major_minor_version }}.*
     - cuxfilter ={{ major_minor_version }}.*
     - dask-cuda ={{ major_minor_version }}.*

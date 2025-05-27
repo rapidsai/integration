@@ -1,9 +1,9 @@
 #!/bin/bash
-# Copyright (c) 2024, NVIDIA CORPORATION.
+# Copyright (c) 2024-2025, NVIDIA CORPORATION.
 
 set -euo pipefail
 
-RAPIDS_VERSION="25.04"
+RAPIDS_VERSION="25.06"
 CUDA_VERSION=${RAPIDS_CUDA_VERSION%.*}
 
 JSON_FILENAME="rapids_cuda${CUDA_VERSION}_py${RAPIDS_PY_VERSION}.json"

@@ -17,7 +17,9 @@ jobs:
   test-conda-nightly-env:
     secrets: inherit
     # We use a build workflow so that we get CPU jobs and high matrix coverage
-    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-25.04
+    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-25.06
     with:
       build_type: pull-request
       script: "ci/test_conda_nightly_env.sh"
+      # just using the workflow to get the matrix, this isn't actually building anything we want to upload
+      upload-artifacts: false
