@@ -39,13 +39,13 @@ requirements:
     - cuvs ={{ major_minor_version }}.*
     - cugraph ={{ major_minor_version }}.*
     - nx-cugraph ={{ major_minor_version }}.*
-    - cuml ={{ major_minor_version }}.*
-    - cucim ={{ major_minor_version }}.*
+    - cuml ={{ major_minor_version }}.*,>=25.08.00a112
+    - cucim ={{ major_minor_version }}.*,>=25.08.00a10
     - custreamz ={{ major_minor_version }}.*
     - cuxfilter ={{ major_minor_version }}.*
     - dask-cuda ={{ major_minor_version }}.*
     - rapids-xgboost ={{ major_minor_version }}.*
-    - rmm ={{ major_minor_version }}.*
+    - rmm ={{ major_minor_version }}.*,>=25.08.00a24
     - pylibcugraph ={{ major_minor_version }}.*
     - libcugraph_etl ={{ major_minor_version }}.*
     {% if cuda_major == "11" %}
