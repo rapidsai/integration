@@ -8,11 +8,14 @@ CUDA_VERSION=${RAPIDS_CUDA_VERSION%.*}
 
 JSON_FILENAME="rapids_cuda${CUDA_VERSION}_py${RAPIDS_PY_VERSION}.json"
 
+PYTHON_CHANNEL=$(rapids-download-conda-from-github python)
+
 rapids-logger "Creating conda environment with rapids=${RAPIDS_VERSION}, python=${RAPIDS_PY_VERSION}, cuda-version=${CUDA_VERSION}"
 
 rapids-conda-retry \
     create \
     -n rapids-${RAPIDS_VERSION} \
+    -c "${PYTHON_CHANNEL}" \
     -c rapidsai-nightly \
     -c conda-forge \
     -c nvidia  \
