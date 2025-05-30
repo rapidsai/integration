@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2022-2023, NVIDIA CORPORATION.
+# Copyright (c) 2022-2025, NVIDIA CORPORATION.
 
 set -euo pipefail
 
@@ -24,5 +24,3 @@ rapids-logger "Build rapids"
 rapids-conda-retry build \
   --variant-config-files "${CONDA_CONFIG_FILE}" \
   conda/recipes/rapids
-
-rapids-upload-conda-to-s3 python
