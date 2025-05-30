@@ -31,7 +31,7 @@ jobs:
       build_type: pull-request
       script: ci/build_python.sh
   test-conda-nightly-env:
-    needs: build
+    needs: checks
     secrets: inherit
     # We use a build workflow so that we get CPU jobs and high matrix coverage
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-25.08
