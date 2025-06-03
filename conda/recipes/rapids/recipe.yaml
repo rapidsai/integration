@@ -50,8 +50,6 @@ requirements:
     - rmm ${{ minor_version }}.*
     - pylibcugraph ${{ minor_version }}.*
     - libcugraph_etl ${{ minor_version }}.*
-    - if: cuda_major == "11"
-      then: ptx-compiler
     - conda-forge::ucx ${{ ucx_version }}
   ignore_run_exports:
     by_name:

@@ -31,13 +31,9 @@ requirements:
     - python
     - libxgboost ${{ xgboost_version }} rapidsai_h*
     - xgboost ${{ xgboost_version }} rapidsai_py*
-    - if: cuda_major == "11"
-      then: cudatoolkit
   ignore_run_exports:
     by_name:
       - python_abi
-      - if: cuda_major == "11"
-        then: cudatoolkit
 
 about:
   homepage: https://rapids.ai
