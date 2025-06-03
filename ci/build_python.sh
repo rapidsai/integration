@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2022-2023, NVIDIA CORPORATION.
+# Copyright (c) 2022-2025, NVIDIA CORPORATION.
 
 set -euo pipefail
 
@@ -26,5 +26,3 @@ rattler-build build --recipe conda/recipes/rapids \
                     --variant-config "${CONDA_CONFIG_FILE}" \
                     "${RATTLER_ARGS[@]}" \
                     "${RATTLER_CHANNELS[@]}"
-
-rapids-upload-conda-to-s3 python
