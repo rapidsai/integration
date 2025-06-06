@@ -9,12 +9,12 @@ repos:
       - id: check-added-large-files
       - id: end-of-file-fixer
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.3
+    rev: v0.11.10
     hooks:
       - id: ruff
         args: ["--fix"]
       - id: ruff-format
   - repo: https://github.com/rapidsai/pre-commit-hooks
-    rev: v0.5.0
+    rev: v0.6.0
     hooks:
       - id: verify-copyright
