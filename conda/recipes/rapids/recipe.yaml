@@ -41,8 +41,6 @@ requirements:
     - nx-cugraph ${{ minor_version }}.*
     - cuml ${{ minor_version }}.*
     - cucim ${{ minor_version }}.*
-    - cuspatial ${{ minor_version }}.*
-    - cuproj ${{ minor_version }}.*
     - custreamz ${{ minor_version }}.*
     - cuxfilter ${{ minor_version }}.*
     - dask-cuda ${{ minor_version }}.*
