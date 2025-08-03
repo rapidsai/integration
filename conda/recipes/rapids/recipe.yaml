@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: ${{ env.get("GIT_DESCRIBE_TAG", default="0.0.0.dev") | replace("v", "")}}
+  version: ${{ env.get("RAPIDS_PACKAGE_VERSION") }}
   minor_version: ${{ (version | split("."))[:2] | join(".") }}
   cuda_version: ${{ (env.get("RAPIDS_CUDA_VERSION") | split("."))[:2] | join(".") }}
   cuda_major: '${{ (env.get("RAPIDS_CUDA_VERSION") | split("."))[0] }}'
