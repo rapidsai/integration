@@ -7,6 +7,9 @@ source rapids-configure-sccache
 
 source rapids-date-string
 
+RAPIDS_PACKAGE_VERSION=$(rapids-generate-version)
+export RAPIDS_PACKAGE_VERSION
+
 source rapids-rattler-channel-string
 
 CONDA_CONFIG_FILE="conda/recipes/versions.yaml"
