@@ -1,13 +1,16 @@
 #!/bin/bash
-# Copyright (c) 2022-2023, NVIDIA CORPORATION.
+# Copyright (c) 2022-2025, NVIDIA CORPORATION.
 
 set -euo pipefail
-
-rapids-configure-conda-channels
 
 source rapids-configure-sccache
 
 source rapids-date-string
+
+RAPIDS_PACKAGE_VERSION=$(rapids-generate-version)
+export RAPIDS_PACKAGE_VERSION
+
+source rapids-rattler-channel-string
 
 CONDA_CONFIG_FILE="conda/recipes/versions.yaml"
 
@@ -15,14 +18,14 @@ rapids-print-env
 
 rapids-logger "Build rapids-xgboost"
 
-rapids-conda-retry build \
-  --variant-config-files "${CONDA_CONFIG_FILE}" \
-  conda/recipes/rapids-xgboost
+rattler-build build --recipe conda/recipes/rapids-xgboost \
+                    --variant-config "${CONDA_CONFIG_FILE}" \
+                    "${RATTLER_ARGS[@]}" \
+                    "${RATTLER_CHANNELS[@]}"
 
 rapids-logger "Build rapids"
 
-rapids-conda-retry build \
-  --variant-config-files "${CONDA_CONFIG_FILE}" \
-  conda/recipes/rapids
-
-rapids-upload-conda-to-s3 python
+rattler-build build --recipe conda/recipes/rapids \
+                    --variant-config "${CONDA_CONFIG_FILE}" \
+                    "${RATTLER_ARGS[@]}" \
+                    "${RATTLER_CHANNELS[@]}"

@@ -9,12 +9,17 @@ repos:
       - id: check-added-large-files
       - id: end-of-file-fixer
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.10
+    rev: v0.12.3
     hooks:
       - id: ruff
         args: ["--fix"]
       - id: ruff-format
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        args: ["--severity=warning"]
   - repo: https://github.com/rapidsai/pre-commit-hooks
-    rev: v0.6.0
+    rev: v0.7.0
     hooks:
       - id: verify-copyright
