@@ -44,7 +44,10 @@ requirements:
     - custreamz ${{ minor_version }}.*
     - cuxfilter ${{ minor_version }}.*
     - dask-cuda ${{ minor_version }}.*
-    - rapids-xgboost ${{ minor_version }}.*
+    # TODO: add rapids-xgboost back when there are CUDA 13 packages
+    #  ref: https://github.com/rapidsai/xgboost-feedstock/issues/100
+    - if: cuda_major == "12"
+      then: rapids-xgboost ${{ minor_version }}.*
     - rmm ${{ minor_version }}.*
     - pylibcugraph ${{ minor_version }}.*
     - libcugraph_etl ${{ minor_version }}.*

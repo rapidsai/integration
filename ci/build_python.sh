@@ -16,12 +16,18 @@ CONDA_CONFIG_FILE="conda/recipes/versions.yaml"
 
 rapids-print-env
 
-rapids-logger "Build rapids-xgboost"
+CUDA_MAJOR="${RAPIDS_CUDA_VERSION%%.*}"
 
-rattler-build build --recipe conda/recipes/rapids-xgboost \
-                    --variant-config "${CONDA_CONFIG_FILE}" \
-                    "${RATTLER_ARGS[@]}" \
-                    "${RATTLER_CHANNELS[@]}"
+# TODO: add rapids-xgboost back when there are CUDA 13 packages
+#  ref: https://github.com/rapidsai/xgboost-feedstock/issues/100
+if [[ "${CUDA_MAJOR}" == "12" ]]; then
+    rapids-logger "Build rapids-xgboost"
+
+    rattler-build build --recipe conda/recipes/rapids-xgboost \
+                        --variant-config "${CONDA_CONFIG_FILE}" \
+                        "${RATTLER_ARGS[@]}" \
+                        "${RATTLER_CHANNELS[@]}"
+fi
 
 rapids-logger "Build rapids"
 
