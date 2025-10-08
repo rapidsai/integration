@@ -12,8 +12,6 @@ EXCLUDED_PACKAGES = {
     "rapids",
     "rapids-xgboost",
     # These packages do not have date strings:
-    "cubinlinker",
-    "pynvjitlink",
     "rapids-dask-dependency",
     "rapids-logger",  # Also not built every night
     "libxgboost",
