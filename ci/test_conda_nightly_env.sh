@@ -15,7 +15,6 @@ rapids-conda-retry \
     -n rapids-${RAPIDS_VERSION} \
     -c rapidsai-nightly \
     -c conda-forge \
-    -c nvidia  \
     rapids=${RAPIDS_VERSION} \
     python=${RAPIDS_PY_VERSION} \
     cuda-version=${CUDA_VERSION} \
