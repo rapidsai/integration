@@ -3,7 +3,7 @@
 
 set -e
 
-RAPIDS_VER="25.12"
+RAPIDS_VER="26.02"
 VERSION_DESCRIPTOR="a"
 CONDA_USERNAME="rapidsai-nightly"
 
