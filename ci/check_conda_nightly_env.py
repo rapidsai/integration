@@ -4,7 +4,6 @@ import re
 import sys
 from datetime import datetime, timedelta
 
-
 OLD_PACKAGE_THRESHOLD_DAYS = 3
 
 EXCLUDED_PACKAGES = {
