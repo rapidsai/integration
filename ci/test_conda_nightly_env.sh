@@ -8,6 +8,9 @@ CUDA_VERSION=${RAPIDS_CUDA_VERSION%.*}
 
 JSON_FILENAME="rapids_cuda${CUDA_VERSION}_py${RAPIDS_PY_VERSION}.json"
 
+rapids-logger "Configuring conda strict channel priority"
+conda config --set channel_priority strict
+
 rapids-logger "Creating conda environment with rapids=${RAPIDS_VERSION}, python=${RAPIDS_PY_VERSION}, cuda-version=${CUDA_VERSION}"
 
 rapids-conda-retry \
