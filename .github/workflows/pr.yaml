@@ -15,7 +15,7 @@ jobs:
       - build
       - test-conda-nightly-env
     secrets: inherit
-    uses: rapidsai/shared-workflows/.github/workflows/pr-builder.yaml@branch-25.12
+    uses: rapidsai/shared-workflows/.github/workflows/pr-builder.yaml@main
   checks:
     runs-on: ubuntu-latest
     steps:
@@ -26,15 +26,16 @@ jobs:
   build:
     needs: checks
     secrets: inherit
-    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-25.12
+    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@main
     with:
       build_type: pull-request
       script: ci/build_python.sh
+      pure-conda: cuda_major
   test-conda-nightly-env:
     needs: checks
     secrets: inherit
     # We use a build workflow so that we get CPU jobs and high matrix coverage
-    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@branch-25.12
+    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@main
     with:
       build_type: pull-request
       script: "ci/test_conda_nightly_env.sh"

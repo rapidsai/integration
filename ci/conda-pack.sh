@@ -3,7 +3,7 @@
 
 set -e
 
-RAPIDS_VER="25.12"
+RAPIDS_VER="26.02"
 VERSION_DESCRIPTOR="a"
 CONDA_USERNAME="rapidsai-nightly"
 
@@ -19,7 +19,7 @@ rapids-mamba-retry install -n base -c conda-forge "conda-pack"
 
 echo "Creating conda environment $CONDA_ENV_NAME"
 rapids-mamba-retry create -y -n $CONDA_ENV_NAME \
-    -c $CONDA_USERNAME -c conda-forge -c nvidia \
+    -c $CONDA_USERNAME -c conda-forge \
     "rapids=$RAPIDS_VER" \
     "cuda-version=$CUDA_VERSION" \
     "python=$RAPIDS_PY_VERSION"
