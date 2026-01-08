@@ -17,7 +17,7 @@ repos:
       - id: check-added-large-files
       - id: end-of-file-fixer
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.13.3
+    rev: v0.14.10
     hooks:
       - id: ruff
         args: ["--fix"]
@@ -28,6 +28,6 @@ repos:
       - id: shellcheck
         args: ["--severity=warning"]
   - repo: https://github.com/rapidsai/pre-commit-hooks
-    rev: v0.7.0
+    rev: v1.2.1
     hooks:
       - id: verify-copyright
