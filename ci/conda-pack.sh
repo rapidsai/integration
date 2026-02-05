@@ -1,9 +1,9 @@
 #!/bin/bash
-# Copyright (c) 2023-2026, NVIDIA CORPORATION.
+# Copyright (c) 2023-2025, NVIDIA CORPORATION.
 
 set -e
 
-RAPIDS_VER="26.04"
+RAPIDS_VER="26.02"
 VERSION_DESCRIPTOR="a"
 CONDA_USERNAME="rapidsai-nightly"
 

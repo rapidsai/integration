@@ -24,7 +24,7 @@ requirements:
   host:
     - cuda-version =${{ cuda_version }}
     - pip
-    - python >=3.11
+    - python >=3.10
   run:
     - ${{ pin_compatible("cuda-version", upper_bound="x", lower_bound="x") }}
     - cupy ${{ cupy_version }}
