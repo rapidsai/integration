@@ -1,6 +1,8 @@
 #!/bin/bash
 # Copyright (c) 2026, NVIDIA CORPORATION.
 
+set -euo pipefail
+
 function testImports {
     unset imports
     while [[ $# -gt 0 ]]; do
