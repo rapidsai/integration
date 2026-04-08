@@ -12,6 +12,8 @@
 
 set -euo pipefail
 
+source test_imports.sh
+
 STABLE_RAPIDS_VERSION="26.4.*"
 SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
 SUPPORTED_CUDA_VERSIONS=("cu12" "cu13")
@@ -41,14 +43,6 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
-
-function testImports {
-    while [[ $# -gt 0 ]]; do
-        rapids-logger "Import test for $1"
-        python -c "import $1"
-        shift
-    done
-}
 
 function createPyEnv {
     PY_VER=$1

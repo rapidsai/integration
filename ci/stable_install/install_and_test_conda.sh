@@ -10,6 +10,8 @@
 
 set -euo pipefail
 
+source test_imports.sh
+
 STABLE_RAPIDS_VERSION="26.4.*"
 SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
 SUPPORTED_CUDA_VERSIONS=("12.2" "12.9" "13.0" "13.1")
@@ -38,14 +40,6 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-function testImports {
-    while [[ $# -gt 0 ]]; do
-        rapids-logger "Import test for $1"
-        python -c "import $1"
-        shift
-    done
-}
-
 . /opt/conda/etc/profile.d/conda.sh
 
 for CUDA_VERSION in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
@@ -56,7 +50,7 @@ for CUDA_VERSION in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
 
         # use `-O` to override channels so we don't include `rapidsai-nightly`
         conda create -n "$envName" -O -c rapidsai -c conda-forge -y \
-          rapids="$STABLE_RAPIDS_VERSION" python="$PY_VER" "cuda-version>=${CUDA_VERSION}"
+          rapids="$STABLE_RAPIDS_VERSION" python="$PY_VER" "cuda-version==${CUDA_VERSION}"
 
         conda activate "$envName"
 
