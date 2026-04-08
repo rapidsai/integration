@@ -94,6 +94,7 @@ function sed_runner() {
 
 sed_runner "/RAPIDS_VER=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/conda-pack.sh
 sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/test_conda_nightly_env.sh
+sed_runner "/STABLE_RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/stable_install/install_and_test_*.sh
 
 # CI files - context-aware branch references
 for FILE in .github/workflows/*.yaml; do
