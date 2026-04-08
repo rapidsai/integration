@@ -29,7 +29,6 @@ jobs:
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
   test-stable-install-pip-cuda-12-amd64:
-    secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
     with:
       build_type: pull-request
