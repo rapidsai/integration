@@ -65,27 +65,38 @@ for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
             "raft-dask-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
     )
 
-    PIP_INSTALL_NVIDIA_PYPI=("${PIP_INSTALL_PYPI[@]}"
-            "cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "nx-cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "cuxfilter-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "cuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            --extra-index-url=https://pypi.nvidia.com
-            )
-
     for PY_VER in "${SUPPORTED_PYTHON_VERSIONS[@]}"; do
 
         createPyEnv "$PY_VER"
-        rapids-logger "Testing stable version install with Python $PY_VER and CUDA suffix $CUDA_SUFFIX without NVIDIA PyPI index"
-        python -m pip install "${PIP_INSTALL_PYPI[@]}"
-        testImports cudf dask_cudf cuml pylibraft raft_dask
-        popd
 
-        createPyEnv "$PY_VER"
-        rapids-logger "Testing stable version install with Python $PY_VER and CUDA suffix $CUDA_SUFFIX and NVIDIA PyPI index"
-        python -m pip install "${PIP_INSTALL_NVIDIA_PYPI[@]}"
+        rapids-logger "Downloading NVIDIA PyPI only wheels for Python $PY_VER and CUDA suffix $CUDA_SUFFIX"
+
+        WHEELS_DIR=$(mktemp -d)
+        pip download \
+          --isolated \
+          --index-url https://pypi.nvidia.com \
+          --prefer-binary \
+          --no-deps \
+          -d "${WHEELS_DIR}" \
+          "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+          "cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+          "cuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+          "cuxfilter-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+          "libcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+          "libcuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+          "pylibcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+
+        rapids-logger "Testing stable version install with Python $PY_VER and CUDA suffix $CUDA_SUFFIX without NVIDIA PyPI index"
+
+        pip install \
+          --isolated \
+          --index-url https://pypi.org/simple \
+          --prefer-binary \
+          "${PIP_INSTALL_PYPI[@]}" \
+          "${WHEELS_DIR}"/*.whl
+
         testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cucim cuvs
+
         popd
     done
 done
