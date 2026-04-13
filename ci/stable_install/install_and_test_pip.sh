@@ -59,8 +59,8 @@ function createPyEnv {
 for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
 
     case "${CUDA_SUFFIX}" in
-        cu12) CUDA_MINOR_VERSIONS=(12.2 12.9) ;;
-        cu13) CUDA_MINOR_VERSIONS=(13.0 13.1) ;;
+        cu12) CUDA_MINOR_VERSIONS=(12.9 12.2) ;;
+        cu13) CUDA_MINOR_VERSIONS=(13.1 13.0) ;;
     esac
 
 
