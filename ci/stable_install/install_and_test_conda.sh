@@ -10,7 +10,8 @@
 
 set -euo pipefail
 
-source ./test_imports.sh
+SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+source "${SCRIPT_DIR}/test_imports.sh"
 
 STABLE_RAPIDS_VERSION="26.4.*"
 SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
