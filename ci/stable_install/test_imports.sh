@@ -4,7 +4,7 @@
 set -euo pipefail
 
 function testImports {
-    unset imports
+    local -a imports=()
     while [[ $# -gt 0 ]]; do
         # run standalone import test
         rapids-logger "Standalone import test for $1"
@@ -16,6 +16,6 @@ function testImports {
     done
     import_cmd=$(printf "import %s; " "${imports[@]}")
     rapids-logger "Combined import test for: ${imports[*]}"
-    python -c "${import_cmd}" || rapids-logger "Test failed for: ${imports[*]}"
+    python -c "${import_cmd}"
     rapids-logger "Passed"
 }
