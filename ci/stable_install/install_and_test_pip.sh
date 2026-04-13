@@ -17,7 +17,7 @@ STABLE_RAPIDS_VERSION="26.4.*"
 SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
 SUPPORTED_CUDA_VERSIONS=("cu12" "cu13")
 
-source test_imports.sh
+source ./test_imports.sh
 source ./bootstrap/pip.sh
 
 while [[ $# -gt 0 ]]; do

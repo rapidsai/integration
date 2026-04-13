@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-source test_imports.sh
+source ./test_imports.sh
 
 STABLE_RAPIDS_VERSION="26.4.*"
 SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
