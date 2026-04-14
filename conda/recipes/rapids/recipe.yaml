@@ -37,6 +37,7 @@ requirements:
     - cuvs ${{ minor_version }}.*
     - cugraph ${{ minor_version }}.*
     - nx-cugraph ${{ minor_version }}.*
+    - nvforest ${{ minor_version }}.*
     - cuml ${{ minor_version }}.*
     - cucim ${{ minor_version }}.*
     - custreamz ${{ minor_version }}.*
