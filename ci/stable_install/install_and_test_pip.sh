@@ -16,6 +16,8 @@ set -euo pipefail
 STABLE_RAPIDS_VERSION="26.4.*"
 SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
 SUPPORTED_CUDA_VERSIONS=("cu12" "cu13")
+CUDA12_MINOR_VERSIONS=(12.2 12.9)
+CUDA13_MINOR_VERSIONS=(13.0 13.1)
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/bootstrap/pip.sh"
@@ -59,9 +61,10 @@ function createPyEnv {
 for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
 
     case "${CUDA_SUFFIX}" in
-        cu12) CUDA_MINOR_VERSIONS=(12.9 12.2) ;;
-        cu13) CUDA_MINOR_VERSIONS=(13.1 13.0) ;;
+        cu12) CUDA_MINOR_VERSIONS=("${CUDA12_MINOR_VERSIONS[@]}") ;;
+        cu13) CUDA_MINOR_VERSIONS=("${CUDA13_MINOR_VERSIONS[@]}") ;;
     esac
+
 
 
     for cuda_major_minor in "${CUDA_MINOR_VERSIONS[@]}"; do
