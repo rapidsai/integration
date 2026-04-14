@@ -49,7 +49,7 @@ done
 
 function createPyEnv {
     PY_VER=$1
-    INSTALL_DIR=$(mktemp -d)
+    INSTALL_DIR=$2
     pushd "$INSTALL_DIR"
 
     rapids-logger "Creating virtualenv for Python $PY_VER"
@@ -81,7 +81,8 @@ for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
 
       for PY_VER in "${SUPPORTED_PYTHON_VERSIONS[@]}"; do
 
-          createPyEnv "$PY_VER"
+          INSTALL_DIR=$(mktemp -d)
+          createPyEnv "$PY_VER" "$INSTALL_DIR"
 
           rapids-logger "Downloading NVIDIA PyPI only wheels for Python $PY_VER and CUDA $cuda_major_minor"
 
@@ -113,6 +114,9 @@ for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
           testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cucim cuvs
 
           popd
+
+          rapids-logger "Removing environment in $INSTALL_DIR/.venv"
+          rm -rf "$INSTALL_DIR/.venv"
         done
     done
 done
