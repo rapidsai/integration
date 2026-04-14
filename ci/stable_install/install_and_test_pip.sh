@@ -75,7 +75,7 @@ for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
             "cuml-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
             "pylibraft-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
             "raft-dask-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "cuda-toolkit[all]==${cuda_major_minor}.*"
+            "cuda-toolkit[cublas,cufft,curand,cusolver,cusparse,nvcc,nvrtc]==${cuda_major_minor}.*"
         )
 
 
