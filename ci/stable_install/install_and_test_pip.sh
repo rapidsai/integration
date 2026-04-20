@@ -16,8 +16,8 @@ set -euo pipefail
 STABLE_RAPIDS_VERSION="26.4.*"
 SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
 SUPPORTED_CUDA_VERSIONS=("cu12" "cu13")
-CUDA12_MINOR_VERSIONS=(12.2 12.9)
-CUDA13_MINOR_VERSIONS=(13.0 13.1)
+CUDA12_MINOR_VERSIONS=('>=12.2,<12.4' '==12.9')
+CUDA13_MINOR_VERSIONS=('==13.0' '==13.1')
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/bootstrap/pip.sh"
@@ -75,7 +75,7 @@ for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
             "cuml-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
             "pylibraft-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
             "raft-dask-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "cuda-toolkit[cublas,cufft,curand,cusolver,cusparse,nvcc,nvrtc]==${cuda_major_minor}.*"
+            "cuda-toolkit[cublas,cufft,curand,cusolver,cusparse,nvcc,nvrtc]${cuda_major_minor}"
         )
 
 
