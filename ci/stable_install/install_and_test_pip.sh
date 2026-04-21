@@ -111,7 +111,8 @@ for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
             "${PIP_INSTALL_PYPI[@]}" \
             "${WHEELS_DIR}"/*.whl
 
-          testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cucim cuvs
+          # can't import cucim on CPU-only
+          testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cuvs # cucim
 
           popd
 

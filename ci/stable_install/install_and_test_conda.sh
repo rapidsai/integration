@@ -55,7 +55,7 @@ for CUDA_VERSION in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
 
         conda activate "$envName"
 
-        testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cucim cuvs
+        testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cuvs # cucim
 
         conda deactivate
         conda env remove -n "$envName"
