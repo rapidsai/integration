@@ -14,10 +14,6 @@
 set -euo pipefail
 
 STABLE_RAPIDS_VERSION="26.4.*"
-SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
-SUPPORTED_CUDA_VERSIONS=("cu12" "cu13")
-CUDA12_MINOR_VERSIONS=('>=12.2,<12.4' '==12.9')
-CUDA13_MINOR_VERSIONS=('==13.0' '==13.1')
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/bootstrap/pip.sh"
@@ -27,7 +23,7 @@ while [[ $# -gt 0 ]]; do
   case $1 in
     --python)
       shift
-      SUPPORTED_PYTHON_VERSIONS=("$1")
+      PYTHON_VERSION="$1"
       shift
       ;;
     --rapids)
@@ -37,7 +33,7 @@ while [[ $# -gt 0 ]]; do
       ;;
     --cuda)
       shift
-      SUPPORTED_CUDA_VERSIONS=("$1")
+      CUDA_VERSION="$1"
       shift
       ;;
     -*)
@@ -46,6 +42,16 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+if [[ -z "${PYTHON_VERSION:-}" ]]; then
+  rapids-echo-stderr "--python is required"
+  exit 1
+fi
+
+if [[ -z "${CUDA_VERSION:-}" ]]; then
+  rapids-echo-stderr "--cuda is required"
+  exit 1
+fi
 
 function createPyEnv {
     PY_VER=$1
@@ -58,66 +64,52 @@ function createPyEnv {
 }
 
 
-for CUDA_SUFFIX in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
 
-    case "${CUDA_SUFFIX}" in
-        cu12) CUDA_MINOR_VERSIONS=("${CUDA12_MINOR_VERSIONS[@]}") ;;
-        cu13) CUDA_MINOR_VERSIONS=("${CUDA13_MINOR_VERSIONS[@]}") ;;
-    esac
+CUDA_SUFFIX="cu${CUDA_VERSION%%.*}"
 
+rapids-logger "Using cuda-toolkit for CUDA ${CUDA_VERSION}"
+PIP_INSTALL_PYPI=(
+    "cudf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "dask-cudf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "cuml-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "pylibraft-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "raft-dask-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "cuda-toolkit[cublas,cufft,curand,cusolver,cusparse,nvcc,nvrtc]==${CUDA_VERSION}.*"
+)
 
+INSTALL_DIR=$(mktemp -d)
+createPyEnv "$PYTHON_VERSION" "$INSTALL_DIR"
 
-    for cuda_major_minor in "${CUDA_MINOR_VERSIONS[@]}"; do
-        rapids-logger "Using cuda-toolkit for CUDA ${cuda_major_minor}"
-        PIP_INSTALL_PYPI=(
-            "cudf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "dask-cudf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "cuml-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "pylibraft-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "raft-dask-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-            "cuda-toolkit[cublas,cufft,curand,cusolver,cusparse,nvcc,nvrtc]${cuda_major_minor}"
-        )
+rapids-logger "Downloading NVIDIA PyPI only wheels for Python $PYTHON_VERSION and CUDA $CUDA_VERSION"
 
+WHEELS_DIR=$(mktemp -d)
+pip download \
+  --isolated \
+  --index-url https://pypi.nvidia.com \
+  --prefer-binary \
+  --no-deps \
+  -d "${WHEELS_DIR}" \
+  "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+  "cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+  "cuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+  "cuxfilter-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+  "libcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+  "libcuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+  "nx-cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+  "pylibcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
 
-      for PY_VER in "${SUPPORTED_PYTHON_VERSIONS[@]}"; do
+rapids-logger "Testing stable version install with Python $PYTHON_VERSION and CUDA $CUDA_VERSION"
 
-          INSTALL_DIR=$(mktemp -d)
-          createPyEnv "$PY_VER" "$INSTALL_DIR"
+pip install \
+  --isolated \
+  --index-url https://pypi.org/simple \
+  --prefer-binary \
+  "${PIP_INSTALL_PYPI[@]}" \
+  "${WHEELS_DIR}"/*.whl
 
-          rapids-logger "Downloading NVIDIA PyPI only wheels for Python $PY_VER and CUDA $cuda_major_minor"
+testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cuvs cucim rmm rapidsmpf cudf-polars
 
-          WHEELS_DIR=$(mktemp -d)
-          pip download \
-            --isolated \
-            --index-url https://pypi.nvidia.com \
-            --prefer-binary \
-            --no-deps \
-            -d "${WHEELS_DIR}" \
-            "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-            "cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-            "cuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-            "cuxfilter-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-            "libcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-            "libcuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-            "nx-cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-            "pylibcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+popd
 
-          rapids-logger "Testing stable version install with Python $PY_VER and CUDA $cuda_major_minor"
-
-          pip install \
-            --isolated \
-            --index-url https://pypi.org/simple \
-            --prefer-binary \
-            "${PIP_INSTALL_PYPI[@]}" \
-            "${WHEELS_DIR}"/*.whl
-
-          # can't import cucim on CPU-only
-          testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cuvs # cucim
-
-          popd
-
-          rapids-logger "Removing environment in $INSTALL_DIR/.venv"
-          rm -rf "$INSTALL_DIR/.venv"
-        done
-    done
-done
+rapids-logger "Removing environment in $INSTALL_DIR/.venv"
+rm -rf "$INSTALL_DIR/.venv"
