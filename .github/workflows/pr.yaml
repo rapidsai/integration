@@ -80,7 +80,7 @@ jobs:
       build_type: pull-request
       arch: "${{matrix.ARCH}}"
       node_type: "gpu-${{ matrix.GPU }}-latest-1"
-      container_image: "rapidsai/citestwheel:cuda${{ matrix.CUDA_VER }}-ubuntu24.04-${{ matrix.PY_VER }}"
+      container_image: "rapidsai/citestwheel:26.04-cuda${{ matrix.CUDA_VER }}-${{ matrix.LINUX_VER }}-py${{ matrix.PY_VER }}-${{ matrix.ARCH }}"
       script: |
         ./ci/stable_install/install_and_test_pip.sh --cuda ${{ matrix.CUDA_VER }} --python ${{ matrix.PY_VER }}
 
