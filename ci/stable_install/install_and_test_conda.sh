@@ -1,12 +1,11 @@
 #!/bin/bash
 # Copyright (c) 2026, NVIDIA CORPORATION.
 
-# By default, this script attempts to install the latest stable RAPIDS version
-# in a clean conda environment for all supported versions of Python and CUDA
+# This script installs the latest stable RAPIDS version in a clean conda
+# environment for the specified Python and CUDA versions.
 #
-# The Python version, CUDA version, and RAPIDS version can be overridden by
-# supplying the value to test to the appropriate flag (--python, --rapids, and
-# --cuda, respectively).
+# The Python version, CUDA version, and RAPIDS version can be specified via
+# --python, --cuda, and --rapids, respectively. --python and --cuda are required.
 
 set -euo pipefail
 
@@ -14,14 +13,12 @@ SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/test_imports.sh"
 
 STABLE_RAPIDS_VERSION="26.4.*"
-SUPPORTED_PYTHON_VERSIONS=(3.11 3.12 3.13 3.14)
-SUPPORTED_CUDA_VERSIONS=("12.2" "12.9" "13.0" "13.1")
 
 while [[ $# -gt 0 ]]; do
   case $1 in
     --python)
       shift
-      SUPPORTED_PYTHON_VERSIONS=("$1")
+      PYTHON_VERSION="$1"
       shift
       ;;
     --rapids)
@@ -31,7 +28,7 @@ while [[ $# -gt 0 ]]; do
       ;;
     --cuda)
       shift
-      SUPPORTED_CUDA_VERSIONS=("$1")
+      CUDA_VERSION="$1"
       shift
       ;;
     -*)
@@ -41,23 +38,30 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+if [[ -z "${PYTHON_VERSION:-}" ]]; then
+  rapids-echo-stderr "--python is required"
+  exit 1
+fi
+
+if [[ -z "${CUDA_VERSION:-}" ]]; then
+  rapids-echo-stderr "--cuda is required"
+  exit 1
+fi
+
 . /opt/conda/etc/profile.d/conda.sh
 
-for CUDA_VERSION in "${SUPPORTED_CUDA_VERSIONS[@]}"; do
-    for PY_VER in "${SUPPORTED_PYTHON_VERSIONS[@]}"; do
-        envName="rapids_${PY_VER}_${CUDA_VERSION}"
+envName="rapids_${PYTHON_VERSION}_${CUDA_VERSION}"
 
-        rapids-logger "Testing stable version install with Python $PY_VER and CUDA version $CUDA_VERSION"
+rapids-logger "Testing stable version install with Python $PYTHON_VERSION and CUDA version $CUDA_VERSION"
 
-        # use `-O` to override channels so we don't include `rapidsai-nightly`
-        conda create -n "$envName" -O -c rapidsai -c conda-forge -y \
-          rapids="$STABLE_RAPIDS_VERSION" python="$PY_VER" "cuda-version==${CUDA_VERSION}"
+# use `-O` to override channels so we don't include `rapidsai-nightly`
+conda create -n "$envName" -O -c rapidsai -c conda-forge -y \
+  rapids="$STABLE_RAPIDS_VERSION" python="$PYTHON_VERSION" "cuda-version==${CUDA_VERSION}"
 
-        conda activate "$envName"
+conda activate "$envName"
 
-        testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cuvs # cucim
+# Test imports of all packages included in the rapids metapackage
+testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cuvs cucim rmm
 
-        conda deactivate
-        conda env remove -n "$envName"
-    done
-done
+conda deactivate
+conda env remove -n "$envName"

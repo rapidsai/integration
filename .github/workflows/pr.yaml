@@ -102,4 +102,4 @@ jobs:
       arch: "${{ matrix.ARCH }}"
       container_image: "rapidsai/ci-conda:26.04-cuda${{ matrix.CUDA_VER }}-${{ matrix.LINUX_VER }}-py${{ matrix.PY_VER }}"
       script: |
-        ./ci/stable_install/install_and_test_conda.sh
+        ./ci/stable_install/install_and_test_conda.sh --cuda ${{ matrix.CUDA_VER }} --python ${{ matrix.PY_VER }}
