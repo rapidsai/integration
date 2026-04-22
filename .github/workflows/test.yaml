@@ -28,50 +28,41 @@ jobs:
       script: "ci/test_conda_nightly_env.sh"
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
-  test-stable-install-pip-cuda-12:
-    uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
-    strategy:
-      fail-fast: false
-      matrix:
-        arch:
-          - amd64
-          - arm64
-    with:
-      build_type: pull-request
-      node_type: "cpu4"
-      arch: "${{matrix.arch}}"
-      container_image: "rapidsai/citestwheel:cuda12.9.1-ubuntu24.04-py3.14"
-      script: |
-        ./ci/stable_install/install_and_test_pip.sh --cuda cu12
-  test-stable-install-pip-cuda-13:
+  stable-install-pip-test-matrix:
     secrets: inherit
+    uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@main
+    with:
+      build_type: nightly
+      matrix_name: wheels-test
+  test-stable-install-pip:
+    needs: stable-install-pip-test-matrix
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
     strategy:
       fail-fast: false
-      matrix:
-        arch:
-          - amd64
-          - arm64
+      matrix: ${{ fromJSON(needs.stable-install-pip-test-matrix.outputs.matrix) }}
     with:
       build_type: pull-request
-      node_type: "cpu4"
-      arch: "${{matrix.arch}}"
-      container_image: "rapidsai/citestwheel:cuda13.2.0-ubuntu24.04-py3.14"
+      arch: "${{matrix.ARCH}}"
+      node_type: "gpu-${{ matrix.GPU }}-latest-1"
+      container_image: "rapidsai/citestwheel:26.04-cuda${{ matrix.CUDA_VER }}-${{ matrix.LINUX_VER }}-py${{ matrix.PY_VER }}-${{ matrix.ARCH }}"
       script: |
-        ./ci/stable_install/install_and_test_pip.sh --cuda cu13
+        ./ci/stable_install/install_and_test_pip.sh --cuda ${{ matrix.CUDA_VER }} --python ${{ matrix.PY_VER }}
+  stable-install-conda-test-matrix:
+    secrets: inherit
+    uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@main
+    with:
+      build_type: nightly
+      matrix_name: conda-python-tests
   test-stable-install-conda:
-    secrets: inherit
+    needs: stable-install-conda-test-matrix
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
     strategy:
       fail-fast: false
-      matrix:
-        arch:
-          - amd64
-          - arm64
+      matrix: ${{ fromJSON(needs.stable-install-conda-test-matrix.outputs.matrix) }}
     with:
       build_type: pull-request
-      node_type: "cpu4"
-      arch: "${{matrix.arch}}"
-      container_image: "rapidsai/ci-conda:26.04-latest"
+      node_type: "gpu-${{ matrix.GPU }}-latest-1"
+      arch: "${{ matrix.ARCH }}"
+      container_image: "rapidsai/ci-conda:26.04-cuda${{ matrix.CUDA_VER }}-${{ matrix.LINUX_VER }}-py${{ matrix.PY_VER }}"
       script: |
-        ./ci/stable_install/install_and_test_conda.sh
+        ./ci/stable_install/install_and_test_conda.sh --cuda ${{ matrix.CUDA_VER }} --python ${{ matrix.PY_VER }}
