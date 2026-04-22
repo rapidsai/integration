@@ -78,6 +78,11 @@ NEXT_MAJOR=$(echo $NEXT_FULL_TAG | awk '{split($0, a, "."); print a[1]}')
 NEXT_MINOR=$(echo $NEXT_FULL_TAG | awk '{split($0, a, "."); print a[2]}')
 NEXT_SHORT_TAG=${NEXT_MAJOR}.${NEXT_MINOR}
 
+# Get <major>.<minor> for current (stable) version
+CURRENT_MAJOR=$(echo $CURRENT_TAG | awk '{split($0, a, "."); print a[1]}')
+CURRENT_MINOR=$(echo $CURRENT_TAG | awk '{split($0, a, "."); print a[2]}')
+CURRENT_SHORT_TAG=${CURRENT_MAJOR}.${CURRENT_MINOR}
+
 # Determine branch name based on context
 if [[ "${RUN_CONTEXT}" == "main" ]]; then
     RAPIDS_BRANCH_NAME="main"
@@ -94,7 +99,7 @@ function sed_runner() {
 
 sed_runner "/RAPIDS_VER=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/conda-pack.sh
 sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/test_conda_nightly_env.sh
-sed_runner "/STABLE_RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/stable_install/install_and_test_*.sh
+sed_runner "/STABLE_RAPIDS_VERSION=/ s/[0-9][0-9]\.[0-9][0-9]/${CURRENT_SHORT_TAG}/" ci/stable_install/install_and_test_*.sh
 
 # CI files - context-aware branch references
 for FILE in .github/workflows/*.yaml; do
