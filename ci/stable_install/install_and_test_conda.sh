@@ -63,7 +63,20 @@ conda create -n "$envName" -O -c rapidsai -c conda-forge -y \
 conda activate "$envName"
 
 # Test imports of all packages included in the rapids metapackage
-testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cuvs cucim rmm
+declare -a RAPIDS_IMPORTS=(
+  cucim
+  cudf
+  cugraph
+  cuml
+  cuvs
+  cuxfilter
+  dask_cudf
+  nx_cugraph
+  pylibraft
+  raft_dask
+  rmm
+)
+testImports RAPIDS_IMPORTS
 
 conda deactivate
 conda env remove -n "$envName"

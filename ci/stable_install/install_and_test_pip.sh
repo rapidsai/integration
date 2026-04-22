@@ -107,7 +107,22 @@ pip install \
   "${PIP_INSTALL_PYPI[@]}" \
   "${WHEELS_DIR}"/*.whl
 
-testImports cudf dask_cudf cuml pylibraft raft_dask cugraph nx_cugraph cuxfilter cuvs cucim rmm rapidsmpf cudf-polars
+declare -a RAPIDS_IMPORTS=(
+  cucim
+  cudf
+  cudf_polars
+  cugraph
+  cuml
+  cuvs
+  cuxfilter
+  dask_cudf
+  nx_cugraph
+  pylibraft
+  raft_dask
+  rapidsmpf
+  rmm
+)
+testImports RAPIDS_IMPORTS
 
 popd
 

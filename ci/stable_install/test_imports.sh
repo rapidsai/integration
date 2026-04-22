@@ -36,14 +36,11 @@ function runImport {
 }
 
 function testImports {
-    local -a imports=()
+    local -n imports=$1
     local failures=0
-    while [[ $# -gt 0 ]]; do
-        rapids-logger "Standalone import test for $1"
-        runImport "import $1" "$1" || failures=$((failures + 1))
-        # add import to array for combined import test before shifting
-        imports+=("$1")
-        shift
+    for pkg in "${imports[@]}"; do
+        rapids-logger "Standalone import test for $pkg"
+        runImport "import $pkg" "$pkg" || failures=$((failures + 1))
     done
     local import_cmd
     import_cmd=$(printf "import %s; " "${imports[@]}")
