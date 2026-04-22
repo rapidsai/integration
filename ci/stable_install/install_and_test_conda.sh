@@ -63,6 +63,7 @@ conda create -n "$envName" -O -c rapidsai -c conda-forge -y \
 conda activate "$envName"
 
 # Test imports of all packages included in the rapids metapackage
+# shellcheck disable=SC2034
 declare -a RAPIDS_IMPORTS=(
   cucim
   cudf

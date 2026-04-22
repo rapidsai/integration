@@ -115,6 +115,7 @@ pip install \
   "${PIP_INSTALL_PYPI[@]}" \
   "${WHEELS_DIR}"/*.whl
 
+# shellcheck disable=SC2034
 declare -a RAPIDS_IMPORTS=(
   cucim
   cudf
