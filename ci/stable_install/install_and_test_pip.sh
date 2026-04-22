@@ -63,18 +63,26 @@ function createPyEnv {
     source "${INSTALL_DIR}/.venv/bin/activate"
 }
 
-
-
 CUDA_SUFFIX="cu${CUDA_VERSION%%.*}"
+
+# TODO: CTK support for cublas on arm is weird around 12.2 -- we can remove this
+# workaround when support for 12.2 is dropped
+if [[ "${CUDA_VERSION}" == 12.2* ]] && [[ "$(uname -m)" == "aarch64" ]]; then
+    CUDA_TOOLKIT_SPEC="cuda-toolkit>=12.2,<12.4"
+else
+    CUDA_TOOLKIT_SPEC="cuda-toolkit==${CUDA_VERSION}.*"
+fi
 
 rapids-logger "Using cuda-toolkit for CUDA ${CUDA_VERSION}"
 PIP_INSTALL_PYPI=(
     "cudf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-    "dask-cudf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "cudf-polars-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
     "cuml-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "dask-cudf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
     "pylibraft-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
     "raft-dask-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-    "cuda-toolkit[cublas,cufft,curand,cusolver,cusparse,nvcc,nvrtc]==${CUDA_VERSION}.*"
+    "rapidsmpf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "${CUDA_TOOLKIT_SPEC}"
 )
 
 INSTALL_DIR=$(mktemp -d)
