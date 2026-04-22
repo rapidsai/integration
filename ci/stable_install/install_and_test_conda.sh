@@ -48,6 +48,8 @@ if [[ -z "${CUDA_VERSION:-}" ]]; then
   exit 1
 fi
 
+CUDA_VERSION="${CUDA_VERSION%.*}"
+
 . /opt/conda/etc/profile.d/conda.sh
 
 envName="rapids_${PYTHON_VERSION}_${CUDA_VERSION}"
