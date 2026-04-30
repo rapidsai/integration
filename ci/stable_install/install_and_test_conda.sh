@@ -82,7 +82,9 @@ testImports RAPIDS_IMPORTS
 
 # Run RAPIDS health checks
 installRapidsDoctor
-rapids doctor
+
+rapids-logger "Running RAPIDS doctor smoke tests"
+rapids doctor --verbose
 
 conda deactivate
 conda env remove -n "$envName"
