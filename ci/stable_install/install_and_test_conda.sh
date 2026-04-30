@@ -11,6 +11,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/test_imports.sh"
+source "${SCRIPT_DIR}/install_rapids_doctor.sh"
 
 STABLE_RAPIDS_VERSION="26.4.*"
 
@@ -78,6 +79,10 @@ declare -a RAPIDS_IMPORTS=(
   rmm
 )
 testImports RAPIDS_IMPORTS
+
+# Run RAPIDS health checks
+installRapidsDoctor
+rapids doctor
 
 conda deactivate
 conda env remove -n "$envName"
