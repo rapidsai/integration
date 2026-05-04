@@ -18,6 +18,7 @@ STABLE_RAPIDS_VERSION="26.4.*"
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/bootstrap/pip.sh"
 source "${SCRIPT_DIR}/test_imports.sh"
+source "${SCRIPT_DIR}/install_rapids_doctor.sh"
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -91,7 +92,7 @@ createPyEnv "$PYTHON_VERSION" "$INSTALL_DIR"
 rapids-logger "Downloading NVIDIA PyPI only wheels for Python $PYTHON_VERSION and CUDA $CUDA_VERSION"
 
 WHEELS_DIR=$(mktemp -d)
-pip download \
+python -m pip download \
   --isolated \
   --index-url https://pypi.nvidia.com \
   --prefer-binary \
@@ -108,7 +109,7 @@ pip download \
 
 rapids-logger "Testing stable version install with Python $PYTHON_VERSION and CUDA $CUDA_VERSION"
 
-pip install \
+python -m pip install \
   --isolated \
   --index-url https://pypi.org/simple \
   --prefer-binary \
@@ -132,6 +133,12 @@ declare -a RAPIDS_IMPORTS=(
   rmm
 )
 testImports RAPIDS_IMPORTS
+
+# Run RAPIDS health checks
+installRapidsDoctor
+
+rapids-logger "Running RAPIDS doctor smoke tests"
+rapids doctor --verbose
 
 popd
 
