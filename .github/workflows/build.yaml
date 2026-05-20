@@ -1,4 +1,5 @@
 name: build
+
 on:
   push:
     branches:
@@ -25,9 +26,13 @@ on:
         description: "build_type: one of [branch, nightly, pull-request]"
         type: string
         default: nightly
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
+
+permissions: {}
+
 jobs:
   build:
     secrets: inherit # zizmor: ignore[secrets-inherit]

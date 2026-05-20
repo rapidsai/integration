@@ -1,4 +1,5 @@
 name: Trigger Breaking Change Notifications
+
 on: # zizmor: ignore[dangerous-triggers]
   pull_request_target:
     types:
@@ -6,6 +7,9 @@ on: # zizmor: ignore[dangerous-triggers]
       - reopened
       - labeled
       - unlabeled
+
+permissions: {}
+
 jobs:
   trigger-notifier:
     if: contains(github.event.pull_request.labels.*.name, 'breaking')
