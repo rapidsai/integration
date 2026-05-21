@@ -9,6 +9,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   pr-builder:
     needs:
@@ -16,8 +18,9 @@ jobs:
       - checks
       - check-nightly-ci
       - test-conda-nightly-env
-    secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/pr-builder.yaml@main
+    permissions:
+      contents: read
   check-nightly-ci:
     runs-on: ubuntu-latest
     permissions:
@@ -28,7 +31,7 @@ jobs:
     steps:
       - name: Get PR Info
         id: get-pr-info
-        uses: nv-gha-runners/get-pr-info@main
+        uses: nv-gha-runners/get-pr-info@090577647b8ddc4e06e809e264f7881650ecdccf # main
       - name: Check if nightly CI is passing
         uses: rapidsai/shared-actions/check_nightly_success/dispatch@main
         with:
@@ -39,22 +42,31 @@ jobs:
           target-branch: ${{ fromJSON(steps.get-pr-info.outputs.pr-info).base.ref }}
   checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 1
-      - uses: pre-commit/action@v3.0.1
+          persist-credentials: false
+      - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
   build:
     needs: checks
-    secrets: inherit
+    secrets: inherit # zizmor: ignore[secrets-inherit]
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@main
     with:
       build_type: pull-request
       script: ci/build_python.sh
       pure-conda: cuda_major
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      packages: read
+      pull-requests: read
   test-conda-nightly-env:
     needs: checks
-    secrets: inherit
+    secrets: inherit # zizmor: ignore[secrets-inherit]
     # We use a build workflow so that we get CPU jobs and high matrix coverage
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@main
     with:
@@ -62,3 +74,9 @@ jobs:
       script: "ci/test_conda_nightly_env.sh"
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      packages: read
+      pull-requests: read

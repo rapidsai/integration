@@ -18,9 +18,11 @@ on:
         required: true
         type: string
 
+permissions: {}
+
 jobs:
   test-conda-nightly-env:
-    secrets: inherit
+    secrets: inherit # zizmor: ignore[secrets-inherit]
     # We use a build workflow so that we get CPU jobs and high matrix coverage
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@main
     with:
@@ -28,12 +30,19 @@ jobs:
       script: "ci/test_conda_nightly_env.sh"
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      packages: read
+      pull-requests: read
   stable-install-pip-test-matrix:
-    secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@main
     with:
       build_type: nightly
       matrix_name: wheels-test
+    permissions:
+      contents: read
   test-stable-install-pip:
     needs: stable-install-pip-test-matrix
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
@@ -47,12 +56,19 @@ jobs:
       container_image: "rapidsai/citestwheel:26.04-cuda${{ matrix.CUDA_VER }}-${{ matrix.LINUX_VER }}-py${{ matrix.PY_VER }}-${{ matrix.ARCH }}"
       script: |
         ./ci/stable_install/install_and_test_pip.sh --cuda ${{ matrix.CUDA_VER }} --python ${{ matrix.PY_VER }}
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      packages: read
+      pull-requests: read
   stable-install-conda-test-matrix:
-    secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@main
     with:
       build_type: nightly
       matrix_name: conda-python-tests
+    permissions:
+      contents: read
   test-stable-install-conda:
     needs: stable-install-conda-test-matrix
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
@@ -66,3 +82,9 @@ jobs:
       container_image: "rapidsai/ci-conda:26.04-cuda${{ matrix.CUDA_VER }}-${{ matrix.LINUX_VER }}-py${{ matrix.PY_VER }}"
       script: |
         ./ci/stable_install/install_and_test_conda.sh --cuda ${{ matrix.CUDA_VER }} --python ${{ matrix.PY_VER }}
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      packages: read
+      pull-requests: read
