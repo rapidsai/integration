@@ -34,6 +34,10 @@ jobs:
     with:
       build_type: nightly
       matrix_name: wheels-test
+      # TODO: add custom dependency matrix for stable install tests
+      matrix_filter: map(select(.CUDA_VER != "13.2.0"))
+    permissions:
+      contents: read
   test-stable-install-pip:
     needs: stable-install-pip-test-matrix
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@release/26.06
@@ -53,6 +57,10 @@ jobs:
     with:
       build_type: nightly
       matrix_name: conda-python-tests
+      # TODO: add custom dependency matrix for stable install tests
+      matrix_filter: map(select(.CUDA_VER != "13.2.0"))
+    permissions:
+      contents: read
   test-stable-install-conda:
     needs: stable-install-conda-test-matrix
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@release/26.06
