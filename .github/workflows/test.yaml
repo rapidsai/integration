@@ -29,6 +29,7 @@ jobs:
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
   stable-install-pip-test-matrix:
+    if: github.base_ref == 'main'
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@release/26.06
     with:
@@ -52,6 +53,7 @@ jobs:
       script: |
         ./ci/stable_install/install_and_test_pip.sh --cuda ${{ matrix.CUDA_VER }} --python ${{ matrix.PY_VER }}
   stable-install-conda-test-matrix:
+    if: github.base_ref == 'main'
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@release/26.06
     with:
