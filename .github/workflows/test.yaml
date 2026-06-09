@@ -42,6 +42,9 @@ jobs:
     with:
       build_type: nightly
       matrix_name: wheels-test
+      # TODO: add custom dependency matrix for stable install tests
+      # Proactively filtering out 13.3 jobs which won't have docker images for the 26.06 release
+      matrix_filter: map(select(.CUDA_VER != "13.3.0"))
     permissions:
       contents: read
   test-stable-install-pip:
@@ -69,6 +72,9 @@ jobs:
     with:
       build_type: nightly
       matrix_name: conda-python-tests
+      # TODO: add custom dependency matrix for stable install tests
+      # Proactively filtering out 13.3 jobs which won't have docker images for the 26.06 release
+      matrix_filter: map(select(.CUDA_VER != "13.3.0"))
     permissions:
       contents: read
   test-stable-install-conda:
