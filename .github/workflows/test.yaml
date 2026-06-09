@@ -29,11 +29,16 @@ jobs:
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
   stable-install-pip-test-matrix:
+    if: github.base_ref == 'main'
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@release/26.06
     with:
       build_type: nightly
       matrix_name: wheels-test
+      # TODO: add custom dependency matrix for stable install tests
+      matrix_filter: map(select(.CUDA_VER != "13.2.0"))
+    permissions:
+      contents: read
   test-stable-install-pip:
     needs: stable-install-pip-test-matrix
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@release/26.06
@@ -48,11 +53,16 @@ jobs:
       script: |
         ./ci/stable_install/install_and_test_pip.sh --cuda ${{ matrix.CUDA_VER }} --python ${{ matrix.PY_VER }}
   stable-install-conda-test-matrix:
+    if: github.base_ref == 'main'
     secrets: inherit
     uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@release/26.06
     with:
       build_type: nightly
       matrix_name: conda-python-tests
+      # TODO: add custom dependency matrix for stable install tests
+      matrix_filter: map(select(.CUDA_VER != "13.2.0"))
+    permissions:
+      contents: read
   test-stable-install-conda:
     needs: stable-install-conda-test-matrix
     uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@release/26.06
