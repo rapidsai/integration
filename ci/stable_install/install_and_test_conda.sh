@@ -71,7 +71,6 @@ declare -a RAPIDS_IMPORTS=(
   cugraph
   cuml
   cuvs
-  cuxfilter
   dask_cudf
   nx_cugraph
   pylibraft
