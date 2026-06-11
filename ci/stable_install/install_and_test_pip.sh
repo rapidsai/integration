@@ -13,7 +13,7 @@
 
 set -euo pipefail
 
-STABLE_RAPIDS_VERSION="26.4.*"
+STABLE_RAPIDS_VERSION="26.6.*"
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/bootstrap/pip.sh"
