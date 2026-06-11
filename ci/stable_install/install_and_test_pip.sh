@@ -13,7 +13,7 @@
 
 set -euo pipefail
 
-STABLE_RAPIDS_VERSION="26.4.*"
+STABLE_RAPIDS_VERSION="26.6.*"
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/bootstrap/pip.sh"
@@ -101,7 +101,6 @@ python -m pip download \
   "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "cuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-  "cuxfilter-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "libcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "libcuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "nx-cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
@@ -124,7 +123,6 @@ declare -a RAPIDS_IMPORTS=(
   cugraph
   cuml
   cuvs
-  cuxfilter
   dask_cudf
   nx_cugraph
   pylibraft

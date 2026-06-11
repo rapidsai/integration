@@ -13,7 +13,7 @@ SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/test_imports.sh"
 source "${SCRIPT_DIR}/install_rapids_doctor.sh"
 
-STABLE_RAPIDS_VERSION="26.4.*"
+STABLE_RAPIDS_VERSION="26.6.*"
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -71,7 +71,6 @@ declare -a RAPIDS_IMPORTS=(
   cugraph
   cuml
   cuvs
-  cuxfilter
   dask_cudf
   nx_cugraph
   pylibraft
