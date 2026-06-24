@@ -24,7 +24,7 @@ jobs:
   test-conda-nightly-env:
     secrets: inherit # zizmor: ignore[secrets-inherit]
     # We use a build workflow so that we get CPU jobs and high matrix coverage
-    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@cuda-13.3.0
+    uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@main
     with:
       build_type: pull-request
       script: "ci/test_conda_nightly_env.sh"
@@ -38,7 +38,7 @@ jobs:
       pull-requests: read
   stable-install-pip-test-matrix:
     if: github.base_ref == 'main'
-    uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@cuda-13.3.0
+    uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@main
     with:
       build_type: nightly
       matrix_name: wheels-test
@@ -48,7 +48,7 @@ jobs:
       contents: read
   test-stable-install-pip:
     needs: stable-install-pip-test-matrix
-    uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@cuda-13.3.0
+    uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.stable-install-pip-test-matrix.outputs.matrix) }}
@@ -67,7 +67,7 @@ jobs:
       pull-requests: read
   stable-install-conda-test-matrix:
     if: github.base_ref == 'main'
-    uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@cuda-13.3.0
+    uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@main
     with:
       build_type: nightly
       matrix_name: conda-python-tests
@@ -77,7 +77,7 @@ jobs:
       contents: read
   test-stable-install-conda:
     needs: stable-install-conda-test-matrix
-    uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@cuda-13.3.0
+    uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.stable-install-conda-test-matrix.outputs.matrix) }}
