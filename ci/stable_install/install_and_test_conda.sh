@@ -11,7 +11,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/test_imports.sh"
-source "${SCRIPT_DIR}/install_rapids_doctor.sh"
 
 STABLE_RAPIDS_VERSION="26.6.*"
 
@@ -59,7 +58,7 @@ rapids-logger "Testing stable version install with Python $PYTHON_VERSION and CU
 
 # use `-O` to override channels so we don't include `rapidsai-nightly`
 conda create -n "$envName" -O -c rapidsai -c conda-forge -y \
-  rapids="$STABLE_RAPIDS_VERSION" python="$PYTHON_VERSION" "cuda-version==${CUDA_VERSION}"
+  rapids="$STABLE_RAPIDS_VERSION" python="$PYTHON_VERSION" "cuda-version==${CUDA_VERSION}" rapids-cli
 
 conda activate "$envName"
 
@@ -78,9 +77,6 @@ declare -a RAPIDS_IMPORTS=(
   rmm
 )
 testImports RAPIDS_IMPORTS
-
-# Run RAPIDS health checks
-installRapidsDoctor
 
 rapids-logger "Running RAPIDS doctor smoke tests"
 rapids doctor --verbose

@@ -18,7 +18,6 @@ STABLE_RAPIDS_VERSION="26.6.*"
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/bootstrap/pip.sh"
 source "${SCRIPT_DIR}/test_imports.sh"
-source "${SCRIPT_DIR}/install_rapids_doctor.sh"
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -83,6 +82,7 @@ PIP_INSTALL_PYPI=(
     "pylibraft-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
     "raft-dask-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
     "rapidsmpf-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+    "rapids-cli"
     "${CUDA_TOOLKIT_SPEC}"
 )
 
@@ -131,9 +131,6 @@ declare -a RAPIDS_IMPORTS=(
   rmm
 )
 testImports RAPIDS_IMPORTS
-
-# Run RAPIDS health checks
-installRapidsDoctor
 
 rapids-logger "Running RAPIDS doctor smoke tests"
 rapids doctor --verbose
