@@ -1,4 +1,4 @@
-# Copyright (c) 2024-2025, NVIDIA CORPORATION.
+# Copyright (c) 2024-2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 import json
 import re
 import sys
@@ -33,16 +33,16 @@ def get_package_date(package):
     if package["name"] in EXCLUDED_PACKAGES:
         return None
 
-    # Matches 6 digits starting with "2", which should be YYMMDD
-    date_re = r"(?:^|_)(2\d{5})_"
+    # Matches 12 digits starting with "2", which should be YYMMDDhhmmss
+    date_re = r"(?:^|_)(2\d{11})_"
 
     # Use regex to find the date string in the input
     match = re.search(date_re, package["build_string"])
 
     if match:
-        # Convert the date string to a datetime object
-        date_string = match.group(1)
-        date_object = datetime.strptime(date_string, "%y%m%d")
+        # Convert the date-time string to a datetime object
+        datetime_string = match.group(1)
+        date_object = datetime.strptime(datetime_string, "%y%m%d%H%M%S")
         return date_object
 
     print(
