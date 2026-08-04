@@ -34,6 +34,8 @@ concurrency:
 permissions: {}
 
 jobs:
+  build-details:
+    uses: rapidsai/shared-workflows/.github/workflows/compute-build-details.yaml@main
   build:
     secrets: inherit # zizmor: ignore[secrets-inherit]
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@main

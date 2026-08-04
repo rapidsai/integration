@@ -1,11 +1,11 @@
 #!/bin/bash
-# Copyright (c) 2022-2025, NVIDIA CORPORATION.
+# Copyright (c) 2022-2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 set -euo pipefail
 
 source rapids-configure-sccache
 
-source rapids-date-string
+source rapids-datetime-string
 
 RAPIDS_PACKAGE_VERSION=$(rapids-generate-version)
 export RAPIDS_PACKAGE_VERSION
