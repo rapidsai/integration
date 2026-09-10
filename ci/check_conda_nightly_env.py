@@ -9,13 +9,9 @@ OLD_PACKAGE_THRESHOLD_DAYS = 3
 EXCLUDED_PACKAGES = {
     # These packages are not built every night:
     "rapids",
-    "rapids-xgboost",
     # These packages do not have date strings:
     "rapids-dask-dependency",
     "rapids-logger",  # Also not built every night
-    "libxgboost",
-    "py-xgboost",
-    "xgboost",
 }
 
 # ANSI color codes used to highlight lines
