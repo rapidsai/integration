@@ -22,3 +22,6 @@ rattler-build build --recipe conda/recipes/rapids \
                     --variant-config "${CONDA_CONFIG_FILE}" \
                     "${RATTLER_ARGS[@]}" \
                     "${RATTLER_CHANNELS[@]}"
+
+RAPIDS_PACKAGE_NAME=$(rapids-artifact-name conda_python rapids integration --pure --arch any --cuda "$RAPIDS_CUDA_VERSION")
+export RAPIDS_PACKAGE_NAME
