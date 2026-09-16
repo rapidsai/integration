@@ -17,6 +17,10 @@ on:
         description: "sha: full git commit SHA to check out"
         required: true
         type: string
+      build_type:
+        description: "build_type: one of [branch, nightly, pull-request]"
+        type: string
+        default: nightly
 
 permissions: {}
 
@@ -26,7 +30,10 @@ jobs:
     # We use a build workflow so that we get CPU jobs and high matrix coverage
     uses: rapidsai/shared-workflows/.github/workflows/conda-python-build.yaml@main
     with:
-      build_type: pull-request
+      build_type: ${{ inputs.build_type }}
+      branch: ${{ inputs.branch }}
+      date: ${{ inputs.date }}
+      sha: ${{ inputs.sha }}
       script: "ci/test_conda_nightly_env.sh"
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
