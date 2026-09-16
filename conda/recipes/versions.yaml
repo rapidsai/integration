@@ -1,8 +1,5 @@
-# Copyright (c) 2021-2025, NVIDIA CORPORATION.
+# Copyright (c) 2021-2026, NVIDIA CORPORATION.
 
-# Versions for `rapids-xgboost` meta-pkg
-xgboost_version:
-  - '=3.3.0'
 
 cupy_version:
   - '>=13.6.0'
@@ -14,3 +11,5 @@ nvtx_version:
   - '>=0.2.1,<0.3'
 ucx_version:
   - '>=1.15.0,<1.21.0'
+xgboost_version:
+  - '>=3.4.0,<3.5.0'

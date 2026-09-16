@@ -24,7 +24,6 @@ libraries to a RAPIDS release:
 Package Name | Purpose
 --- | ---
 `rapids` | Provide a one package install for all RAPIDS libraries, version matched to a RAPIDS release
-`rapids-xgboost` | Defines the version of `xgboost` used for a RAPIDS release
 
 ## Managing Versions
 

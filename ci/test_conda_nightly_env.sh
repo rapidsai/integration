@@ -8,6 +8,8 @@ CUDA_VERSION=${RAPIDS_CUDA_VERSION%.*}
 
 JSON_FILENAME="rapids_cuda${CUDA_VERSION}_py${RAPIDS_PY_VERSION}.json"
 
+RAPIDS_CHANNEL=$(rapids-download-from-github "$(rapids-artifact-name conda_python rapids integration --pure --arch any --cuda "$RAPIDS_CUDA_VERSION")")
+
 rapids-logger "Configuring conda strict channel priority"
 conda config --set channel_priority strict
 
@@ -16,6 +18,7 @@ rapids-logger "Creating conda environment with rapids=${RAPIDS_VERSION}, python=
 rapids-conda-retry \
     create \
     -n rapids-${RAPIDS_VERSION} \
+    -c "${RAPIDS_CHANNEL}" \
     -c rapidsai-nightly \
     -c conda-forge \
     rapids=${RAPIDS_VERSION} \
