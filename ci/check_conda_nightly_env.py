@@ -2,7 +2,7 @@
 import json
 import re
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 OLD_PACKAGE_THRESHOLD_DAYS = 3
 
@@ -38,7 +38,9 @@ def get_package_date(package):
     if match:
         # Convert the date-time string to a datetime object
         datetime_string = match.group(1)
-        date_object = datetime.strptime(datetime_string, "%y%m%d%H%M%S")
+        date_object = datetime.strptime(datetime_string, "%y%m%d%H%M%S").replace(
+            tzinfo=timezone.utc
+        )
         return date_object
 
     print(
@@ -82,7 +84,7 @@ def check_env(json_path):
     }
 
     # If there are old packages, show an error
-    today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    today = datetime.now(tz=timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
     old_threshold = today - timedelta(days=OLD_PACKAGE_THRESHOLD_DAYS)
     old_packages = {
         package: date
