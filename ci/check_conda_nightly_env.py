@@ -84,7 +84,9 @@ def check_env(json_path):
     }
 
     # If there are old packages, show an error
-    today = datetime.now(tz=timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    today = datetime.now(tz=timezone.utc).replace(
+        hour=0, minute=0, second=0, microsecond=0
+    )
     old_threshold = today - timedelta(days=OLD_PACKAGE_THRESHOLD_DAYS)
     old_packages = {
         package: date
