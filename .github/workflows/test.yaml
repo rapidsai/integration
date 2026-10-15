@@ -43,6 +43,32 @@ jobs:
       id-token: write
       packages: read
       pull-requests: read
+  test-pytorch-pip:
+    uses: rapidsai/shared-workflows/.github/workflows/custom-job.yaml@main
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - CUDA_VER: "12.9.2"
+            TORCH_INDEX: "cu126"
+          - CUDA_VER: "13.0.3"
+            TORCH_INDEX: "cu130"
+          - CUDA_VER: "13.0.3"
+            TORCH_INDEX: "nightly/cu130"
+    with:
+      build_type: ${{ inputs.build_type }}
+      branch: ${{ inputs.branch }}
+      date: ${{ inputs.date }}
+      sha: ${{ inputs.sha }}
+      node_type: "gpu-rtxpro6000-latest-1"
+      container_image: "rapidsai/citestwheel:26.12-cuda${{ matrix.CUDA_VER }}-ubuntu24.04-py3.13"
+      script: "ci/pytorch/test_pytorch_pip.sh --torch-index ${{ matrix.TORCH_INDEX }}"
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      packages: read
+      pull-requests: read
   stable-install-pip-test-matrix:
     if: github.base_ref == 'main'
     uses: rapidsai/shared-workflows/.github/workflows/compute-matrix.yaml@main
