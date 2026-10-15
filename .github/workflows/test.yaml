@@ -51,6 +51,12 @@ jobs:
         include:
           - CUDA_VER: "12.9.2"
             TORCH_INDEX: "cu126"
+          - CUDA_VER: "12.9.2"
+            TORCH_INDEX: "cu129"
+            TORCH_CONSTRAINT: "==2.9.1"
+          - CUDA_VER: "13.0.3"
+            TORCH_INDEX: "cu130"
+            TORCH_CONSTRAINT: "==2.13.0"
           - CUDA_VER: "13.0.3"
             TORCH_INDEX: "cu130"
           - CUDA_VER: "13.0.3"
@@ -62,7 +68,7 @@ jobs:
       sha: ${{ inputs.sha }}
       node_type: "gpu-rtxpro6000-latest-1"
       container_image: "rapidsai/citestwheel:26.12-cuda${{ matrix.CUDA_VER }}-ubuntu24.04-py3.13"
-      script: "ci/pytorch/test_pytorch_pip.sh --torch-index ${{ matrix.TORCH_INDEX }}"
+      script: "ci/pytorch/test_pytorch_pip.sh --torch-index ${{ matrix.TORCH_INDEX }} --torch-constraint '${{ matrix.TORCH_CONSTRAINT }}'"
     permissions:
       actions: read
       contents: read

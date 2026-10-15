@@ -100,6 +100,8 @@ function sed_runner() {
 sed_runner "/RAPIDS_VER=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/conda-pack.sh
 sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/test_conda_nightly_env.sh
 sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/pytorch/test_pytorch_pip.sh
+sed_runner "/citestwheel:.*-ubuntu24.04-py3.13\"/ s/citestwheel:[0-9][0-9]\.[0-9][0-9]/citestwheel:${NEXT_SHORT_TAG}/" .github/workflows/pr.yaml
+sed_runner "/citestwheel:.*-ubuntu24.04-py3.13\"/ s/citestwheel:[0-9][0-9]\.[0-9][0-9]/citestwheel:${NEXT_SHORT_TAG}/" .github/workflows/test.yaml
 sed_runner "/STABLE_RAPIDS_VERSION=/ s/[0-9][0-9]\.[0-9][0-9]/${CURRENT_SHORT_TAG}/" ci/stable_install/install_and_test_*.sh
 
 # CI files - context-aware branch references

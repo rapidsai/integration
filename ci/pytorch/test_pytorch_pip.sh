@@ -8,6 +8,7 @@
 # proposed dependency change would make RAPIDS and PyTorch uninstallable together.
 #
 # Example: ./ci/pytorch/test_pytorch_pip.sh --torch-index nightly/cu130
+# Example: ./ci/pytorch/test_pytorch_pip.sh --torch-index cu129 --torch-constraint '==2.9.1'
 
 set -euo pipefail
 
@@ -23,8 +24,13 @@ while [[ $# -gt 0 ]]; do
       TORCH_INDEX="$1"
       shift
       ;;
+    --torch-constraint)
+      shift
+      TORCH_CONSTRAINT="$1"
+      shift
+      ;;
     -*)
-      rapids-echo-stderr "Unknown flag: $1. Supported flags: --torch-index"
+      rapids-echo-stderr "Unknown flag: $1. Supported flags: --torch-index, --torch-constraint"
       exit 1
       ;;
   esac
@@ -58,6 +64,7 @@ RAPIDS_PACKAGES=(
     "pylibwholegraph-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "raft-dask-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "rapidsmpf-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
+    "ucxx-${CUDA_SUFFIX}"
     "xgboost-${CUDA_SUFFIX}"
 )
 
@@ -65,8 +72,11 @@ INSTALL_DIR=$(mktemp -d)
 python -m venv "${INSTALL_DIR}/.venv"
 source "${INSTALL_DIR}/.venv/bin/activate"
 
-# torch is downloaded on its own so that --pre (needed for nightlies) does not
-# also allow pre-releases of every other dependency.
+# download 'torch' first because:
+#
+#   - it scopes '--pre' to only torch (so we don't pull in more pre-releases than we want)
+#   - passing a path to a downloaded-wheel prevents a later 'pip install' from falling back to other 'torch' packages (e.g. the CPU-only one on PyPI)
+#
 rapids-logger "Downloading torch from ${TORCH_INDEX_URL}"
 rapids-pip-retry download \
   --isolated \
@@ -74,8 +84,9 @@ rapids-pip-retry download \
   "${TORCH_DOWNLOAD_ARGS[@]}" \
   --index-url "${TORCH_INDEX_URL}" \
   -d "${INSTALL_DIR}" \
-  torch
+  "torch${TORCH_CONSTRAINT:-}"
 
+# the PyTorch index is still needed because nightly torch pins a 'triton' build that is only published there
 rapids-logger "Installing RAPIDS ${RAPIDS_VERSION} nightlies with $(basename "${INSTALL_DIR}"/torch-*.whl)"
 rapids-pip-retry install \
   --isolated \
@@ -104,6 +115,7 @@ declare -a IMPORTS=(
   raft_dask
   rapidsmpf
   torch
+  ucxx
   xgboost
 )
 testImports IMPORTS
