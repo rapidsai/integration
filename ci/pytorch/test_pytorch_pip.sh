@@ -13,6 +13,7 @@
 set -euo pipefail
 
 RAPIDS_VERSION="26.12"
+UCXX_VERSION="0.53"
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/../stable_install/test_imports.sh"
@@ -64,7 +65,7 @@ RAPIDS_PACKAGES=(
     "pylibwholegraph-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "raft-dask-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "rapidsmpf-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
-    "ucxx-${CUDA_SUFFIX}"
+    "ucxx-${CUDA_SUFFIX}==${UCXX_VERSION}.*"
     "xgboost-${CUDA_SUFFIX}"
 )
 
