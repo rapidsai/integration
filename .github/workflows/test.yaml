@@ -68,7 +68,7 @@ jobs:
       sha: ${{ inputs.sha }}
       node_type: "gpu-rtxpro6000-latest-1"
       container_image: "rapidsai/citestwheel:26.12-cuda${{ matrix.CUDA_VER }}-ubuntu24.04-py3.13"
-      script: "ci/pytorch/test_pytorch_pip.sh --torch-index ${{ matrix.TORCH_INDEX }} --torch-constraint '${{ matrix.TORCH_CONSTRAINT }}'"
+      script: "ci/pytorch/test_pytorch_pip.sh --torch-index ${{ matrix.TORCH_INDEX }} ${{ matrix.TORCH_CONSTRAINT && format('--torch-constraint {0}', matrix.TORCH_CONSTRAINT) || '' }}"
     permissions:
       actions: read
       contents: read
