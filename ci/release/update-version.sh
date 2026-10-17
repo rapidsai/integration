@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2021-2025, NVIDIA CORPORATION.
+# Copyright (c) 2021-2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 ###############################
 # Integration Version Updater #
@@ -77,6 +77,7 @@ CURRENT_TAG=$(git tag --merged HEAD | grep -xE '^v.*' | sort --version-sort | ta
 NEXT_MAJOR=$(echo $NEXT_FULL_TAG | awk '{split($0, a, "."); print a[1]}')
 NEXT_MINOR=$(echo $NEXT_FULL_TAG | awk '{split($0, a, "."); print a[2]}')
 NEXT_SHORT_TAG=${NEXT_MAJOR}.${NEXT_MINOR}
+NEXT_UCXX_TAG="$(curl -s https://version.gpuci.io/rapids/"${NEXT_SHORT_TAG}")"
 
 # Get <major>.<minor> for current (stable) version
 CURRENT_MAJOR=$(echo $CURRENT_TAG | awk '{split($0, a, "."); print a[1]}')
@@ -99,6 +100,10 @@ function sed_runner() {
 
 sed_runner "/RAPIDS_VER=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/conda-pack.sh
 sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/test_conda_nightly_env.sh
+sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/pytorch/test_pytorch_pip.sh
+sed_runner "/UCXX_VERSION=/ s/\"[0-9.]*\"/\"${NEXT_UCXX_TAG}\"/" ci/pytorch/test_pytorch_pip.sh
+sed_runner "/test-pytorch-pip:/,/container_image:/ s/citestwheel:[0-9][0-9]\.[0-9][0-9]-/citestwheel:${NEXT_SHORT_TAG}-/" .github/workflows/pr.yaml
+sed_runner "/test-pytorch-pip:/,/container_image:/ s/citestwheel:[0-9][0-9]\.[0-9][0-9]-/citestwheel:${NEXT_SHORT_TAG}-/" .github/workflows/test.yaml
 sed_runner "/STABLE_RAPIDS_VERSION=/ s/[0-9][0-9]\.[0-9][0-9]/${CURRENT_SHORT_TAG}/" ci/stable_install/install_and_test_*.sh
 
 # CI files - context-aware branch references
