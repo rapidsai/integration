@@ -39,7 +39,8 @@ requirements:
     - nx-cugraph ${{ minor_version }}.*
     - nvforest ${{ minor_version }}.*
     - cuml ${{ minor_version }}.*
-    - cucim ${{ minor_version }}.*
+    # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
+    # - cucim ${{ minor_version }}.*
     - custreamz ${{ minor_version }}.*
     - dask-cuda ${{ minor_version }}.*
     - rmm ${{ minor_version }}.*

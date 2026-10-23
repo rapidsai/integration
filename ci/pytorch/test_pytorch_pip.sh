@@ -52,7 +52,8 @@ if [[ "${TORCH_INDEX}" == nightly/* ]]; then
 fi
 
 RAPIDS_PACKAGES=(
-    "cucim-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
+    # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
+    # "cucim-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "cudf-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "cudf-polars-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "cugraph-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
@@ -102,7 +103,8 @@ python -m pip list
 
 # shellcheck disable=SC2034
 declare -a IMPORTS=(
-  cucim
+  # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
+  # cucim
   cudf
   cudf_polars
   cugraph
