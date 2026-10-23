@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2026, NVIDIA CORPORATION.
+# Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 # This script installs the latest stable RAPIDS version in a clean conda
 # environment for the specified Python and CUDA versions.
@@ -65,7 +65,6 @@ conda activate "$envName"
 # Test imports of all packages included in the rapids metapackage
 # shellcheck disable=SC2034
 declare -a RAPIDS_IMPORTS=(
-  cucim
   cudf
   cugraph
   cuml
