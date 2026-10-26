@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2026, NVIDIA CORPORATION.
+# Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 # By default, this script attempts to install the latest stable RAPIDS version
 # in a clean Python venv for all supported versions of Python and CUDA
@@ -98,13 +98,15 @@ python -m pip download \
   --prefer-binary \
   --no-deps \
   -d "${WHEELS_DIR}" \
-  "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "cuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "libcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "libcuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "nx-cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "pylibcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
+
+# TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
+# "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
 
 rapids-logger "Testing stable version install with Python $PYTHON_VERSION and CUDA $CUDA_VERSION"
 
@@ -117,7 +119,8 @@ python -m pip install \
 
 # shellcheck disable=SC2034
 declare -a RAPIDS_IMPORTS=(
-  cucim
+  # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
+  # cucim
   cudf
   cudf_polars
   cugraph
