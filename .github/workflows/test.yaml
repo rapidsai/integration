@@ -37,6 +37,7 @@ jobs:
       script: "ci/test_conda_nightly_env.sh"
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
+      matrix_type: cuda-13-4-nightly
     permissions:
       actions: read
       contents: read
@@ -82,7 +83,7 @@ jobs:
       build_type: nightly
       matrix_name: wheels-test
       # Filtering out 13.3 jobs which won't have docker images for the 26.06 release
-      matrix_filter: map(select(.CUDA_VER != "13.3.0"))
+      matrix_filter: map(select(.CUDA_VER != "13.4.3"))
     permissions:
       contents: read
   test-stable-install-pip:
@@ -111,7 +112,7 @@ jobs:
       build_type: nightly
       matrix_name: conda-python-tests
       # Filtering out 13.3 jobs which won't have docker images for the 26.06 release
-      matrix_filter: map(select(.CUDA_VER != "13.3.0"))
+      matrix_filter: map(select(.CUDA_VER != "13.4.3"))
     permissions:
       contents: read
   test-stable-install-conda:
