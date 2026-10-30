@@ -62,6 +62,7 @@ jobs:
       build-datetime: ${{ needs.build-details.outputs.build-datetime }}
       script: ci/build_python.sh
       pure-conda: cuda_major
+      matrix_type: cuda-13-4-pr
     permissions:
       actions: read
       contents: read
@@ -78,6 +79,7 @@ jobs:
       script: "ci/test_conda_nightly_env.sh"
       # just using the workflow to get the matrix, this isn't actually building anything we want to upload
       upload-artifacts: false
+      matrix_type: cuda-13-4-pr
     permissions:
       actions: read
       contents: read
