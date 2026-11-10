@@ -12,8 +12,8 @@
 
 set -euo pipefail
 
-RAPIDS_VERSION="26.12"
-UCXX_VERSION="0.53"
+RAPIDS_VERSION="27.02"
+UCXX_VERSION="0.54"
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SCRIPT_DIR}/../stable_install/test_imports.sh"
