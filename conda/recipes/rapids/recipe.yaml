@@ -46,8 +46,8 @@ requirements:
     - rmm ${{ minor_version }}.*
     - pylibcugraph ${{ minor_version }}.*
     - libcugraph_etl ${{ minor_version }}.*
-    - conda-forge::ucx ${{ ucx_version }}
-    - conda-forge::xgboost ${{ xgboost_version }}
+    - ucx ${{ ucx_version }}
+    - xgboost ${{ xgboost_version }}
   ignore_run_exports:
     by_name:
       - python_abi
