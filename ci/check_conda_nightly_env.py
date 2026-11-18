@@ -61,12 +61,25 @@ def check_env(json_path):
     exit_code = 0
 
     with open(json_path) as f:
-        try:
-            json_data = json.load(f)
-        except ValueError as e:
-            print("Error: JSON data file from conda failed to load:")
-            print(e)
-            return 1
+        text = f.read()
+    # rapids-conda-retry concatenates the output of every attempt, so the file
+    # can hold several JSON documents. The last one is the final result.
+    decoder = json.JSONDecoder()
+    json_data = None
+    pos = 0
+    try:
+        while True:
+            while pos < len(text) and text[pos].isspace():
+                pos += 1
+            if pos == len(text):
+                break
+            json_data, pos = decoder.raw_decode(text, pos)
+        if json_data is None:
+            raise ValueError("no JSON data found")
+    except ValueError as e:
+        print("Error: JSON data file from conda failed to load:")
+        print(e)
+        return 1
 
     if "error" in json_data:
         print("Error: conda failed:")
