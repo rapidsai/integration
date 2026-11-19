@@ -98,15 +98,13 @@ python -m pip download \
   --prefer-binary \
   --no-deps \
   -d "${WHEELS_DIR}" \
+  "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "cuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "libcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "libcuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "nx-cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "pylibcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
-
-# TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
-# "cucim-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
 
 rapids-logger "Testing stable version install with Python $PYTHON_VERSION and CUDA $CUDA_VERSION"
 
@@ -119,8 +117,7 @@ python -m pip install \
 
 # shellcheck disable=SC2034
 declare -a RAPIDS_IMPORTS=(
-  # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
-  # cucim
+  cucim
   cudf
   cudf_polars
   cugraph
