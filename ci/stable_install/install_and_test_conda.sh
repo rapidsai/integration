@@ -65,8 +65,7 @@ conda activate "$envName"
 # Test imports of all packages included in the rapids metapackage
 # shellcheck disable=SC2034
 declare -a RAPIDS_IMPORTS=(
-  # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
-  # cucim
+  cucim
   cudf
   cugraph
   cuml

@@ -8,6 +8,7 @@ context:
   cuda_major: '${{ (env.get("RAPIDS_CUDA_VERSION") | split("."))[0] }}'
   datetime_string: '${{ env.get("RAPIDS_DATETIME_STRING") }}'
   head_rev: ${{ git.head_rev(".")[:8] }}
+  ucxx_version: "0.53"
 
 package:
   name: rapids
@@ -27,10 +28,6 @@ requirements:
     - python >=3.12
   run:
     - ${{ pin_compatible("cuda-version", upper_bound="x", lower_bound="x") }}
-    - cupy ${{ cupy_version }}
-    - nccl ${{ nccl_version }}
-    - numpy ${{ numpy_version }}
-    - nvtx ${{ nvtx_version }}
     - python
     - cudf ${{ minor_version }}.*
     - cudf-polars ${{ minor_version }}.*
@@ -39,15 +36,14 @@ requirements:
     - nx-cugraph ${{ minor_version }}.*
     - nvforest ${{ minor_version }}.*
     - cuml ${{ minor_version }}.*
-    # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
-    # - cucim ${{ minor_version }}.*
+    - cucim ${{ minor_version }}.*
     - custreamz ${{ minor_version }}.*
     - dask-cuda ${{ minor_version }}.*
     - rmm ${{ minor_version }}.*
+    - ucxx ${{ ucxx_version }}.*
     - pylibcugraph ${{ minor_version }}.*
     - libcugraph_etl ${{ minor_version }}.*
-    - ucx ${{ ucx_version }}
-    - xgboost ${{ xgboost_version }}
+    - xgboost >=3.4.0,<3.5.0
   ignore_run_exports:
     by_name:
       - python_abi

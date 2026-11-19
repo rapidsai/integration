@@ -102,6 +102,7 @@ sed_runner "/RAPIDS_VER=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/conda-p
 sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/test_conda_nightly_env.sh
 sed_runner "/RAPIDS_VERSION=/ s/[0-9][0-9].[0-9][0-9]/${NEXT_SHORT_TAG}/" ci/pytorch/test_pytorch_pip.sh
 sed_runner "/UCXX_VERSION=/ s/\"[0-9.]*\"/\"${NEXT_UCXX_TAG}\"/" ci/pytorch/test_pytorch_pip.sh
+sed_runner "/ucxx_version: / s/\"[0-9.]*\"/\"${NEXT_UCXX_TAG}\"/" conda/recipes/rapids/recipe.yaml
 sed_runner "/test-pytorch-pip:/,/container_image:/ s/citestwheel:[0-9][0-9]\.[0-9][0-9]-/citestwheel:${NEXT_SHORT_TAG}-/" .github/workflows/pr.yaml
 sed_runner "/test-pytorch-pip:/,/container_image:/ s/citestwheel:[0-9][0-9]\.[0-9][0-9]-/citestwheel:${NEXT_SHORT_TAG}-/" .github/workflows/test.yaml
 sed_runner "/STABLE_RAPIDS_VERSION=/ s/[0-9][0-9]\.[0-9][0-9]/${CURRENT_SHORT_TAG}/" ci/stable_install/install_and_test_*.sh

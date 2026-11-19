@@ -12,14 +12,11 @@ export RAPIDS_PACKAGE_VERSION
 
 source rapids-rattler-channel-string
 
-CONDA_CONFIG_FILE="conda/recipes/versions.yaml"
-
 rapids-print-env
 
 rapids-logger "Build rapids"
 
 rattler-build build --recipe conda/recipes/rapids \
-                    --variant-config "${CONDA_CONFIG_FILE}" \
                     "${RATTLER_ARGS[@]}" \
                     "${RATTLER_CHANNELS[@]}"
 
