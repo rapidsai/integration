@@ -36,7 +36,6 @@ requirements:
     - cudf-polars ${{ minor_version }}.*
     - cuvs ${{ minor_version }}.*
     - cugraph ${{ minor_version }}.*
-    - nx-cugraph ${{ minor_version }}.*
     - nvforest ${{ minor_version }}.*
     - cuml ${{ minor_version }}.*
     # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)

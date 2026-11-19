@@ -72,11 +72,14 @@ declare -a RAPIDS_IMPORTS=(
   cuml
   cuvs
   dask_cudf
-  nx_cugraph
   pylibraft
   raft_dask
   rmm
 )
+# nx-cugraph is included only in releases through 26.12.
+if [[ "${STABLE_RAPIDS_VERSION%%.*}" -lt 27 ]]; then
+  RAPIDS_IMPORTS+=(nx_cugraph)
+fi
 testImports RAPIDS_IMPORTS
 
 rapids-logger "Running RAPIDS doctor smoke tests"

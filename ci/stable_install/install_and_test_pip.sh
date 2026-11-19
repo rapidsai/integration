@@ -92,6 +92,11 @@ createPyEnv "$PYTHON_VERSION" "$INSTALL_DIR"
 rapids-logger "Downloading NVIDIA PyPI only wheels for Python $PYTHON_VERSION and CUDA $CUDA_VERSION"
 
 WHEELS_DIR=$(mktemp -d)
+NX_CUGRAPH_WHEELS=()
+# Keep testing older releases, including the final nx-cugraph release, 26.12.
+if [[ "${STABLE_RAPIDS_VERSION%%.*}" -lt 27 ]]; then
+  NX_CUGRAPH_WHEELS+=("nx-cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}")
+fi
 python -m pip download \
   --isolated \
   --index-url https://pypi.nvidia.com \
@@ -102,7 +107,7 @@ python -m pip download \
   "cuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "libcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
   "libcuvs-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
-  "nx-cugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}" \
+  "${NX_CUGRAPH_WHEELS[@]}" \
   "pylibcugraph-${CUDA_SUFFIX}==${STABLE_RAPIDS_VERSION}"
 
 # TODO: restore when nvCOMP conflict is resolved (ref: https://github.com/rapidsai/integration/issues/876)
@@ -127,12 +132,14 @@ declare -a RAPIDS_IMPORTS=(
   cuml
   cuvs
   dask_cudf
-  nx_cugraph
   pylibraft
   raft_dask
   rapidsmpf
   rmm
 )
+if [[ ${#NX_CUGRAPH_WHEELS[@]} -gt 0 ]]; then
+  RAPIDS_IMPORTS+=(nx_cugraph)
+fi
 testImports RAPIDS_IMPORTS
 
 rapids-logger "Running RAPIDS doctor smoke tests"
