@@ -15,7 +15,7 @@ conda config --set channel_priority strict
 
 rapids-logger "Creating conda environment with rapids=${RAPIDS_VERSION}, python=${RAPIDS_PY_VERSION}, cuda-version=${CUDA_VERSION}"
 
-rapids-conda-retry \
+RAPIDS_CONDA_RETRY_QUIET=1 rapids-conda-retry \
     create \
     -n rapids-${RAPIDS_VERSION} \
     -c "${RAPIDS_CHANNEL}" \
