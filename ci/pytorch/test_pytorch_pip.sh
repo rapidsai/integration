@@ -61,7 +61,6 @@ RAPIDS_PACKAGES=(
     "cuvs-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "dask-cuda==${RAPIDS_VERSION}.*"
     "dask-cudf-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
-    "nx-cugraph-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "pylibwholegraph-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "raft-dask-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
     "rapidsmpf-${CUDA_SUFFIX}==${RAPIDS_VERSION}.*"
@@ -111,7 +110,6 @@ declare -a IMPORTS=(
   cuvs
   dask_cuda
   dask_cudf
-  nx_cugraph
   pylibwholegraph
   raft_dask
   rapidsmpf
